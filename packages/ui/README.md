@@ -12,20 +12,27 @@ they use and select their own visual identity.
 
 ## Package access
 
-The source repository is MIT licensed. Package releases currently use GitHub
-Packages and require registry authentication. Until public package distribution
-is enabled, build a tarball from the public source checkout:
+The source repository and distributable are MIT licensed. Version `0.3.0` is
+available as a public [GitHub release asset](https://github.com/KooyaPH/kooya-ui/releases/tag/v0.3.0),
+which can be installed without registry credentials:
+
+```sh
+npm install https://github.com/KooyaPH/kooya-ui/releases/download/v0.3.0/kooyaph-ui-0.3.0.tgz antd@6.6.5
+```
+
+To build a local tarball from a checkout:
 
 ```sh
 corepack pnpm install --frozen-lockfile
 corepack pnpm --filter @kooyaph/ui build
-corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui.tgz
+(cd packages/ui && npm pack --pack-destination /tmp)
 ```
 
 Install the resulting tarball alongside `react`, `react-dom`, and `antd@6.6.5`.
-Never commit registry tokens. The [repository README](../../README.md) describes
-the registry boundary and the [setup guide](../../docs/setup.md) covers local
-development.
+The separate GitHub Packages registry remains restricted for internal use and
+requires authentication. Never commit registry tokens. The [repository README](../../README.md)
+describes public installs and the [setup guide](../../docs/setup.md) covers
+local development.
 
 ## Quick start
 

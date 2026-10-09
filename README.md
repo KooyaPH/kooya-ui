@@ -55,17 +55,25 @@ export function App() {
 project-defined `KooyaTheme` object. See [theme creation](docs/themes.md) and
 [component imports](docs/components.md).
 
-The distributable package build is in `packages/ui`. Until a public registry
-release is available, build a local tarball after cloning this repository:
+The `0.3.0` distributable is attached to the public
+[GitHub release](https://github.com/KooyaPH/kooya-ui/releases/tag/v0.3.0). Install
+it directly from the release asset alongside React and Ant Design:
+
+```sh
+npm install https://github.com/KooyaPH/kooya-ui/releases/download/v0.3.0/kooyaph-ui-0.3.0.tgz antd@6.6.5
+```
+
+To build from source instead, the package lives in `packages/ui`:
 
 ```sh
 corepack pnpm --filter @kooyaph/ui build
-corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui.tgz
+(cd packages/ui && npm pack --pack-destination /tmp)
 ```
 
-Install that tarball in a consumer alongside `antd@6.6.5`, `react`, and
-`react-dom`. The consumer imports its chosen atomic entry points and theme
-subpaths as shown above.
+The public archive includes its MIT license and third-party notices. The
+consumer imports its chosen atomic entry points and theme subpaths as shown
+above. The separate GitHub Packages registry remains restricted and requires
+authentication; public installs use the release asset.
 
 ## Repository layout
 

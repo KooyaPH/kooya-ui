@@ -47,7 +47,7 @@ dependencies. Build and pack a tarball for a local consumer:
 
 ```sh
 corepack pnpm --filter @kooyaph/ui build
-corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui.tgz
+(cd packages/ui && npm pack --pack-destination /tmp)
 ```
 
 Install the tarball in the consuming application alongside the peer
