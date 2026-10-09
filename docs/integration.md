@@ -14,7 +14,8 @@ Design 6.6.5. Install these in the consuming application.
 Import named components from the smallest relevant atomic family:
 
 ```tsx
-import { Button, TextField } from "@kooyaph/ui/atoms";
+import { Button } from "@kooyaph/ui/atoms";
+import { TextField } from "@kooyaph/ui/molecules";
 import { MetricCard } from "@kooyaph/ui/molecules";
 import { DataTable } from "@kooyaph/ui/organisms";
 import { DashboardTemplate } from "@kooyaph/ui/templates";

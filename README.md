@@ -35,7 +35,8 @@ Components are exported by atomic family. Import only the named components your
 screen uses, and import a theme by its dedicated package path:
 
 ```tsx
-import { Button, TextField } from "@kooyaph/ui/atoms";
+import { Button } from "@kooyaph/ui/atoms";
+import { TextField } from "@kooyaph/ui/molecules";
 import { DataTable } from "@kooyaph/ui/organisms";
 import { KooyaProvider } from "@kooyaph/ui";
 import { signatureTheme } from "@kooyaph/ui/themes/signature";
