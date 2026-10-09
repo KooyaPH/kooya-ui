@@ -1,0 +1,16 @@
+export const mosaicTheme = {
+  name: "Mosaic",
+  canvas: "#f2f3ed",
+  surface: "#ffffff",
+  subtle: "#f1f4eb",
+  ink: "#25382a",
+  muted: "#5b6656",
+  line: "#dfe5d6",
+  focus: "#314b3c",
+  accent: "#314b3c",
+  accentInk: "#ffffff",
+  highlight: "#dfeeab",
+  highlightInk: "#31452e",
+  secondary: "#e2e9dd",
+  tertiary: "#f3e7db",
+} as const;

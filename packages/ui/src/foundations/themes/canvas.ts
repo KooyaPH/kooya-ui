@@ -1,0 +1,16 @@
+export const canvasTheme = {
+  name: "Canvas",
+  canvas: "#f3efe8",
+  surface: "#fffdf9",
+  subtle: "#f0e7da",
+  ink: "#3e3529",
+  muted: "#6a5d4d",
+  line: "#e2d9cc",
+  focus: "#7a5940",
+  accent: "#7a5940",
+  accentInk: "#ffffff",
+  highlight: "#e9dcc3",
+  highlightInk: "#4d3c25",
+  secondary: "#e8e2d6",
+  tertiary: "#eedccd",
+} as const;

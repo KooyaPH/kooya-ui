@@ -1,0 +1,44 @@
+{
+  "name": "kooya-ui",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "corepack pnpm --filter @kooyaph/ui build && corepack pnpm --filter @kooyaph/ui-playground build",
+    "dev": "corepack pnpm --filter @kooyaph/ui build && corepack pnpm --filter @kooyaph/ui-playground dev",
+    "typecheck": "corepack pnpm -r typecheck",
+    "preview": "corepack pnpm --filter @kooyaph/ui-playground preview",
+    "format": "prettier --write packages/ui/src apps/playground/src docs README.md AGENTS.md",
+    "test": "vitest run",
+    "storybook": "corepack pnpm --filter @kooyaph/ui build && corepack pnpm --filter @kooyaph/ui-storybook dev",
+    "build:storybook": "corepack pnpm --filter @kooyaph/ui-storybook build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "corepack pnpm --filter @kooyaph/ui build && corepack pnpm exec changeset publish",
+    "validate": "corepack pnpm build && corepack pnpm typecheck && corepack pnpm test && corepack pnpm build:storybook"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.7",
+    "@storybook/addon-a11y": "10.0.0",
+    "@storybook/addon-docs": "10.0.0",
+    "@storybook/react-vite": "10.0.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "@vitejs/plugin-react": "4.7.0",
+    "antd": "6.6.5",
+    "jsdom": "26.1.0",
+    "prettier": "3.6.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "storybook": "10.0.0",
+    "typescript": "5.6.3",
+    "vite": "6.4.2",
+    "vitest": "3.2.4"
+  }
+}

@@ -1,0 +1,16 @@
+export const signatureTheme = {
+  name: "Kooya Signature",
+  canvas: "#f2eee3",
+  surface: "#fffdf7",
+  subtle: "#ebe5d5",
+  ink: "#13120f",
+  muted: "#66614f",
+  line: "#d8cfba",
+  focus: "#314300",
+  accent: "#d7f20f",
+  accentInk: "#13120f",
+  highlight: "#d7f20f",
+  highlightInk: "#13120f",
+  secondary: "#e7e8cc",
+  tertiary: "#f1e0bc",
+} as const;

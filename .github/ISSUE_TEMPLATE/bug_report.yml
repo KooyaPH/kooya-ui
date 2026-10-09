@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible issue in Kooya UI.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Please do not include credentials, customer records, or private application data.
+  - type: input
+    id: package-version
+    attributes:
+      label: Package version
+      placeholder: "0.3.0"
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Component, theme, or template
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps and environment
+      description: Include browser, framework versions, and viewport where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshot or minimal code
+      description: Use fictional data and remove secrets.

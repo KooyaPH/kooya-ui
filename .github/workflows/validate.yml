@@ -1,0 +1,38 @@
+name: Validate UI library
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ui-validation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    # Public fork pull requests never execute on the organization's persistent runners.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, Linux, X64, mid-runner]
+    timeout-minutes: 20
+    env:
+      STORYBOOK_DISABLE_TELEMETRY: "1"
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.3"
+      - name: Enable pinned package manager
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.18.3 --activate
+      - run: corepack pnpm install --frozen-lockfile
+      - run: corepack pnpm build
+      - run: corepack pnpm typecheck
+      - run: corepack pnpm test
+      - run: corepack pnpm build:storybook
+      - name: Inspect publishable archive
+        run: corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui-qualification.tgz

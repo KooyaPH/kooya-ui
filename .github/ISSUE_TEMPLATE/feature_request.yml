@@ -1,0 +1,31 @@
+name: Feature request
+description: Suggest a reusable component, theme, or template improvement.
+title: "feature: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Who needs this, what are they trying to do, and why?
+      placeholder: "As a ..., I want ..., so I can ..."
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired behavior
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility, responsive, or keyboard requirements
+    validations:
+      required: false

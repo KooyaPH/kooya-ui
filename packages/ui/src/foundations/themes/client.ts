@@ -1,0 +1,16 @@
+export const clientTheme = {
+  name: "Client",
+  canvas: "#eef2f6",
+  surface: "#ffffff",
+  subtle: "#edf2f9",
+  ink: "#263650",
+  muted: "#5b677d",
+  line: "#dce4ef",
+  focus: "#315b9d",
+  accent: "#315b9d",
+  accentInk: "#ffffff",
+  highlight: "#dbe7ff",
+  highlightInk: "#26487a",
+  secondary: "#e3edf1",
+  tertiary: "#efe5dc",
+} as const;
