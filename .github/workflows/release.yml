@@ -27,7 +27,7 @@ jobs:
       EXPECTED_VERSION: ${{ inputs.expected_version }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22.23.3"
       - run: |
@@ -47,7 +47,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22.23.3"
           registry-url: "https://npm.pkg.github.com"
