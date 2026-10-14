@@ -1,0 +1,26 @@
+diff --git a/es/PreviewGroup.d.ts b/es/PreviewGroup.d.ts
+index 567699a73fb4efb84de4a1ef0a503d496e3a1730..80912cfcab9812a265f0f36b358dea328de90173 100644
+--- a/es/PreviewGroup.d.ts
++++ b/es/PreviewGroup.d.ts
+@@ -3,7 +3,7 @@ import type { ImgInfo } from './Image';
+ import type { InternalPreviewConfig, PreviewProps, PreviewSemanticName } from './Preview';
+ import type { TransformType } from './hooks/useImageTransform';
+ import type { ImageElementProps } from './interface';
+-export interface GroupPreviewConfig extends InternalPreviewConfig {
++export interface GroupPreviewConfig extends Omit<InternalPreviewConfig, 'imageRender'> {
+     current?: number;
+     imageRender?: (originalNode: React.ReactElement, info: {
+         transform: TransformType;
+diff --git a/lib/PreviewGroup.d.ts b/lib/PreviewGroup.d.ts
+index 567699a73fb4efb84de4a1ef0a503d496e3a1730..80912cfcab9812a265f0f36b358dea328de90173 100644
+--- a/lib/PreviewGroup.d.ts
++++ b/lib/PreviewGroup.d.ts
+@@ -3,7 +3,7 @@ import type { ImgInfo } from './Image';
+ import type { InternalPreviewConfig, PreviewProps, PreviewSemanticName } from './Preview';
+ import type { TransformType } from './hooks/useImageTransform';
+ import type { ImageElementProps } from './interface';
+-export interface GroupPreviewConfig extends InternalPreviewConfig {
++export interface GroupPreviewConfig extends Omit<InternalPreviewConfig, 'imageRender'> {
+     current?: number;
+     imageRender?: (originalNode: React.ReactElement, info: {
+         transform: TransformType;

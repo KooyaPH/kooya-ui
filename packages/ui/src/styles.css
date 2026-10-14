@@ -1,6 +1,53 @@
+@import "./brand.css";
+
+/* Native focus scrolling needs to reserve room in proportion to the actual
+   Drawer body height. Owned semantics cover custom Drawer prefixes and portals;
+   caller inline body styles keep their native priority. */
+.ku-root .ant-drawer-body,
+:where(.ku-drawer-scope) .ku-drawer-body {
+  scroll-padding-block: 50%;
+}
+
+/* Native popup alignment can only contain labels once their intrinsic width
+   is bounded. Explicit caller semantic styles retain their inline priority. */
+.ku-root .ant-dropdown {
+  max-inline-size: calc(100vw - var(--ku-space-4, 16px) * 2);
+}
+.ku-root .ant-dropdown-menu .ant-dropdown-menu-item,
+.ku-root .ant-dropdown-menu .ant-dropdown-menu-title-content {
+  white-space: normal;
+}
+.ku-root .ant-dropdown-menu .ant-dropdown-menu-title-content {
+  overflow-wrap: anywhere;
+  min-inline-size: 0;
+}
+
+/* Opposing light/dark text and surface colors must switch together. Tweening
+   through their midpoints makes dirty text unreadable during appearance changes.
+   Keep native border/focus feedback while avoiding color and size interpolation. */
+:is(.ku-root, .ku-drawer-scope)
+  :is(.ant-input, .ant-input-affix-wrapper, .ant-input-group) {
+  transition-property: border-color, box-shadow;
+}
+@media (max-width: 480px) {
+  /* The44px control seed derives49.5px calendar cells and a382.5px panel.
+     A36px cell keeps the seven-column panel usable within320px viewports. */
+  .ku-root[data-mode] .ant-picker-dropdown {
+    --ant-date-picker-cell-width: 36px;
+  }
+}
+
+/* Keep the actual Ant clear control as the single cancellation affordance.
+   Search fields without that control retain their browser-native cancel UI. */
+.ku-root
+  .ant-input-affix-wrapper:has(.ant-input-clear-icon)
+  input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
 /* Kooya UI. All selectors are scoped; consumers opt into the stylesheet. */
-:where(.ku-root) {
-  --ku-font-sans: "Inter Variable", Inter, system-ui, sans-serif;
+:where(.ku-root, .ku-drawer-scope) {
+  --ku-font-sans: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
   --ku-space-1: 4px;
   --ku-space-2: 8px;
   --ku-space-3: 12px;
@@ -12,20 +59,20 @@
   --ku-radius-card: 22px;
   --ku-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ku-duration: 180ms;
-  --ku-canvas: #f2f3ed;
-  --ku-surface: #fff;
-  --ku-subtle: #f1f4eb;
-  --ku-ink: #25382a;
-  --ku-muted: #5b6656;
-  --ku-line: #dfe5d6;
+  --ku-canvas: #f2eee3;
+  --ku-surface: #fffdf7;
+  --ku-subtle: #ebe5d5;
+  --ku-ink: #13120f;
+  --ku-muted: #66614f;
+  --ku-line: #d8cfba;
   --ku-control-border: var(--ku-muted);
-  --ku-focus: #314b3c;
-  --ku-accent: #314b3c;
-  --ku-accent-ink: #fff;
-  --ku-highlight: #dfeeab;
-  --ku-highlight-ink: #31452e;
-  --ku-secondary: #e2e9dd;
-  --ku-tertiary: #f3e7db;
+  --ku-focus: #314300;
+  --ku-accent: #d7f20f;
+  --ku-accent-ink: #13120f;
+  --ku-highlight: #d7f20f;
+  --ku-highlight-ink: #13120f;
+  --ku-secondary: #e7e8cc;
+  --ku-tertiary: #f1e0bc;
   color: var(--ku-ink);
   font-family: var(--ku-font-sans);
   font-size: 14px;
@@ -1392,11 +1439,11 @@ a.ku-nav-tile {
   background: transparent;
   box-shadow: none;
 }
-.ku-root .ku-select.ku-select {
+:is(.ku-root, .ku-drawer-scope) .ku-select.ku-select {
   padding: 0 12px;
   border: 1px solid var(--ku-control-border);
   height: auto;
-  min-height: 44px;
+  min-height: var(--ku-control-height, 44px);
   width: 100%;
   background: transparent;
 }
@@ -1520,17 +1567,109 @@ a.ku-nav-tile {
 }
 /* Ant uses accent-derived focus colors; owned controls use the contrast-safe focus role. */
 .ku-root.ku-root
+  :is(button, a, input, select, textarea, [tabindex]):focus-visible,
+.ku-drawer-scope.ku-drawer-scope
   :is(button, a, input, select, textarea, [tabindex]):focus-visible {
   outline: 3px solid var(--ku-focus);
   outline-offset: 3px;
 }
 /* The owned Select is one field. Ant's combobox input can shrink to 4px in
    multiple mode, so put its keyboard cue around the complete selection. */
-.ku-root.ku-root .ku-select:has(input[role="combobox"]:focus-visible) {
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  :is(.ku-select, .ant-select):has(input[role="combobox"]:focus-visible) {
   outline: 3px solid var(--ku-focus);
   outline-offset: 3px;
 }
-.ku-root.ku-root .ku-select input[role="combobox"]:focus-visible {
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  :is(.ku-select, .ant-select)
+  input[role="combobox"]:focus-visible {
+  outline: 0;
+}
+
+/* The field cue must appear immediately while native border feedback can animate. */
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  :is(.ku-select, .ant-select) {
+  transition-property: border-color, box-shadow;
+}
+
+/* Reserve an editable track between intrinsic affix tracks. Oversized labels
+   wrap without shrinking normal labels or overriding explicit input widths. */
+:is(.ku-root, .ku-drawer-scope) .ant-input-affix-wrapper {
+  display: inline-grid;
+  align-items: center;
+  grid-template-columns: minmax(4ch, 1fr);
+}
+:is(.ku-root, .ku-drawer-scope) .ant-input-affix-wrapper::before {
+  display: none;
+}
+:is(.ku-root, .ku-drawer-scope)
+  .ant-input-affix-wrapper:has(> .ant-input-prefix):has(> .ant-input-suffix) {
+  grid-template-columns: minmax(0, max-content) minmax(4ch, 1fr) minmax(
+      0,
+      max-content
+    );
+}
+:is(.ku-root, .ku-drawer-scope)
+  .ant-input-affix-wrapper:has(> .ant-input-prefix):not(
+    :has(> .ant-input-suffix)
+  ) {
+  grid-template-columns: minmax(0, max-content) minmax(4ch, 1fr);
+}
+:is(.ku-root, .ku-drawer-scope)
+  .ant-input-affix-wrapper:has(> .ant-input-suffix):not(
+    :has(> .ant-input-prefix)
+  ) {
+  grid-template-columns: minmax(4ch, 1fr) minmax(0, max-content);
+}
+:is(.ku-root, .ku-drawer-scope) .ant-input-affix-wrapper > input.ant-input {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+:is(.ku-root, .ku-drawer-scope)
+  .ant-input-affix-wrapper
+  > :is(.ant-input-prefix, .ant-input-suffix) {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Clear/count/custom suffix contents must wrap within their own track. */
+:is(.ku-root, .ku-drawer-scope) .ant-input-affix-wrapper > .ant-input-suffix {
+  flex-wrap: wrap;
+}
+:is(.ku-root, .ku-drawer-scope)
+  .ant-input-affix-wrapper
+  > .ant-input-suffix
+  > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+/* Affixes/addons are one field. Only the main input delegates its cue;
+   independently focusable controls supplied as addons retain their own cue. */
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-affix-wrapper:has(> input.ant-input:focus-visible),
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group:has(> .ant-input:focus-visible),
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group:has(
+    > .ant-input-affix-wrapper > input.ant-input:focus-visible
+  ) {
+  outline: 3px solid var(--ku-focus);
+  outline-offset: 3px;
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-affix-wrapper
+  > input.ant-input:focus-visible,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group
+  > .ant-input:focus-visible {
+  outline: 0;
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group:has(
+    > .ant-input-affix-wrapper > input.ant-input:focus-visible
+  )
+  > .ant-input-affix-wrapper {
   outline: 0;
 }
 
@@ -2180,4 +2319,81 @@ a.ku-nav-tile {
   .ku-record-filters > summary {
     display: none;
   }
+}
+
+/* Keep the selected value readable while its native single-select menu is open.
+   Search input masking remains controlled by Ant Design. */
+.ku-root
+  .ant-select-single.ant-select-open
+  .ant-select-content-has-value:not(.ant-select-content-has-search-value) {
+  opacity: 1;
+}
+
+/* On narrow viewports either side of the trigger must have room for the
+   calendar. Keep the native panel intact and scroll within its popup, so body
+   scroll cannot continually move an offscreen footer away from the user. */
+@media (max-width: 480px) {
+  .ku-root[data-mode] .ant-picker-dropdown {
+    max-height: calc((100dvh - 96px) / 2);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* Match native addon endcaps and retain complete cues in short Drawer bodies. */
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group {
+  border-radius: var(--ant-border-radius, var(--ku-radius-control, 12px));
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group-wrapper-lg .ant-input-group {
+  border-radius: var(--ant-border-radius-lg, 16px);
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group-wrapper-sm .ant-input-group {
+  border-radius: var(--ant-border-radius-sm, 8px);
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  :is(.ant-input-group, .ant-input-affix-wrapper)[data-ku-focus-containment="inset"]:has(input.ant-input:focus-visible) {
+  outline-offset: -3px;
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  :is(.ant-input-group, .ant-input-affix-wrapper)[data-ku-focus-containment="editable"]:has(input.ant-input:focus-visible) {
+  outline: 0;
+}
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="editable"] > input.ant-input:focus-visible,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="editable"] > .ant-input-affix-wrapper > input.ant-input:focus-visible,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-affix-wrapper[data-ku-focus-containment="editable"] > input.ant-input:focus-visible {
+  outline: 3px solid var(--ku-focus);
+  outline-offset: 0;
+}
+
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  input.ant-input[data-ku-focus-containment="inset"]:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Firefox outlines of native table-layout groups ignore rounded corners.
+   Paint the cue on an inert overlay; keep the actual native group layout. */
+:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group.ant-input-group:has(> .ant-input:focus-visible),:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group.ant-input-group:has(> .ant-input-affix-wrapper > .ant-input:focus-visible) {
+  outline-width:0
+}
+
+:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  outline:3px solid var(--ku-focus);
+  outline-offset:3px
+}
+
+:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="inset"]:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="inset"]:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
+  outline-offset:-3px
+}
+
+:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="editable"]:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="editable"]:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
+  content:none;
+  outline:0
 }

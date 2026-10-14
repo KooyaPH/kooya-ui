@@ -1,7 +1,7 @@
 // Browser regressions consume the built public package, just like the playground.
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import * as UI from "@kooyaph/ui";
+import * as UI from "@kooyaph/ui/legacy";
 import "@kooyaph/ui/styles.css";
 
 function Cell() {

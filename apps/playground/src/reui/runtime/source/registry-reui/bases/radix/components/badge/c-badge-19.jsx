@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Badge } from "../../../../../../../adapters/structured.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "flex flex-col items-center justify-center gap-6", children: [_jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx(Badge, { size: "sm", radius: "full", children: "3" }), _jsx(Badge, { size: "default", radius: "full", children: "3" }), _jsx(Badge, { size: "lg", radius: "full", children: "3" })] }), _jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx(Badge, { size: "sm", radius: "full", children: "New" }), _jsx(Badge, { radius: "full", children: "New" }), _jsx(Badge, { size: "lg", radius: "full", children: "New" })] }), _jsxs("div", { className: "flex items-center gap-2.5", children: [_jsx(Badge, { size: "sm", radius: "full", variant: "outline", children: "New" }), _jsx(Badge, { radius: "full", variant: "secondary", children: "New" }), _jsx(Badge, { size: "lg", radius: "full", variant: "success-light", children: "New" })] })] }));
+}

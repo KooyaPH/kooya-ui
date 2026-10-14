@@ -1,0 +1,7098 @@
+{
+  "revision": "3b67464bcad3c29fbdb12437afb70153384eee19",
+  "examples": {
+    "c-accordion-1": [
+      "antd",
+      "react"
+    ],
+    "c-accordion-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-accordion-3": [
+      "antd",
+      "react"
+    ],
+    "c-accordion-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-accordion-5": [
+      "antd",
+      "react"
+    ],
+    "c-accordion-6": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-accordion-7": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-accordion-8": [
+      "antd",
+      "react"
+    ],
+    "c-accordion-9": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-accordion-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-accordion-11": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-1": [
+      "antd",
+      "react"
+    ],
+    "c-alert-dialog-2": [
+      "antd",
+      "react"
+    ],
+    "c-alert-dialog-3": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-6": [
+      "antd",
+      "react"
+    ],
+    "c-alert-dialog-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-9": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-11": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-12": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-dialog-14": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-1": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-alert-2": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-3": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-4": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-5": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-6": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-7": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-8": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-9": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-11": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-12": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-13": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-14": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-15": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-16": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-17": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-18": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-alert-19": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-alert-20": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-aspect-ratio-1": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-2": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-3": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-4": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-5": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-6": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-7": [
+      "radix-ui",
+      "react"
+    ],
+    "c-aspect-ratio-8": [
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-1": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-2": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-3": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-5": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-attachment-6": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-autocomplete-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-3": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-4": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-5": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-6": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-7": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-8": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-9": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-autocomplete-10": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-autocomplete-12": [
+      "@hookform/resolvers",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "c-avatar-1": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-avatar-3": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-4": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-5": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-6": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-avatar-8": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-9": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-10": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-11": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-avatar-13": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-14": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-15": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-16": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-avatar-17": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-18": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-19": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-20": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-21": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-avatar-22": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-23": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-avatar-24": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-avatar-25": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-26": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-27": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-28": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-avatar-29": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-avatar-30": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-31": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-32": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-33": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-34": [
+      "antd",
+      "react"
+    ],
+    "c-avatar-35": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-badge-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-3": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-4": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-5": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-6": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-7": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-8": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-9": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-10": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-12": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-13": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-14": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-15": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-16": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-17": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-18": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-19": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-20": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-badge-21": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-badge-22": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-23": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-badge-24": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-badge-25": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-1": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-2": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-3": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-4": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-6": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-7": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-13": [
+      "antd",
+      "react"
+    ],
+    "c-breadcrumb-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-breadcrumb-15": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-bubble-1": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-2": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-3": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-5": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-6": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-bubble-7": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-button-group-1": [
+      "antd",
+      "react"
+    ],
+    "c-button-group-2": [
+      "antd",
+      "react"
+    ],
+    "c-button-group-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-15": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-17": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-18": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-19": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-20": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-21": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-22": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-23": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-24": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-25": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-button-group-26": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-27": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-button-group-28": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-29": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-30": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-31": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-32": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-33": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-34": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-35": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-36": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-37": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-38": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-39": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-40": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-button-group-41": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-42": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-43": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-44": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-45": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-46": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-47": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-48": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-49": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-50": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-51": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-52": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-53": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-54": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-55": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-56": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-group-57": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-1": [
+      "antd",
+      "react"
+    ],
+    "c-button-2": [
+      "antd",
+      "react"
+    ],
+    "c-button-3": [
+      "antd",
+      "react"
+    ],
+    "c-button-4": [
+      "antd",
+      "react"
+    ],
+    "c-button-5": [
+      "antd",
+      "react"
+    ],
+    "c-button-6": [
+      "antd",
+      "react"
+    ],
+    "c-button-7": [
+      "antd",
+      "react"
+    ],
+    "c-button-8": [
+      "antd",
+      "react"
+    ],
+    "c-button-9": [
+      "antd",
+      "react"
+    ],
+    "c-button-10": [
+      "antd",
+      "react"
+    ],
+    "c-button-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-13": [
+      "antd",
+      "react"
+    ],
+    "c-button-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-15": [
+      "antd",
+      "react"
+    ],
+    "c-button-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-17": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-18": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-19": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-20": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-21": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-22": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-23": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-24": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-25": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-26": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-27": [
+      "antd",
+      "react"
+    ],
+    "c-button-28": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-29": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-30": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-31": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-32": [
+      "antd",
+      "react"
+    ],
+    "c-button-33": [
+      "antd",
+      "react"
+    ],
+    "c-button-34": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-35": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-36": [
+      "@remixicon/react",
+      "antd",
+      "react"
+    ],
+    "c-button-37": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-38": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-39": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-40": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-41": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-42": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-43": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-44": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-45": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-button-46": [
+      "antd",
+      "react"
+    ],
+    "c-button-47": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-button-48": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-49": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-50": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-51": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-52": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-53": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-54": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-button-55": [
+      "antd",
+      "react"
+    ],
+    "c-button-56": [
+      "antd",
+      "react"
+    ],
+    "c-button-57": [
+      "antd",
+      "react"
+    ],
+    "c-button-58": [
+      "antd",
+      "react"
+    ],
+    "c-button-59": [
+      "@remixicon/react",
+      "antd",
+      "react"
+    ],
+    "c-button-60": [
+      "@remixicon/react",
+      "antd",
+      "react"
+    ],
+    "c-button-61": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-calendar-1": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-2": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-3": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-4": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-5": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-6": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-7": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-8": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-9": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-10": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-11": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-12": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-13": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-14": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-15": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-16": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-17": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-18": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-19": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-20": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-21": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-22": [
+      "antd",
+      "cn",
+      "little-date",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-23": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-24": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-25": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-26": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-27": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-28": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-29": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-calendar-30": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-card-1": [
+      "antd",
+      "react"
+    ],
+    "c-card-2": [
+      "antd",
+      "react"
+    ],
+    "c-card-3": [
+      "antd",
+      "react"
+    ],
+    "c-card-4": [
+      "antd",
+      "react"
+    ],
+    "c-card-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-7": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-8": [
+      "antd",
+      "react"
+    ],
+    "c-card-9": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-10": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-card-11": [
+      "antd",
+      "react"
+    ],
+    "c-card-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-13": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-14": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-15": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-16": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-17": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-card-18": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-carousel-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-3": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-4": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-5": [
+      "@kooyaph/ui",
+      "antd",
+      "embla-carousel-autoplay",
+      "react"
+    ],
+    "c-carousel-6": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-7": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-8": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-carousel-9": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-carousel-10": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-carousel-11": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-cascader-1": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-2": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-4": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-5": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-cascader-6": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-7": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-9": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-cascader-10": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-cascader-11": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-cascader-12": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-cascader-13": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-cascader-14": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-15": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-16": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-17": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-18": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-19": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-cascader-20": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-cascader-21": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-chart-1": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-2": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-3": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-4": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-5": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-6": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-7": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-8": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-9": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-10": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-11": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "motion",
+      "react",
+      "recharts"
+    ],
+    "c-chart-12": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-13": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-14": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-15": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-16": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-17": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-18": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "recharts"
+    ],
+    "c-chart-19": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-20": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-21": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-22": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-23": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-24": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-chart-25": [
+      "antd",
+      "cn",
+      "react",
+      "recharts"
+    ],
+    "c-checkbox-1": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-2": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-3": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-4": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-5": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-6": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-7": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-8": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-9": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-checkbox-11": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-checkbox-13": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-checkbox-15": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-16": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-17": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-18": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-checkbox-19": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-checkbox-20": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-checkbox-21": [
+      "antd",
+      "react"
+    ],
+    "c-checkbox-22": [
+      "antd",
+      "react"
+    ],
+    "c-code-block-1": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-2": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-3": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-code-block-5": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-6": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-7": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-8": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-9": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-10": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-11": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-12": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-13": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-14": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-code-block-15": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-16": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-code-block-17": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-18": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-19": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-20": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-21": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-22": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-code-block-23": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-24": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-code-block-25": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-code-block-26": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-code-block-27": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-collapsible-1": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-2": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-4": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-5": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-6": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-7": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-8": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-9": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-collapsible-10": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-color-picker-1": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-2": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-3": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-4": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-5": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-6": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-7": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-8": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-9": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-11": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-12": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-13": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-14": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-color-picker-15": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-combobox-1": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-2": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-3": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-4": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-5": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-6": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-7": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-8": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-9": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-10": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-11": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-12": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-13": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-14": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-15": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-16": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-17": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-18": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-19": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-20": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-21": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-22": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-23": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-24": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-25": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-combobox-26": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-27": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-combobox-28": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-1": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-2": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-3": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-4": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-5": [
+      "@kooyaph/ui",
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-6": [
+      "@kooyaph/ui",
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-7": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-command-8": [
+      "antd",
+      "cmdk",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-context-menu-1": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-context-menu-3": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-4": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-5": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-6": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-7": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-context-menu-9": [
+      "antd",
+      "react"
+    ],
+    "c-context-menu-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-1": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-2": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-3": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-4": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-5": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-6": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-7": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-8": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-9": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-10": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-11": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-12": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-13": [
+      "@base-ui/react",
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-14": [
+      "@base-ui/react",
+      "@dnd-kit/core",
+      "@dnd-kit/modifiers",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-data-grid-15": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-16": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-17": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-18": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-19": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-20": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-21": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-22": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-23": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-24": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-25": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-26": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-27": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "@tanstack/react-virtual",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-28": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "@tanstack/react-virtual",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-29": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-30": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-31": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker",
+      "react-dom"
+    ],
+    "c-data-grid-32": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "@tanstack/react-virtual",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-33": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-data-grid-34": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-date-selector-1": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-date-selector-2": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-date-selector-3": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-date-selector-4": [
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-dialog-1": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-2": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-3": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-4": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-5": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-dialog-6": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dialog-8": [
+      "antd",
+      "react"
+    ],
+    "c-dialog-9": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-dialog-10": [
+      "antd",
+      "react"
+    ],
+    "c-drawer-1": [
+      "antd",
+      "react"
+    ],
+    "c-drawer-2": [
+      "antd",
+      "react"
+    ],
+    "c-drawer-3": [
+      "antd",
+      "react"
+    ],
+    "c-drawer-4": [
+      "antd",
+      "react"
+    ],
+    "c-drawer-5": [
+      "antd",
+      "react"
+    ],
+    "c-dropdown-menu-1": [
+      "antd",
+      "react"
+    ],
+    "c-dropdown-menu-2": [
+      "antd",
+      "react"
+    ],
+    "c-dropdown-menu-3": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-4": [
+      "antd",
+      "react"
+    ],
+    "c-dropdown-menu-5": [
+      "antd",
+      "react"
+    ],
+    "c-dropdown-menu-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-11": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-14": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-15": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-17": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-dropdown-menu-18": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-1": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-2": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-emoji-picker-3": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-4": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-5": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-6": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-7": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-emoji-picker-8": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-1": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-3": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-empty-13": [
+      "antd",
+      "react"
+    ],
+    "c-empty-14": [
+      "antd",
+      "react"
+    ],
+    "c-empty-15": [
+      "antd",
+      "react"
+    ],
+    "c-empty-16": [
+      "antd",
+      "react"
+    ],
+    "c-empty-17": [
+      "antd",
+      "react"
+    ],
+    "c-empty-18": [
+      "antd",
+      "react"
+    ],
+    "c-empty-19": [
+      "antd",
+      "react"
+    ],
+    "c-empty-20": [
+      "antd",
+      "react"
+    ],
+    "c-event-calendar-1": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-event-calendar-2": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-event-calendar-3": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-event-calendar-4": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-event-calendar-5": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-field-1": [
+      "antd",
+      "react"
+    ],
+    "c-field-2": [
+      "antd",
+      "react"
+    ],
+    "c-field-3": [
+      "antd",
+      "react"
+    ],
+    "c-field-4": [
+      "antd",
+      "react"
+    ],
+    "c-field-5": [
+      "antd",
+      "react"
+    ],
+    "c-field-6": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-field-7": [
+      "antd",
+      "react"
+    ],
+    "c-field-8": [
+      "antd",
+      "react"
+    ],
+    "c-field-9": [
+      "antd",
+      "react"
+    ],
+    "c-field-10": [
+      "antd",
+      "react"
+    ],
+    "c-field-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-1": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-2": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-3": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-4": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-5": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-6": [
+      "@base-ui/react",
+      "@tanstack/react-table",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-7": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-8": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-9": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-11": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-12": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-type-13": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-type-14": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-file-upload-1": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-2": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-3": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-5": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-6": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-7": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-8": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-file-upload-9": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-file-upload-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-1": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-2": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-3": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-4": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-5": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "react",
+      "react-day-picker"
+    ],
+    "c-filters-6": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-7": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-8": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-9": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-10": [
+      "@base-ui/react",
+      "@kooyaph/ui",
+      "@tanstack/react-table",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-11": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-filters-12": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-frame-1": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-2": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-3": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-4": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-5": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-frame-6": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-7": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-8": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-9": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-10": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-11": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-12": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-13": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-14": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-15": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-16": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-17": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-18": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-frame-19": [
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-gantt-1": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-2": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-3": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-4": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-5": [
+      "@date-fns/tz",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-6": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-gantt-7": [
+      "@date-fns/tz",
+      "antd",
+      "cn",
+      "date-fns",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-day-picker"
+    ],
+    "c-hover-card-1": [
+      "antd",
+      "react"
+    ],
+    "c-hover-card-2": [
+      "antd",
+      "react"
+    ],
+    "c-hover-card-3": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-hover-card-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-hover-card-5": [
+      "antd",
+      "react"
+    ],
+    "c-hover-card-6": [
+      "antd",
+      "react"
+    ],
+    "c-hover-card-7": [
+      "@kooyaph/ui",
+      "antd",
+      "date-fns",
+      "react"
+    ],
+    "c-hover-card-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-1": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-2": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-3": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-4": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-5": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-stack-6": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-icon-tile-1": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-2": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-3": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-4": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-5": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-6": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-7": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-8": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-9": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-11": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-12": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-13": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-14": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-15": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-16": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-icon-tile-17": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-input-group-1": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-2": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-3": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-7": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-8": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-9": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-10": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-13": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-input-group-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-15": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-17": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-18": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-19": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-20": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-21": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-22": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-23": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-24": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-25": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-26": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-27": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-28": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-29": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-30": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-31": [
+      "antd",
+      "react"
+    ],
+    "c-input-group-32": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-33": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-34": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-35": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-36": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-37": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-38": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-39": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-group-40": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-otp-1": [
+      "antd",
+      "react"
+    ],
+    "c-input-otp-2": [
+      "antd",
+      "input-otp",
+      "react"
+    ],
+    "c-input-otp-3": [
+      "antd",
+      "react"
+    ],
+    "c-input-otp-4": [
+      "antd",
+      "input-otp",
+      "react"
+    ],
+    "c-input-otp-5": [
+      "antd",
+      "input-otp",
+      "react"
+    ],
+    "c-input-otp-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-1": [
+      "antd",
+      "react"
+    ],
+    "c-input-2": [
+      "antd",
+      "react"
+    ],
+    "c-input-3": [
+      "antd",
+      "react"
+    ],
+    "c-input-4": [
+      "antd",
+      "react"
+    ],
+    "c-input-5": [
+      "antd",
+      "react"
+    ],
+    "c-input-6": [
+      "antd",
+      "react"
+    ],
+    "c-input-7": [
+      "antd",
+      "react"
+    ],
+    "c-input-8": [
+      "antd",
+      "react"
+    ],
+    "c-input-9": [
+      "antd",
+      "react"
+    ],
+    "c-input-10": [
+      "antd",
+      "react"
+    ],
+    "c-input-11": [
+      "antd",
+      "react"
+    ],
+    "c-input-12": [
+      "antd",
+      "react"
+    ],
+    "c-input-13": [
+      "antd",
+      "react"
+    ],
+    "c-input-14": [
+      "antd",
+      "react"
+    ],
+    "c-input-15": [
+      "antd",
+      "react"
+    ],
+    "c-input-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-17": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-input-18": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-input-19": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-20": [
+      "antd",
+      "react"
+    ],
+    "c-input-21": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-22": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-23": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-input-24": [
+      "antd",
+      "react"
+    ],
+    "c-input-25": [
+      "antd",
+      "react"
+    ],
+    "c-input-26": [
+      "antd",
+      "react"
+    ],
+    "c-input-27": [
+      "antd",
+      "react"
+    ],
+    "c-input-28": [
+      "antd",
+      "react"
+    ],
+    "c-input-29": [
+      "antd",
+      "react"
+    ],
+    "c-input-30": [
+      "antd",
+      "react"
+    ],
+    "c-input-31": [
+      "antd",
+      "react"
+    ],
+    "c-item-1": [
+      "antd",
+      "react"
+    ],
+    "c-item-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-3": [
+      "antd",
+      "react"
+    ],
+    "c-item-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-5": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-item-6": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-7": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-9": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-10": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-11": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-item-12": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-kanban-1": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kanban-2": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kanban-3": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kanban-4": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kanban-5": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kanban-6": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-kbd-1": [
+      "cn",
+      "react"
+    ],
+    "c-kbd-2": [
+      "cn",
+      "react"
+    ],
+    "c-kbd-3": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-kbd-4": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-kbd-5": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-kbd-6": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-label-1": [
+      "antd",
+      "react"
+    ],
+    "c-label-2": [
+      "antd",
+      "react"
+    ],
+    "c-label-3": [
+      "antd",
+      "react"
+    ],
+    "c-label-4": [
+      "antd",
+      "react"
+    ],
+    "c-label-5": [
+      "antd",
+      "react"
+    ],
+    "c-label-6": [
+      "antd",
+      "react"
+    ],
+    "c-label-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-label-8": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-label-9": [
+      "antd",
+      "react"
+    ],
+    "c-label-10": [
+      "antd",
+      "react"
+    ],
+    "c-label-11": [
+      "antd",
+      "react"
+    ],
+    "c-label-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-label-13": [
+      "antd",
+      "react"
+    ],
+    "c-marker-1": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-marker-2": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-marker-3": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-marker-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-marker-5": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-marker-6": [
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-menubar-1": [
+      "antd",
+      "react"
+    ],
+    "c-menubar-2": [
+      "antd",
+      "react"
+    ],
+    "c-menubar-3": [
+      "antd",
+      "react"
+    ],
+    "c-menubar-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-menubar-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-message-scroller-1": [
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-scroller-2": [
+      "@kooyaph/ui",
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-scroller-3": [
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-scroller-4": [
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-scroller-5": [
+      "@kooyaph/ui",
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-scroller-6": [
+      "@shadcn/react",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-1": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-2": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-3": [
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-4": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-5": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-6": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-message-7": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-native-select-1": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-native-select-2": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-native-select-3": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-native-select-4": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-native-select-5": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-native-select-6": [
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-navigation-menu-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-navigation-menu-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-navigation-menu-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-navigation-menu-4": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-number-field-1": [
+      "antd",
+      "react"
+    ],
+    "c-number-field-2": [
+      "antd",
+      "react"
+    ],
+    "c-number-field-3": [
+      "antd",
+      "react"
+    ],
+    "c-number-field-4": [
+      "antd",
+      "react"
+    ],
+    "c-number-field-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-number-field-6": [
+      "@hookform/resolvers",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "c-pagination-1": [
+      "antd",
+      "react"
+    ],
+    "c-pagination-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-3": [
+      "antd",
+      "react"
+    ],
+    "c-pagination-4": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-pagination-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-9": [
+      "antd",
+      "react"
+    ],
+    "c-pagination-10": [
+      "antd",
+      "react"
+    ],
+    "c-pagination-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-12": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-13": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-pagination-15": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-phone-input-1": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-2": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-3": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-4": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-5": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-6": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-7": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-phone-input-8": [
+      "@base-ui/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-phone-number-input"
+    ],
+    "c-popover-1": [
+      "antd",
+      "react"
+    ],
+    "c-popover-2": [
+      "antd",
+      "react"
+    ],
+    "c-popover-3": [
+      "antd",
+      "react"
+    ],
+    "c-popover-4": [
+      "antd",
+      "react"
+    ],
+    "c-popover-5": [
+      "antd",
+      "react"
+    ],
+    "c-popover-6": [
+      "antd",
+      "react"
+    ],
+    "c-popover-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-popover-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-popover-9": [
+      "@kooyaph/ui",
+      "antd",
+      "date-fns",
+      "react"
+    ],
+    "c-popover-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-popover-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-progress-1": [
+      "antd",
+      "react"
+    ],
+    "c-progress-2": [
+      "antd",
+      "react"
+    ],
+    "c-progress-3": [
+      "antd",
+      "react"
+    ],
+    "c-progress-4": [
+      "antd",
+      "react"
+    ],
+    "c-progress-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-progress-6": [
+      "antd",
+      "react"
+    ],
+    "c-progress-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-progress-8": [
+      "antd",
+      "react"
+    ],
+    "c-questionnaire-1": [
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-2": [
+      "@kooyaph/ui",
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-3": [
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-4": [
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-5": [
+      "@kooyaph/ui",
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-6": [
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-questionnaire-7": [
+      "@shadcn/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-radio-group-1": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-2": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-3": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-4": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-5": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-6": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-7": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-8": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-radio-group-10": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-radio-group-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-radio-group-12": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-radio-group-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-radio-group-15": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-16": [
+      "antd",
+      "react"
+    ],
+    "c-radio-group-17": [
+      "antd",
+      "react"
+    ],
+    "c-rating-1": [
+      "antd",
+      "react"
+    ],
+    "c-rating-2": [
+      "antd",
+      "react"
+    ],
+    "c-rating-3": [
+      "antd",
+      "react"
+    ],
+    "c-rating-4": [
+      "antd",
+      "react"
+    ],
+    "c-rating-5": [
+      "antd",
+      "react"
+    ],
+    "c-rating-6": [
+      "antd",
+      "react"
+    ],
+    "c-rating-7": [
+      "antd",
+      "react"
+    ],
+    "c-rating-8": [
+      "cn",
+      "react"
+    ],
+    "c-rating-9": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-1": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-2": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-3": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-4": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-5": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-6": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-7": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-8": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-9": [
+      "antd",
+      "react"
+    ],
+    "c-resizable-10": [
+      "antd",
+      "react"
+    ],
+    "c-scroll-area-1": [
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scroll-area-2": [
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scroll-area-3": [
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scroll-area-4": [
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scroll-area-5": [
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scrollspy-1": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-scrollspy-2": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-select-1": [
+      "antd",
+      "react"
+    ],
+    "c-select-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-select-3": [
+      "antd",
+      "react"
+    ],
+    "c-select-4": [
+      "antd",
+      "react"
+    ],
+    "c-select-5": [
+      "antd",
+      "react"
+    ],
+    "c-select-6": [
+      "antd",
+      "react"
+    ],
+    "c-select-7": [
+      "antd",
+      "react"
+    ],
+    "c-select-8": [
+      "antd",
+      "react"
+    ],
+    "c-select-9": [
+      "antd",
+      "react"
+    ],
+    "c-select-10": [
+      "antd",
+      "react"
+    ],
+    "c-select-11": [
+      "antd",
+      "react"
+    ],
+    "c-select-12": [
+      "antd",
+      "react"
+    ],
+    "c-select-13": [
+      "antd",
+      "react"
+    ],
+    "c-select-14": [
+      "antd",
+      "react"
+    ],
+    "c-select-15": [
+      "antd",
+      "react"
+    ],
+    "c-select-16": [
+      "antd",
+      "react"
+    ],
+    "c-select-17": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-select-18": [
+      "antd",
+      "react"
+    ],
+    "c-select-19": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-select-20": [
+      "antd",
+      "react"
+    ],
+    "c-select-21": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-select-22": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-select-23": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-select-24": [
+      "antd",
+      "react"
+    ],
+    "c-select-25": [
+      "antd",
+      "react"
+    ],
+    "c-select-26": [
+      "antd",
+      "react"
+    ],
+    "c-select-27": [
+      "antd",
+      "react"
+    ],
+    "c-select-28": [
+      "antd",
+      "react"
+    ],
+    "c-select-29": [
+      "antd",
+      "react"
+    ],
+    "c-select-30": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-select-31": [
+      "antd",
+      "react"
+    ],
+    "c-select-32": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-select-33": [
+      "antd",
+      "react"
+    ],
+    "c-separator-1": [
+      "antd",
+      "react"
+    ],
+    "c-separator-2": [
+      "antd",
+      "react"
+    ],
+    "c-separator-3": [
+      "antd",
+      "react"
+    ],
+    "c-separator-4": [
+      "antd",
+      "react"
+    ],
+    "c-separator-5": [
+      "antd",
+      "react"
+    ],
+    "c-separator-6": [
+      "antd",
+      "react"
+    ],
+    "c-sheet-1": [
+      "antd",
+      "react"
+    ],
+    "c-sheet-2": [
+      "antd",
+      "react"
+    ],
+    "c-sheet-3": [
+      "antd",
+      "react"
+    ],
+    "c-sheet-4": [
+      "antd",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-sidebar-1": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-sidebar-2": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-sidebar-3": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-sidebar-4": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-sidebar-5": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-signature-pad-1": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-2": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-3": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-4": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-5": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-6": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-7": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-8": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-9": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-10": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-11": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-signature-pad-12": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-skeleton-1": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-2": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-3": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-4": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-5": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-6": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-7": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-8": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-9": [
+      "antd",
+      "react"
+    ],
+    "c-skeleton-10": [
+      "antd",
+      "react"
+    ],
+    "c-slider-1": [
+      "antd",
+      "react"
+    ],
+    "c-slider-2": [
+      "antd",
+      "react"
+    ],
+    "c-slider-3": [
+      "antd",
+      "react"
+    ],
+    "c-slider-4": [
+      "antd",
+      "react"
+    ],
+    "c-slider-5": [
+      "antd",
+      "react"
+    ],
+    "c-slider-6": [
+      "antd",
+      "react"
+    ],
+    "c-slider-7": [
+      "antd",
+      "react"
+    ],
+    "c-slider-8": [
+      "antd",
+      "react"
+    ],
+    "c-slider-9": [
+      "antd",
+      "react"
+    ],
+    "c-slider-10": [
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-slider-11": [
+      "antd",
+      "react"
+    ],
+    "c-slider-12": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-1": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-2": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-3": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-4": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-5": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-6": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-7": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-8": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-9": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-15": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-17": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-18": [
+      "antd",
+      "react"
+    ],
+    "c-sonner-19": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-20": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sonner-21": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-sortable-1": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-2": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-3": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-4": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-5": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-6": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-7": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-sortable-8": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react",
+      "react-dom"
+    ],
+    "c-spinner-1": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-2": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-3": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-spinner-4": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-5": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-6": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-7": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-8": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-9": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-10": [
+      "react"
+    ],
+    "c-spinner-11": [
+      "antd",
+      "react"
+    ],
+    "c-spinner-12": [
+      "antd",
+      "react"
+    ],
+    "c-stepper-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-stepper-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-stepper-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-4": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-stepper-5": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-6": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-7": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-9": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-10": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-stepper-12": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-13": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-14": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-15": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-16": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-17": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-18": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-19": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-20": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-21": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-22": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-23": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-stepper-24": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-25": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-26": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-27": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-28": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-29": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-30": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-31": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-32": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-33": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-34": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-35": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-36": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-37": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-38": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-39": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-stepper-40": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-41": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-42": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-stepper-43": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-stepper-44": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-switch-1": [
+      "antd",
+      "react"
+    ],
+    "c-switch-2": [
+      "antd",
+      "react"
+    ],
+    "c-switch-3": [
+      "antd",
+      "react"
+    ],
+    "c-switch-4": [
+      "antd",
+      "react"
+    ],
+    "c-switch-5": [
+      "antd",
+      "react"
+    ],
+    "c-switch-6": [
+      "antd",
+      "react"
+    ],
+    "c-switch-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-switch-8": [
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-switch-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-switch-10": [
+      "antd",
+      "react"
+    ],
+    "c-switch-11": [
+      "antd",
+      "react"
+    ],
+    "c-switch-12": [
+      "antd",
+      "react"
+    ],
+    "c-switch-13": [
+      "antd",
+      "react"
+    ],
+    "c-switch-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-1": [
+      "antd",
+      "react"
+    ],
+    "c-table-2": [
+      "antd",
+      "react"
+    ],
+    "c-table-3": [
+      "antd",
+      "react"
+    ],
+    "c-table-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-5": [
+      "antd",
+      "react"
+    ],
+    "c-table-6": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-table-7": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-table-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-9": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-table-10": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-11": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-12": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-13": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-14": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-15": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-table-16": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-table-17": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "react"
+    ],
+    "c-tabs-1": [
+      "antd",
+      "react"
+    ],
+    "c-tabs-2": [
+      "antd",
+      "react"
+    ],
+    "c-tabs-3": [
+      "antd",
+      "react"
+    ],
+    "c-tabs-4": [
+      "antd",
+      "react"
+    ],
+    "c-tabs-5": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tabs-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tabs-7": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-tabs-8": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tabs-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-textarea-1": [
+      "antd",
+      "react"
+    ],
+    "c-textarea-2": [
+      "antd",
+      "react"
+    ],
+    "c-textarea-3": [
+      "antd",
+      "react"
+    ],
+    "c-textarea-4": [
+      "antd",
+      "react"
+    ],
+    "c-textarea-5": [
+      "antd",
+      "react"
+    ],
+    "c-textarea-6": [
+      "antd",
+      "react"
+    ],
+    "c-time-picker-1": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-2": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-3": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-4": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-5": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-6": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-7": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-8": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-9": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-10": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-11": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-12": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-dom"
+    ],
+    "c-time-picker-13": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react",
+      "react-day-picker",
+      "react-dom"
+    ],
+    "c-timeline-1": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-timeline-2": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-timeline-3": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-timeline-4": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-timeline-5": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-timeline-6": [
+      "@kooyaph/ui",
+      "antd",
+      "class-variance-authority",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-timeline-7": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "react"
+    ],
+    "c-timeline-8": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-timeline-9": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-timeline-10": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-timeline-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-timeline-12": [
+      "@kooyaph/ui",
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-1": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-2": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-3": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-4": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-5": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-7": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-11": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-12": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-group-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-15": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-group-16": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-1": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-2": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-3": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-4": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-5": [
+      "antd",
+      "react"
+    ],
+    "c-toggle-6": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-7": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-10": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-11": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-12": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-13": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-toggle-14": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-1": [
+      "antd",
+      "react"
+    ],
+    "c-tooltip-2": [
+      "antd",
+      "react"
+    ],
+    "c-tooltip-3": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-4": [
+      "antd",
+      "cn",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-5": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-6": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-tooltip-7": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-8": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-9": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-10": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-11": [
+      "@kooyaph/ui",
+      "antd",
+      "react"
+    ],
+    "c-tooltip-12": [
+      "antd",
+      "react"
+    ],
+    "c-tooltip-13": [
+      "antd",
+      "react"
+    ],
+    "c-tooltip-14": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-15": [
+      "@kooyaph/ui",
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tooltip-16": [
+      "antd",
+      "lucide-react",
+      "react"
+    ],
+    "c-tree-1": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-2": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-3": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-4": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-5": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-6": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ],
+    "c-tree-7": [
+      "@headless-tree/core",
+      "@headless-tree/react",
+      "antd",
+      "cn",
+      "lucide-react",
+      "radix-ui",
+      "react"
+    ]
+  }
+}

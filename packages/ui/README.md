@@ -1,3 +1,15 @@
+## Ant-first foundation
+
+New integrations use `KooyaProvider` from `@kooyaph/ui/foundations`, actual Ant
+controls/types from `@kooyaph/ui/components`, and `@kooyaph/ui/styles.css`.
+The default is Kooya Signature light with DM Sans; use `mode="dark"` for charcoal,
+`density="compact"` for desktop density and `reducedMotion` to override the OS
+preference. Compound APIs and refs remain Ant APIs. React/React DOM (18.3 or 19)
+and exact `antd@6.6.5` are external peers. Load DM Sans and Syncopate locally.
+See [canonical component API](../../docs/ant-components.md) and
+[brand/provider guide](../../docs/themes.md). Existing atomic imports below are
+retained only during the staged consumer migration.
+
 # `@kooyaph/ui`
 
 An atomic React component and template library built on Ant Design. It separates
@@ -12,27 +24,20 @@ they use and select their own visual identity.
 
 ## Package access
 
-The source repository and distributable are MIT licensed. Version `0.3.0` is
-available as a public [GitHub release asset](https://github.com/KooyaPH/kooya-ui/releases/tag/v0.3.0),
-which can be installed without registry credentials:
-
-```sh
-npm install https://github.com/KooyaPH/kooya-ui/releases/download/v0.3.0/kooyaph-ui-0.3.0.tgz antd@6.6.5
-```
-
-To build a local tarball from a checkout:
+The source repository is MIT licensed. Package releases currently use GitHub
+Packages and require registry authentication. Until public package distribution
+is enabled, build a tarball from the public source checkout:
 
 ```sh
 corepack pnpm install --frozen-lockfile
 corepack pnpm --filter @kooyaph/ui build
-(cd packages/ui && npm pack --pack-destination /tmp)
+corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui.tgz
 ```
 
 Install the resulting tarball alongside `react`, `react-dom`, and `antd@6.6.5`.
-The separate GitHub Packages registry remains restricted for internal use and
-requires authentication. Never commit registry tokens. The [repository README](../../README.md)
-describes public installs and the [setup guide](../../docs/setup.md) covers
-local development.
+Never commit registry tokens. The [repository README](../../README.md) describes
+the registry boundary and the [setup guide](../../docs/setup.md) covers local
+development.
 
 ## Quick start
 

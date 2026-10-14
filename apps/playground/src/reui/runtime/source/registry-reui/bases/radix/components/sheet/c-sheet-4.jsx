@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { ScrollArea } from "../../../../../registry/bases/radix/ui/scroll-area.jsx";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, } from "../../../../../../../adapters/overlays.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsxs(Sheet, { children: [_jsx(SheetTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", children: "Scrollable Sheet" }) }), _jsxs(SheetContent, { className: "flex flex-col gap-0 space-y-0", children: [_jsxs(SheetHeader, { children: [_jsx(SheetTitle, { children: "Scrollable Content" }), _jsx(SheetDescription, { children: "Description of the scrollable content." })] }), _jsx(ScrollArea, { className: "min-h-0 flex-1", children: _jsx("div", { className: "space-y-4 px-4", children: Array.from({ length: 20 }).map((_, i) => (_jsx("p", { className: "text-muted-foreground text-sm", children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." }, i))) }) }), _jsxs(SheetFooter, { children: [_jsx(Button, { type: "submit", children: "Save changes" }), _jsx(SheetClose, { asChild: true, children: _jsx(Button, { variant: "outline", children: "Cancel" }) })] })] })] }) }));
+}

@@ -1,0 +1,13 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Card, CardContent, CardHeader, CardTitle, } from "../../../../../../../adapters/layout.tsx";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "../../../../../../../adapters/navigation.tsx";
+import { Field, FieldGroup, FieldLabel } from "../../../../../../../adapters/layout.tsx";
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    const [isOpen, setIsOpen] = useState(false);
+    return (_jsx("div", { className: "h-54 w-full max-w-xs", children: _jsxs(Card, { size: "sm", children: [_jsx(CardHeader, { children: _jsx(CardTitle, { children: "Unit Pricing" }) }), _jsx(CardContent, { children: _jsxs(Collapsible, { open: isOpen, onOpenChange: setIsOpen, className: "flex flex-col gap-3", children: [_jsxs("div", { className: "flex items-end gap-2", children: [_jsxs(Field, { className: "flex-1", children: [_jsx(FieldLabel, { className: "sr-only", children: "Base Price" }), _jsxs(InputGroup, { children: [_jsx(InputGroupInput, { type: "number", placeholder: "0.00", defaultValue: "19.00" }), _jsx(InputGroupAddon, { align: "inline-end", children: _jsx(InputGroupText, { children: "$" }) })] })] }), _jsx(CollapsibleTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", size: "icon", className: "shrink-0", children: _jsx(IconPlaceholder, { lucide: "Settings2Icon", tabler: "IconAdjustmentsHorizontal", hugeicons: "FilterHorizontalIcon", phosphor: "SlidersHorizontalIcon", remixicon: "RiEqualizer2Line", "aria-hidden": "true", className: "size-3.5" }) }) })] }), _jsx(CollapsibleContent, { className: "data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down", children: _jsxs(FieldGroup, { className: "gap-2", children: [_jsxs(Field, { children: [_jsx(FieldLabel, { children: "Tax Rate (%)" }), _jsxs(InputGroup, { children: [_jsx(InputGroupInput, { type: "number", placeholder: "0", defaultValue: "15" }), _jsx(InputGroupAddon, { align: "inline-end", children: _jsx(InputGroupText, { children: "%" }) })] })] }), _jsxs(Field, { children: [_jsx(FieldLabel, { children: "Discount (%)" }), _jsxs(InputGroup, { children: [_jsx(InputGroupInput, { type: "number", placeholder: "0", defaultValue: "0" }), _jsx(InputGroupAddon, { align: "inline-end", children: _jsx(InputGroupText, { children: "%" }) })] })] })] }) })] }) })] }) }));
+}

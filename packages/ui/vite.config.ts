@@ -6,8 +6,11 @@ export default defineConfig({
     lib: {
       entry: {
         index: "src/index.ts",
+        legacy: "src/legacy.ts",
         antd: "src/antd.tsx",
         foundations: "src/foundations/index.ts",
+        components: "src/components/index.ts",
+        compositions: "src/compositions/index.tsx",
         atoms: "src/atoms/index.ts",
         molecules: "src/molecules/index.ts",
         organisms: "src/organisms/index.ts",

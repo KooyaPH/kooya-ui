@@ -1,0 +1,10 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useState } from "react";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandShortcut, } from "../../../../../registry/bases/radix/ui/command.jsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    const [open, setOpen] = useState(false);
+    return (_jsxs(_Fragment, { children: [_jsx(Button, { onClick: () => setOpen(true), variant: "outline", children: "Open Command" }), _jsx(CommandDialog, { open: open, onOpenChange: setOpen, children: _jsxs(Command, { className: "**:data-[selected=true]:bg-muted **:data-selected:bg-transparent", children: [_jsx(CommandInput, { placeholder: "Type a command or search..." }), _jsxs(CommandList, { children: [_jsx(CommandEmpty, { children: "No results found." }), _jsxs(CommandGroup, { heading: "Settings", children: [_jsxs(CommandItem, { children: [_jsx(IconPlaceholder, { lucide: "UserIcon", tabler: "IconUser", hugeicons: "UserIcon", phosphor: "UserIcon", remixicon: "RiUserLine" }), _jsx("span", { children: "Profile" }), _jsx(CommandShortcut, { children: "\u2318P" })] }), _jsxs(CommandItem, { children: [_jsx(IconPlaceholder, { lucide: "CreditCardIcon", tabler: "IconCreditCard", hugeicons: "CreditCardIcon", phosphor: "CreditCardIcon", remixicon: "RiBankCardLine" }), _jsx("span", { children: "Billing" }), _jsx(CommandShortcut, { children: "\u2318B" })] }), _jsxs(CommandItem, { children: [_jsx(IconPlaceholder, { lucide: "SettingsIcon", tabler: "IconSettings", hugeicons: "SettingsIcon", phosphor: "GearIcon", remixicon: "RiSettings3Line" }), _jsx("span", { children: "Settings" }), _jsx(CommandShortcut, { children: "\u2318S" })] })] })] })] }) })] }));
+}

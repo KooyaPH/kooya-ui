@@ -15,7 +15,7 @@ import {
   Breadcrumb,
   RowActions,
   Button,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const meta = {
   title: "Molecules/Fields",
   component: TextField,

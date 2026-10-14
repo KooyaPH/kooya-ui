@@ -2,7 +2,7 @@ import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 import { theme as ant } from "antd";
 
 function Tokens() {

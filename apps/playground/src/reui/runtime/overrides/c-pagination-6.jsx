@@ -1,0 +1,10 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+// Owned responsive correction to the actual attributed REUI recipe.
+import { Card, CardContent } from "../../adapters/layout";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, } from "../../adapters/data";
+import { IconPlaceholder } from "../../adapters/icons";
+export default function Pattern() {
+    return (_jsx(Card, { className: "p-2", style: { width: "fit-content", maxWidth: "100%" }, children: _jsx(CardContent, { className: "p-0", children: _jsx(Pagination, { className: "max-w-full [&_.ant-space-item:has(>span:empty)]:hidden [&_.ant-space-item]:min-w-0 [&_.ant-space-item]:max-w-full [&_.ant-pagination]:flex [&_.ant-pagination]:flex-wrap [&_.ant-pagination]:gap-2 [&_.ant-pagination>li]:m-0!", children: _jsxs(PaginationContent, { children: [_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", size: "icon", "aria-label": "Go to previous page", className: "hover:bg-muted h-8 w-8 rounded-full", children: _jsx(IconPlaceholder, { lucide: "ChevronLeftIcon", tabler: "IconChevronLeft", hugeicons: "ArrowLeft01Icon", phosphor: "CaretLeftIcon", remixicon: "RiArrowLeftSLine", className: "size-4" }) }) }), [1, 2, 3].map((page) => (_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", isActive: page === 1, className: page === 1
+                                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                                    : "hover:bg-muted", children: page }) }, page))), _jsx(PaginationItem, { children: _jsx(PaginationEllipsis, {}) }), [10, 11, 12].map((page) => (_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", children: page }) }, page))), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", size: "icon", "aria-label": "Go to next page", className: "hover:bg-muted h-8 w-8 rounded-full", children: _jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", className: "size-4" }) }) })] }) }) }) }));
+}

@@ -10,7 +10,7 @@ import {
   Drawer,
   TextField,
   Button,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const meta = {
   title: "Organisms/Data and overlays",
   tags: ["autodocs"],

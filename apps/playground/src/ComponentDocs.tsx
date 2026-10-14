@@ -30,7 +30,7 @@ import {
   Drawer,
   MetricCard,
   useKooyaFeedback,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 
 export const componentGroups = [
   {

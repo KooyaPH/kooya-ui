@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Field, FieldContent, FieldDescription, FieldLabel, } from "../../../../../../../adapters/layout.tsx";
+import { RadioGroup, RadioGroupItem, } from "../../../../../../../adapters/controls.tsx";
+export default function Pattern() {
+    return (_jsxs(RadioGroup, { defaultValue: "comfortable", className: "w-fit", children: [_jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "default", id: "desc-r1" }), _jsxs(FieldContent, { children: [_jsx(FieldLabel, { htmlFor: "desc-r1", children: "Default" }), _jsx(FieldDescription, { children: "Standard spacing for most use cases." })] })] }), _jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "comfortable", id: "desc-r2" }), _jsxs(FieldContent, { children: [_jsx(FieldLabel, { htmlFor: "desc-r2", children: "Comfortable" }), _jsx(FieldDescription, { children: "More space between elements." })] })] }), _jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "compact", id: "desc-r3" }), _jsxs(FieldContent, { children: [_jsx(FieldLabel, { htmlFor: "desc-r3", children: "Compact" }), _jsx(FieldDescription, { children: "Minimal spacing for dense layouts." })] })] })] }));
+}

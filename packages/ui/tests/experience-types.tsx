@@ -17,7 +17,7 @@ import {
   useDeviceMode,
   deviceBreakpoints,
   isEditableTarget,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import { ContentSkeleton as SkeletonMolecule } from "@kooyaph/ui/molecules";
 import { useDeviceMode as DeviceFoundation } from "@kooyaph/ui/foundations";
 const failure: SafeFailure = {

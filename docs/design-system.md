@@ -24,7 +24,9 @@ records, permissions, and API behavior belong to the consuming application.
 
 ## Semantic tokens
 
-The typed source is `packages/ui/src/foundations/theme.tsx` and the named
+The official identity constants and typography are in
+`packages/ui/src/foundations/brand.ts`. The typed semantic source is
+`packages/ui/src/foundations/theme.tsx` and the named
 palettes are `packages/ui/src/foundations/themes.ts`. Provider values become CSS
 variables; the stylesheet is scoped to Kooya elements. Ant overlays mount within the provider root and retain the active theme,
 density, font and inline `--ku-*` overrides.
@@ -42,8 +44,9 @@ across owned components, Ant controls and overlays.
 | `highlight`, `highlightInk`   | Selected navigation and emphasized summaries          |
 | `secondary`, `tertiary`       | Supporting bento cards                                |
 
-Initial themes: Mosaic (soft green), Kooya Signature (brand paper/charcoal/lime),
-Canvas (warm editorial), Client (blue). Add project themes as a reviewed token
+Default identity: Kooya Signature (brand paper/charcoal/lime), with light and
+charcoal dark modes. Mosaic, Canvas and Client data remain temporarily for internal
+template/test compatibility. Add project themes as a reviewed token
 set rather than recoloring individual components. Keep success/warning/danger
 meaning separate from a project's accent.
 
@@ -66,8 +69,8 @@ alignment centered through one flex container rather than independent margins.
 
 ## Typography
 
-Interface text uses Inter, supplied by the consuming app or system fallback.
-The Signature playground uses locally bundled DM Sans to echo the brand site.
+Interface text uses DM Sans, supplied locally by the consuming app or system
+fallback. Syncopate is the display stack; load its assets locally as well.
 Body: 14px; table/action text: 12–13px; secondary details: 10–12px;
 page headings: 29–30px; summary values: 34–39px. Display wordmarks retain
 their proportions. Marketing-scale headings are not navigation labels.

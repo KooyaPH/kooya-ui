@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle, AlertDialogTrigger, } from "../../../../../../../adapters/overlays.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsxs(AlertDialog, { children: [_jsx(AlertDialogTrigger, { asChild: true, children: _jsx(Button, { variant: "destructive", children: "Delete Chat" }) }), _jsxs(AlertDialogContent, { size: "sm", children: [_jsxs(AlertDialogHeader, { children: [_jsx(AlertDialogMedia, { className: "bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive", children: _jsx(IconPlaceholder, { lucide: "Trash2Icon", tabler: "IconTrash", hugeicons: "Delete02Icon", phosphor: "TrashIcon", remixicon: "RiDeleteBinLine" }) }), _jsx(AlertDialogTitle, { children: "Delete chat?" }), _jsxs(AlertDialogDescription, { children: ["This will permanently delete this chat conversation. View", " ", _jsx("a", { href: "#", className: "underline", children: "Settings" }), " ", "to delete any memories saved during this chat."] })] }), _jsxs(AlertDialogFooter, { children: [_jsx(AlertDialogCancel, { variant: "ghost", children: "Cancel" }), _jsx(AlertDialogAction, { variant: "destructive", children: "Delete" })] })] })] }));
+}

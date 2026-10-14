@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, } from "../../../../../../../adapters/data.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx(Pagination, { children: _jsxs(PaginationContent, { children: [_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", "aria-label": "Go to previous page", size: "icon", children: _jsx(IconPlaceholder, { lucide: "ChevronLeftIcon", tabler: "IconChevronLeft", hugeicons: "ArrowLeft01Icon", phosphor: "CaretLeftIcon", remixicon: "RiArrowLeftSLine", className: "size-4" }) }) }), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", children: "1" }) }), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", isActive: true, children: "2" }) }), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", children: "3" }) }), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", "aria-label": "Go to next page", size: "icon", children: _jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", className: "size-4" }) }) })] }) }));
+}

@@ -1,0 +1,9 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Card } from "../../../../../../../adapters/layout.tsx";
+import { Checkbox } from "../../../../../../../adapters/controls.tsx";
+import { Field, FieldGroup, FieldLabel, FieldTitle, } from "../../../../../../../adapters/layout.tsx";
+import { Separator } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx(Card, { className: "w-full max-w-xs p-0", children: _jsxs(FieldGroup, { className: "gap-0", children: [_jsx(Field, { children: _jsxs(FieldLabel, { className: "justify-between px-4 py-3", children: [_jsxs(FieldTitle, { className: "flex items-center gap-2", children: [_jsx(IconPlaceholder, { lucide: "LaptopIcon", tabler: "IconDeviceLaptop", hugeicons: "LaptopIcon", phosphor: "LaptopIcon", remixicon: "RiMacbookLine", "aria-hidden": "true", className: "size-4 opacity-60" }), "Push notifications"] }), _jsx(Checkbox, { defaultChecked: true })] }) }), _jsx(Separator, {}), _jsx(Field, { children: _jsxs(FieldLabel, { className: "justify-between px-4 py-3", children: [_jsxs(FieldTitle, { className: "flex items-center gap-2", children: [_jsx(IconPlaceholder, { lucide: "MailIcon", tabler: "IconMail", hugeicons: "MailIcon", phosphor: "EnvelopeIcon", remixicon: "RiMailLine", "aria-hidden": "true", className: "size-4 opacity-60" }), "Email notifications"] }), _jsx(Checkbox, {})] }) }), _jsx(Separator, {}), _jsx(Field, { children: _jsxs(FieldLabel, { className: "justify-between px-4 py-3", children: [_jsxs(FieldTitle, { className: "flex items-center gap-2", children: [_jsx(IconPlaceholder, { lucide: "SmartphoneIcon", tabler: "IconDeviceMobile", hugeicons: "SmartPhone01Icon", phosphor: "DeviceMobileCameraIcon", remixicon: "RiSmartphoneLine", "aria-hidden": "true", className: "size-4 opacity-60" }), "SMS notifications"] }), _jsx(Checkbox, {})] }) })] }) }));
+}

@@ -8,7 +8,7 @@ import {
   within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 
 it("table exposes row click and keyboard attributes without remounting header or cell state", async () => {
   function Counter({ label }: { label: string }) {

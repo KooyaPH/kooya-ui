@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { ButtonGroup } from "../../../../../../../adapters/controls.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsxs(ButtonGroup, { children: [_jsx(Button, { variant: "outline", size: "icon-sm", "aria-label": "Align left", children: _jsx(IconPlaceholder, { lucide: "AlignLeftIcon", tabler: "IconAlignLeft", hugeicons: "TextAlignLeftIcon", phosphor: "TextAlignLeftIcon", remixicon: "RiAlignLeft", "aria-hidden": "true" }) }), _jsx(Button, { variant: "outline", size: "icon-sm", "aria-label": "Align center", children: _jsx(IconPlaceholder, { lucide: "AlignCenterIcon", tabler: "IconAlignCenter", hugeicons: "TextAlignCenterIcon", phosphor: "TextAlignCenterIcon", remixicon: "RiAlignCenter", "aria-hidden": "true" }) }), _jsx(Button, { variant: "outline", size: "icon-sm", "aria-label": "Align right", children: _jsx(IconPlaceholder, { lucide: "AlignRightIcon", tabler: "IconAlignRight", hugeicons: "TextAlignRightIcon", phosphor: "TextAlignRightIcon", remixicon: "RiAlignRight", "aria-hidden": "true" }) }), _jsx(Button, { variant: "outline", size: "icon-sm", "aria-label": "Align justify", children: _jsx(IconPlaceholder, { lucide: "MenuIcon", tabler: "IconMenu2", hugeicons: "Menu01Icon", phosphor: "ListIcon", remixicon: "RiMenuLine", "aria-hidden": "true" }) })] }));
+}

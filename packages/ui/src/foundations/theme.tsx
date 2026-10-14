@@ -9,8 +9,16 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
-import { App, ConfigProvider, theme as ant, type ThemeConfig } from "antd";
+import {
+  App,
+  ConfigProvider,
+  theme as ant,
+  type ThemeConfig,
+  type ConfigProviderProps,
+} from "antd";
 import { themes, type ThemeOption } from "./themes";
+import { kooyaTypography } from "./brand";
+import { useDrawerInputFocus } from "./drawer-input-focus";
 export { themes } from "./themes";
 export type ThemeName = keyof typeof themes;
 export type { KooyaTheme, ThemeOption } from "./themes";
@@ -22,7 +30,7 @@ export type KooyaStyle = CSSProperties & {
 };
 export type ThemeScheme = {
   [K in Exclude<keyof typeof themes.mosaic, "name">]: string;
-} & { success: string; warning: string; danger: string };
+} & { success: string; warning: string; danger: string; info: string };
 export interface BrandingOverrides {
   accent?: string;
   scheme?: Partial<ThemeScheme>;
@@ -42,8 +50,13 @@ export interface KooyaProviderProps
   style?: KooyaStyle;
   children: ReactNode;
 }
+type NativeDrawerConfig = NonNullable<ConfigProviderProps["drawer"]>;
+// Only unwrap our own generated defaults across nested providers. Explicit
+// parent semantic styles retain native precedence and callback arguments.
+const ownedDrawerStyles = new WeakMap<object, NativeDrawerConfig["styles"]>();
+
 const defaults = {
-  theme: "mosaic",
+  theme: "signature",
   density: "comfortable",
   composition: "mosaic",
   mode: "light",
@@ -79,7 +92,7 @@ export function contrastRatio(a: string, b: string) {
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
 export function resolveThemeScheme(
-  theme: ThemeOption = "mosaic",
+  theme: ThemeOption = "signature",
   mode: ColorMode = "light",
   branding: BrandingOverrides = {},
 ): ThemeScheme {
@@ -91,19 +104,20 @@ export function resolveThemeScheme(
     success: dark ? "#9bd58b" : "#38652a",
     warning: dark ? "#f3c976" : "#805715",
     danger: dark ? "#ffaaa0" : "#a2352b",
+    info: dark ? "#9fb1ff" : "#1d46d9",
     ...(dark
       ? {
-          canvas: "#151b18",
-          surface: "#202923",
-          subtle: "#2a352d",
-          ink: "#f1f5ef",
-          muted: "#b4c1b2",
-          line: "#485448",
-          focus: "#c1dfaa",
-          highlight: "#35442f",
-          highlightInk: "#e2f0d9",
-          secondary: "#303c31",
-          tertiary: "#403b31",
+          canvas: "#13120f",
+          surface: "#1f1e19",
+          subtle: "#2c2b24",
+          ink: "#f2eee3",
+          muted: "#c5c0b3",
+          line: "#49473e",
+          focus: "#d7f20f",
+          highlight: "#314300",
+          highlightInk: "#f2eee3",
+          secondary: "#302f27",
+          tertiary: "#343020",
         }
       : {}),
     ...branding.scheme,
@@ -122,13 +136,13 @@ export function resolveThemeScheme(
     contrastRatio("#000000", scheme.surface)
       ? "#ffffff"
       : "#000000";
-  for (const key of ["focus", "success", "warning", "danger"] as const)
+  for (const key of ["focus", "success", "warning", "danger", "info"] as const)
     if (contrastRatio(scheme[key], scheme.surface) < 4.5)
       scheme[key] = contrastFallback;
   return scheme;
 }
 export function themeVariables(
-  theme: ThemeOption = "mosaic",
+  theme: ThemeOption = "signature",
   mode: ColorMode = "light",
   branding: BrandingOverrides = {},
 ): KooyaStyle {
@@ -141,10 +155,12 @@ export function themeVariables(
       ]),
     ),
     "--ku-control-border": scheme.muted,
+    "--ku-font-sans": kooyaTypography.interface,
+    "--ku-font-display": kooyaTypography.display,
   };
 }
 export function antTheme(
-  theme: ThemeOption = "mosaic",
+  theme: ThemeOption = "signature",
   options: Omit<KooyaOptions, "theme"> = {},
   variables: KooyaStyle = {},
 ): ThemeConfig {
@@ -172,6 +188,8 @@ export function antTheme(
   const selectedCue = {
     colorPrimary: v("focus"),
     colorPrimaryHover: v("focus"),
+    colorPrimaryActive: v("focus"),
+    colorTextLightSolid: v("surface"),
     colorWhite: v("surface"),
   };
   return {
@@ -184,6 +202,7 @@ export function antTheme(
       colorSuccess: v("success"),
       colorWarning: v("warning"),
       colorError: v("danger"),
+      colorInfo: v("info"),
     }),
     token: {
       colorPrimary: v("accent"),
@@ -192,10 +211,15 @@ export function antTheme(
       colorBgContainer: v("surface"),
       colorBgElevated: v("surface"),
       colorBgLayout: v("canvas"),
+      colorFillAlter: v("subtle"),
+      controlItemBgActive: v("highlight"),
+      controlItemBgActiveHover: v("highlight"),
+      controlItemBgHover: v("subtle"),
       colorBorder: v("line"),
       colorSuccess: v("success"),
       colorWarning: v("warning"),
       colorError: v("danger"),
+      colorInfo: v("info"),
       colorLink: v("focus"),
       colorLinkHover: v("ink"),
       colorLinkActive: v("focus"),
@@ -206,25 +230,109 @@ export function antTheme(
       controlHeight: options.density === "compact" ? 36 : 44,
       fontFamily:
         options.fontFamily ??
-        String(
-          variables["--ku-font-sans"] ??
-            '"Inter Variable", Inter, system-ui, sans-serif',
-        ),
+        String(variables["--ku-font-sans"] ?? kooyaTypography.interface),
       motion: !options.reducedMotion,
       motionDurationMid: "0.18s",
       motionDurationSlow: "0.24s",
     },
     components: {
-      Input: fieldBorder,
+      Tooltip: {
+        colorBgSpotlight: v("surface"),
+        colorTextLightSolid: v("ink"),
+        // Compact noninteractive captions retain their font size at native
+        // browser zoom without covering the focused trigger.
+        maxWidth: 320,
+        lineHeight: 20 / 14,
+        paddingSM: 6,
+        controlHeight: 26,
+      },
+      // Native menu items use the shared 3px outline + 3px offset. Keep
+      // their complete focus cue within the popup, including viewport edges.
+      Dropdown: { paddingXXS: 8, colorTextDescription: v("muted") },
+      Menu: {
+        itemColor: v("ink"),
+        itemHoverColor: v("ink"),
+        itemHoverBg: v("subtle"),
+        itemSelectedColor: v("focus"),
+        horizontalItemSelectedColor: v("focus"),
+        horizontalItemHoverColor: v("ink"),
+        itemSelectedBg: v("subtle"),
+        subMenuItemBg: v("surface"),
+        popupBg: v("surface"),
+        darkItemBg: v("surface"),
+        darkSubMenuItemBg: v("surface"),
+        darkPopupBg: v("surface"),
+        darkItemColor: v("muted"),
+        darkItemHoverColor: v("ink"),
+        darkItemSelectedColor: v("highlightInk"),
+        darkItemSelectedBg: v("highlight"),
+      },
+      Tabs: {
+        itemColor: v("muted"),
+        itemHoverColor: v("ink"),
+        itemActiveColor: v("focus"),
+        itemSelectedColor: v("focus"),
+        inkBarColor: v("focus"),
+      },
+      Steps: selectedCue,
+      Tree: {
+        nodeSelectedBg: v("highlight"),
+        nodeSelectedColor: v("highlightInk"),
+      },
+      TreeSelect: {
+        nodeSelectedBg: v("highlight"),
+        nodeSelectedColor: v("highlightInk"),
+        ...fieldBorder,
+      },
+      Slider: {
+        trackBg: v("focus"),
+        trackHoverBg: v("focus"),
+        handleColor: v("focus"),
+        handleActiveColor: v("focus"),
+      },
+      Input: { ...fieldBorder, colorTextDescription: v("muted") },
       InputNumber: fieldBorder,
-      Select: fieldBorder,
-      DatePicker: fieldBorder,
+      Select: {
+        ...fieldBorder,
+        optionSelectedBg: v("highlight"),
+        optionSelectedColor: v("highlightInk"),
+        optionActiveBg: v("subtle"),
+      },
+      DatePicker: {
+        ...fieldBorder,
+        colorPrimary: v("focus"),
+        colorTextLightSolid: v("surface"),
+        cellActiveWithRangeBg: v("subtle"),
+      },
       Checkbox: { colorBorder: controlBorder, ...selectedCue },
       Radio: { colorBorder: controlBorder, ...selectedCue },
       Switch: { ...selectedCue, handleBg: v("surface") },
       Progress: { defaultColor: v("focus") },
+      Spin: { colorPrimary: v("focus") },
+      Empty: { colorTextDescription: v("muted") },
+      Tag: {
+        // Dark semantic foreground seeds can derive mid-tone Ant tag surfaces.
+        // Preserve semantic meaning with explicit legible text/surface pairs.
+        colorSuccess: v("success"),
+        colorSuccessBg: v("surface"),
+        colorSuccessBorder: v("success"),
+        colorError: v("danger"),
+        colorErrorBg: v("surface"),
+        colorErrorBorder: v("danger"),
+        colorWarning: v("warning"),
+        colorWarningBg: v("surface"),
+        colorWarningBorder: v("warning"),
+        colorInfo: v("info"),
+        colorInfoBg: v("surface"),
+        colorInfoBorder: v("info"),
+      },
       Button: {
         primaryColor: v("accentInk"),
+        dangerColor:
+          contrastRatio(v("danger"), "#ffffff") >=
+          contrastRatio(v("danger"), "#000000")
+            ? "#ffffff"
+            : "#000000",
         defaultColor: v("ink"),
         defaultHoverColor: v("ink"),
         defaultActiveColor: v("ink"),
@@ -250,7 +358,16 @@ export function antTheme(
         colorPrimary: v("focus"),
         colorPrimaryHover: v("ink"),
       },
-      Table: { cellPaddingBlock: options.density === "compact" ? 10 : 16 },
+      Table: {
+        colorPrimary: v("focus"),
+        colorIcon: v("ink"),
+        colorIconHover: v("ink"),
+        cellPaddingBlock: options.density === "compact" ? 10 : 16,
+        headerBg: v("subtle"),
+        headerColor: v("ink"),
+        rowSelectedBg: v("highlight"),
+        rowSelectedHoverBg: v("subtle"),
+      },
       Card: { bodyPadding: options.density === "compact" ? 20 : 24 },
     },
   };
@@ -267,7 +384,7 @@ export function useKooyaPortalTheme() {
 export function useKooyaOptions() {
   return useContext(Context);
 }
-export function useKooyaFeedback() {
+export function useKooyaFeedback(): ReturnType<typeof App.useApp> {
   const feedback = App.useApp();
   const root = useKooyaRoot();
   const scoped = (config: import("antd").ModalFuncProps) => ({
@@ -292,7 +409,7 @@ export function useKooyaFeedback() {
   };
 }
 export function KooyaProvider({
-  theme = "mosaic",
+  theme = "signature",
   density = "comfortable",
   composition = "mosaic",
   mode = "light",
@@ -304,12 +421,16 @@ export function KooyaProvider({
   style,
   ...props
 }: KooyaProviderProps) {
+  const drawerInputFocus = useDrawerInputFocus();
+  const inheritedDrawer = useContext(ConfigProvider.ConfigContext).drawer;
   const root = useRef<HTMLDivElement>(null);
   const [systemMotion, setSystemMotion] = useState(false);
+  const [motionReady, setMotionReady] = useState(false);
   useEffect(() => {
     const q = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setSystemMotion(q.matches);
     update();
+    setMotionReady(true);
     q.addEventListener("change", update);
     return () => q.removeEventListener("change", update);
   }, []);
@@ -319,9 +440,43 @@ export function KooyaProvider({
   );
   const variables: KooyaStyle = {
     ...themeVariables(theme, mode, branding),
+    "--ku-control-height": density === "compact" ? "36px" : "44px",
     ...(fontFamily ? { "--ku-font-sans": fontFamily } : {}),
     ...overrides,
   };
+  // Native Drawer callers may portal outside the provider DOM. Carry only
+  // owned styling through public semantic configuration; native caller merges
+  // still run afterwards and retain their precedence.
+  const parentDrawerStyles = inheritedDrawer?.styles;
+  const rawDrawerStyles =
+    typeof parentDrawerStyles === "function" &&
+    ownedDrawerStyles.has(parentDrawerStyles)
+      ? ownedDrawerStyles.get(parentDrawerStyles)
+      : parentDrawerStyles;
+  const drawerConfig: NativeDrawerConfig = {
+    ...inheritedDrawer,
+    classNames: (info) => {
+      const inherited =
+        typeof inheritedDrawer?.classNames === "function"
+          ? inheritedDrawer.classNames(info)
+          : inheritedDrawer?.classNames;
+      return {
+        ...inherited,
+        root: [inherited?.root, "ku-drawer-scope"].filter(Boolean).join(" "),
+        body: [inherited?.body, "ku-drawer-body"].filter(Boolean).join(" "),
+      };
+    },
+    styles: (info) => {
+      const inherited =
+        typeof rawDrawerStyles === "function"
+          ? rawDrawerStyles(info)
+          : rawDrawerStyles;
+      return { ...inherited, root: { ...variables, ...inherited?.root } };
+    },
+  };
+  if (typeof drawerConfig.styles === "function") {
+    ownedDrawerStyles.set(drawerConfig.styles, rawDrawerStyles);
+  }
   const container = () => root.current ?? document.body;
   return (
     <Context.Provider
@@ -338,6 +493,14 @@ export function KooyaProvider({
       <div
         {...props}
         ref={root}
+        onFocus={(event) => {
+          props.onFocus?.(event);
+          drawerInputFocus.focus(event);
+        }}
+        onBlur={(event) => {
+          drawerInputFocus.blur(event);
+          props.onBlur?.(event);
+        }}
         tabIndex={props.tabIndex ?? -1}
         className={"ku-root " + className}
         data-theme={
@@ -356,9 +519,19 @@ export function KooyaProvider({
         <ConfigProvider
           theme={antTheme(
             theme,
-            { density, mode, branding, fontFamily, reducedMotion: motion },
+            // Ant's MotionWrapper inserts providers on its first disabled
+            // motion render. Establish that stable tree before mount effects;
+            // later OS preference changes must not remount unsaved children.
+            {
+              density,
+              mode,
+              branding,
+              fontFamily,
+              reducedMotion: motion || !motionReady,
+            },
             variables,
           )}
+          drawer={drawerConfig}
           getPopupContainer={container}
           wave={{ disabled: motion }}
         >

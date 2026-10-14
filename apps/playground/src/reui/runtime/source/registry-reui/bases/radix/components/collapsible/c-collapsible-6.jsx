@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Frame, FrameHeader, FramePanel, FrameTitle, } from "../../reui/frame.jsx";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "../../../../../../../adapters/navigation.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "h-54 w-full max-w-xs", children: _jsx(Frame, { stacked: true, dense: true, spacing: "sm", className: "w-full", children: _jsxs(Collapsible, { defaultOpen: true, children: [_jsx(CollapsibleTrigger, { className: "flex w-full", children: _jsxs(FrameHeader, { className: "flex grow flex-row items-center justify-between gap-2", children: [_jsx(FrameTitle, { className: "text-sm font-medium", children: "Deployment successful" }), _jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", "aria-hidden": "true", className: "text-muted-foreground size-4 transition-transform in-data-[state=open]:rotate-90" })] }) }), _jsx(CollapsibleContent, { children: _jsx(FramePanel, { children: _jsx("p", { className: "text-muted-foreground text-xs leading-relaxed", children: "Updated the core authentication logic and fixed a minor bug in the login flow. Improved session handling for better performance." }) }) })] }) }) }));
+}

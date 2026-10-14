@@ -26,7 +26,7 @@ import {
   Tabs,
   TextField,
   type SafeFailure,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import {
   localRead,
   permitsIntent,

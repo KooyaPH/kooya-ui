@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Field } from "../../../../../../../adapters/layout.tsx";
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsx(Field, { className: "w-full max-w-xs", children: _jsxs(InputGroup, { children: [_jsx(InputGroupInput, { placeholder: "Query..." }), _jsx(InputGroupAddon, { align: "inline-end", children: _jsx(InputGroupButton, { children: "Search" }) })] }) }));
+}

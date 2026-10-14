@@ -1,0 +1,36 @@
+// Adapted recipe. Keep supporting modules from the Kooya recipes bundle.
+import { Button } from "../../../adapters/controls.tsx"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../../../adapters/overlays.tsx"
+import { IconPlaceholder } from "../../../adapters/icons.tsx"
+
+export default function Pattern() {
+  return (
+    <div className="flex items-center justify-center">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" size="icon" aria-label="More information">
+              <IconPlaceholder
+                lucide="InfoIcon"
+                tabler="IconInfoCircle"
+                hugeicons="InformationCircleIcon"
+                phosphor="InfoIcon"
+                remixicon="RiInformationLine"
+              />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="text-center text-sm">
+              Additional information and help context.
+            </p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
+  )
+}

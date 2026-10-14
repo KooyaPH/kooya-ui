@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "item": "landing",
+  "source": "apps/playground/src/site/Landing.tsx",
+  "styles": "apps/playground/src/site/site.css",
+  "ownership": "Exactly one Landing page; embedded demo internals are separate items, iframe integration is owned here",
+  "states": [
+    "initial",
+    "empty-name",
+    "whitespace-name",
+    "sentence-name",
+    "unbroken1100-name",
+    "unicode-name",
+    "saved-default",
+    "saved-long",
+    "edited-after-save",
+    "switch-off-label",
+    "switch-on-space",
+    "switch-off-enter",
+    "rhythm-popup",
+    "rhythm-focused",
+    "rhythm-exploring",
+    "slider-min",
+    "slider-mid",
+    "slider-max",
+    "slider-arrow",
+    "theme-toggle-with-draft",
+    "density-toggle-with-draft",
+    "foundation-checkbox-unchecked",
+    "lazy-before-visible",
+    "lazy-loaded-all4",
+    "appearance-before-lazy-load",
+    "appearance-after-lazy-load-empty-retained",
+    "ready-wrong-source",
+    "all-navigation-links",
+    "keyboard-tab-sequence",
+    "hover-CTA",
+    "focus-CTA",
+    "text-spacing",
+    "font-failure",
+    "preview-request-failure",
+    "reduced-motion-transition",
+    "native-zoom200",
+    "native-zoom400"
+  ],
+  "widths": [
+    320,
+    360,
+    390,
+    768,
+    1024,
+    1280,
+    1440,
+    1920
+  ],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "densities": [
+    "comfortable",
+    "compact"
+  ],
+  "motion": [
+    "no-preference",
+    "reduce"
+  ],
+  "browserTargets": [
+    {
+      "id": "chrome-stable-155",
+      "runnerProject": "chromium",
+      "version": "155.0.8059.39",
+      "channel": "released Stable Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/155.0.8059.39/chrome-linux64/chrome"
+    },
+    {
+      "id": "chrome-previous-154",
+      "runnerProject": "chromium",
+      "version": "154.0.8037.92",
+      "channel": "previous released major milestone Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/154.0.8037.92/chrome-linux64/chrome"
+    },
+    {
+      "id": "chrome-previous-153",
+      "runnerProject": "chromium",
+      "version": "153.0.8010.52",
+      "channel": "second previous released major milestone Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/153.0.8010.52/chrome-linux64/chrome"
+    },
+    {
+      "id": "pw-chromium-156",
+      "runnerProject": "chromium",
+      "version": "156.0.8078.4",
+      "channel": "Playwright bundled prerelease Chromium engine",
+      "role": "supplemental engine"
+    },
+    {
+      "id": "pw-firefox-157",
+      "runnerProject": "firefox",
+      "version": "157.0",
+      "channel": "Playwright bundled Firefox engine",
+      "role": "supplemental engine"
+    },
+    {
+      "id": "pw-webkit-27.2",
+      "runnerProject": "webkit",
+      "version": "27.2",
+      "channel": "Playwright bundled WebKit engine, not Safari/iOS",
+      "role": "supplemental engine"
+    }
+  ],
+  "themes": [
+    "signature",
+    "canvas",
+    "client",
+    "mosaic"
+  ],
+  "zoom": [
+    100,
+    200,
+    400
+  ],
+  "status": "OPEN; bounded36configuration2state after checks are not full matrix qualification",
+  "rules": [
+    "Every reachable state is rendered and individually inspected with original screenshot and exact artifact/source/browser bindings.",
+    "Use native controls for state transitions; synthetic DOM edits cannot qualify normal interaction. User CSS text-spacing, deliberate failed request routing and malformed protocol messages are separately labeled adversarial probes.",
+    "No document horizontal overflow beyond1CSSpixel, no lost text/actions, no overlap occluding interactive labels, no inaccessible name, no serious/critical axe violations. Normal text contrast >=4.5:1; large text >=3:1; control/focus indication >=3:1. Focus not obscured and visible in real Tab modality.",
+    "Long names preserve complete input/status data and wrap status. Empty/whitespace names disable create. Save emits exact current project; edit restores Create.",
+    "Each native switch label/click/Space/Enter toggles once. Each rhythm option selectable with keyboard and pointer; Escape dismisses popup without unwanted state change. Slider Home0/End100/Arrow increments match native semantics and progress visualization.",
+    "All4featuredframes display latest mode/density after ready regardless of lazy order. Parent changes preserve sameFrame and actual childstate. Invalidsource/origin/variant readiness sends no settings; positive control must prove listener instrumentation.",
+    "Capture settled viewport sections plus fullpage. Fullpage original cannot prove unloaded preview state; individually scroll frames, wait ready and repaint, then capture. Reproducible paint omissions stay open; transient omissions recorded with fresh clean retake.",
+    "Exact released browser versions and platforms must be recorded. Playwright engine WebKit is supplemental, never Safari/iOS acceptance. Native zoom requires actual browser zoom/getZoom proof; viewport/DPR/CSS scale are not substitutes.",
+    "Independent reviewer reruns and views evidence on same immutableartifact; source repairs invalidate affected evidence and require fresh artifact. No shared-source editing by item worker."
+  ],
+  "pending": [
+    "Three released Chrome targets have executable metadata in existing contract but not yet rendered for Landing.",
+    "Native cross-engine zoom, real Safari/iOS/touch and screenreader platform checks not established.",
+    "Full child input draft is not present in featured Application shell; actual Empty segmented state used to verify integration state retention.",
+    "Final independent reviewer approval pending",
+    "New preset fixture must be frozen into next artifact and actually rendered before qualification."
+  ],
+  "fixture": {
+    "route": "/audit.html?item=landing-review&fixture=props",
+    "source": "apps/playground/src/qa/fixtures/landing-review.tsx",
+    "scope": "Actual Landing in controlled real KooyaProvider contexts; private preset buttons are QA only, not a user-facing Site feature",
+    "stateRetention": "Same actual Landing mounted while provider theme/mode/density changes through React state; no key/remount",
+    "iframeContract": "LiveFrame sends only mode/density. Child PreviewRoute has own signature default provider. Alternate parent preset must not be falsely claimed as frame theme propagation."
+  }
+}

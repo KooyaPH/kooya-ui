@@ -2,7 +2,7 @@
 import { expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { KooyaProvider } from "../src";
+import { KooyaProvider } from "../src/legacy";
 import {
   ExperiencePage,
   ExperienceProvider,

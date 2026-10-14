@@ -1,81 +1,69 @@
-# Themes
+# Kooya brand foundations
 
-Kooya UI separates visual themes from component layout. Themes supply semantic
-colors; compositions such as Mosaic, Orbit, Canvas, and Flow arrange the same
-components differently. Import only the theme data or component families that
-the application uses.
-
-## Use a bundled theme
+`KooyaProvider` defaults to Kooya Signature light: paper `#f2eee3`, ink
+`#13120f`, lime `#d7f20f`, and DM Sans interface text. Dark mode uses charcoal
+canvas `#13120f`, elevated surface `#1f1e19`, paper text and lime actions. The
+showcase exposes these two brand modes. Composition is independent of color.
 
 ```tsx
-import { KooyaProvider, Button } from "@kooyaph/ui";
-import { signatureTheme } from "@kooyaph/ui/themes/signature";
+import { KooyaProvider, useKooyaFeedback } from "@kooyaph/ui/foundations";
+import { Button } from "@kooyaph/ui/components";
 import "@kooyaph/ui/styles.css";
+
+function LocalAction() {
+  const { message } = useKooyaFeedback();
+  return (
+    <Button type="primary" onClick={() => message.success("Saved locally")}>
+      Save
+    </Button>
+  );
+}
 
 export function App() {
   return (
-    <KooyaProvider theme={signatureTheme} composition="mosaic">
-      <Button variant="primary">Continue</Button>
+    <KooyaProvider mode="dark" density="comfortable">
+      <LocalAction />
     </KooyaProvider>
   );
 }
 ```
 
-Available individual imports are `@kooyaph/ui/themes/mosaic`,
-`@kooyaph/ui/themes/signature`, `@kooyaph/ui/themes/canvas`, and
-`@kooyaph/ui/themes/client`. `@kooyaph/ui/themes` exports the full catalog.
-`KooyaProvider` also accepts a theme name such as `"mosaic"` for existing
-integrations.
+The provider synchronizes CSS variables and Ant configuration for controls,
+menus, Select/DatePicker popups, native Modal/Drawer portals, and contextual
+messages, notifications and confirmations. Popup containers default to the
+provider root. Explicit consumer `getContainer`/`getPopupContainer` overrides
+retain native Ant behavior and take responsibility for CSS variable inheritance.
+Use `useKooyaFeedback()` inside the provider for scoped imperative feedback.
+Ant static `message`, `notification` and `Modal.confirm` remain canonical exports,
+but Ant static calls do not receive React provider context; use the contextual
+hook for brand synchronization.
 
-## Define a project theme
+`density="comfortable"` uses 44px controls; `density="compact"` uses 36px controls
+and smaller table/card padding. The stylesheet maintains 44px button targets for
+coarse pointers. `reducedMotion` overrides the OS preference; otherwise the
+provider follows live `prefers-reduced-motion` changes. Ant motion and wave effects
+and scoped CSS animation/transitions follow the same setting.
 
-Start from a bundled theme so the required semantic tokens stay complete, then
-pass the new palette directly to the provider:
+`kooyaBrand` exposes the official paper, ink, lime, deep green, yellow, blue and
+red palette. `resolveThemeScheme()` resolves contrast-qualified semantic roles,
+including info blue and independent focus/selected indicators. Brand accent is
+an action background, while links, menu/tab text, checkbox/radio/switch marks and
+other selected cues use their own legible pairs. Solid danger actions resolve
+their foreground against semantic red, and tooltips use the elevated surface/text
+pair independently of primary-action text. Selected-option hover backgrounds
+are explicitly mapped to preserve the selected foreground contrast in both modes.
 
-```tsx
-import { KooyaProvider, type KooyaTheme } from "@kooyaph/ui";
-import { mosaicTheme } from "@kooyaph/ui/themes/mosaic";
-import "@kooyaph/ui/styles.css";
+`kooyaTypography` exposes DM Sans and Syncopate stacks; CSS variables are
+`--ku-font-sans` and `--ku-font-display`. Serve font assets locally in the consuming
+application; the package does not fetch fonts. `fontFamily`, `branding.scheme`,
+`branding.accent` and inline `--ku-*` overrides retain the existing customization
+contract. Qualify overridden colors at 4.5:1 for ordinary text and 3:1 for meaningful
+control indicators in every state. Opaque hex semantic status/focus colors get a
+black/white fallback against the resolved surface; arbitrary CSS colors and
+consumer overrides cannot be automatically guaranteed.
 
-const partnerTheme: KooyaTheme = {
-  ...mosaicTheme,
-  name: "Partner workspace",
-  canvas: "#f3eff8",
-  surface: "#ffffff",
-  subtle: "#eee8f5",
-  ink: "#30243d",
-  muted: "#665b70",
-  line: "#dfd5e8",
-  focus: "#70479a",
-  accent: "#70479a",
-  accentInk: "#ffffff",
-  highlight: "#e9ddf5",
-  highlightInk: "#3e2c52",
-  secondary: "#e5dceb",
-  tertiary: "#f1e4dd",
-};
-
-export function PartnerApp() {
-  return <KooyaProvider theme={partnerTheme}>...</KooyaProvider>;
-}
-```
-
-The provider maps `name` to a safe `data-theme` value and applies the palette to
-Kooya tokens, Ant Design components, and provider-scoped overlays. Use
-`branding.scheme` for a small application-level adjustment when a complete new
-theme is unnecessary. Keep success, warning, danger, and focus colors semantic;
-check text and state contrast after every palette change.
-
-## Add a bundled theme
-
-1. Add an immutable `KooyaTheme` palette under
-   `packages/ui/src/foundations/themes/`.
-2. Export it and register it in `packages/ui/src/foundations/themes.ts` for the
-   provider's named-theme catalog.
-3. Add a Vite entry and package export so consumers can import it by path.
-4. Add the palette to the playground's theme selector and Storybook catalog.
-5. Check light/dark mode, all interactive states, semantic contrast, overlays,
-   compact and comfortable density, and desktop/tablet/mobile compositions.
-
-Components remain theme-agnostic. New palettes must not change the meaning of
-success, warning, danger, selected, focused, disabled, or busy states.
+The existing Mosaic, Canvas and Client palette source and individual imports
+remain during the template/test migration. They are compatibility data, outside
+the new showcase's light/dark brand selector. New integrations should consume the
+Signature defaults through `/foundations` and canonical controls through
+`/components`.

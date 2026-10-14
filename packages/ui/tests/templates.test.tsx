@@ -2,7 +2,7 @@ import { useState } from "react";
 import { expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 
 it("exports every approved presentational template family", () => {
   for (const name of [

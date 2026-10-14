@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "item": "ant-button-native",
+  "source": "apps/playground/src/reui/native.tsx",
+  "fixture": "apps/playground/src/qa/fixtures/ant-button-native-review.tsx",
+  "status": "investigating",
+  "runtimeBinding": "AUDIT_BASE_URL, AUDIT_ARTIFACT_ID and AUDIT_SOURCE_FINGERPRINT environment variables; never mutate source contract to bind a build",
+  "actualCatalogControls": [
+    "Primary (type=primary)",
+    "Default",
+    "Danger (danger=true)",
+    "Loading (loading=true)"
+  ],
+  "widths": [
+    320,
+    360,
+    390,
+    768,
+    1024,
+    1280,
+    1440,
+    1920
+  ],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "densities": [
+    "comfortable",
+    "compact"
+  ],
+  "motions": [
+    "no-preference",
+    "reduce"
+  ],
+  "presets": [
+    "signature",
+    "canvas",
+    "client",
+    "mosaic"
+  ],
+  "engines": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "states": [
+    "default",
+    "hover-each-enabled",
+    "pressed-each-enabled",
+    "keyboard-focus-each-enabled",
+    "enter-activation",
+    "space-activation",
+    "loading-repeat-blocked",
+    "disabled-pointer-blocked",
+    "disabled-tab-skipped",
+    "loading-delay-before",
+    "loading-delay-after",
+    "loading-toggle-recovery",
+    "ref-focus",
+    "form-submit",
+    "form-reset",
+    "local-href-navigation",
+    "disabled-href",
+    "text-resize-200",
+    "wcag-text-spacing",
+    "nested-180px",
+    "resize-focused",
+    "motion-transition-focused",
+    "theme-transition-focused",
+    "30-mount-cycles",
+    "animation-intermediate",
+    "settled-stability",
+    "font-delayed",
+    "font-failed"
+  ],
+  "apiVariations": {
+    "type": [
+      "default",
+      "primary",
+      "dashed",
+      "link",
+      "text"
+    ],
+    "size": [
+      "small",
+      "middle",
+      "large"
+    ],
+    "shape": [
+      "default",
+      "circle",
+      "round",
+      "square"
+    ],
+    "variant": [
+      "outlined",
+      "dashed",
+      "solid",
+      "filled",
+      "text",
+      "link"
+    ],
+    "color": [
+      "default",
+      "primary",
+      "danger",
+      "blue",
+      "purple",
+      "cyan",
+      "green",
+      "magenta",
+      "pink",
+      "red",
+      "orange",
+      "yellow",
+      "volcano",
+      "geekblue",
+      "lime",
+      "gold"
+    ],
+    "iconPlacement": [
+      "start",
+      "end"
+    ],
+    "labels": [
+      "normal",
+      "sentence",
+      "long",
+      "unbroken",
+      "unicode",
+      "chinese",
+      "empty"
+    ],
+    "booleanProps": [
+      "danger",
+      "block",
+      "ghost",
+      "disabled",
+      "loading",
+      "autoInsertSpace"
+    ],
+    "loading": [
+      "boolean",
+      "delay-object",
+      "custom-icon"
+    ],
+    "semanticProps": [
+      "classNames.root/icon/content",
+      "styles.root/icon/content",
+      "callback forms"
+    ],
+    "compatibility": [
+      "Button.Group deprecated but retained",
+      "Space.Compact current composition",
+      "iconPosition deprecated but retained",
+      "native html props and forwarded button/anchor ref"
+    ]
+  },
+  "invariants": [
+    "Actual public Button identity, no markup replacement; fixture uses actual catalog demo and public native API",
+    "Every displayed enabled sample action has observable fictional local response",
+    "Click, Enter and Space activate exactly once where appropriate; loading and disabled block repeated activation",
+    "Busy and disabled states have accessible semantics and truthful cursor feedback; icon-only actions are named",
+    "No label or meaningful icon clipped, overlapped, lost or outside true constrained parent; long content remains accessible",
+    "Enabled ordinary text contrast >=4.5:1, required nontext and focus >=3:1 against actual resolved backgrounds",
+    "Primary coarse-pointer target >=44px; other targets >=24px or objectively documented spacing exception",
+    "Default density geometry documented separately from retained ku-button wrapper; no silent API reinterpretation",
+    "State transitions preserve same focused DOM control, draft input, callback counts and native ref",
+    "Reduced motion removes nonessential movement without disabling loading meaning or interactions",
+    "Zero unexplained console/resource/React failures; settled geometry drift <=1 CSSpx and idle CLS <=0.1",
+    "Each required screenshot personally opened at full resolution with SHA and observation; fresh independent capture required"
+  ],
+  "coverageBlockers": [
+    "Exact released-browser and platform qualification not established; Playwright engines cannot imply Safari/iOS",
+    "Physical touch and native screenreader unavailable unless actual platform supplied",
+    "Exhaustive API cross-products not yet enumerated; no acceptance permitted with remaining reachable variation gaps"
+  ],
+  "acceptance": "not-accepted",
+  "fixtureValidation": {
+    "nativeEnums": "Declared type, size, shape, variant, color, iconPlacement, htmlType and labels are exact-whitelisted; duplicate values rejected",
+    "booleanQueries": "Only true/false accepted; duplicate values rejected",
+    "delayMilliseconds": "Finite value 0..60000; empty, negative, infinite and duplicate values rejected"
+  }
+}

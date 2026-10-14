@@ -5,7 +5,7 @@ import {
   FilterChip,
   Chip,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function ToolExample({ state }: { state?: TemplateState }) {
   const [kind, setKind] = useState("meeting");
   const [active, setActive] = useState(false);

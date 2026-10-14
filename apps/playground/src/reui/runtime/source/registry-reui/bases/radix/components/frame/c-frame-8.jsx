@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Frame, FrameDescription, FrameHeader, FramePanel, FrameTitle, } from "../../reui/frame.jsx";
+export default function Pattern() {
+    return (_jsxs(Frame, { stacked: true, className: "w-full max-w-sm", children: [_jsxs(FrameHeader, { children: [_jsx(FrameTitle, { children: "Server Logs" }), _jsx(FrameDescription, { children: "Recent activity and errors" })] }), _jsxs(FramePanel, { children: [_jsx("h2", { className: "text-sm font-semibold", children: "Auth Service" }), _jsx("p", { className: "text-muted-foreground text-sm", children: "Successfully logged in user: admin" })] }), _jsxs(FramePanel, { children: [_jsx("h2", { className: "text-sm font-semibold", children: "Database" }), _jsx("p", { className: "text-muted-foreground text-sm", children: "Query execution time: 12ms" })] }), _jsxs(FramePanel, { children: [_jsx("h2", { className: "text-sm font-semibold", children: "Storage" }), _jsx("p", { className: "text-muted-foreground text-sm", children: "Upload complete: image.png" })] })] }));
+}

@@ -9,7 +9,7 @@ import {
   TextField,
   type Column,
   type DialogProps,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import "@kooyaph/ui/styles.css";
 function Counter({ label }: { label: string }) {
   const [count, setCount] = useState(0);

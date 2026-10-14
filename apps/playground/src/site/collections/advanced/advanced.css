@@ -1,0 +1,60 @@
+.advanced-demo {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.advanced-demo .advanced-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.advanced-demo .advanced-toolbar h4 {
+  margin: 0;
+  margin-right: auto;
+}
+.advanced-demo .advanced-toolbar .ant-select {
+  min-width: 160px;
+}
+.advanced-demo .advanced-flow {
+  height: 380px;
+  border: 1px solid var(--ant-color-border, #b8b4a9);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.advanced-demo .advanced-whiteboard {
+  height: 480px;
+  border: 1px solid var(--ant-color-border, #b8b4a9);
+}
+.advanced-demo .tiptap {
+  min-height: 200px;
+  padding: 16px;
+  border: 1px solid var(--ant-color-border, #b8b4a9);
+  border-radius: 8px;
+}
+.advanced-demo .tiptap:focus-visible {
+  outline: 3px solid #1d46d9;
+  outline-offset: 3px;
+}
+.advanced-demo pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.advanced-demo .advanced-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  margin-bottom: 24px;
+}
+@media (max-width: 480px) {
+  .advanced-demo {
+    padding: 12px;
+  }
+  .advanced-demo .advanced-whiteboard {
+    height: 380px;
+  }
+}

@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 2,
+  "item": "c-textarea-6",
+  "scope": "Bio auto-resize textarea with UTF-16 character counter",
+  "fixtures": [
+    "catalog",
+    "c-textarea-6-review real owned Pattern twice"
+  ],
+  "limit": {
+    "maximum": 280,
+    "unit": "UTF-16 code units (JavaScript value.length)",
+    "overflowPolicy": "Reject whole proposed edit and retain previous accepted value"
+  },
+  "states": [
+    "empty",
+    "placeholder",
+    "hover",
+    "keyboard-focus",
+    "dirty",
+    "multiline",
+    "near-limit-260",
+    "at-limit-280",
+    "rejected-over-limit",
+    "selected-text",
+    "cleared"
+  ],
+  "notApplicable": [
+    "loading",
+    "disabled",
+    "readonly",
+    "submit",
+    "async-error",
+    "async-success",
+    "permissions"
+  ],
+  "layout": {
+    "viewportWidths": [
+      320,
+      360,
+      390,
+      768,
+      1024,
+      1280,
+      1440,
+      1920
+    ],
+    "containerWidths": [
+      180,
+      240,
+      320
+    ],
+    "modes": [
+      "light",
+      "dark"
+    ],
+    "densities": [
+      "comfortable",
+      "compact"
+    ],
+    "zoom": [
+      100,
+      200,
+      400
+    ],
+    "motion": [
+      "no-preference",
+      "reduce"
+    ],
+    "minimumRows": 2,
+    "manualResize": "none",
+    "acceptedTextMustFit": true
+  },
+  "accessibility": {
+    "name": "Bio",
+    "description": "current/280 counter",
+    "counterMinimumContrast": 4.5,
+    "keyboard": [
+      "Tab",
+      "text-entry",
+      "Enter",
+      "selection",
+      "Backspace",
+      "paste",
+      "undo",
+      "redo"
+    ]
+  },
+  "preservation": [
+    "mode-transition",
+    "density-transition",
+    "reduced-motion-transition",
+    "viewport-resize",
+    "container-resize"
+  ],
+  "coverageStatus": "OPEN: schema2 executable identity/evidence obligations; bounded2112cases do not satisfy full matrix or additional transitions/platform/API obligations",
+  "contexts": [
+    "catalog",
+    "catalog-container-180",
+    "catalog-container-240",
+    "catalog-container-320",
+    "two-instance",
+    "preset-signature",
+    "preset-canvas",
+    "preset-client",
+    "preset-mosaic"
+  ],
+  "contextDefinitions": {
+    "catalog": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6",
+        "fixture": "catalog"
+      },
+      "target": "Bio"
+    },
+    "catalog-container-180": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6",
+        "fixture": "catalog",
+        "container": 180
+      },
+      "target": "Bio",
+      "actualProp": "main.style.width",
+      "dynamicDirtyContainerTransition": "Opt-in review fixture reviewContainer state; separate from static outer main query"
+    },
+    "catalog-container-240": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6",
+        "fixture": "catalog",
+        "container": 240
+      },
+      "target": "Bio",
+      "actualProp": "main.style.width",
+      "dynamicDirtyContainerTransition": "Opt-in review fixture reviewContainer state; separate from static outer main query"
+    },
+    "catalog-container-320": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6",
+        "fixture": "catalog",
+        "container": 320
+      },
+      "target": "Bio",
+      "actualProp": "main.style.width",
+      "dynamicDirtyContainerTransition": "Opt-in review fixture reviewContainer state; separate from static outer main query"
+    },
+    "two-instance": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6-review",
+        "fixture": "real"
+      },
+      "target": "Second bio example > textarea",
+      "assertions": [
+        "unique control and counter IDs",
+        "one native label each",
+        "second label focuses second",
+        "independent value/counter description"
+      ]
+    },
+    "preset-signature": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6-review",
+        "fixture": "real",
+        "theme": "signature"
+      },
+      "target": "Second bio example > textarea",
+      "actualProp": "KooyaProvider.theme=signature"
+    },
+    "preset-canvas": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6-review",
+        "fixture": "real",
+        "theme": "canvas"
+      },
+      "target": "Second bio example > textarea",
+      "actualProp": "KooyaProvider.theme=canvas"
+    },
+    "preset-client": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6-review",
+        "fixture": "real",
+        "theme": "client"
+      },
+      "target": "Second bio example > textarea",
+      "actualProp": "KooyaProvider.theme=client"
+    },
+    "preset-mosaic": {
+      "path": "/audit.html",
+      "query": {
+        "item": "c-textarea-6-review",
+        "fixture": "real",
+        "theme": "mosaic"
+      },
+      "target": "Second bio example > textarea",
+      "actualProp": "KooyaProvider.theme=mosaic"
+    }
+  },
+  "browsers": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "browserTargets": [
+    {
+      "id": "chrome-stable-155",
+      "runnerProject": "chromium",
+      "version": "155.0.8059.39",
+      "channel": "released Stable Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/155.0.8059.39/chrome-linux64/chrome"
+    },
+    {
+      "id": "chrome-previous-154",
+      "runnerProject": "chromium",
+      "version": "154.0.8037.92",
+      "channel": "previous released major milestone Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/154.0.8037.92/chrome-linux64/chrome"
+    },
+    {
+      "id": "chrome-previous-153",
+      "runnerProject": "chromium",
+      "version": "153.0.8010.52",
+      "channel": "second previous released major milestone Chrome for Testing Linux",
+      "role": "required released target",
+      "executable": "/home/stephen-kooya/.local/share/kooya-ui-runtime/audit-browsers/153.0.8010.52/chrome-linux64/chrome"
+    },
+    {
+      "id": "pw-chromium-156",
+      "runnerProject": "chromium",
+      "version": "156.0.8078.4",
+      "channel": "Playwright bundled prerelease Chromium engine",
+      "role": "supplemental engine"
+    },
+    {
+      "id": "pw-firefox-157",
+      "runnerProject": "firefox",
+      "version": "157.0",
+      "channel": "Playwright bundled Firefox engine",
+      "role": "supplemental engine"
+    },
+    {
+      "id": "pw-webkit-27.2",
+      "runnerProject": "webkit",
+      "version": "27.2",
+      "channel": "Playwright bundled WebKit engine, not Safari/iOS",
+      "role": "supplemental engine"
+    }
+  ],
+  "stateDefinitions": {
+    "empty": {
+      "expectedValue": "",
+      "expectedUTF16Length": 0,
+      "actions": [
+        "native-fill-empty",
+        "blur",
+        "pointer-outside"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "placeholder": {
+      "expectedValue": "",
+      "expectedUTF16Length": 0,
+      "actions": [
+        "native-fill-empty",
+        "blur",
+        "pointer-outside",
+        "assert-native-placeholder"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "hover": {
+      "expectedValue": "",
+      "expectedUTF16Length": 0,
+      "actions": [
+        "native-fill-empty",
+        "blur",
+        "pointer-hover"
+      ],
+      "focus": false,
+      "hover": true,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "keyboard-focus": {
+      "expectedValue": "",
+      "expectedUTF16Length": 0,
+      "actions": [
+        "native-fill-empty",
+        "native-focus",
+        "Shift+Tab",
+        "Tab"
+      ],
+      "focus": true,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "dirty": {
+      "expectedValue": "Unsubmitted biography \ud83d\ude00 e\u0301 \u05e2\u05d1\u05e8\u05d9\u05ea \u4e2d",
+      "expectedUTF16Length": 35,
+      "actions": [
+        "native-fill-accepted",
+        "blur",
+        "pointer-outside"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "multiline": {
+      "expectedValue": "First line\nSecond line\nThird line",
+      "expectedUTF16Length": 33,
+      "actions": [
+        "native-fill-first-line",
+        "Enter",
+        "native-keyboard-insert-second-line",
+        "Enter",
+        "native-keyboard-insert-third-line",
+        "blur",
+        "pointer-outside"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "near-limit-260": {
+      "expectedValue": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expectedUTF16Length": 260,
+      "actions": [
+        "native-fill-accepted",
+        "blur",
+        "pointer-outside"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "at-limit-280": {
+      "expectedValue": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expectedUTF16Length": 280,
+      "actions": [
+        "native-fill-accepted",
+        "blur",
+        "pointer-outside"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "rejected-over-limit": {
+      "expectedValue": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expectedUTF16Length": 280,
+      "actions": [
+        "native-fill-280",
+        "End",
+        "native-keyboard-insert-x",
+        "assert-whole-edit-rejected"
+      ],
+      "focus": true,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "selected-text": {
+      "expectedValue": "Selected biography \ud83d\ude00 e\u0301 \u05e2\u05d1\u05e8\u05d9\u05ea \u4e2d",
+      "expectedUTF16Length": 32,
+      "actions": [
+        "native-fill-accepted",
+        "ControlOrMeta+A",
+        "assert-full-selection"
+      ],
+      "focus": true,
+      "hover": false,
+      "selection": "all",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    },
+    "cleared": {
+      "expectedValue": "",
+      "expectedUTF16Length": 0,
+      "actions": [
+        "native-fill-accepted",
+        "ControlOrMeta+A",
+        "Backspace",
+        "blur",
+        "pointer-outside",
+        "assert-counter-zero"
+      ],
+      "focus": false,
+      "hover": false,
+      "selection": "unconstrained native caret",
+      "screenshot": "natural animation/caret, settled state captured separately from temporal obligations"
+    }
+  },
+  "boundedCatalogRun": {
+    "contexts": [
+      "catalog"
+    ],
+    "targetIds": [
+      "pw-chromium-156",
+      "pw-firefox-157",
+      "pw-webkit-27.2"
+    ],
+    "zoom": 100,
+    "height": 900,
+    "expectedCases": 2112,
+    "formula": "11 states * 8 widths * 2 modes * 2 densities * 2 motion preferences * 3 supplemental engines",
+    "artifactId": "d301063c260f91798a48e78bfb63c98dabe7b5189ed351e5354d08d9978affaa",
+    "sourceFingerprint": "62680013c30aad6d6d02b804b1b5c969f4252ed9ae9e3c49308bee636324730d",
+    "baseURL": "http://127.0.0.1:5307",
+    "bindingNote": "Executed QA contract updated after immutable build to select published renderer; executed contract/spec hashes recorded separately from immutable renderer sourceFingerprint"
+  },
+  "canonicalCaseIdentity": [
+    "item",
+    "context",
+    "state",
+    "targetId",
+    "width",
+    "mode",
+    "density",
+    "motion",
+    "zoom"
+  ],
+  "caseEvidenceRequired": [
+    "caseId",
+    "contractSha256",
+    "artifactId",
+    "sourceFingerprint",
+    "runtimeVersion",
+    "channel",
+    "fixtureQuery",
+    "expectedProps",
+    "actions",
+    "actualNativeEvents",
+    "geometry",
+    "actualValue",
+    "counter",
+    "accessibleName",
+    "accessibleDescription",
+    "focus",
+    "hover",
+    "selection",
+    "consoleErrors",
+    "resourceFailures",
+    "screenshotPath",
+    "screenshotSha256",
+    "assertions",
+    "independentVisualObservationBoundToCaseAndHash",
+    "processEvidence.actualExecutable",
+    "processEvidence.actualExecutableSha256",
+    "processEvidence.requestedExecutable",
+    "processEvidence.requestedExecutableSha256",
+    "processEvidence.actualCommandLine",
+    "actualProviderProps",
+    "actualContainerGeometry",
+    "firstInstanceSentinel when applicable",
+    "processEvidence.launcherPid",
+    "processEvidence.actualEnginePid",
+    "processEvidence.processes",
+    "actual parent content box and field rect containment"
+  ],
+  "fullReachableMatrix": {
+    "contexts": [
+      "catalog",
+      "catalog-container-180",
+      "catalog-container-240",
+      "catalog-container-320",
+      "two-instance",
+      "preset-signature",
+      "preset-canvas",
+      "preset-client",
+      "preset-mosaic"
+    ],
+    "targetIds": [
+      "chrome-stable-155",
+      "chrome-previous-154",
+      "chrome-previous-153",
+      "pw-chromium-156",
+      "pw-firefox-157",
+      "pw-webkit-27.2"
+    ],
+    "states": [
+      "empty",
+      "placeholder",
+      "hover",
+      "keyboard-focus",
+      "dirty",
+      "multiline",
+      "near-limit-260",
+      "at-limit-280",
+      "rejected-over-limit",
+      "selected-text",
+      "cleared"
+    ],
+    "viewportWidths": [
+      320,
+      360,
+      390,
+      768,
+      1024,
+      1280,
+      1440,
+      1920
+    ],
+    "modes": [
+      "light",
+      "dark"
+    ],
+    "densities": [
+      "comfortable",
+      "compact"
+    ],
+    "motion": [
+      "no-preference",
+      "reduce"
+    ],
+    "zoom": 100,
+    "expectedCases": 38016,
+    "status": "pending fresh54 context\u00d7exacttarget chunks \u00d764 configs\u00d711states; every original requires independent inspection; old5307 remains historical"
+  },
+  "actionObligations": [
+    {
+      "id": "dirty-mode-density-motion-resize-preservation",
+      "status": "pending qualification",
+      "definition": "Real settings + OS motion + viewport resizing while dirty/focused/selected; retain value/caret/focus and fit, temporal frames separately"
+    },
+    {
+      "id": "dirty-theme-preset-transition",
+      "status": "fixture implemented, execution pending immutable build",
+      "definition": "Actual KooyaProvider theme prop changes without remount; four presets and branding require fixture support"
+    },
+    {
+      "id": "dirty-nested-container-transition",
+      "status": "fixture implemented, execution pending immutable build",
+      "definition": "Actual React container prop changes without remount, not DOM width mutation"
+    },
+    {
+      "id": "native-clipboard-paste",
+      "status": "pending qualification",
+      "definition": "Actual clipboard 512 unbroken+Unicode accepted/rejected; Chromium feasible; Firefox/WebKit unavailable fixture remain blocked"
+    },
+    {
+      "id": "native-undo-redo",
+      "status": "pending qualification",
+      "definition": "Actual native edit history, not controlled fill emulation"
+    },
+    {
+      "id": "IME-composition",
+      "status": "pending qualification",
+      "definition": "Actual OS IME required; plain Unicode typing/clipboard is not IME proof"
+    },
+    {
+      "id": "native-browser-zoom",
+      "status": "pending qualification",
+      "definition": "Actual tabs.setZoom/getZoom Chromium 100/200/400 with initial+bottom captures; other engines native zoom blocked"
+    },
+    {
+      "id": "text-resize-spacing-fonts",
+      "status": "pending qualification",
+      "definition": "Separate200 percent text resize, WCAG textspacing, delayed/failed fonts; no hidden failure"
+    },
+    {
+      "id": "API-platform-performance",
+      "status": "pending qualification",
+      "definition": "React18/19 StrictMode SSR copied consumers refs, screenreader/touch/Safari platforms,30mount cycles CLS/drift/input-to-paint"
+    }
+  ],
+  "coverageBlockers": [
+    "Edge current and previous2 released target binaries unavailable/unqualified",
+    "Released Firefox current and previous2 target binaries not qualified by bundled157",
+    "Safari/iOS and physical touch platforms unavailable",
+    "OS IME and screenreader unavailable",
+    "Firefox/WebKit clipboard and native browser zoom fixtures unavailable",
+    "All full matrix originals need independent per-image inspection; old worker imagery stale"
+  ],
+  "independentContractReview": {
+    "agent": "/root/textarea_independent_review",
+    "reviewedAt": "2026-10-13T05:06:48.520618+00:00",
+    "observation": "11 real native states reconciled with worker tests; canonical9 contexts and6 exact runnable targets declared. Bounded2112 engine-catalog cases are explicitly a subset of38016 reachable matrix; action/platform obligations remain separate blockers. This reviewed contract does not assert renderer or item acceptance."
+  },
+  "executionCandidate": {
+    "artifactId": null,
+    "sourceFingerprint": null,
+    "baseURL": null,
+    "status": "pending next immutable candidate including opt-in React prop fixture; cannot qualify against old5307"
+  },
+  "browserProvenancePolicy": "Explicit full Chromium executablePath, public BrowserServer.process PID and actual /proc/PID/exe hash observed while alive; requested launcher wrapper separately hashed. Released binary hash must match frozen released target manifest. Runtime version alone does not prove executable identity. WebKit Bash pw_run.sh is launcher only; actual descendant minibrowser-wpe/bin/MiniBrowser PID/executable/hash must be observed within requested verified bundle.",
+  "transitionFixture": {
+    "path": "/audit.html",
+    "query": {
+      "item": "c-textarea-6-review",
+      "fixture": "real",
+      "controls": "true"
+    },
+    "method": "Native pointer buttons prevent focus transfer on mouse-down and change real React state; recipe/provider stable without key",
+    "props": [
+      "theme four presets",
+      "nested container width180/240/320",
+      "mode light/dark",
+      "density comfortable/compact"
+    ],
+    "actualWidthPolicy": "Requested catalog container is main outer width with56px harness padding; reviewContainer is nested border-box width with24px fixture padding. Record actual textarea and ancestor rects; no field-width alias.",
+    "gridTrack": "minmax(0,1fr): actual supported grid track constrains intrinsic content sizing",
+    "containmentAssertions": "Actual textarea left/right must lie within actual nearest nested container or main content box (rect minus live computed border/padding), tolerance1px; vertical fit separately asserted"
+  }
+}

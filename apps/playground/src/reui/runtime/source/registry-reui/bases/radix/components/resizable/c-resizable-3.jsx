@@ -1,0 +1,6 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup, } from "../../../../../../../adapters/utility.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "mx-auto w-full max-w-lg", children: _jsxs(ResizablePanelGroup, { orientation: "horizontal", className: "rounded-2xl min-h-[300px] border", children: [_jsx(ResizablePanel, { defaultSize: 40, children: _jsx("div", { className: "flex h-full items-center justify-center p-6", children: _jsx("span", { className: "text-sm font-semibold", children: "Side" }) }) }), _jsx(ResizableHandle, {}), _jsx(ResizablePanel, { defaultSize: 60, children: _jsxs(ResizablePanelGroup, { orientation: "vertical", children: [_jsx(ResizablePanel, { defaultSize: 30, children: _jsx("div", { className: "flex h-full items-center justify-center p-6", children: _jsx("span", { className: "text-sm font-semibold", children: "Top" }) }) }), _jsx(ResizableHandle, {}), _jsx(ResizablePanel, { defaultSize: 70, children: _jsx("div", { className: "flex h-full items-center justify-center p-6", children: _jsx("span", { className: "text-sm font-semibold", children: "Bottom" }) }) })] }) })] }) }));
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { expect, it, vi } from "vitest";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 
 it("replaces raw legacy failure prose with public recovery and an honest missing response", () => {
   render(

@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, } from "../../../../../../../adapters/menus.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", className: "w-fit", children: "With Submenu" }) }), _jsx(DropdownMenuContent, { className: "w-40", children: _jsxs(DropdownMenuGroup, { children: [_jsx(DropdownMenuItem, { children: "Team" }), _jsxs(DropdownMenuSub, { children: [_jsx(DropdownMenuSubTrigger, { children: "Invite users" }), _jsx(DropdownMenuPortal, { children: _jsxs(DropdownMenuSubContent, { className: "w-32", children: [_jsx(DropdownMenuItem, { children: "Email" }), _jsx(DropdownMenuItem, { children: "Message" }), _jsx(DropdownMenuSeparator, {}), _jsx(DropdownMenuItem, { children: "More\u2026" })] }) })] }), _jsxs(DropdownMenuItem, { children: ["New Team", _jsx(DropdownMenuShortcut, { children: "\u2318+T" })] })] }) })] }) }));
+}

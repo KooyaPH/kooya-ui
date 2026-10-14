@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { KooyaProvider, Button, Card, useKooyaFeedback } from "@kooyaph/ui";
+import { KooyaProvider, Button, Card, useKooyaFeedback } from "@kooyaph/ui/legacy";
 const meta = {
   title: "Foundations/Provider and branding",
   tags: ["autodocs"],

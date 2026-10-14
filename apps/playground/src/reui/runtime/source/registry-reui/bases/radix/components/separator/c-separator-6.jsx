@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Separator } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "mx-auto flex w-full max-w-xs flex-col gap-2 text-sm", children: [_jsx("p", { className: "font-medium", children: "Order Summary" }), _jsx(Separator, {}), _jsxs("dl", { className: "flex items-center justify-between", children: [_jsx("dt", { className: "text-muted-foreground", children: "Subtotal" }), _jsx("dd", { children: "$49.00" })] }), _jsxs("dl", { className: "flex items-center justify-between", children: [_jsx("dt", { className: "text-muted-foreground", children: "Discount" }), _jsx("dd", { className: "text-success", children: "-$5.00" })] }), _jsxs("dl", { className: "flex items-center justify-between", children: [_jsx("dt", { className: "text-muted-foreground", children: "Tax" }), _jsx("dd", { children: "$3.52" })] }), _jsx(Separator, {}), _jsxs("dl", { className: "flex items-center justify-between font-medium", children: [_jsx("dt", { children: "Total" }), _jsx("dd", { children: "$47.52" })] })] }));
+}

@@ -1,0 +1,46 @@
+// Adapted recipe. Keep supporting modules from the Kooya recipes bundle.
+import { Button } from "../../../adapters/controls.tsx"
+import { Field, FieldGroup, FieldLabel } from "../../../adapters/layout.tsx"
+import { Input } from "../../../adapters/controls.tsx"
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "../../../adapters/overlays.tsx"
+
+export default function Pattern() {
+  return (
+    <div className="flex items-center justify-center">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline">Open Popover</Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-64" align="start">
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>
+              Set the dimensions for the layer.
+            </PopoverDescription>
+          </PopoverHeader>
+          <FieldGroup className="gap-2">
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="width" className="w-1/2">
+                Width
+              </FieldLabel>
+              <Input id="width" defaultValue="100%" />
+            </Field>
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="height" className="w-1/2">
+                Height
+              </FieldLabel>
+              <Input id="height" defaultValue="25px" />
+            </Field>
+          </FieldGroup>
+        </PopoverContent>
+      </Popover>
+    </div>
+  )
+}

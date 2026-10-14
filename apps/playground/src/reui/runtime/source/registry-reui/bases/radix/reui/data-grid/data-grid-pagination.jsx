@@ -1,0 +1,128 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useDataGrid } from "./data-grid.jsx";
+import { cn } from "cn";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "../../../../../../../adapters/selection.tsx";
+import { Skeleton } from "../../../../../../../adapters/controls.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+/**
+ * The adaptive window: first page, the run around the current one, last page,
+ * with an ellipsis standing in for each hidden stretch. It replaced fixed
+ * BLOCKS (1-5, then 6-10) because a block never shows the last page, so on a
+ * 50-page grid there was no way to reach the end - the primitive wires only
+ * `previousPage()` / `nextPage()`, so there is no last-page arrow either.
+ *
+ * `limit` is `moreLimit`: how many page buttons the truncated middle shows.
+ * At the default of 5 this emits exactly the same rows as the block version
+ * did at `moreLimit: 5`, so the prop keeps both its meaning and its default.
+ * An ellipsis never stands for a single page, because the early return covers
+ * every count a full row could hold.
+ */
+function getDataGridPaginationItems(pageIndex, pageCount, limit) {
+    // Pages flanking the current one, per side. The run is rebuilt from it so
+    // the count is always odd: an even `limit` would make the head and tail
+    // rows one slot wider than the middle, and the footer would twitch as the
+    // user pages through.
+    const sibling = Math.max(0, Math.floor(((Math.floor(limit) || 3) - 3) / 2));
+    const pages = sibling * 2 + 3;
+    // Two ellipses cost the width of two pages, so below this there is nothing
+    // to gain by hiding any.
+    if (pageCount <= pages + 2) {
+        return Array.from({ length: pageCount }, (_, index) => ({
+            type: "page",
+            index,
+        }));
+    }
+    if (pageIndex <= sibling + 2) {
+        return [
+            ...Array.from({ length: pages }, (_, index) => ({
+                type: "page",
+                index,
+            })),
+            { type: "ellipsis", direction: "next", target: pages },
+            { type: "page", index: pageCount - 1 },
+        ];
+    }
+    if (pageIndex >= pageCount - sibling - 3) {
+        return [
+            { type: "page", index: 0 },
+            {
+                type: "ellipsis",
+                direction: "previous",
+                target: pageCount - pages - 1,
+            },
+            ...Array.from({ length: pages }, (_, offset) => ({
+                type: "page",
+                index: pageCount - pages + offset,
+            })),
+        ];
+    }
+    return [
+        { type: "page", index: 0 },
+        {
+            type: "ellipsis",
+            direction: "previous",
+            target: pageIndex - sibling - 1,
+        },
+        ...Array.from({ length: sibling * 2 + 1 }, (_, offset) => ({
+            type: "page",
+            index: pageIndex - sibling + offset,
+        })),
+        { type: "ellipsis", direction: "next", target: pageIndex + sibling + 1 },
+        { type: "page", index: pageCount - 1 },
+    ];
+}
+/**
+ * A page button is square at one digit and grows from there, so the row does
+ * not reflow when the count crosses 10 or 100. The floor is each style's own
+ * `icon-sm` square, which is also its `sm` HEIGHT, so the numbers stay square
+ * and keep the arrows' height. Hardcoding one value would be right in three
+ * styles and wrong in five.
+ */
+const PAGE_BUTTON_WIDTH_CLASS = "style-vega:min-w-8 style-nova:min-w-7 style-maia:min-w-8 style-lyra:min-w-7 style-mira:min-w-6 style-luma:min-w-8 style-sera:min-w-9 style-rhea:min-w-7";
+function DataGridPagination(props) {
+    const { i18n, table, recordCount, isLoading } = useDataGrid();
+    const defaultProps = {
+        sizes: [5, 10, 25, 50, 100],
+        sizesSkeleton: _jsx(Skeleton, { className: "h-8 w-44" }),
+        moreLimit: 5,
+        infoSkeleton: _jsx(Skeleton, { className: "h-8 w-60" }),
+        rowsPerPageLabel: i18n.labels.rowsPerPage,
+        previousPageLabel: i18n.labels.previousPage,
+        nextPageLabel: i18n.labels.nextPage,
+        ellipsisText: i18n.labels.paginationEllipsis,
+    };
+    const mergedProps = { ...defaultProps, ...props };
+    const btnBaseClasses = "p-0 text-sm";
+    const btnArrowClasses = btnBaseClasses + " rtl:transform rtl:rotate-180";
+    const pageIndex = table.state.pagination.pageIndex;
+    const pageSize = table.state.pagination.pageSize;
+    const from = recordCount === 0 ? 0 : pageIndex * pageSize + 1;
+    const to = Math.min((pageIndex + 1) * pageSize, recordCount);
+    const pageCount = table.getPageCount();
+    // A supplied `info` keeps its placeholder-template contract; the default
+    // routes through the i18n label function, where word order is free.
+    const paginationInfo = mergedProps.info
+        ? mergedProps.info
+            .replaceAll("{from}", from.toString())
+            .replaceAll("{to}", to.toString())
+            .replaceAll("{count}", recordCount.toString())
+        : i18n.labels.paginationInfo({ from, to, count: recordCount });
+    const paginationItems = getDataGridPaginationItems(pageIndex, pageCount, mergedProps.moreLimit ?? 5);
+    return (_jsxs("div", { "data-slot": "data-grid-pagination", className: cn("flex grow flex-col flex-wrap items-center justify-between gap-2.5 py-2.5 sm:flex-row sm:py-0", mergedProps.className), children: [_jsx("div", { className: "order-2 flex flex-wrap items-center gap-x-2.5 pb-2.5 sm:order-1 sm:pb-0", children: isLoading ? (mergedProps.sizesSkeleton) : (_jsxs(_Fragment, { children: [_jsx("div", { className: "text-muted-foreground text-sm", children: mergedProps.rowsPerPageLabel }), _jsxs(Select, { value: `${pageSize}`, onValueChange: (value) => {
+                                const newPageSize = Number(value);
+                                table.setPageSize(newPageSize);
+                            }, children: [_jsx(SelectTrigger, { "aria-label": mergedProps.rowsPerPageLabel, className: "w-fit min-w-16", size: "sm", children: _jsx(SelectValue, {}) }), _jsx(SelectContent, { position: "popper", align: "start", className: "min-w-(--radix-select-trigger-width)", children: mergedProps.sizes?.map((size) => (_jsx(SelectItem, { value: `${size}`, children: size }, size))) })] })] })) }), _jsx("div", { className: "order-1 flex flex-col items-center justify-center gap-2.5 pt-2.5 sm:order-2 sm:flex-row sm:justify-end sm:pt-0", children: isLoading ? (mergedProps.infoSkeleton) : (_jsxs(_Fragment, { children: [_jsx("div", { className: "text-muted-foreground order-2 text-sm text-nowrap sm:order-1", children: paginationInfo }), pageCount > 1 && (_jsxs("div", { className: "order-1 flex flex-wrap items-center justify-center gap-1 sm:flex-nowrap", children: [_jsxs(Button, { size: "icon-sm", variant: "ghost", className: btnArrowClasses, onClick: () => table.previousPage(), disabled: !table.getCanPreviousPage(), children: [_jsx("span", { className: "sr-only", children: mergedProps.previousPageLabel }), _jsx(IconPlaceholder, { lucide: "ChevronLeftIcon", tabler: "IconChevronLeft", hugeicons: "ArrowLeft01Icon", phosphor: "CaretLeftIcon", remixicon: "RiArrowLeftSLine", className: "size-4" })] }), paginationItems.map((item) => item.type === "page" ? (_jsx(Button, { size: "sm", variant: "ghost", "aria-label": i18n.labels.goToPage(item.index + 1), "aria-current": pageIndex === item.index ? "page" : undefined, className: cn(PAGE_BUTTON_WIDTH_CLASS, "px-1.5 text-sm", "text-muted-foreground", {
+                                        "bg-accent text-accent-foreground": pageIndex === item.index,
+                                    }), onClick: () => {
+                                        if (pageIndex !== item.index) {
+                                            table.setPageIndex(item.index);
+                                        }
+                                    }, children: item.index + 1 }, `page-${item.index}`)) : (
+                                /* Clickable, unlike the shadcn PaginationEllipsis, which is
+                                   an aria-hidden span. This one MOVES the user, so it needs
+                                   a name saying where. */
+                                _jsx(Button, { size: "icon-sm", className: btnBaseClasses, variant: "ghost", "aria-label": i18n.labels.goToPage(item.target + 1), onClick: () => table.setPageIndex(item.target), children: mergedProps.ellipsisText }, `ellipsis-${item.direction}`))), _jsxs(Button, { size: "icon-sm", variant: "ghost", className: btnArrowClasses, onClick: () => table.nextPage(), disabled: !table.getCanNextPage(), children: [_jsx("span", { className: "sr-only", children: mergedProps.nextPageLabel }), _jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", className: "size-4" })] })] }))] })) })] }));
+}
+export { DataGridPagination };

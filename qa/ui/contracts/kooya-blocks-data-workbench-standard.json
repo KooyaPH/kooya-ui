@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "item": "kooya-blocks-data-workbench-standard",
+  "baselineRevision": "45a4123bf667fade8e43c96397d16187ca3eda1c",
+  "source": "apps/playground/src/site/collections/data.tsx",
+  "publicProps": {
+    "domain": "string; default projects",
+    "alternate": "boolean; default false",
+    "embedded": "boolean; default false"
+  },
+  "scope": {
+    "domain": "projects",
+    "alternate": false,
+    "embedded": [
+      false,
+      true
+    ]
+  },
+  "records": "12 seeded real local records. No record injection API. Boundary content is entered through actual Add/Edit form.",
+  "dependencies": [
+    "collections/state.ts.filterRows",
+    "collections/state.ts.downloadText",
+    "collections/shared.tsx.DemoFrame",
+    "collections/collections.css",
+    "site/site.css",
+    "KooyaProvider",
+    "native Ant Button/Checkbox/Collapse/Drawer/Form/Input/InputNumber/Modal/Select/Slider/Table/Tag",
+    "@rc-component/util focus patch",
+    "@rc-component/table measurement inert patch"
+  ],
+  "states": [
+    "ready",
+    "search-results",
+    "search-empty",
+    "status-dropdown",
+    "status-filtered",
+    "category-popup",
+    "category-filtered",
+    "sort-name-ascending",
+    "sort-name-descending",
+    "sort-value-ascending",
+    "sort-value-descending",
+    "page-two",
+    "page-three",
+    "page-size-dropdown",
+    "page-size-ten",
+    "page-size-twenty",
+    "selected",
+    "archive-success",
+    "controls-open",
+    "hidden-columns",
+    "fixed-column",
+    "reverse-columns",
+    "grouped",
+    "group-collapsed",
+    "virtual",
+    "column-width-min",
+    "column-width-max",
+    "expanded-row",
+    "details-drawer",
+    "add-modal",
+    "add-invalid",
+    "add-missing-value",
+    "add-dirty",
+    "add-success",
+    "edit-modal",
+    "edit-dirty",
+    "edit-success",
+    "export-success",
+    "reset-view",
+    "long-name-row",
+    "long-note-expanded",
+    "long-details",
+    "long-edit",
+    "zero-value",
+    "extreme-value",
+    "unicode-row",
+    "shell-loading",
+    "shell-empty",
+    "shell-error",
+    "grouped-selected",
+    "add-category-popup",
+    "add-status-popup",
+    "edit-category-popup",
+    "edit-status-popup"
+  ],
+  "widths": [
+    320,
+    360,
+    390,
+    768,
+    1024,
+    1280,
+    1440,
+    1920
+  ],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "densities": [
+    "comfortable",
+    "compact"
+  ],
+  "motions": [
+    "no-preference",
+    "reduce"
+  ],
+  "engines": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "fixtures": [
+    "catalog",
+    "embedded"
+  ],
+  "excludedUnsupportedWorkflows": [
+    "Delete: no API or UI",
+    "Real asynchronous loading/error/recovery: no async data API; DemoFrame states are simulated shells",
+    "negative values: actual InputNumber min=0 forbids negative input"
+  ],
+  "invariants": [
+    "Contained horizontal table scrolling; document overflow <=1 CSS px",
+    "CSV follows all filtered sorted records across pages, selected subset when selection exists",
+    "Filters, sorting, pagination, edits and archive keep record attribution consistent",
+    "Reset returns all view controls and first page to initial state without resetting saved records",
+    "Actual labeled form validates empty/whitespace name and preserves dirty fields during appearance/motion/resize",
+    "Keyboard access, overlay focus trap and focus return",
+    "Long strings and Unicode retain accessible full text without unreachable actions",
+    "Density and reduced motion remain functional",
+    "No unexplained console/resource errors"
+  ],
+  "acceptance": "shared-repair",
+  "matrixCasesPerState": 192,
+  "minimumDeclaredMatrixCases": 10368,
+  "requiredAdditionalCoverage": [
+    "catalog iframe embedding",
+    "actual prop embedded",
+    "text spacing",
+    "native browser zoom",
+    "temporal animation",
+    "30 mount/open-close cycles",
+    "CLS/input latency",
+    "independent fresh capture and full resolution inspection",
+    "Real empty-results axe in both modes",
+    "Table active sort/filter nontext contrast",
+    "80/200/512-character names through actual Add/Edit",
+    "Empty/nullable numeric value via actual InputNumber if supported",
+    "All state axe scans including actual nested form dropdowns and grouped selection"
+  ],
+  "unavailablePlatformLimits": [
+    "Real Safari/iOS",
+    "Physical touch",
+    "Native screenreader",
+    "Previous2 Firefox/Edge/Safari exact binaries/platforms pending; three released Chrome targets are runnable but item checks remain pending"
+  ],
+  "knownDefects": [
+    "WB-001",
+    "WB-002",
+    "WB-003",
+    "WB-004",
+    "WB-005",
+    "WB-006",
+    "WB-007",
+    "WB-008",
+    "WB-009",
+    "WB-010",
+    "WB-011",
+    "WB-012",
+    "WB-013",
+    "WB-014",
+    "WB-015",
+    "WB-016",
+    "WB-017"
+  ],
+  "pilotEvidence": {
+    "captured": 141,
+    "workerInspected": 12,
+    "independentReviewed": 0,
+    "configuration": "47 historical states at1280/light/comfortable/no-preference x3engines; current contract adds5 discovered states",
+    "currentStatus": "WB007/WB008 prevent acceptance; shared repairs will make this provider fingerprint stale"
+  },
+  "additionalRunnableReleasedTargets": [
+    {
+      "name": "Chrome for Testing 155.0.8059.39",
+      "version": "155.0.8059.39",
+      "coverage": "Pending separate captures and inspection; not substituted for bundled Chromium"
+    },
+    {
+      "name": "Chrome for Testing 154.0.8037.92",
+      "version": "154.0.8037.92",
+      "coverage": "Pending separate captures and inspection; not substituted for bundled Chromium"
+    },
+    {
+      "name": "Chrome for Testing 153.0.8010.52",
+      "version": "153.0.8010.52",
+      "coverage": "Pending separate captures and inspection; not substituted for bundled Chromium"
+    }
+  ],
+  "minimumCasesIncludingReleasedChrome": 20736,
+  "frozen5305PilotEvidence": {
+    "artifactId": "ef7c61e62cc2892589ec6500a36bda8f84734ac613fb59849db9bbeaef248ad9",
+    "captured": 156,
+    "workerInspected": 156,
+    "independentReviewed": 0,
+    "configuration": "52 historical states at1280/light/comfortable/no-preference x3engines",
+    "currentStatus": "All3 configuration tests fail WB013 andWB014; later rapid interaction/mobile/numeric defects WB015..017 independently red on5306; current54 states add20/page and missing-Hours validation. No full matrix acceptance."
+  },
+  "frozen5307PilotEvidence": {
+    "artifactId": "d301063c260f91798a48e78bfb63c98dabe7b5189ed351e5354d08d9978affaa",
+    "sourceFingerprint": "62680013c30aad6d6d02b804b1b5c969f4252ed9ae9e3c49308bee636324730d",
+    "focusedTests": {
+      "passed": 66,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "captured": 162,
+    "workerInspected": 162,
+    "independentReviewed": 0,
+    "configuration": "54states at1280/light/comfortable/no-preference x3local engines",
+    "actualStateAxeViolations": 0,
+    "consoleAndResourceEvents": 0,
+    "workerObservationsSHA256": "ef11fe8df386b428b2d453227695c7152566acf95b5883dd7b23b3b20e88d4c7",
+    "currentStatus": "Focused regressions and3 pilot configurations pass; all162 originals individually inspected and SHA verified. Full matrix, supplementary qualifications and fresh independent review pending; item not accepted.",
+    "axeIncompleteRuleEntries": {
+      "color-contrast": 150,
+      "aria-valid-attr-value": 18,
+      "aria-input-field-name": 30,
+      "aria-prohibited-attr": 9,
+      "th-has-data-cells": 3
+    }
+  },
+  "frozen5307NarrowEvidence": {
+    "artifactId": "d301063c260f91798a48e78bfb63c98dabe7b5189ed351e5354d08d9978affaa",
+    "configuration": "54states at320/light/comfortable/no-preference x3local engines",
+    "captured": 162,
+    "workerInspected": 33,
+    "workerInspectionByEngine": {
+      "chromium": 17,
+      "firefox": 8,
+      "webkit": 8
+    },
+    "independentReviewed": 0,
+    "configurationTests": {
+      "passed": 2,
+      "failed": 1,
+      "exitCode": 1
+    },
+    "actualStateAxeViolations": 0,
+    "axeIncompleteRuleEntries": {
+      "color-contrast": 153,
+      "aria-valid-attr-value": 18,
+      "aria-input-field-name": 30,
+      "aria-prohibited-attr": 9,
+      "th-has-data-cells": 3
+    },
+    "consoleEvents": {
+      "chromium": 0,
+      "firefox": 2,
+      "webkit": 0
+    },
+    "openIssue": "Firefox final zero-events assertion fails two native scroll-linked positioning warnings, first recorded status-filtered. No warning suppression or unverified classification.",
+    "workerObservationsSHA256": "3c9815657080c1257857f6882e60b32fd8fdc1bacbac8c09dc663fe9b67f6a00",
+    "currentStatus": "Run remains red;129 narrow originals uninspected. Full matrix and supplementary/manual/independent qualification pending."
+  }
+}

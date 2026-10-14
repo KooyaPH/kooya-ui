@@ -6,7 +6,7 @@ import {
   Button,
   Checkbox,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const metrics = [
   {
     id: "active",

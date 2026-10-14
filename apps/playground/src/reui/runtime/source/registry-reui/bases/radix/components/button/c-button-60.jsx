@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { RiFacebookFill, RiGithubFill, RiGoogleFill, RiTwitterXFill, } from "@remixicon/react";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "flex flex-wrap gap-2", children: [_jsx(Button, { "aria-label": "Login with Google", className: "flex-1", size: "icon", variant: "outline", children: _jsx(RiGoogleFill, { "aria-hidden": "true", className: "dark:text-primary text-[#DB4437]", size: 16 }) }), _jsx(Button, { "aria-label": "Login with Facebook", className: "flex-1", size: "icon", variant: "outline", children: _jsx(RiFacebookFill, { "aria-hidden": "true", className: "dark:text-primary text-[#1877f2]", size: 16 }) }), _jsx(Button, { "aria-label": "Login with X", className: "flex-1", size: "icon", variant: "outline", children: _jsx(RiTwitterXFill, { "aria-hidden": "true", className: "dark:text-primary text-[#14171a]", size: 16 }) }), _jsx(Button, { "aria-label": "Login with GitHub", className: "flex-1", size: "icon", variant: "outline", children: _jsx(RiGithubFill, { "aria-hidden": "true", className: "dark:text-primary text-black", size: 16 }) })] }));
+}

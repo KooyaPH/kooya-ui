@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { ButtonGroup } from "../../../../../../../adapters/controls.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsxs(ButtonGroup, { orientation: "vertical", children: [_jsxs(ButtonGroup, { orientation: "vertical", children: [_jsx(Button, { variant: "outline", size: "icon", "aria-label": "Search", children: _jsx(IconPlaceholder, { lucide: "SearchIcon", tabler: "IconSearch", hugeicons: "Search01Icon", phosphor: "MagnifyingGlassIcon", remixicon: "RiSearchLine", "aria-hidden": "true" }) }), _jsx(Button, { variant: "outline", size: "icon", "aria-label": "Copy", children: _jsx(IconPlaceholder, { lucide: "CopyIcon", tabler: "IconCopy", hugeicons: "CopyIcon", phosphor: "CopyIcon", remixicon: "RiFileCopyLine", "aria-hidden": "true" }) }), _jsx(Button, { variant: "outline", size: "icon", "aria-label": "Share", children: _jsx(IconPlaceholder, { lucide: "UploadIcon", tabler: "IconUpload", hugeicons: "Upload01Icon", phosphor: "UploadSimple", remixicon: "RiUpload2Line", "aria-hidden": "true" }) })] }), _jsx(ButtonGroup, { children: _jsx(Button, { variant: "outline", size: "icon", "aria-label": "Trash", children: _jsx(IconPlaceholder, { lucide: "Trash2Icon", tabler: "IconTrash", hugeicons: "Delete02Icon", phosphor: "TrashIcon", remixicon: "RiDeleteBinLine", "aria-hidden": "true" }) }) })] }));
+}

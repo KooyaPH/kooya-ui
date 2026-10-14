@@ -1,0 +1,127 @@
+diff --git a/es/hooks/useAlign.js b/es/hooks/useAlign.js
+index a985efe277ca2eb94eda61f1de2291099a79673a..e055f618ff729ba714301ee839d45062862f1161 100644
+--- a/es/hooks/useAlign.js
++++ b/es/hooks/useAlign.js
+@@ -106,6 +106,12 @@ export default function useAlign(open, popupEle, target, placement, builtinPlace
+       const originOverflow = popupElement.style.overflow;
+       const originOverflowX = popupElement.style.overflowX;
+       const originOverflowY = popupElement.style.overflowY;
++      const originWidth = popupElement.style.getPropertyValue('width');
++      const originWidthPriority = popupElement.style.getPropertyPriority('width');
++      // Absolute auto-width popups can widen when reset to the origin, reducing
++      // wrapped height. Measure at the current width so overflow flips use the
++      // actual layout, then restore the caller's inline value and priority.
++      popupElement.style.setProperty('width', win.getComputedStyle(popupElement).width, 'important');
+ 
+       // Placement
+       const placementInfo = {
+@@ -214,6 +220,8 @@ export default function useAlign(open, popupEle, target, placement, builtinPlace
+       popupElement.style.overflow = originOverflow;
+       popupElement.style.overflowX = originOverflowX;
+       popupElement.style.overflowY = originOverflowY;
++      if (originWidth) popupElement.style.setProperty('width', originWidth, originWidthPriority);
++      else popupElement.style.removeProperty('width');
+       popupElement.parentElement?.removeChild(placeholderElement);
+ 
+       // Calculate scale
+@@ -444,7 +452,9 @@ export default function useAlign(open, popupEle, target, placement, builtinPlace
+ 
+         // Bottom
+         if (nextPopupBottom > visibleRegionArea.bottom) {
+-          nextOffsetY -= nextPopupBottom - visibleRegionArea.bottom - popupOffsetY;
++          // The target gap is already included in nextPopupBottom. Keeping it
++          // again after shifting pushes the popup past the viewport boundary.
++          nextOffsetY -= nextPopupBottom - visibleRegionArea.bottom;
+           if (targetRect.y > visibleRegionArea.bottom - numShiftY) {
+             nextOffsetY += targetRect.y - visibleRegionArea.bottom + numShiftY;
+           }
+diff --git a/es/index.js b/es/index.js
+index b14e0c30992cf97c8471b8a53e7004bfea67ee77..f9a2c6f7e518ffdc78a504b70f408cf2eeadfc06 100644
+--- a/es/index.js
++++ b/es/index.js
+@@ -1,7 +1,7 @@
+ import Portal from '@rc-component/portal';
+ import { clsx } from 'clsx';
+ import { useResizeObserver } from '@rc-component/resize-observer';
+-import { getDOM, getNodeRef, getShadowRoot, isDOM, useComposeRef, useEvent, useId, useLayoutEffect } from '@rc-component/util';
++import { getDOM, getNodeRef, getShadowRoot, isDOM, raf, useComposeRef, useEvent, useId, useLayoutEffect } from '@rc-component/util';
+ import * as React from 'react';
+ import Popup from "./Popup";
+ import TriggerContext, { UniqueContext } from "./context";
+@@ -319,8 +319,15 @@ export function generateTrigger(PortalComponent = Portal) {
+     useLayoutEffect(() => {
+       if (motionPrepareResolve) {
+         onAlign();
+-        motionPrepareResolve();
+-        setMotionPrepareResolve(null);
++        // Commit the first position before remeasuring wrapped auto-width
++        // content. Resolve preparation only with the final alignment, so the
++        // popup does not visibly flip after its entrance animation.
++        const frame = raf(() => {
++          onAlign();
++          motionPrepareResolve();
++          setMotionPrepareResolve(null);
++        }, 2);
++        return () => raf.cancel(frame);
+       }
+     }, [motionPrepareResolve]);
+ 
+diff --git a/lib/hooks/useAlign.js b/lib/hooks/useAlign.js
+index e2c17dfa9725c6e7ca68d284c2a4229d7d73a816..2851adffb8621c72af7619e8aa22abcf5e604350 100644
+--- a/lib/hooks/useAlign.js
++++ b/lib/hooks/useAlign.js
+@@ -114,6 +114,12 @@ function useAlign(open, popupEle, target, placement, builtinPlacements, popupAli
+       const originOverflow = popupElement.style.overflow;
+       const originOverflowX = popupElement.style.overflowX;
+       const originOverflowY = popupElement.style.overflowY;
++      const originWidth = popupElement.style.getPropertyValue('width');
++      const originWidthPriority = popupElement.style.getPropertyPriority('width');
++      // Absolute auto-width popups can widen when reset to the origin, reducing
++      // wrapped height. Measure at the current width so overflow flips use the
++      // actual layout, then restore the caller's inline value and priority.
++      popupElement.style.setProperty('width', win.getComputedStyle(popupElement).width, 'important');
+ 
+       // Placement
+       const placementInfo = {
+@@ -222,6 +228,8 @@ function useAlign(open, popupEle, target, placement, builtinPlacements, popupAli
+       popupElement.style.overflow = originOverflow;
+       popupElement.style.overflowX = originOverflowX;
+       popupElement.style.overflowY = originOverflowY;
++      if (originWidth) popupElement.style.setProperty('width', originWidth, originWidthPriority);
++      else popupElement.style.removeProperty('width');
+       popupElement.parentElement?.removeChild(placeholderElement);
+ 
+       // Calculate scale
+@@ -452,7 +460,9 @@ function useAlign(open, popupEle, target, placement, builtinPlacements, popupAli
+ 
+         // Bottom
+         if (nextPopupBottom > visibleRegionArea.bottom) {
+-          nextOffsetY -= nextPopupBottom - visibleRegionArea.bottom - popupOffsetY;
++          // The target gap is already included in nextPopupBottom. Keeping it
++          // again after shifting pushes the popup past the viewport boundary.
++          nextOffsetY -= nextPopupBottom - visibleRegionArea.bottom;
+           if (targetRect.y > visibleRegionArea.bottom - numShiftY) {
+             nextOffsetY += targetRect.y - visibleRegionArea.bottom + numShiftY;
+           }
+diff --git a/lib/index.js b/lib/index.js
+index 1727a7fbfb68de729d5937aebbdc96ae809dbb95..bac87a4f68ee91a98dafd05f385fd1586b485496 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -332,8 +332,15 @@ function generateTrigger(PortalComponent = _portal.default) {
+     (0, _util.useLayoutEffect)(() => {
+       if (motionPrepareResolve) {
+         onAlign();
+-        motionPrepareResolve();
+-        setMotionPrepareResolve(null);
++        // Commit the first position before remeasuring wrapped auto-width
++        // content. Resolve preparation only with the final alignment, so the
++        // popup does not visibly flip after its entrance animation.
++        const frame = (0, _util.raf)(() => {
++          onAlign();
++          motionPrepareResolve();
++          setMotionPrepareResolve(null);
++        }, 2);
++        return () => _util.raf.cancel(frame);
+       }
+     }, [motionPrepareResolve]);
+ 

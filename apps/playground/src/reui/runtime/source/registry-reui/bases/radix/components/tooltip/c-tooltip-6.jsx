@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Badge } from "../../../../../../../adapters/structured.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, } from "../../../../../../../adapters/overlays.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsx(TooltipProvider, { children: _jsxs(Tooltip, { children: [_jsx(TooltipTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", className: "w-fit", children: "System Status" }) }), _jsx(TooltipContent, { className: "p-2", children: _jsxs("div", { className: "flex flex-col gap-2", children: [_jsxs("div", { className: "flex items-center justify-between gap-4", children: [_jsx("span", { className: "font-medium", children: "API" }), _jsx(Badge, { variant: "success", size: "sm", children: "Operational" })] }), _jsxs("div", { className: "flex items-center justify-between gap-4", children: [_jsx("span", { className: "font-medium", children: "Database" }), _jsx(Badge, { variant: "info", size: "sm", children: "Operational" })] }), _jsxs("div", { className: "flex items-center justify-between gap-4", children: [_jsx("span", { className: "font-medium", children: "CDN" }), _jsx(Badge, { variant: "warning", size: "sm", children: "Degraded" })] }), _jsx("p", { className: "text-[10px] opacity-80", children: "Updated 2 min ago" })] }) })] }) }) }));
+}

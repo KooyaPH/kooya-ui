@@ -14,7 +14,7 @@ import {
   Input,
   TextArea,
   Select,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const meta = {
   title: "Atoms/Button",
   component: Button,

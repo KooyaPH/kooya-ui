@@ -1,0 +1,20 @@
+// Adapted recipe. Keep supporting modules from the Kooya recipes bundle.
+import { Button } from "../../../adapters/controls.tsx"
+import { IconPlaceholder } from "../../../adapters/icons.tsx"
+
+export default function Pattern() {
+  return (
+    <Button variant="link" className="group/link-button">
+      View Documentation
+      <IconPlaceholder
+        lucide="ArrowUpRightIcon"
+        tabler="IconArrowUpRight"
+        hugeicons="ArrowUpRight01Icon"
+        phosphor="ArrowUpRightIcon"
+        remixicon="RiArrowRightUpLine"
+        aria-hidden="true"
+        className="transition-transform group-hover/link-button:rotate-45"
+      />
+    </Button>
+  )
+}
