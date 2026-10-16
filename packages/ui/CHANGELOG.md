@@ -1,5 +1,11 @@
 # @kooyaph/ui changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- 2b37580: Add controlled application authorization and value-level loading compositions. Preserve table headers and static template structure during pending reads; retain cached values during refresh. BusyBoundary callers should wrap custom dynamic fields in DataValue.
+
 ## 1.0.0
 
 - Establish Editorial and Governance as the v1 workspace compositions. Default to Kooya Olive, Light and Compact, with twelve palettes and accessible custom accents.

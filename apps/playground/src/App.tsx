@@ -9,21 +9,18 @@ export default function App() {
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
-  const isLab =
-    !hash ||
-    /^#\/?(?:overview|explore|frame|compare)(?:\/|\?|$)/.test(hash) ||
-    hash === "#/";
   return (
     <Suspense
       fallback={
         <div role="status" style={{ padding: 40, fontFamily: "sans-serif" }}>
-          Opening your workspace…
+          Opening Kooya UI…
         </div>
       }
     >
       {hash.startsWith("#/stress") ? (
         <WorkspaceStress />
-      ) : isLab || hash.startsWith("#/workspace") ? (
+      ) : hash.startsWith("#/workspace") ||
+        /^#\/(explore|frame|compare)/.test(hash) ? (
         <WorkspaceV1 />
       ) : (
         <LibrarySite />

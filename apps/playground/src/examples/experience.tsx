@@ -1,3 +1,5 @@
+import LoadingPatterns from "../site/collections/loading";
+import { DataValue } from "@kooyaph/ui/molecules";
 import { DeviceExperience } from "./device-experience";
 import {
   createContext,
@@ -18,7 +20,6 @@ import {
   BusyBoundary,
   Card,
   Chip,
-  ContentSkeleton,
   Dialog,
   ErrorState,
   FeedbackState,
@@ -159,7 +160,7 @@ function useExperience() {
   return context;
 }
 const snippets = {
-  loading: `const read = useQuery({ queryKey: ['brief', identity],\n  queryFn: ({ signal }) => readBrief(signal) });\n<BusyBoundary busy={read.isPending} skeleton="card">\n  <Brief value={read.data} />\n</BusyBoundary>\nconst failure: SafeFailure = {\n  publicCode: "RESOURCE_UNAVAILABLE", codeSource: "server",\n  httpStatus: 503, recovery: "retry"\n};\n// Map unknown errors to an allowlisted public code. Never show raw details.`,
+  loading: `const read = useQuery({ queryKey: ['brief', identity],\n  queryFn: ({ signal }) => readBrief(signal) });\n<BusyBoundary busy={read.isPending} skeleton="card">\n  <h2>Project brief</h2>\n  <DataValue>{read.data?.title}</DataValue>\n</BusyBoundary>\nconst failure: SafeFailure = {\n  publicCode: "RESOURCE_UNAVAILABLE", codeSource: "server",\n  httpStatus: 503, recovery: "retry"\n};\n// Map unknown errors to an allowlisted public code. Never show raw details.`,
   cache: `// Reuse your existing Query v5 client and key factory.\nuseQuery({ queryKey: ['brief', identity, organization],\n  queryFn: ({ signal }) => readBrief(signal), staleTime: 30_000 });\nawait queryClient.invalidateQueries({ queryKey: ['brief', identity] });\n// On identity loss: cancel/remove protected queries before replacement.`,
   preload: `// Schedule on pointer hover or keyboard focus; cancel pending intent\n// on leave/blur. Skip offline/saveData/slow connection.\nconst timer = setTimeout(() => queryClient.prefetchQuery(options), 150);\n// clearTimeout(timer) cancels intent; it cannot abort an import already started.`,
   transfer: `const controller = new AbortController();\nconst blob = await readStream(controller.signal, onBytes);\nif (!controller.signal.aborted) objectUrl = URL.createObjectURL(blob);\n// Cancel on scope loss; revoke URLs on replacement and owner teardown.\n// Say 'Sent to browser', never 'Saved to disk'.`,
@@ -230,13 +231,17 @@ function LoadingDemo() {
         />
       ) : (
         <BusyBoundary busy={query.isPending} skeleton="card">
-          <h3>{query.data?.title}</h3>
-          <p>{query.data?.summary}</p>
+          <h3>
+            <DataValue>{query.data?.title}</DataValue>
+          </h3>
+          <p>
+            <DataValue block>{query.data?.summary}</DataValue>
+          </p>
         </BusyBoundary>
       )}
       <Guide
         story="As a reader, I want a stable page while the brief loads and a useful recovery when it fails."
-        behavior="The same card footprint shows skeleton, ready content or safe public code and Retry."
+        behavior="The card and static actions stay visible. Only unavailable title and summary values become skeletons; failures show a safe public code and Retry."
         limits="650ms fictional local read. Failure explicitly demonstrates HTTP 503; no API request or real server response."
         code={snippets.loading}
       />
@@ -260,8 +265,12 @@ function CacheRecord() {
       skeleton="card"
       label={query.data ? "Updating cached brief" : "Loading cached brief"}
     >
-      <h3>{query.data?.title}</h3>
-      <p>{query.data?.summary}</p>
+      <h3>
+        <DataValue>{query.data?.title}</DataValue>
+      </h3>
+      <p>
+        <DataValue block>{query.data?.summary}</DataValue>
+      </p>
       <p>
         Local reads in this visit: {count}.{" "}
         {query.data
@@ -391,7 +400,9 @@ function IntentRecord({
   const query = useQuery(options);
   return (
     <BusyBoundary busy={query.isPending} skeleton="card">
-      <p>{query.data?.title}</p>
+      <p>
+        <DataValue>{query.data?.title}</DataValue>
+      </p>
     </BusyBoundary>
   );
 }
@@ -569,15 +580,8 @@ function StateLibrary() {
           activation. No request is sent.
         </p>
       </Card>
-      <Card title="Skeleton structures">
-        {(
-          ["page", "metric", "card", "table", "list", "form", "inbox"] as const
-        ).map((layout) => (
-          <section key={layout}>
-            <h3>{layout}</h3>
-            <ContentSkeleton layout={layout} rows={2} />
-          </section>
-        ))}
+      <Card title="Data loading patterns">
+        <LoadingPatterns />
       </Card>
       <FeedbackState kind="empty" />
       <FeedbackState kind="offline" />

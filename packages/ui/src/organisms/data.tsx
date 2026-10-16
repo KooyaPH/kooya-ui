@@ -1,4 +1,8 @@
-import { BusyBoundary } from "../molecules/experience";
+import {
+  BusyBoundary,
+  DataValue,
+  useDataLoading,
+} from "../molecules/experience";
 import { useDeviceMode } from "../foundations/device";
 import {
   Table,
@@ -75,13 +79,18 @@ export function DataTable<Row extends object>({
   onRow,
 }: DataTableProps<Row>) {
   const mode = useDeviceMode();
+  const inheritedLoading = useDataLoading();
+  const busy = loading ?? inheritedLoading;
+  const cold = !!busy && rows.length === 0;
   const [filtersOpen, setFiltersOpen] = useState(false);
   const scrollRegionRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const region = scrollRegionRef.current;
     if (!region) return;
     const labelScrollableContent = () => {
-      for (const content of region.querySelectorAll<HTMLElement>(".ant-table-content")) {
+      for (const content of region.querySelectorAll<HTMLElement>(
+        ".ant-table-content",
+      )) {
         content.tabIndex = 0;
         content.setAttribute("role", "group");
         content.setAttribute("aria-label", `${label} table scroll area`);
@@ -105,7 +114,7 @@ export function DataTable<Row extends object>({
     : columns;
   return (
     <BusyBoundary
-      busy={!!loading}
+      busy={!!busy}
       keepContent={rows.length > 0}
       label={rows.length ? "Updating records" : "Loading records"}
       skeleton="table"
@@ -143,12 +152,32 @@ export function DataTable<Row extends object>({
           )}
           <Table<Row>
             className="ku-table"
-            dataSource={[...rows]}
-            rowKey={rowKey}
+            dataSource={
+              cold
+                ? Array.from(
+                    { length: 5 },
+                    (_, index) => ({ __kuSkeleton: index }) as unknown as Row,
+                  )
+                : [...rows]
+            }
+            rowKey={
+              cold
+                ? (row) =>
+                    `ku-loading-${(row as { __kuSkeleton: number }).__kuSkeleton}`
+                : rowKey
+            }
             columns={displayedColumns.map(
               ({ mobileLabel, priority, ...column }) => ({
                 ...column,
                 fixed: cards ? undefined : column.fixed,
+                sorter: column.sorter
+                  ? (a: Row, b: Row) => (cold ? 0 : column.sorter!(a, b))
+                  : undefined,
+                onFilter: column.onFilter
+                  ? (value: string | number | bigint | boolean, row: Row) =>
+                      cold ? true : column.onFilter!(value, row)
+                  : undefined,
+                filteredValue: cold ? null : column.filteredValue,
                 className: [
                   column.className,
                   priority === "secondary" ? "ku-column-secondary" : "",
@@ -163,16 +192,34 @@ export function DataTable<Row extends object>({
                           ? column.title
                           : column.key)}
                     </span>
-                    <div className="ku-record-value">{column.render(row)}</div>
+                    <div className="ku-record-value">
+                      <DataValue
+                        loading={cold}
+                        width={column.key.length % 2 ? "68%" : "84%"}
+                      >
+                        {!cold && column.render(row)}
+                      </DataValue>
+                    </div>
                   </>
                 ),
               }),
             )}
             locale={{ emptyText: empty }}
-            pagination={pagination}
-            rowSelection={rowSelection}
-            onChange={onChange}
-            onRow={onRow}
+            pagination={cold ? false : pagination}
+            rowSelection={
+              cold && rowSelection
+                ? {
+                    ...rowSelection,
+                    selectedRowKeys: [],
+                    getCheckboxProps: () => ({ disabled: true }),
+                    onChange: undefined,
+                    onSelect: undefined,
+                    onSelectAll: undefined,
+                  }
+                : rowSelection
+            }
+            onChange={cold ? undefined : onChange}
+            onRow={cold ? undefined : onRow}
             scroll={{ x: minWidth }}
             components={tableComponents}
           />

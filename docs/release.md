@@ -38,4 +38,4 @@ repository, workflow files, or command history.
 
 ## Public v1 archive
 
-KooyaHQ consumes the immutable public GitHub Release asset `kooyaph-ui-1.0.0.tgz`, with its SHA-256 checksum and pnpm SHA-512 lock integrity. Qualify the exact source commit, pack `packages/ui`, inspect its file list, then create tag/release v1.0.0 on that commit and upload the archive and checksum. Existing tags and assets are never overwritten. GitHub Packages access is independent and is not required for this installation path.
+KooyaHQ consumes the immutable public GitHub Release asset `kooyaph-ui-1.1.0.tgz`, with its SHA-256 checksum and pnpm SHA-512 lock integrity. Qualify the exact source commit, pack `packages/ui`, inspect its file list, then create tag/release v1.1.0 on that commit and upload the archive and checksum. Existing tags and assets are never overwritten. GitHub Packages access is independent and is not required for this installation path.

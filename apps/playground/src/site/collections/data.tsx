@@ -1,4 +1,15 @@
-import { forwardRef, useMemo, useState, type HTMLAttributes, type TableHTMLAttributes, type ThHTMLAttributes, type Key } from "react";
+import { DataValue } from "@kooyaph/ui/molecules";
+import {
+  forwardRef,
+  isValidElement,
+  useMemo,
+  useState,
+  type ReactNode,
+  type HTMLAttributes,
+  type TableHTMLAttributes,
+  type ThHTMLAttributes,
+  type Key,
+} from "react";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import {
   Button,
@@ -23,27 +34,93 @@ import { filterRows, downloadText } from "./state";
 
 // Keep the native virtual layout/ref contract. The complete column order is
 // rendered; these supported parts restore its header/row/cell relationships.
-const VirtualHeaderTable = forwardRef<HTMLTableElement, TableHTMLAttributes<HTMLTableElement>>((props, ref) => {
-  const { "aria-label": label, "aria-labelledby": labelledBy, "aria-describedby": describedBy, "aria-rowcount": rowCount, "aria-colcount": columnCount, ...rest } = props;
+const VirtualHeaderTable = forwardRef<
+  HTMLTableElement,
+  TableHTMLAttributes<HTMLTableElement>
+>((props, ref) => {
+  const {
+    "aria-label": label,
+    "aria-labelledby": labelledBy,
+    "aria-describedby": describedBy,
+    "aria-rowcount": rowCount,
+    "aria-colcount": columnCount,
+    ...rest
+  } = props;
   // These belong to the actual virtual owner, not its visual header table.
   return <table {...rest} ref={ref} role="presentation" />;
 });
-const VirtualHeaderGroup = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>((props, ref) => <thead {...props} ref={ref} role="rowgroup" />);
-const VirtualHeaderRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>((props, ref) => <tr {...props} ref={ref} role="row" />);
-const VirtualHeaderCell = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCellElement>>((props, ref) => {
-  const scrollbar = props.className?.split(" ").includes("ant-table-cell-scrollbar");
-  return <th {...props} ref={ref} role={scrollbar ? "presentation" : "columnheader"} aria-hidden={scrollbar || undefined} />;
+const VirtualHeaderGroup = forwardRef<
+  HTMLTableSectionElement,
+  HTMLAttributes<HTMLTableSectionElement>
+>((props, ref) => <thead {...props} ref={ref} role="rowgroup" />);
+const VirtualHeaderRow = forwardRef<
+  HTMLTableRowElement,
+  HTMLAttributes<HTMLTableRowElement>
+>((props, ref) => <tr {...props} ref={ref} role="row" />);
+const VirtualHeaderCell = forwardRef<
+  HTMLTableCellElement,
+  ThHTMLAttributes<HTMLTableCellElement>
+>((props, ref) => {
+  const scrollbar = props.className
+    ?.split(" ")
+    .includes("ant-table-cell-scrollbar");
+  return (
+    <th
+      {...props}
+      ref={ref}
+      role={scrollbar ? "presentation" : "columnheader"}
+      aria-hidden={scrollbar || undefined}
+    />
+  );
 });
-const VirtualBodyGroup = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => <div {...props} ref={ref} role="rowgroup" />);
-const VirtualBodyRow = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => <div {...props} ref={ref} role={props.className?.split(" ").includes("ant-table-expanded-row") ? "presentation" : "row"} />);
-const VirtualBodyCell = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { colSpan?: number; rowSpan?: number }>((props, ref) => {
+const VirtualBodyGroup = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLDivElement>
+>((props, ref) => <div {...props} ref={ref} role="rowgroup" />);
+const VirtualBodyRow = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLDivElement>
+>((props, ref) => (
+  <div
+    {...props}
+    ref={ref}
+    role={
+      props.className?.split(" ").includes("ant-table-expanded-row")
+        ? "presentation"
+        : "row"
+    }
+  />
+));
+const VirtualBodyCell = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLDivElement> & { colSpan?: number; rowSpan?: number }
+>((props, ref) => {
   const { colSpan, rowSpan, ...rest } = props;
-  const detail = props.className?.split(" ").includes("ant-table-expanded-row-cell");
-  return <div {...rest} ref={ref} role={detail ? "presentation" : "cell"} aria-colspan={!detail && colSpan && colSpan > 1 ? colSpan : undefined} aria-rowspan={!detail && rowSpan && rowSpan > 1 ? rowSpan : undefined} />;
+  const detail = props.className
+    ?.split(" ")
+    .includes("ant-table-expanded-row-cell");
+  return (
+    <div
+      {...rest}
+      ref={ref}
+      role={detail ? "presentation" : "cell"}
+      aria-colspan={!detail && colSpan && colSpan > 1 ? colSpan : undefined}
+      aria-rowspan={!detail && rowSpan && rowSpan > 1 ? rowSpan : undefined}
+    />
+  );
 });
 const virtualTableParts = {
-  header: { table: VirtualHeaderTable, wrapper: VirtualHeaderGroup, row: VirtualHeaderRow, cell: VirtualHeaderCell },
-  body: { wrapper: VirtualBodyGroup, row: VirtualBodyRow, cell: VirtualBodyCell },
+  header: {
+    table: VirtualHeaderTable,
+    wrapper: VirtualHeaderGroup,
+    row: VirtualHeaderRow,
+    cell: VirtualHeaderCell,
+  },
+  body: {
+    wrapper: VirtualBodyGroup,
+    row: VirtualBodyRow,
+    cell: VirtualBodyCell,
+  },
 };
 export type WorkRecord = {
   id: string;
@@ -277,7 +354,11 @@ export function DataWorkbench({
       sorter: true,
       sortOrder: sort?.key === "name" ? sort.order : null,
       render: (name: string, row) => (
-        <Button type="link" className="workbench-record-name" onClick={() => setDetails(row)}>
+        <Button
+          type="link"
+          className="workbench-record-name"
+          onClick={() => setDetails(row)}
+        >
           {name}
         </Button>
       ),
@@ -358,42 +439,93 @@ export function DataWorkbench({
     const realVirtual = virtual && dataRows.length > 0;
     const rowIndex = (row: WorkRecord) => {
       const index = dataRows.indexOf(row);
-      return 2 + index + dataRows.slice(0, index).filter(record => expanded.includes(record.id)).length;
+      return (
+        2 +
+        index +
+        dataRows
+          .slice(0, index)
+          .filter((record) => expanded.includes(record.id)).length
+      );
     };
     return (
-    <Table<WorkRecord>
-      key={resetGeneration}
-      rowKey="id"
-      columns={shown}
-      dataSource={dataRows}
-      onChange={onTableChange}
-      aria-label={`${config.title}${category ? ` — ${category}` : ""} records`}
-      role={realVirtual ? "table" : undefined}
-      aria-rowcount={realVirtual ? 1 + dataRows.length + dataRows.filter(row => expanded.includes(row.id)).length : undefined}
-      aria-colcount={realVirtual ? shown.length + 2 : undefined}
-      components={realVirtual ? virtualTableParts : undefined}
-      onHeaderRow={realVirtual ? (_, index) => ({ "aria-rowindex": (index ?? 0) + 1 }) : undefined}
-      onRow={realVirtual ? row => ({ "aria-rowindex": rowIndex(row) }) : undefined}
-      rowSelection={{ columnWidth: 48, selectedRowKeys: selected, onChange: setSelected, preserveSelectedRowKeys: true }}
-      expandable={{
-        columnWidth: 48,
-        columnTitle: <span className="sr-only">Expand details</span>,
-        expandedRowKeys: expanded,
-        onExpandedRowsChange: setExpanded,
-        expandedRowRender: row => realVirtual ? (
-          <div role="row" aria-rowindex={rowIndex(row) + 1}>
-            <div role="cell" aria-colspan={shown.length + 2}><p className="workbench-record-note">{row.note}</p></div>
-          </div>
-        ) : <p className="workbench-record-note">{row.note}</p>,
-      }}
-      pagination={{
-        defaultPageSize: 5,
-        showSizeChanger: { classNames: { popup: { root: "workbench-page-size-popup" } } },
-        pageSizeOptions: [5, 10, 20],
-      }}
-      virtual={realVirtual}
-      scroll={{ x: 900, y: realVirtual ? 340 : undefined }}
-    />
+      <Table<WorkRecord>
+        key={resetGeneration}
+        rowKey="id"
+        columns={shown.map((column) => ({
+          ...column,
+          render: (value: unknown, row: WorkRecord, index: number) => {
+            const rendered = column.render
+              ? column.render(value, row, index)
+              : String(value ?? "");
+            if (column.key === "actions") return rendered;
+            if (
+              rendered &&
+              typeof rendered === "object" &&
+              !isValidElement(rendered) &&
+              "children" in rendered
+            )
+              return {
+                ...rendered,
+                children: <DataValue>{rendered.children}</DataValue>,
+              };
+            return <DataValue>{rendered as ReactNode}</DataValue>;
+          },
+        }))}
+        dataSource={dataRows}
+        onChange={onTableChange}
+        aria-label={`${config.title}${category ? ` — ${category}` : ""} records`}
+        role={realVirtual ? "table" : undefined}
+        aria-rowcount={
+          realVirtual
+            ? 1 +
+              dataRows.length +
+              dataRows.filter((row) => expanded.includes(row.id)).length
+            : undefined
+        }
+        aria-colcount={realVirtual ? shown.length + 2 : undefined}
+        components={realVirtual ? virtualTableParts : undefined}
+        onHeaderRow={
+          realVirtual
+            ? (_, index) => ({ "aria-rowindex": (index ?? 0) + 1 })
+            : undefined
+        }
+        onRow={
+          realVirtual
+            ? (row) => ({ "aria-rowindex": rowIndex(row) })
+            : undefined
+        }
+        rowSelection={{
+          columnWidth: 48,
+          selectedRowKeys: selected,
+          onChange: setSelected,
+          preserveSelectedRowKeys: true,
+        }}
+        expandable={{
+          columnWidth: 48,
+          columnTitle: <span className="sr-only">Expand details</span>,
+          expandedRowKeys: expanded,
+          onExpandedRowsChange: setExpanded,
+          expandedRowRender: (row) =>
+            realVirtual ? (
+              <div role="row" aria-rowindex={rowIndex(row) + 1}>
+                <div role="cell" aria-colspan={shown.length + 2}>
+                  <p className="workbench-record-note">{row.note}</p>
+                </div>
+              </div>
+            ) : (
+              <p className="workbench-record-note">{row.note}</p>
+            ),
+        }}
+        pagination={{
+          defaultPageSize: 5,
+          showSizeChanger: {
+            classNames: { popup: { root: "workbench-page-size-popup" } },
+          },
+          pageSizeOptions: [5, 10, 20],
+        }}
+        virtual={realVirtual}
+        scroll={{ x: 900, y: realVirtual ? 340 : undefined }}
+      />
     );
   };
   const body = (
@@ -403,7 +535,11 @@ export function DataWorkbench({
           aria-label={`Search ${config.title}`}
           placeholder={`Search ${config.name.toLowerCase()}…`}
           allowClear={{
-            clearIcon: <CloseCircleOutlined aria-label={`Clear ${config.title} search`} />,
+            clearIcon: (
+              <CloseCircleOutlined
+                aria-label={`Clear ${config.title} search`}
+              />
+            ),
           }}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -527,7 +663,11 @@ export function DataWorkbench({
         </Button>
       </div>
       {grouped && (
-        <div className="composition-row" role="group" aria-label="Category totals">
+        <div
+          className="composition-row"
+          role="group"
+          aria-label="Category totals"
+        >
           {config.category.map((category) => (
             <Tag key={category}>
               {category}:{" "}
@@ -599,11 +739,25 @@ export function DataWorkbench({
             label={config.value}
             name="value"
             rules={[
-              { required: true, type: "number", min: 0, message: `Enter ${config.value.toLowerCase()} of zero or greater.` },
-              { validator: (_, value) => value == null || Number.isFinite(value) ? Promise.resolve() : Promise.reject(new Error("Enter a valid number.")) },
+              {
+                required: true,
+                type: "number",
+                min: 0,
+                message: `Enter ${config.value.toLowerCase()} of zero or greater.`,
+              },
+              {
+                validator: (_, value) =>
+                  value == null || Number.isFinite(value)
+                    ? Promise.resolve()
+                    : Promise.reject(new Error("Enter a valid number.")),
+              },
             ]}
           >
-            <InputNumber aria-label={config.value} min={0} style={{ width: "100%" }} />
+            <InputNumber
+              aria-label={config.value}
+              min={0}
+              style={{ width: "100%" }}
+            />
           </Form.Item>
           <Form.Item label="Notes" name="note">
             <Input.TextArea rows={3} />
@@ -616,7 +770,12 @@ export function DataWorkbench({
         open={!!details}
         onClose={() => setDetails(null)}
       >
-        <div className="workbench-record-details" role="region" aria-label="Record details" tabIndex={0}>
+        <div
+          className="workbench-record-details"
+          role="region"
+          aria-label="Record details"
+          tabIndex={0}
+        >
           <h2 className="workbench-record-full-title">{details?.name}</h2>
           <p className="workbench-record-note">{details?.note}</p>
           <p>

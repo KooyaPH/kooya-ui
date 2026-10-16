@@ -20,7 +20,7 @@ it("standalone Storybook experience tabs activate without an application router"
     screen.getByRole("button", { name: "Invalidate brief" }),
   ).toBeVisible();
 });
-it("cold loading example renders a card skeleton", () => {
+it("cold loading example skeletons data values within the existing card", () => {
   render(
     <KooyaProvider>
       <ExperienceProvider>
@@ -29,7 +29,7 @@ it("cold loading example renders a card skeleton", () => {
     </KooyaProvider>,
   );
   expect(
-    document.querySelector('[aria-busy="true"] [data-skeleton="card"]'),
+    document.querySelector('[aria-busy="true"] [data-skeleton="value"]'),
   ).not.toBeNull();
 });
 it("loading recovery example shows safe public code and its simulated HTTP status", async () => {
