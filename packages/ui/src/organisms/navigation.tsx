@@ -319,6 +319,7 @@ export function WorkspaceSidebar({
   );
 }
 export function WorkspaceHeader({
+  presentation = "workspace",
   name,
   area,
   title,
@@ -333,6 +334,7 @@ export function WorkspaceHeader({
   searchShortcut,
   onShortcutHelp,
 }: {
+  presentation?: "workspace" | "utility";
   name: string;
   area: string;
   title: string;
@@ -371,10 +373,12 @@ export function WorkspaceHeader({
     "--ku-header-tablet": tracks("minmax(180px,1fr) minmax(120px,1fr)", "56px"),
     "--ku-header-mobile": tracks("minmax(0,1fr) 50px", "50px"),
   } as CSSProperties;
+  const Container = presentation === "utility" ? "div" : "header";
   return (
-    <header
+    <Container
       style={gridStyle}
-      className="ku-header"
+      className={`ku-header${presentation === "utility" ? " ku-header--utility" : ""}`}
+      role={presentation === "utility" ? "toolbar" : undefined}
       aria-label="Workspace toolbar"
     >
       <div className="ku-header-context ku-header-block">
@@ -398,13 +402,15 @@ export function WorkspaceHeader({
             <path d="M9 4v16m7-12-4 4 4 4" />
           </svg>
         </IconButton>
-        <div>
-          <span>
-            <span>{name}</span>
-            <i /> <span className="ku-header-area">{area}</span>
-          </span>
-          <strong>{title}</strong>
-        </div>
+        {presentation !== "utility" && (
+          <div>
+            <span>
+              <span>{name}</span>
+              <i /> <span className="ku-header-area">{area}</span>
+            </span>
+            <strong>{title}</strong>
+          </div>
+        )}
       </div>
       <button
         type="button"
@@ -471,6 +477,6 @@ export function WorkspaceHeader({
       {account && (
         <div className="ku-header-account ku-header-block">{account}</div>
       )}
-    </header>
+    </Container>
   );
 }

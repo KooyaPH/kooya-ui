@@ -126,3 +126,21 @@
 .ku-v1-review .poc-context-item:hover {
   color: var(--ku-highlight-ink);
 }
+
+.ku-v1-review .poc-workspace--single-navigation {
+  grid-template-columns: 232px minmax(0, 1fr);
+  grid-template-areas: "header header" "nav main";
+}
+.ku-v1-review .poc-workspace--single-navigation .poc-page-heading {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ku-v1-review .poc-workspace--single-navigation .poc-heading-actions {
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  .ku-v1-review .poc-workspace--single-navigation {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "header" "main";
+  }
+}

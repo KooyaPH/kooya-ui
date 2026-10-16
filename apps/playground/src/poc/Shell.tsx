@@ -30,9 +30,11 @@ const icons = {
 export function Shell({
   selection,
   onScene,
+  singleNavigation = false,
   previewState = "ready",
   onReady,
 }: {
+  singleNavigation?: boolean;
   selection: Selection;
   onScene: (scene: SceneId) => void;
   previewState?: string;
@@ -99,14 +101,16 @@ export function Shell({
       </div>
     </>
   );
-  const contextual = [
-    "atlas",
-    "ledger",
-    "editorial",
-    "relay",
-    "directory",
-    "governance",
-  ].includes(selection.layout);
+  const contextual =
+    !singleNavigation &&
+    [
+      "atlas",
+      "ledger",
+      "editorial",
+      "relay",
+      "directory",
+      "governance",
+    ].includes(selection.layout);
   const contextTitle =
     selection.layout === "atlas"
       ? "Your projects"
@@ -119,7 +123,11 @@ export function Shell({
             : "Browse records";
   return (
     <div
-      className={"poc-workspace recipe-" + selection.layout}
+      className={
+        "poc-workspace recipe-" +
+        selection.layout +
+        (singleNavigation ? " poc-workspace--single-navigation" : "")
+      }
       data-layout={selection.layout}
     >
       <header className="poc-app-header">
@@ -134,13 +142,17 @@ export function Shell({
           <div className="poc-app-brand">
             <img src="/brand/kooya-wordmark.png" alt="Kooya" />
           </div>
-          <span className="poc-header-divider" />
-          <span className="poc-header-context">
-            Workspace <ChevronRight size={13} />{" "}
-            <strong>
-              {scenes.find((x) => x.id === selection.scene)?.name}
-            </strong>
-          </span>
+          {!singleNavigation && (
+            <>
+              <span className="poc-header-divider" />
+              <span className="poc-header-context">
+                Workspace <ChevronRight size={13} />{" "}
+                <strong>
+                  {scenes.find((x) => x.id === selection.scene)?.name}
+                </strong>
+              </span>
+            </>
+          )}
         </div>
         <div className="poc-app-header-actions">
           <Tooltip title="Search workspace">
@@ -331,15 +343,16 @@ export function Shell({
             <span className="poc-muted">Oct 1 – Oct 31</span>
           </div>
         )}
-        {["relay", "directory", "editorial"].includes(selection.layout) && (
-          <div className="poc-record-strip">
-            <span>
-              <FileText size={15} />
-              {current?.title}
-            </span>
-            <Status value={current?.status ?? "Draft"} />
-          </div>
-        )}
+        {!singleNavigation &&
+          ["relay", "directory", "editorial"].includes(selection.layout) && (
+            <div className="poc-record-strip">
+              <span>
+                <FileText size={15} />
+                {current?.title}
+              </span>
+              <Status value={current?.status ?? "Draft"} />
+            </div>
+          )}
         {previewState === "loading" ? (
           <div className="poc-preview-placeholder" aria-label="Loading sample">
             <div className="poc-skeleton-line" />
@@ -371,44 +384,48 @@ export function Shell({
           <span>Fictional workspace · Session-only changes</span>
         </footer>
       </main>
-      {["editorial", "observatory"].includes(selection.layout) && (
-        <aside className="poc-inspector">
-          <div className="poc-eyebrow">
-            {selection.layout === "editorial" ? "PUBLISHING" : "AT A GLANCE"}
-          </div>
-          <h3>
-            {selection.layout === "editorial"
-              ? "Page details"
-              : "Workspace pulse"}
-          </h3>
-          <p>{current?.title}</p>
-          <label className="poc-sidebar-label">Publishing status</label>
-          <Select
-            aria-label="Inspector publishing status"
-            value={current?.status}
-            onChange={(status) =>
-              data.setContent((old) =>
-                old.map((x) => (x.key === current?.key ? { ...x, status } : x)),
-              )
-            }
-            options={["Draft", "In review", "Published"].map((value) => ({
-              value,
-              label: value,
-            }))}
-          />
-          <dl className="poc-details">
-            <dt>Owner</dt>
-            <dd>{current?.owner}</dd>
-            <dt>Last updated</dt>
-            <dd>{current?.updated}</dd>
-            <dt>Workspace</dt>
-            <dd>{data.settings.name}</dd>
-          </dl>
-          <div className="poc-context-tip">
-            <span className="poc-online-dot" />A little clarity goes a long way.
-          </div>
-        </aside>
-      )}
+      {!singleNavigation &&
+        ["editorial", "observatory"].includes(selection.layout) && (
+          <aside className="poc-inspector">
+            <div className="poc-eyebrow">
+              {selection.layout === "editorial" ? "PUBLISHING" : "AT A GLANCE"}
+            </div>
+            <h3>
+              {selection.layout === "editorial"
+                ? "Page details"
+                : "Workspace pulse"}
+            </h3>
+            <p>{current?.title}</p>
+            <label className="poc-sidebar-label">Publishing status</label>
+            <Select
+              aria-label="Inspector publishing status"
+              value={current?.status}
+              onChange={(status) =>
+                data.setContent((old) =>
+                  old.map((x) =>
+                    x.key === current?.key ? { ...x, status } : x,
+                  ),
+                )
+              }
+              options={["Draft", "In review", "Published"].map((value) => ({
+                value,
+                label: value,
+              }))}
+            />
+            <dl className="poc-details">
+              <dt>Owner</dt>
+              <dd>{current?.owner}</dd>
+              <dt>Last updated</dt>
+              <dd>{current?.updated}</dd>
+              <dt>Workspace</dt>
+              <dd>{data.settings.name}</dd>
+            </dl>
+            <div className="poc-context-tip">
+              <span className="poc-online-dot" />A little clarity goes a long
+              way.
+            </div>
+          </aside>
+        )}
       <Drawer
         title="Workspace navigation"
         open={mobile}
