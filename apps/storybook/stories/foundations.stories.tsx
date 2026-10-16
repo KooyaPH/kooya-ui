@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { KooyaProvider, Button, Card, useKooyaFeedback } from "@kooyaph/ui/legacy";
+import {
+  KooyaProvider,
+  Button,
+  Card,
+  useKooyaFeedback,
+} from "@kooyaph/ui/legacy";
 const meta = {
   title: "Foundations/Provider and branding",
   tags: ["autodocs"],
@@ -48,6 +53,24 @@ export const Branding: StoryObj<typeof meta> = {
     <KooyaProvider branding={{ accent: "#355d45" }}>
       <Card title="A consuming project’s identity">
         <Button variant="primary">Branded action</Button>
+      </Card>
+    </KooyaProvider>
+  ),
+};
+
+export const CorporateGeometry: StoryObj<typeof meta> = {
+  render: () => (
+    <KooyaProvider
+      theme="mosaic"
+      style={{
+        "--ku-radius-control": "6px",
+        "--ku-radius-card": "8px",
+        "--ku-radius-overlay": "10px",
+      }}
+    >
+      <Card title="A formal working surface">
+        <Button variant="primary">Create page</Button>
+        <Feedback />
       </Card>
     </KooyaProvider>
   ),

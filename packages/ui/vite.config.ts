@@ -16,6 +16,7 @@ export default defineConfig({
         organisms: "src/organisms/index.ts",
         templates: "src/templates/index.ts",
         themes: "src/foundations/themes.ts",
+        "themes/olive": "src/foundations/themes/olive.ts",
         "themes/mosaic": "src/foundations/themes/mosaic.ts",
         "themes/signature": "src/foundations/themes/signature.ts",
         "themes/canvas": "src/foundations/themes/canvas.ts",

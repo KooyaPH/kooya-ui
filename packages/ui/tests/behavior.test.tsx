@@ -390,7 +390,7 @@ it("feedback inherits provider context and the removed-trigger dialog restores p
   );
   await userEvent.click(screen.getByRole("button", { name: "Notify" }));
   expect(await screen.findByText("Saved locally")).toBeVisible();
-  expect(container.querySelector(".ku-root")).toContainElement(
+  expect(document.querySelector(".ku-overlay-host")).toContainElement(
     screen.getByText("Saved locally"),
   );
   await userEvent.click(
@@ -493,7 +493,7 @@ it("contextual confirmation dialogs stay inside their provider", async () => {
   await userEvent.click(
     screen.getByRole("button", { name: "Confirm", exact: true }),
   );
-  expect(container.querySelector(".ku-root")).toContainElement(
+  expect(document.querySelector(".ku-overlay-host")).toContainElement(
     await screen.findByRole("dialog"),
   );
   await userEvent.click(screen.getByRole("button", { name: "Cancel" }));

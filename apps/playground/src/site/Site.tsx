@@ -1,3 +1,5 @@
+import { readLibraryAppearance, storeLibraryAppearance } from "./appearance";
+import { readSelection, store, selectionKey } from "../poc/model";
 import { SearchOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { KooyaProvider } from "@kooyaph/ui";
@@ -26,7 +28,7 @@ function Brand() {
   return (
     <a className="site-brand" href="#/overview" aria-label="Kooya UI overview">
       <img src="/brand/kooya-wordmark.png" alt="Kooya" />
-      <span>UI</span>
+      <span>UI v1</span>
     </a>
   );
 }
@@ -157,10 +159,12 @@ function SearchDialog({
 }
 export default function Site() {
   const [hash, setHash] = useState(location.hash);
-  const [appearance, setAppearance] = useState<Appearance>({
-    mode: "light",
-    density: "comfortable",
-  });
+  const [appearance, setAppearance] = useState<Appearance>(
+    readLibraryAppearance,
+  );
+  useEffect(() => {
+    storeLibraryAppearance(appearance);
+  }, [appearance]);
   const [navigation, setNavigation] = useState(false);
   const [search, setSearch] = useState(false);
   const mobileTrigger = useRef<HTMLButtonElement>(null);
@@ -192,7 +196,13 @@ export default function Site() {
     return <PreviewRoute variantId={route.variantId} />;
   const closeNavigation = () => setNavigation(false);
   return (
-    <KooyaProvider {...appearance} className="catalog-site">
+    <KooyaProvider
+      palette={appearance.palette ?? "olive"}
+      customAccent={appearance.customAccent}
+      mode={appearance.mode}
+      density={appearance.density}
+      className="catalog-site"
+    >
       <a
         className="skip-link"
         href="#main-content"
@@ -226,6 +236,7 @@ export default function Site() {
           >
             Collection
           </a>
+          <a href="#/stress">Content checks</a>
           <a
             href="#/docs"
             aria-current={route.page === "docs" ? "page" : undefined}
@@ -256,7 +267,7 @@ export default function Site() {
               onClick: ({ key }) =>
                 setAppearance((current) =>
                   key === "light" || key === "dark"
-                    ? { ...current, mode: key }
+                    ? { ...current, mode: key, preferredMode: key }
                     : { ...current, density: key as Appearance["density"] },
                 ),
             }}
@@ -337,6 +348,7 @@ export default function Site() {
               setAppearance({
                 ...appearance,
                 mode: value as Appearance["mode"],
+                preferredMode: value as Appearance["mode"],
               })
             }
           />

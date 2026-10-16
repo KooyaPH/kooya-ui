@@ -1,3 +1,5 @@
+import { createPortal } from "react-dom";
+import { workspacePalette, type PaletteId } from "./palettes";
 import {
   createContext,
   useContext,
@@ -23,7 +25,13 @@ export { themes } from "./themes";
 export type ThemeName = keyof typeof themes;
 export type { KooyaTheme, ThemeOption } from "./themes";
 export type Density = "comfortable" | "compact";
-export type Composition = "mosaic" | "orbit" | "canvas" | "flow";
+export type Composition =
+  | "editorial"
+  | "governance"
+  | "mosaic"
+  | "orbit"
+  | "canvas"
+  | "flow";
 export type ColorMode = "light" | "dark";
 export type KooyaStyle = CSSProperties & {
   [key: `--ku-${string}`]: string | number | undefined;
@@ -36,6 +44,8 @@ export interface BrandingOverrides {
   scheme?: Partial<ThemeScheme>;
 }
 export interface KooyaOptions {
+  palette?: PaletteId | "custom";
+  customAccent?: string | null;
   theme?: ThemeOption;
   density?: Density;
   composition?: Composition;
@@ -48,6 +58,8 @@ export interface KooyaProviderProps
   extends HTMLAttributes<HTMLDivElement>,
     KooyaOptions {
   style?: KooyaStyle;
+  /** Consumer scope for portaled controls; the host retains independent geometry. */
+  overlayClassName?: string;
   children: ReactNode;
 }
 type NativeDrawerConfig = NonNullable<ConfigProviderProps["drawer"]>;
@@ -56,9 +68,9 @@ type NativeDrawerConfig = NonNullable<ConfigProviderProps["drawer"]>;
 const ownedDrawerStyles = new WeakMap<object, NativeDrawerConfig["styles"]>();
 
 const defaults = {
-  theme: "signature",
-  density: "comfortable",
-  composition: "mosaic",
+  theme: "olive",
+  density: "compact",
+  composition: "editorial",
   mode: "light",
 } as const;
 const Context = createContext<{
@@ -68,6 +80,7 @@ const Context = createContext<{
   mode: ColorMode;
   variables: KooyaStyle;
   root?: RefObject<HTMLDivElement | null>;
+  overlayRoot?: RefObject<HTMLDivElement | null>;
   reducedMotion: boolean;
 }>({ ...defaults, variables: {}, reducedMotion: false });
 function luminance(hex: string) {
@@ -92,7 +105,7 @@ export function contrastRatio(a: string, b: string) {
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
 export function resolveThemeScheme(
-  theme: ThemeOption = "signature",
+  theme: ThemeOption = "olive",
   mode: ColorMode = "light",
   branding: BrandingOverrides = {},
 ): ThemeScheme {
@@ -105,7 +118,7 @@ export function resolveThemeScheme(
     warning: dark ? "#f3c976" : "#805715",
     danger: dark ? "#ffaaa0" : "#a2352b",
     info: dark ? "#9fb1ff" : "#1d46d9",
-    ...(dark
+    ...(dark && theme !== "olive"
       ? {
           canvas: "#13120f",
           surface: "#1f1e19",
@@ -120,6 +133,7 @@ export function resolveThemeScheme(
           tertiary: "#343020",
         }
       : {}),
+    ...(theme === "olive" ? workspacePalette("olive", mode) : {}),
     ...branding.scheme,
   };
   if (branding.accent) scheme.accent = branding.accent;
@@ -142,7 +156,7 @@ export function resolveThemeScheme(
   return scheme;
 }
 export function themeVariables(
-  theme: ThemeOption = "signature",
+  theme: ThemeOption = "olive",
   mode: ColorMode = "light",
   branding: BrandingOverrides = {},
 ): KooyaStyle {
@@ -159,8 +173,18 @@ export function themeVariables(
     "--ku-font-display": kooyaTypography.display,
   };
 }
+/** Scoped geometry uses numeric pixels, matching Ant's token units. */
+function radiusToken(value: string | number | undefined, fallback: number) {
+  if (value === undefined) return fallback;
+  if (typeof value === "string" && !/^\d+(?:\.\d+)?(?:px)?$/.test(value))
+    return fallback;
+  const parsed = Number.parseFloat(String(value));
+  return Number.isFinite(parsed) && parsed >= 0 && parsed <= 48
+    ? parsed
+    : fallback;
+}
 export function antTheme(
-  theme: ThemeOption = "signature",
+  theme: ThemeOption = "olive",
   options: Omit<KooyaOptions, "theme"> = {},
   variables: KooyaStyle = {},
 ): ThemeConfig {
@@ -225,7 +249,10 @@ export function antTheme(
       colorLinkActive: v("focus"),
       colorTextLightSolid: v("accentInk"),
       controlOutline: v("focus"),
-      borderRadius: 12,
+      borderRadius: radiusToken(variables["--ku-radius-control"], 12),
+      ...(variables["--ku-radius-overlay"] !== undefined
+        ? { borderRadiusLG: radiusToken(variables["--ku-radius-overlay"], 16) }
+        : {}),
       fontSize: 14,
       controlHeight: options.density === "compact" ? 36 : 44,
       fontFamily:
@@ -236,6 +263,10 @@ export function antTheme(
       motionDurationSlow: "0.24s",
     },
     components: {
+      Avatar: {
+        colorTextPlaceholder: v("subtle"),
+        colorTextLightSolid: v("ink"),
+      },
       Tooltip: {
         colorBgSpotlight: v("surface"),
         colorTextLightSolid: v("ink"),
@@ -368,7 +399,12 @@ export function antTheme(
         rowSelectedBg: v("highlight"),
         rowSelectedHoverBg: v("subtle"),
       },
-      Card: { bodyPadding: options.density === "compact" ? 20 : 24 },
+      Card: {
+        bodyPadding: options.density === "compact" ? 20 : 24,
+        ...(variables["--ku-radius-card"] !== undefined
+          ? { borderRadiusLG: radiusToken(variables["--ku-radius-card"], 16) }
+          : {}),
+      },
     },
   };
 }
@@ -384,9 +420,13 @@ export function useKooyaPortalTheme() {
 export function useKooyaOptions() {
   return useContext(Context);
 }
+export function useKooyaOverlayRoot() {
+  const context = useContext(Context);
+  return context.overlayRoot ?? context.root;
+}
 export function useKooyaFeedback(): ReturnType<typeof App.useApp> {
   const feedback = App.useApp();
-  const root = useKooyaRoot();
+  const root = useKooyaOverlayRoot();
   const scoped = (config: import("antd").ModalFuncProps) => ({
     ...config,
     getContainer: config.getContainer ?? (() => root?.current ?? document.body),
@@ -409,21 +449,30 @@ export function useKooyaFeedback(): ReturnType<typeof App.useApp> {
   };
 }
 export function KooyaProvider({
-  theme = "signature",
-  density = "comfortable",
-  composition = "mosaic",
+  theme = "olive",
+  palette,
+  customAccent,
+  density = "compact",
+  composition = "editorial",
   mode = "light",
   branding,
   fontFamily,
   reducedMotion,
   children,
   className = "",
+  overlayClassName = "",
   style,
   ...props
 }: KooyaProviderProps) {
+  if (palette) {
+    const scheme = workspacePalette(palette, mode, customAccent);
+    theme = scheme;
+    branding = { ...branding, scheme: { ...scheme, ...branding?.scheme } };
+  }
   const drawerInputFocus = useDrawerInputFocus();
   const inheritedDrawer = useContext(ConfigProvider.ConfigContext).drawer;
   const root = useRef<HTMLDivElement>(null);
+  const overlayRoot = useRef<HTMLDivElement>(null);
   const [systemMotion, setSystemMotion] = useState(false);
   const [motionReady, setMotionReady] = useState(false);
   useEffect(() => {
@@ -441,6 +490,10 @@ export function KooyaProvider({
   const variables: KooyaStyle = {
     ...themeVariables(theme, mode, branding),
     "--ku-control-height": density === "compact" ? "36px" : "44px",
+    "--ku-font-display": kooyaTypography.interface,
+    "--ku-radius-control": "6px",
+    "--ku-radius-card": "8px",
+    "--ku-radius-overlay": "10px",
     ...(fontFamily ? { "--ku-font-sans": fontFamily } : {}),
     ...overrides,
   };
@@ -477,7 +530,7 @@ export function KooyaProvider({
   if (typeof drawerConfig.styles === "function") {
     ownedDrawerStyles.set(drawerConfig.styles, rawDrawerStyles);
   }
-  const container = () => root.current ?? document.body;
+  const container = () => overlayRoot.current ?? root.current ?? document.body;
   return (
     <Context.Provider
       value={{
@@ -487,6 +540,7 @@ export function KooyaProvider({
         mode,
         variables,
         root,
+        overlayRoot,
         reducedMotion: motion,
       }}
     >
@@ -516,6 +570,32 @@ export function KooyaProvider({
         data-reduced-motion={motion}
         style={{ ...variables, ...style }}
       >
+        {typeof document !== "undefined" &&
+          createPortal(
+            <div
+              ref={overlayRoot}
+              className={`ku-root ku-overlay-host ${overlayClassName}`}
+              data-mode={mode}
+              data-density={density}
+              data-reduced-motion={motion}
+              style={{
+                ...variables,
+                position: "absolute",
+                insetInline: 0,
+                top: 0,
+                height: 0,
+                minHeight: 0,
+                padding: 0,
+                margin: 0,
+                border: 0,
+                display: "block",
+                overflow: "visible",
+                background: "transparent",
+                pointerEvents: "auto",
+              }}
+            />,
+            document.body,
+          )}
         <ConfigProvider
           theme={antTheme(
             theme,

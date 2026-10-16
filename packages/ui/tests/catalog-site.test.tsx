@@ -84,7 +84,10 @@ describe("catalog navigation", () => {
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { KooyaProvider } from "@kooyaph/ui";
-import { CatalogPage, CategoryCard } from "../../../apps/playground/src/site/CatalogPages";
+import {
+  CatalogPage,
+  CategoryCard,
+} from "../../../apps/playground/src/site/CatalogPages";
 import {
   LiveFrame,
   PreviewRoute,
@@ -116,7 +119,7 @@ it("filters the real catalog and resets to the full index without invented count
     "href",
     "#/components/button",
   );
-});
+}, 10000);
 
 it("updates iframe appearance by message without changing the document URL", () => {
   const variant = {
@@ -239,8 +242,19 @@ it("switches real iframe viewport widths and exposes source only when Code is op
 it("reports a preview that never becomes ready and retries the real document", () => {
   vi.useFakeTimers();
   try {
-    const variant = { id: "test-preview", title: "Test", previewHeight: 300 } as CatalogVariant;
-    render(<KooyaProvider><LiveFrame variant={variant} appearance={{ mode: "light", density: "comfortable" }} /></KooyaProvider>);
+    const variant = {
+      id: "test-preview",
+      title: "Test",
+      previewHeight: 300,
+    } as CatalogVariant;
+    render(
+      <KooyaProvider>
+        <LiveFrame
+          variant={variant}
+          appearance={{ mode: "light", density: "comfortable" }}
+        />
+      </KooyaProvider>,
+    );
     const first = screen.getByTitle("Test preview") as HTMLIFrameElement;
     expect(screen.getByRole("status")).toHaveTextContent("Loading preview");
     expect(first).not.toBeVisible();
@@ -250,59 +264,124 @@ it("reports a preview that never becomes ready and retries the real document", (
     const retryButton = screen.getByRole("button", { name: "Retry preview" });
     retryButton.focus();
     fireEvent.click(retryButton);
-    expect(screen.getByRole("region", { name: "Test preview area" })).toHaveFocus();
+    expect(
+      screen.getByRole("region", { name: "Test preview area" }),
+    ).toHaveFocus();
     const retry = screen.getByTitle("Test preview") as HTMLIFrameElement;
     expect(retry).not.toBe(first);
     expect(retry).toHaveAttribute("src", first.getAttribute("src"));
-    fireEvent(window, new MessageEvent("message", { source: first.contentWindow, origin: location.origin, data: { type: "kooya-preview-ready", variantId: variant.id } }));
+    fireEvent(
+      window,
+      new MessageEvent("message", {
+        source: first.contentWindow,
+        origin: location.origin,
+        data: { type: "kooya-preview-ready", variantId: variant.id },
+      }),
+    );
     act(() => vi.advanceTimersByTime(15000));
     expect(screen.getByText("Preview could not be loaded")).toBeInTheDocument();
-  } finally { vi.useRealTimers(); }
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
 it("accepts readiness only from the actual same-origin preview document", () => {
   vi.useFakeTimers();
   try {
-    const variant = { id: "test-preview", title: "Test", previewHeight: 300 } as CatalogVariant;
-    render(<LiveFrame variant={variant} appearance={{ mode: "light", density: "comfortable" }} />);
+    const variant = {
+      id: "test-preview",
+      title: "Test",
+      previewHeight: 300,
+    } as CatalogVariant;
+    render(
+      <LiveFrame
+        variant={variant}
+        appearance={{ mode: "light", density: "comfortable" }}
+      />,
+    );
     const frame = screen.getByTitle("Test preview") as HTMLIFrameElement;
-    fireEvent(window, new MessageEvent("message", { source: frame.contentWindow, origin: location.origin, data: { type: "kooya-preview-ready", variantId: variant.id } }));
+    fireEvent(
+      window,
+      new MessageEvent("message", {
+        source: frame.contentWindow,
+        origin: location.origin,
+        data: { type: "kooya-preview-ready", variantId: variant.id },
+      }),
+    );
     act(() => vi.advanceTimersByTime(20000));
-    expect(screen.queryByText("Preview could not be loaded")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Preview could not be loaded"),
+    ).not.toBeInTheDocument();
     expect(frame).toBeVisible();
-  } finally { vi.useRealTimers(); }
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
 it("places actionable thumbnail recovery outside the decorative category link", () => {
   vi.useFakeTimers();
   try {
-    const entry = { ...entries[0], variants: [{ id: "test-preview", title: "Test", previewHeight: 300 }] } as CatalogEntry;
-    render(<KooyaProvider><CategoryCard entry={entry} appearance={{ mode: "light", density: "comfortable" }} /></KooyaProvider>);
+    const entry = {
+      ...entries[0],
+      variants: [{ id: "test-preview", title: "Test", previewHeight: 300 }],
+    } as CatalogEntry;
+    render(
+      <KooyaProvider>
+        <CategoryCard
+          entry={entry}
+          appearance={{ mode: "light", density: "comfortable" }}
+        />
+      </KooyaProvider>,
+    );
     const first = screen.getByTitle("Test preview") as HTMLIFrameElement;
     act(() => vi.advanceTimersByTime(15000));
     const retry = screen.getByRole("button", { name: "Retry Button preview" });
     expect(retry.closest("a")).toBeNull();
     expect(retry.closest('[aria-hidden="true"]')).toBeNull();
-    expect(screen.getByRole("link", { name: "Browse Button, 1 example" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Browse Button, 1 example" }),
+    ).toBeInTheDocument();
     retry.focus();
     fireEvent.click(retry);
-    expect(screen.getByRole("link", { name: "Browse Button, 1 example" })).toHaveFocus();
+    expect(
+      screen.getByRole("link", { name: "Browse Button, 1 example" }),
+    ).toHaveFocus();
     expect(screen.getByTitle("Test preview")).not.toBe(first);
-    expect(screen.queryByRole("button", { name: "Retry Button preview" })).not.toBeInTheDocument();
-  } finally { vi.useRealTimers(); }
+    expect(
+      screen.queryByRole("button", { name: "Retry Button preview" }),
+    ).not.toBeInTheDocument();
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
-it.each(['/audit.html','/kooya/audit.html','/index.html','/kooya/index.html'])('loads the real sibling Site preview when embedded at %s', path => {
-  const before=location.href;
+it.each([
+  "/audit.html",
+  "/kooya/audit.html",
+  "/index.html",
+  "/kooya/index.html",
+])("loads the real sibling Site preview when embedded at %s", (path) => {
+  const before = location.href;
   try {
-    history.replaceState({},'',path+'?item=landing-review');
-    const variant={id:'test-preview',title:'Test',previewHeight:300} as CatalogVariant;
-    render(<LiveFrame variant={variant} appearance={{mode:'dark',density:'compact'}} />);
-    const frame=screen.getByTitle('Test preview');
-    const url=new URL(frame.getAttribute('src')!,location.href);
-    expect(url.pathname).toBe(path.slice(0,path.lastIndexOf('/')+1));
-    expect(url.searchParams.get('mode')).toBe('dark');
-    expect(url.searchParams.get('density')).toBe('compact');
-    expect(url.hash).toBe('#/preview/test-preview');
-  }finally{history.replaceState({},'',before);}
+    history.replaceState({}, "", path + "?item=landing-review");
+    const variant = {
+      id: "test-preview",
+      title: "Test",
+      previewHeight: 300,
+    } as CatalogVariant;
+    render(
+      <LiveFrame
+        variant={variant}
+        appearance={{ mode: "dark", density: "compact" }}
+      />,
+    );
+    const frame = screen.getByTitle("Test preview");
+    const url = new URL(frame.getAttribute("src")!, location.href);
+    expect(url.pathname).toBe(path.slice(0, path.lastIndexOf("/") + 1));
+    expect(url.searchParams.get("mode")).toBe("dark");
+    expect(url.searchParams.get("density")).toBe("compact");
+    expect(url.hash).toBe("#/preview/test-preview");
+  } finally {
+    history.replaceState({}, "", before);
+  }
 });

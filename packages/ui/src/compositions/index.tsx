@@ -160,3 +160,6 @@ export function PageFrame({
     </section>
   );
 }
+
+export * from "./workspace";
+export * from "./appearance";

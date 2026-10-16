@@ -2,6 +2,10 @@
 
 ## 1.0.0
 
+- Establish Editorial and Governance as the v1 workspace compositions. Default to Kooya Olive, Light and Compact, with twelve palettes and accessible custom accents.
+- Add controlled appearance settings, adaptive workspace shells, and themed document-level popup hosts that escape clipped containers.
+- Retain the catalogue and explicit legacy migration entry; retire the previous active layout comparison.
+
 ### Major Changes
 
 - b5d364a: Replace the default public wrapper API with actual Ant Design controls and Kooya Signature branding. Add canonical component/type exports, native Ant-backed composition exports and synchronized appearance, density and feedback. Isolate prior wrapper contracts under /legacy. The standalone catalog adapts all public REUI recipes and includes functional groups, blocks, sections and page templates with a runnable source download.

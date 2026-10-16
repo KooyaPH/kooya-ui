@@ -85,6 +85,10 @@
     "./legacy": {
       "types": "./dist/legacy.d.ts",
       "import": "./dist/legacy.js"
+    },
+    "./themes/olive": {
+      "types": "./dist/foundations/themes/olive.d.ts",
+      "import": "./dist/themes/olive.js"
     }
   },
   "scripts": {

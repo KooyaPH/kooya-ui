@@ -13,7 +13,8 @@ import {
 import { collections, countVariants, getEntries } from "../registry/catalog";
 import { type Appearance } from "./model";
 import { CategoryCard } from "./CatalogPages";
-export const installSnippet = "pnpm add @kooyaph/ui antd@6.6.5";
+export const installSnippet =
+  "pnpm add @kooyaph/ui@https://github.com/KooyaPH/kooya-ui/releases/download/v1.0.0/kooyaph-ui-1.0.0.tgz antd@6.6.5";
 export const usageSnippet = `import '@fontsource-variable/dm-sans';\nimport '@kooyaph/ui/styles.css';\nimport { KooyaProvider } from '@kooyaph/ui';\nimport { Button, Input, Space } from '@kooyaph/ui/components';\n\nexport default function App() {\n  return (\n    <KooyaProvider mode="light" density="comfortable">\n      <Space>\n        <Input aria-label="Project name" placeholder="Project name" />\n        <Button type="primary">Create project</Button>\n      </Space>\n    </KooyaProvider>\n  );\n}`;
 export function Landing({
   appearance,
@@ -75,8 +76,14 @@ export function Landing({
             }}
           />
           <div className="demo-control-row">
-            <label htmlFor="hero-notifications">Keep the team in the loop</label>
-            <Switch id="hero-notifications" aria-label="Team notifications" defaultChecked />
+            <label htmlFor="hero-notifications">
+              Keep the team in the loop
+            </label>
+            <Switch
+              id="hero-notifications"
+              aria-label="Team notifications"
+              defaultChecked
+            />
           </div>
           <div className="demo-control-row">
             <span>Working rhythm</span>
@@ -164,7 +171,7 @@ export function Landing({
         <div>
           <p className="eyebrow">SAME KOOYA. DIFFERENT LIGHT.</p>
           <h2>
-            Comfortable by default.
+            Compact by default.
             <br />
             Flexible by design.
           </h2>
@@ -184,6 +191,7 @@ export function Landing({
                 onAppearance({
                   ...appearance,
                   mode: value as Appearance["mode"],
+                  preferredMode: value as Appearance["mode"],
                 })
               }
             />
@@ -254,9 +262,9 @@ export function Docs() {
       </pre>
       <h2>2. Add the provider</h2>
       <p>
-        Import the stylesheet once. The provider defaults to the Kooya Signature
-        theme, light mode, and comfortable density. It also synchronizes menus,
-        dialogs, notifications, and other Ant overlays.
+        Import the stylesheet once. The provider defaults to Kooya Olive, light
+        mode, and compact density. It also synchronizes menus, dialogs,
+        notifications, and other Ant overlays.
       </p>
       <pre>
         <code>{usageSnippet}</code>

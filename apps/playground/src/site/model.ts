@@ -1,5 +1,9 @@
+import type { PaletteId } from "../poc/model";
 import type { CatalogEntry, CollectionKind } from "../registry/types";
 export type Appearance = {
+  preferredMode?: "light" | "dark" | "system";
+  palette?: PaletteId | "custom";
+  customAccent?: string | null;
   mode: "light" | "dark";
   density: "comfortable" | "compact";
 };

@@ -35,3 +35,7 @@ repository, workflow files, or command history.
 - Confirm the installed archive exposes the documented entry points.
 - Update the consumer examples and migration guidance when needed.
 - Keep earlier immutable releases and their original license metadata intact.
+
+## Public v1 archive
+
+KooyaHQ consumes the immutable public GitHub Release asset `kooyaph-ui-1.0.0.tgz`, with its SHA-256 checksum and pnpm SHA-512 lock integrity. Qualify the exact source commit, pack `packages/ui`, inspect its file list, then create tag/release v1.0.0 on that commit and upload the archive and checksum. Existing tags and assets are never overwritten. GitHub Packages access is independent and is not required for this installation path.

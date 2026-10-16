@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 /** Shared viewport contract; CSS seams mirror these exact token values. */
-export const deviceBreakpoints = { mobileMax: 640, tabletMax: 1100 } as const;
+export const deviceBreakpoints = { mobileMax: 767, tabletMax: 1279 } as const;
 export type DeviceMode = "mobile" | "tablet" | "desktop";
 const queries = [
   `(max-width: ${deviceBreakpoints.mobileMax}px)`,

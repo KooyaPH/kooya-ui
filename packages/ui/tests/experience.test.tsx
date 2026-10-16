@@ -129,7 +129,7 @@ it("editable shortcut guards cover nested contenteditable and combobox inputs", 
 it("mobile table keeps selection permissions and visible detail actions", async () => {
   const previous = window.matchMedia;
   window.matchMedia = vi.fn().mockImplementation((query) => ({
-    matches: query.includes("640") || query.includes("1100"),
+    matches: query.includes("767") || query.includes("1279"),
     media: query,
     addEventListener() {},
     removeEventListener() {},
@@ -184,7 +184,7 @@ it("mobile table keeps selection permissions and visible detail actions", async 
 it("mobile inbox has one active pane and retains the controlled draft on Back", async () => {
   const previous = window.matchMedia;
   window.matchMedia = vi.fn().mockImplementation((query) => ({
-    matches: query.includes("640") || query.includes("1100"),
+    matches: query.includes("767") || query.includes("1279"),
     media: query,
     addEventListener() {},
     removeEventListener() {},

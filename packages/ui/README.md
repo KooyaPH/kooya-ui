@@ -1,103 +1,21 @@
-## Ant-first foundation
+# @kooyaph/ui v1
 
-New integrations use `KooyaProvider` from `@kooyaph/ui/foundations`, actual Ant
-controls/types from `@kooyaph/ui/components`, and `@kooyaph/ui/styles.css`.
-The default is Kooya Signature light with DM Sans; use `mode="dark"` for charcoal,
-`density="compact"` for desktop density and `reducedMotion` to override the OS
-preference. Compound APIs and refs remain Ant APIs. React/React DOM (18.3 or 19)
-and exact `antd@6.6.5` are external peers. Load DM Sans and Syncopate locally.
-See [canonical component API](../../docs/ant-components.md) and
-[brand/provider guide](../../docs/themes.md). Existing atomic imports below are
-retained only during the staged consumer migration.
-
-# `@kooyaph/ui`
-
-An atomic React component and template library built on Ant Design. It separates
-semantic themes from page composition, so applications can import the families
-they use and select their own visual identity.
-
-- React and React DOM peer versions: 18.3 or 19
-- Ant Design peer version: 6.6.5
-- Default theme and composition: Mosaic Bento, comfortable density
-- Bundled themes: Mosaic, Kooya Signature, Canvas, and Client
-- License: MIT; preserve the copyright and license notice
-
-## Package access
-
-The source repository is MIT licensed. Package releases currently use GitHub
-Packages and require registry authentication. Until public package distribution
-is enabled, build a tarball from the public source checkout:
-
-```sh
-corepack pnpm install --frozen-lockfile
-corepack pnpm --filter @kooyaph/ui build
-corepack pnpm --filter @kooyaph/ui pack --out /tmp/kooyaph-ui.tgz
-```
-
-Install the resulting tarball alongside `react`, `react-dom`, and `antd@6.6.5`.
-Never commit registry tokens. The [repository README](../../README.md) describes
-the registry boundary and the [setup guide](../../docs/setup.md) covers local
-development.
-
-## Quick start
-
-Import the stylesheet once at the application entry, then use named exports:
+Kooya's reusable React design system for formal workspaces. Defaults: Kooya Olive, Light, Compact. Editorial supports work and content; Governance supports administration.
 
 ```tsx
-import { Button, KooyaProvider, TextField } from "@kooyaph/ui";
+import { KooyaProvider, WorkspaceShell } from "@kooyaph/ui";
+import { Button } from "@kooyaph/ui/components";
 import "@kooyaph/ui/styles.css";
 
-export function WorkspaceSettings() {
-  return (
-    <KooyaProvider theme="mosaic" composition="mosaic" density="comfortable">
-      <TextField label="Workspace name" defaultValue="Northstar Studio" />
-      <Button variant="primary">Save changes</Button>
-    </KooyaProvider>
-  );
-}
+<KooyaProvider palette="olive" mode="light" density="compact">
+  <Button type="primary">Save changes</Button>
+</KooyaProvider>;
 ```
 
-## Import only an atomic family or theme
+Twelve palettes and custom accents share readable semantic roles in Light and Dark. `AppearancePicker` is controlled; applications own persistence and resolve System mode. `WorkspaceShell` provides responsive navigation, section navigation, content and inspector slots.
 
-The package also exposes family entry points and individual bundled palettes:
+Components use canonical Ant Design 6.6.5 APIs, refs and compound exports. Previous Kooya wrapper contracts remain under `/legacy` for migration. Historical theme imports remain available, while active v1 defaults use Olive.
 
-```tsx
-import { Button, TextField } from "@kooyaph/ui/atoms";
-import { RecordDetailTemplate } from "@kooyaph/ui/templates";
-import { signatureTheme } from "@kooyaph/ui/themes/signature";
-import { KooyaProvider } from "@kooyaph/ui";
-import "@kooyaph/ui/styles.css";
+The provider owns a themed document-level overlay host so popups escape clipped page containers. Consumer popup styling can use `overlayClassName`. Respect reduced motion and retain focus restoration.
 
-export function DetailPage() {
-  return (
-    <KooyaProvider theme={signatureTheme} composition="orbit">
-      <RecordDetailTemplate
-        title="Account"
-        fields={[{ id: "owner", label: "Owner", value: "Alex Stone" }]}
-      />
-      <TextField label="Contact name" />
-      <Button variant="primary">Save</Button>
-    </KooyaProvider>
-  );
-}
-```
-
-Available family paths: `/foundations`, `/atoms`, `/molecules`, `/organisms`,
-and `/templates`. Available individual themes: `/themes/mosaic`,
-`/themes/signature`, `/themes/canvas`, and `/themes/client`. Applications can
-also pass a typed `KooyaTheme` object to `KooyaProvider` for a custom palette.
-
-## Component states and accessibility
-
-Use `TemplateFrame` with a structured state so cold reads show an appropriate
-skeleton and error views show a safe public code and HTTP status, never raw
-diagnostic text. Buttons and fields expose loading, disabled, invalid, focus,
-and selected states. Provide visible labels, accessible names for icon-only
-actions, meaningful image alt text, and logical keyboard order. Product routes,
-permissions, persistence, fetch logic, and metadata remain application-owned.
-
-Read the complete [component API](../../docs/components.md),
-[theme guide](../../docs/themes.md), [experience and failure contracts](../../docs/experience.md),
-[accessibility manual](../../docs/ui-ux.md), and [templates catalog](../../docs/templates.md).
-The [third-party notices](THIRD_PARTY_NOTICES.md) identify dependency and
-preview-asset licensing.
+Requires React 18.3+ or 19, React DOM, and Ant Design 6.6.5. Source, design contracts, migration notes and the full catalogue are maintained at [KooyaPH/kooya-ui](https://github.com/KooyaPH/kooya-ui). Public immutable GitHub Release tarballs support installs without registry credentials. Licensed MIT; see THIRD_PARTY_NOTICES.md for attributed dependencies.

@@ -1,21 +1,35 @@
-# Kooya UI
+# Kooya UI v1
 
-An Ant Design library and standalone catalog with Kooya's paper, ink, lime and deep green palette. The catalog adapts the REUI components page hierarchy and layout, with a new Kooya landing page.
+Editorial workspaces and Governance administration, with Kooya Olive, Light and
+Compact defaults. Twelve palettes, custom accents, reusable compositions and a
+complete interactive component catalogue. [V1 design system](docs/v1/design-system.md).
+
+## V1 review
+
+Open https://ui.test.kooyaai.com or http://localhost:5825. Review the Editorial workspace, Governance settings, Components, Documentation and Content checks. Appearance offers twelve palettes, a custom accent, Light/Dark/System and Compact/Comfortable. All preview records are fictional.
+
+The earlier corporate comparison is historical source; v1 uses the selected Editorial/Governance direction. See [v1 contracts](docs/v1/design-system.md) and [migration](docs/v1/migration.md).
 
 The canonical controls are the actual Ant Design exports. Their props, refs, generic types and compound APIs retain Ant identity. KooyaProvider applies the brand, light/dark mode, comfortable/compact density and contextual feedback. The collection includes all 1,241 examples from the attributed REUI source revision, additional native Ant examples, reusable groups, blocks, sections, advanced tools and complete templates.
 
 ```tsx
-import { KooyaProvider, Button, Form, Input } from '@kooyaph/ui';
-import '@kooyaph/ui/styles.css';
+import { KooyaProvider, Button, Form, Input } from "@kooyaph/ui";
+import "@kooyaph/ui/styles.css";
 
 export function Example() {
   return (
     <KooyaProvider>
-      <Form layout="vertical" onFinish={values => console.log(values)}>
-        <Form.Item name="name" label="Project name" rules={[{ required: true }]}>
+      <Form layout="vertical" onFinish={(values) => console.log(values)}>
+        <Form.Item
+          name="name"
+          label="Project name"
+          rules={[{ required: true }]}
+        >
           <Input />
         </Form.Item>
-        <Button type="primary" htmlType="submit">Create project</Button>
+        <Button type="primary" htmlType="submit">
+          Create project
+        </Button>
       </Form>
     </KooyaProvider>
   );

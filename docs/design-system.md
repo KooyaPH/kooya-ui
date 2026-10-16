@@ -1,4 +1,8 @@
-# Kooya UI design system
+# Current design system
+
+See [Kooya UI v1](v1/design-system.md) for the active design, component and adoption contracts.
+
+# Historical design notes
 
 ## Required control boundaries
 
@@ -116,3 +120,16 @@ when adding components or themes. Consumer CSS can override those defaults, so
 review the actual rendered result after each override. Follow the
 [visual-review checklist](visual-review.md) for focus, contrast, spacing,
 keyboard, overlay, and responsive checks.
+
+## Corporate POC geometry
+
+The provider's existing `style` accepts `--ku-radius-control`,
+`--ku-radius-card`, and `--ku-radius-overlay` as numbers or pixel strings.
+These map to the corresponding native Ant tokens, including portaled controls.
+Missing values retain existing Ant geometry; invalid values use its normal
+fallback. The POC uses 6/8/10px, with 12px panels in Kooya Soft.
+
+The playground Design Lab adds twelve independent layout recipes and twelve
+palette families, with two color modes and two densities (576 combinations).
+These experimental presets are playground data, not additions to the stable
+named-theme or composition exports. See [the POC guide](corporate-poc.md).

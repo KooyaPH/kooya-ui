@@ -1191,7 +1191,7 @@
     display: none;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1279px) {
   .ku-shell {
     --ku-sidebar-width: 84px;
     gap: 16px;
@@ -1201,7 +1201,7 @@
     --ku-sidebar-width: 84px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .ku-shell {
     display: block;
     padding: 16px 20px;
@@ -1221,7 +1221,7 @@
     align-items: flex-start;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .ku-shell {
     padding: 12px;
   }
@@ -1554,7 +1554,7 @@ a.ku-nav-tile {
 .ku-root[data-reduced-motion="true"] :is(button, a):hover {
   transform: none;
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .ku-root .ku-tabs > .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
     overflow: auto;
   }
@@ -1870,7 +1870,7 @@ a.ku-nav-tile {
 .ku-template :is(h2, h3, p) {
   overflow-wrap: anywhere;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1279px) {
   .ku-template-split {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2088,7 +2088,7 @@ a.ku-nav-tile {
 .ku-root .ku-drawer--navigation .ku-sidebar-content--collapsed .ku-nav-icon {
   margin: 0;
 }
-@media (min-width: 641px) and (max-width: 1100px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .ku-header {
     grid-template-columns: var(--ku-header-tablet);
   }
@@ -2110,7 +2110,7 @@ a.ku-nav-tile {
     width: 100%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .ku-shell {
     display: block;
   }
@@ -2237,7 +2237,7 @@ a.ku-nav-tile {
     outline: 2px solid Highlight;
   }
 }
-@media (min-width: 641px) and (max-width: 1100px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .ku-root .ku-table-priority :is(table, thead, tbody, tr, th, td) {
     display: block;
     width: auto !important;
@@ -2297,7 +2297,7 @@ a.ku-nav-tile {
     margin-bottom: 4px;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1279px) {
   .ku-root
     :is(.ku-table-cards, .ku-table-priority)
     .ant-table-selection-column {
@@ -2315,7 +2315,7 @@ a.ku-nav-tile {
     justify-content: center;
   }
 }
-@media (min-width: 1101px) {
+@media (min-width: 1280px) {
   .ku-record-filters > summary {
     display: none;
   }
@@ -2344,26 +2344,40 @@ a.ku-nav-tile {
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group {
   border-radius: var(--ant-border-radius, var(--ku-radius-control, 12px));
 }
-:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group-wrapper-lg .ant-input-group {
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group-wrapper-lg
+  .ant-input-group {
   border-radius: var(--ant-border-radius-lg, 16px);
 }
-:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope) .ant-input-group-wrapper-sm .ant-input-group {
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group-wrapper-sm
+  .ant-input-group {
   border-radius: var(--ant-border-radius-sm, 8px);
 }
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
-  :is(.ant-input-group, .ant-input-affix-wrapper)[data-ku-focus-containment="inset"]:has(input.ant-input:focus-visible) {
+  :is(
+    .ant-input-group,
+    .ant-input-affix-wrapper
+  )[data-ku-focus-containment="inset"]:has(input.ant-input:focus-visible) {
   outline-offset: -3px;
 }
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
-  :is(.ant-input-group, .ant-input-affix-wrapper)[data-ku-focus-containment="editable"]:has(input.ant-input:focus-visible) {
+  :is(
+    .ant-input-group,
+    .ant-input-affix-wrapper
+  )[data-ku-focus-containment="editable"]:has(input.ant-input:focus-visible) {
   outline: 0;
 }
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
-  .ant-input-group[data-ku-focus-containment="editable"] > input.ant-input:focus-visible,
+  .ant-input-group[data-ku-focus-containment="editable"]
+  > input.ant-input:focus-visible,
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
-  .ant-input-group[data-ku-focus-containment="editable"] > .ant-input-affix-wrapper > input.ant-input:focus-visible,
+  .ant-input-group[data-ku-focus-containment="editable"]
+  > .ant-input-affix-wrapper
+  > input.ant-input:focus-visible,
 :is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
-  .ant-input-affix-wrapper[data-ku-focus-containment="editable"] > input.ant-input:focus-visible {
+  .ant-input-affix-wrapper[data-ku-focus-containment="editable"]
+  > input.ant-input:focus-visible {
   outline: 3px solid var(--ku-focus);
   outline-offset: 0;
 }
@@ -2375,25 +2389,202 @@ a.ku-nav-tile {
 
 /* Firefox outlines of native table-layout groups ignore rounded corners.
    Paint the cue on an inert overlay; keep the actual native group layout. */
-:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group.ant-input-group:has(> .ant-input:focus-visible),:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group.ant-input-group:has(> .ant-input-affix-wrapper > .ant-input:focus-visible) {
-  outline-width:0
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group.ant-input-group:has(> .ant-input:focus-visible),
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group.ant-input-group:has(
+    > .ant-input-affix-wrapper > .ant-input:focus-visible
+  ) {
+  outline-width: 0;
 }
 
-:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  border-radius:inherit;
-  outline:3px solid var(--ku-focus);
-  outline-offset:3px
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group:has(> .ant-input:focus-visible)::after,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group:has(
+    > .ant-input-affix-wrapper > .ant-input:focus-visible
+  )::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  outline: 3px solid var(--ku-focus);
+  outline-offset: 3px;
 }
 
-:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="inset"]:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="inset"]:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
-  outline-offset:-3px
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="inset"]:has(
+    > .ant-input:focus-visible
+  )::after,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="inset"]:has(
+    > .ant-input-affix-wrapper > .ant-input:focus-visible
+  )::after {
+  outline-offset: -3px;
 }
 
-:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="editable"]:has(> .ant-input:focus-visible)::after,:is(.ku-root.ku-root,.ku-drawer-scope.ku-drawer-scope) .ant-input-group[data-ku-focus-containment="editable"]:has(> .ant-input-affix-wrapper > .ant-input:focus-visible)::after {
-  content:none;
-  outline:0
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="editable"]:has(
+    > .ant-input:focus-visible
+  )::after,
+:is(.ku-root.ku-root, .ku-drawer-scope.ku-drawer-scope)
+  .ant-input-group[data-ku-focus-containment="editable"]:has(
+    > .ant-input-affix-wrapper > .ant-input:focus-visible
+  )::after {
+  content: none;
+  outline: 0;
+}
+
+/* V1: overlays live at document level, independently of scroll/transform clips. */
+.ku-overlay-host {
+  isolation: isolate;
+  z-index: 2000;
+}
+.ku-root
+  :is(.ant-select-dropdown, .ant-popover, .ant-tooltip, .ant-picker-dropdown) {
+  max-inline-size: calc(100vw - 24px);
+}
+.ku-root
+  :is(
+    .ant-select-item-option-content,
+    .ant-cascader-menu-item-content,
+    .ant-tree-title
+  ) {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.ku-root
+  :is(.ant-modal-body, .ant-drawer-body, .ant-card-body, .ant-table-cell) {
+  overflow-wrap: anywhere;
+}
+.ku-root
+  :is(button, [role="button"], a, input, textarea, select):focus-visible {
+  outline: 2px solid var(--ku-focus);
+  outline-offset: 3px;
+}
+.ku-root
+  :is(button, [role="button"], a):not(:disabled):not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+.ku-workspace-shell {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  min-height: 100dvh;
+  background: var(--ku-canvas);
+  color: var(--ku-ink);
+}
+.ku-workspace-shell[data-context="true"] {
+  grid-template-columns: 200px 192px minmax(0, 1fr);
+}
+.ku-workspace-shell[data-inspector="true"] {
+  grid-template-columns: 200px minmax(0, 1fr) 280px;
+}
+.ku-workspace-shell[data-context="true"][data-inspector="true"] {
+  grid-template-columns: 200px 192px minmax(0, 1fr) 280px;
+}
+.ku-workspace-header {
+  grid-column: 1/-1;
+  min-width: 0;
+  min-height: 56px;
+  border-bottom: 1px solid var(--ku-line);
+  background: var(--ku-surface);
+}
+.ku-workspace-navigation,
+.ku-workspace-context,
+.ku-workspace-inspector {
+  min-width: 0;
+  padding: 16px 12px;
+  border-inline-end: 1px solid var(--ku-line);
+  background: var(--ku-surface);
+}
+.ku-workspace-inspector {
+  border-inline-end: 0;
+  border-inline-start: 1px solid var(--ku-line);
+}
+.ku-workspace-main {
+  min-width: 0;
+  padding: 24px;
+}
+.ku-workspace--governance .ku-workspace-main > * {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.ku-workspace-skip {
+  position: fixed;
+  top: -80px;
+  left: 16px;
+  z-index: 2100;
+  background: var(--ku-surface);
+  padding: 12px;
+}
+.ku-workspace-skip:focus {
+  top: 12px;
+}
+@media (max-width: 1279px) {
+  .ku-workspace-shell[data-context],
+  .ku-workspace-shell[data-inspector] {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  .ku-workspace-context,
+  .ku-workspace-inspector {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .ku-workspace-shell[data-context],
+  .ku-workspace-shell[data-inspector] {
+    display: block;
+  }
+  .ku-workspace-navigation {
+    display: none;
+  }
+  .ku-workspace-main {
+    padding: 16px;
+  }
+  .ku-root :is(.ant-btn, .ant-select-selector) {
+    min-height: 44px;
+  }
+  .ku-root :is(input.ant-input, textarea.ant-input) {
+    font-size: 16px;
+  }
+}
+.ku-appearance-fields {
+  display: grid;
+  gap: 20px;
+  max-width: 480px;
+}
+.ku-appearance-fields > label,
+.ku-appearance-fields > div {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.ku-appearance-fields p {
+  color: var(--ku-muted);
+  margin: 0;
+  font-size: 12px;
+}
+.ku-appearance-fields .ant-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* Alignment engines reset geometry synchronously to measure a popup. Never
+   transition layout coordinates, even when a consumer applies transition:all. */
+.ku-overlay-host
+  :is(
+    .ant-select-dropdown,
+    .ant-dropdown,
+    .ant-picker-dropdown,
+    .ant-popover,
+    .ant-tooltip
+  ) {
+  transition-property: opacity, transform, box-shadow;
+}
+.ku-overlay-host.ku-overlay-host[data-reduced-motion="true"],
+.ku-overlay-host.ku-overlay-host[data-reduced-motion="true"] * {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
 }

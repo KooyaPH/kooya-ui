@@ -1,11 +1,13 @@
+import { oliveTheme } from "./themes/olive";
 import { canvasTheme } from "./themes/canvas";
 import { clientTheme } from "./themes/client";
 import { mosaicTheme } from "./themes/mosaic";
 import { signatureTheme } from "./themes/signature";
 
-export { canvasTheme, clientTheme, mosaicTheme, signatureTheme };
+export { oliveTheme, canvasTheme, clientTheme, mosaicTheme, signatureTheme };
 
 export const themes = {
+  olive: oliveTheme,
   mosaic: mosaicTheme,
   signature: signatureTheme,
   canvas: canvasTheme,

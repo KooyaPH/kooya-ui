@@ -1,3 +1,5 @@
+import { readLibraryAppearance } from "./appearance";
+import { readSelection, palettes, type PaletteId } from "../poc/model";
 import React, {
   Component,
   lazy,
@@ -43,8 +45,19 @@ export function PreviewRoute({ variantId }: { variantId: string }) {
   const [appearance, setAppearance] = useState<Appearance>(() => {
     const params = new URLSearchParams(location.search);
     return {
-      mode: params.get("mode") === "dark" ? "dark" : "light",
-      density: params.get("density") === "compact" ? "compact" : "comfortable",
+      palette: palettes.some((p) => p.id === params.get("palette"))
+        ? (params.get("palette") as PaletteId)
+        : readLibraryAppearance().palette,
+      mode:
+        params.get("mode") === "dark"
+          ? "dark"
+          : params.get("mode") === "light"
+            ? "light"
+            : readLibraryAppearance().mode,
+      density:
+        params.get("density") === "comfortable" ? "comfortable" : "compact",
+      customAccent:
+        params.get("customAccent") ?? readLibraryAppearance().customAccent,
     };
   });
   useEffect(() => {
@@ -67,7 +80,12 @@ export function PreviewRoute({ variantId }: { variantId: string }) {
         else root.dataset[key] = value;
       }
     };
-  }, [appearance.mode, appearance.density]);
+  }, [
+    appearance.mode,
+    appearance.density,
+    appearance.palette,
+    appearance.customAccent,
+  ]);
   useEffect(() => {
     const receive = (event: MessageEvent) => {
       if (
@@ -75,7 +93,16 @@ export function PreviewRoute({ variantId }: { variantId: string }) {
         event.origin === location.origin &&
         isPreviewSettings(event.data)
       )
-        setAppearance({ mode: event.data.mode, density: event.data.density });
+        setAppearance({
+          mode: event.data.mode,
+          density: event.data.density,
+          customAccent: event.data.customAccent,
+          palette:
+            event.data.palette === "custom" ||
+            palettes.some((p) => p.id === event.data.palette)
+              ? event.data.palette
+              : readLibraryAppearance().palette,
+        });
     };
     window.addEventListener("message", receive);
     // The iframe load event may precede React installing this listener.
@@ -92,7 +119,13 @@ export function PreviewRoute({ variantId }: { variantId: string }) {
     [variantId],
   );
   return (
-    <KooyaProvider {...appearance} className="preview-root style-vega">
+    <KooyaProvider
+      palette={appearance.palette ?? "olive"}
+      customAccent={appearance.customAccent}
+      mode={appearance.mode}
+      density={appearance.density}
+      className="preview-root style-vega"
+    >
       <FeedbackBridge />
       <MotionConfig reducedMotion="user">
         <main
@@ -104,7 +137,9 @@ export function PreviewRoute({ variantId }: { variantId: string }) {
               : "Example unavailable"
           }
         >
-          <h1 className="sr-only">{found?.variant.title ?? "Example preview"}</h1>
+          <h1 className="sr-only">
+            {found?.variant.title ?? "Example preview"}
+          </h1>
           {Demo ? (
             <PreviewBoundary key={variantId}>
               <Suspense
@@ -149,8 +184,13 @@ export function LiveFrame({
   const frame = useRef<HTMLIFrameElement>(null);
   const [visible, setVisible] = useState(false);
   const [attempt, setAttempt] = useState(0);
-  const [loadState, setLoadState] = useState<"loading" | "ready" | "failed">("loading");
-  useEffect(() => onLoadStateChange?.(loadState), [loadState, onLoadStateChange]);
+  const [loadState, setLoadState] = useState<"loading" | "ready" | "failed">(
+    "loading",
+  );
+  useEffect(
+    () => onLoadStateChange?.(loadState),
+    [loadState, onLoadStateChange],
+  );
   // Capture appearance when the lazy document becomes visible, rather than
   // when its offscreen holder mounts. Later changes preserve the iframe state.
   const [initial, setInitial] = useState<Appearance | null>(null);
@@ -175,11 +215,19 @@ export function LiveFrame({
     observer.observe(holder.current);
     return () => observer.disconnect();
   }, []);
-  const send = useCallback(() =>
-    frame.current?.contentWindow?.postMessage(
-      { type: "kooya-preview-settings", ...appearance },
-      location.origin,
-    ), [appearance.mode, appearance.density]);
+  const send = useCallback(
+    () =>
+      frame.current?.contentWindow?.postMessage(
+        { type: "kooya-preview-settings", ...appearance },
+        location.origin,
+      ),
+    [
+      appearance.mode,
+      appearance.density,
+      appearance.palette,
+      appearance.customAccent,
+    ],
+  );
   useEffect(send, [send]);
   useEffect(() => {
     if (!visible || !initial) return;
@@ -187,7 +235,7 @@ export function LiveFrame({
     // Navigation failures do not consistently dispatch iframe error events.
     // Only the validated child handshake proves the example can render.
     const timeout = window.setTimeout(() => {
-      setLoadState(current => current === "ready" ? current : "failed");
+      setLoadState((current) => (current === "ready" ? current : "failed"));
     }, 15_000);
     return () => window.clearTimeout(timeout);
   }, [visible, initial, reset, attempt, variant.id]);
@@ -216,7 +264,9 @@ export function LiveFrame({
       aria-label={thumbnail ? undefined : `${variant.title} preview area`}
     >
       {visible && initial && loadState === "loading" && (
-        <div className="preview-loading" role="status">Loading preview…</div>
+        <div className="preview-loading" role="status">
+          Loading preview…
+        </div>
       )}
       {loadState === "failed" && !thumbnail && (
         <Alert
@@ -224,12 +274,19 @@ export function LiveFrame({
           type="error"
           title="Preview could not be loaded"
           description="Check your connection and try again."
-          action={<Button onClick={event => {
-            const restoreFocus = document.activeElement === event.currentTarget;
-            setLoadState("loading");
-            setAttempt(current => current + 1);
-            if (restoreFocus) holder.current?.focus();
-          }}>Retry preview</Button>}
+          action={
+            <Button
+              onClick={(event) => {
+                const restoreFocus =
+                  document.activeElement === event.currentTarget;
+                setLoadState("loading");
+                setAttempt((current) => current + 1);
+                if (restoreFocus) holder.current?.focus();
+              }}
+            >
+              Retry preview
+            </Button>
+          }
         />
       )}
       {visible && initial ? (
@@ -239,7 +296,7 @@ export function LiveFrame({
           title={`${variant.title} preview`}
           loading="lazy"
           tabIndex={thumbnail ? -1 : undefined}
-          src={`./?mode=${initial.mode}&density=${initial.density}#/preview/${encodeURIComponent(variant.id)}`}
+          src={`./?mode=${initial.mode}&density=${initial.density}${initial.palette ? "&palette=" + initial.palette + (initial.customAccent ? "&customAccent=" + encodeURIComponent(initial.customAccent) : "") : ""}#/preview/${encodeURIComponent(variant.id)}`}
           onLoad={send}
           onError={() => setLoadState("failed")}
           style={{
@@ -345,7 +402,7 @@ export function VariantCard({
         </div>
         <a
           className="fullscreen-link"
-          href={`?mode=${appearance.mode}&density=${appearance.density}#/preview/${encodeURIComponent(variant.id)}`}
+          href={`?mode=${appearance.mode}&density=${appearance.density}${appearance.palette ? "&palette=" + appearance.palette + (appearance.customAccent ? "&customAccent=" + encodeURIComponent(appearance.customAccent) : "") : ""}#/preview/${encodeURIComponent(variant.id)}`}
           target="_blank"
           rel="noreferrer"
           aria-label={`Open ${variant.title} fullscreen`}

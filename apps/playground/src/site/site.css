@@ -1154,3 +1154,45 @@ kbd {
 .category-navigation a {
   min-height: 44px;
 }
+
+/* Formal POC chrome follows the same semantic scheme as live examples. */
+.catalog-site,
+.preview-root,
+.catalog-site[data-mode="dark"],
+.preview-root[data-mode="dark"] {
+  --site-paper: var(--ku-canvas);
+  --site-surface: var(--ku-surface);
+  --site-ink: var(--ku-ink);
+  --site-muted: var(--ku-muted);
+  --site-line: var(--ku-line);
+  --site-lime: var(--ku-highlight);
+  --primary: var(--ku-accent);
+  --primary-foreground: var(--ku-accent-ink);
+  --background: var(--ku-surface);
+  --foreground: var(--ku-ink);
+  --muted: var(--ku-subtle);
+  --muted-foreground: var(--ku-muted);
+  --border: var(--ku-line);
+  --ring: var(--ku-focus);
+}
+.site-brand img {
+  background: #20251e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  filter: none !important;
+}
+.catalog-site h1,
+.catalog-site h2,
+.catalog-site h3 {
+  font-family: "DM Sans Variable", "DM Sans", sans-serif;
+}
+.catalog-site :focus-visible,
+.preview-root :focus-visible {
+  outline-color: var(--ku-focus);
+}
+
+.catalog-site .category-navigation a[aria-current],
+.catalog-site .skip-link,
+.catalog-site .hero-copy h1 span {
+  color: var(--ku-highlight-ink);
+}

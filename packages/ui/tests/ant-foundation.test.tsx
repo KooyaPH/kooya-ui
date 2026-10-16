@@ -33,26 +33,23 @@ function tokens() {
 }
 
 describe("brand-first Ant foundation", () => {
-  it("uses Kooya paper, ink, lime and DM Sans without theme configuration", () => {
+  it("uses the v1 Olive, neutral surfaces and Compact default", () => {
     const { container } = render(
       <KooyaProvider>
         <TokenProbe />
       </KooyaProvider>,
     );
-    expect(container.firstElementChild).toHaveAttribute(
-      "data-theme",
-      "signature",
-    );
+    expect(container.firstElementChild).toHaveAttribute("data-theme", "olive");
     expect(tokens()).toMatchObject({
-      canvas: "#f2eee3",
-      ink: "#13120f",
-      primary: "#d7f20f",
-      height: 44,
+      canvas: "#F6F7F8",
+      ink: "#20262D",
+      primary: "#45583D",
+      height: 36,
     });
     expect(tokens().font).toContain("DM Sans");
-    expect(resolveThemeScheme().canvas).toBe("#f2eee3");
+    expect(resolveThemeScheme().canvas).toBe("#F6F7F8");
     expect(themeVariables()["--ku-font-display"]).toContain("Syncopate");
-    expect(antTheme().token?.colorPrimary).toBe("#d7f20f");
+    expect(antTheme().token?.colorPrimary).toBe("#45583D");
   });
 
   it("updates actual Ant controls to charcoal dark, compact density and reduced motion", () => {
@@ -69,10 +66,10 @@ describe("brand-first Ant foundation", () => {
       </KooyaProvider>,
     );
     expect(tokens()).toMatchObject({
-      canvas: "#13120f",
-      surface: "#1f1e19",
-      ink: "#f2eee3",
-      primary: "#d7f20f",
+      canvas: "#15191D",
+      surface: "#1D2329",
+      ink: "#EDF1F5",
+      primary: "#939e8e",
       height: 36,
       motion: false,
     });
@@ -147,7 +144,7 @@ describe("brand-first Ant foundation", () => {
     });
   });
 
-  it("keeps Select, Modal and Drawer portals inside the same provider", async () => {
+  it("keeps Select, Modal and Drawer in the provider-owned overlay host", async () => {
     const { container, rerender } = render(
       <KooyaProvider mode="dark">
         <Select
@@ -163,7 +160,7 @@ describe("brand-first Ant foundation", () => {
         </Drawer>
       </KooyaProvider>,
     );
-    const root = container.firstElementChild as HTMLElement;
+    const root = document.querySelector(".ku-overlay-host") as HTMLElement;
     expect(await screen.findByText("Local office")).toBeInTheDocument();
     expect(root).toContainElement(screen.getByText("Local office"));
     for (const text of ["Modal detail", "Drawer detail"])
@@ -184,7 +181,7 @@ describe("brand-first Ant foundation", () => {
       </KooyaProvider>,
     );
     expect(root).toHaveAttribute("data-mode", "light");
-    expect(root).toHaveStyle({ "--ku-canvas": "#f2eee3" });
+    expect(root).toHaveStyle({ "--ku-canvas": "#F6F7F8" });
   });
 
   it("scopes contextual message, notification and modal feedback to the current provider", async () => {
@@ -223,7 +220,9 @@ describe("brand-first Ant foundation", () => {
     ]) {
       await user.click(screen.getByRole("button", { name: button }));
       for (const element of await screen.findAllByText(text))
-        expect(container.firstElementChild).toContainElement(element);
+        expect(document.querySelector(".ku-overlay-host")).toContainElement(
+          element,
+        );
     }
     await user.click(
       within(screen.getByRole("dialog")).getByRole("button", {

@@ -210,7 +210,7 @@ it("exports native filtered records in displayed sort order across pages", async
     .mockImplementation(() => {});
   try {
     const { container } = render(
-      <KooyaProvider>
+      <KooyaProvider reducedMotion>
         <DataWorkbench embedded />
       </KooyaProvider>,
     );
@@ -222,9 +222,15 @@ it("exports native filtered records in displayed sort order across pages", async
     await userEvent.click(
       container.querySelector(".ant-table-filter-trigger")!,
     );
-    await userEvent.click(within(screen.getByRole("menu")).getByText("Design"));
     await userEvent.click(
-      screen.getByRole("button", { name: "OK", exact: true }),
+      within(
+        document.querySelector('.ku-overlay-host [role="menu"]') as HTMLElement,
+      ).getByText("Design"),
+    );
+    await userEvent.click(
+      within(
+        document.querySelector(".ku-overlay-host") as HTMLElement,
+      ).getByRole("button", { name: "OK", exact: true }),
     );
     const hours = screen.getByRole("columnheader", { name: /Hours/ });
     await userEvent.click(hours);

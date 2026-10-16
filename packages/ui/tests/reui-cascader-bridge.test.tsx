@@ -26,7 +26,7 @@ describe("REUI native cascader", () => {
     );
     expect(await screen.findByText("Fictional option")).toBeInTheDocument();
     expect(
-      container.querySelector(".ant-cascader-dropdown"),
+      document.querySelector(".ku-overlay-host .ant-cascader-dropdown"),
     ).toBeInTheDocument();
   });
 });
