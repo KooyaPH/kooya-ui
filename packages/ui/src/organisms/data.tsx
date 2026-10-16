@@ -54,6 +54,8 @@ export interface DataTableProps<Row extends object> {
   columns: readonly Column<Row>[];
   rowKey: (row: Row) => string;
   minWidth?: number;
+  /** Optional body limit. The Ant body owns both axes; wrappers must not scroll. */
+  maxBodyHeight?: number | string;
   empty?: string;
   loading?: boolean;
   /** Explicit opt-in for comparison tables that require horizontal scanning. */
@@ -70,6 +72,7 @@ export function DataTable<Row extends object>({
   columns,
   rowKey,
   minWidth = 680,
+  maxBodyHeight,
   empty = "No matching records.",
   loading,
   presentation = "adaptive",
@@ -90,7 +93,7 @@ export function DataTable<Row extends object>({
     if (!region) return;
     const labelScrollableContent = () => {
       for (const content of region.querySelectorAll<HTMLElement>(
-        ".ant-table-content",
+        ".ant-table-content, .ant-table-body",
       )) {
         content.tabIndex = 0;
         content.setAttribute("role", "group");
@@ -223,7 +226,7 @@ export function DataTable<Row extends object>({
             }
             onChange={cold ? undefined : onChange}
             onRow={cold ? undefined : onRow}
-            scroll={{ x: minWidth }}
+            scroll={cards ? undefined : { x: minWidth, y: maxBodyHeight }}
             components={tableComponents}
           />
         </div>

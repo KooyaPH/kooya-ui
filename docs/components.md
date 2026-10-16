@@ -459,3 +459,7 @@ transfer examples show consuming-app wiring with local fixtures. The guide also
 covers image alternatives, public Open Graph metadata, tab placement and
 keyboard shortcuts. Product-specific persistence, network downloads and
 document-head rendering remain app-owned and need their own qualification.
+
+### Table scroll ownership
+
+`DataTable` delegates horizontal scrolling to its Ant content/body. Use optional `maxBodyHeight` (CSS length or pixels) for a bounded body with one owner for both axes. Keep surrounding cards and layout wrappers free of scrolling; ordinary lists grow with the document unless an application explicitly bounds a local list region. Adaptive phone cards do not retain a table scroll container.

@@ -1,5 +1,11 @@
 # @kooyaph/ui changelog
 
+## 1.2.3
+
+### Patch Changes
+
+- Remove duplicate table scroll wrappers and support a single bounded body with maxBodyHeight. Adaptive phone cards no longer retain desktop scrolling.
+
 ## 1.2.2
 
 ### Patch Changes
