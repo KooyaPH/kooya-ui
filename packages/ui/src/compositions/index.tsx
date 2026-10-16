@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Flex, Statistic, Tag } from "antd";
+import { DataValue, useDataLoading } from "../molecules/experience";
 export interface ActionBarProps {
   children: ReactNode;
   primary?: ReactNode;
@@ -75,6 +76,7 @@ export interface MetricGroupProps {
   }[];
 }
 export function MetricGroup({ metrics }: MetricGroupProps) {
+  const loading = useDataLoading();
   return (
     <div
       style={{
@@ -96,11 +98,14 @@ export function MetricGroup({ metrics }: MetricGroupProps) {
             styles={{ title: { color: "var(--ku-muted, #66614f)" } }}
             title={metric.label}
             value={metric.value}
-            prefix={metric.prefix}
-            suffix={metric.suffix}
+            formatter={loading ? () => <DataValue loading /> : undefined}
+            prefix={loading ? undefined : metric.prefix}
+            suffix={loading ? undefined : metric.suffix}
           />
           {metric.detail && (
-            <p style={{ fontSize: 12, margin: "8px 0 0" }}>{metric.detail}</p>
+            <p style={{ fontSize: 12, margin: "8px 0 0" }}>
+              <DataValue>{metric.detail}</DataValue>
+            </p>
           )}
         </div>
       ))}
@@ -163,3 +168,4 @@ export function PageFrame({
 
 export * from "./workspace";
 export * from "./appearance";
+export * from "./authorization";

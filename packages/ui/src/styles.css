@@ -2588,3 +2588,175 @@ a.ku-nav-tile {
   transition-duration: 0s !important;
   animation-duration: 0s !important;
 }
+
+/* Consent composition: identity, scopes and decisions stay legible at every width. */
+.ku-authorization {
+  max-width: 560px;
+  width: 100%;
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid var(--ku-line);
+  border-radius: 10px;
+  background: var(--ku-surface);
+  color: var(--ku-ink);
+  overflow-wrap: anywhere;
+}
+.ku-authorization h2 {
+  margin: 12px 0 8px;
+  font-size: 24px;
+  letter-spacing: -0.6px;
+  line-height: 1.25;
+}
+.ku-authorization h3 {
+  font-size: 14px;
+  margin: 24px 0 8px;
+}
+.ku-authorization > p {
+  font-size: 13px;
+  color: var(--ku-muted);
+  line-height: 1.6;
+}
+.ku-authorization-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.ku-authorization-icon,
+.ku-authorization-account {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--ku-line);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--ku-subtle);
+  font-weight: 700;
+  font-size: 20px;
+}
+.ku-authorization-icon {
+  background: var(--ku-accent);
+  color: var(--ku-accent-ink);
+}
+.ku-authorization .ku-authorization-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+.ku-authorization-publisher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.ku-authorization-account-line {
+  display: grid;
+  gap: 4px;
+  padding: 14px 0;
+  border-block: 1px solid var(--ku-line);
+  font-size: 12px;
+}
+.ku-authorization-account-line span {
+  color: var(--ku-muted);
+}
+.ku-authorization-permissions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ku-authorization-permissions li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ku-line);
+  font-size: 13px;
+}
+.ku-authorization-permissions li > div {
+  min-width: 0;
+}
+.ku-authorization-permissions p {
+  margin: 4px 0;
+  color: var(--ku-muted);
+  line-height: 1.5;
+}
+.ku-authorization-permissions small,
+.ku-authorization-repositories small {
+  color: var(--ku-muted);
+  font-size: 11px;
+}
+.ku-authorization-repositories {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+.ku-authorization-repositories label {
+  font-weight: 600;
+  font-size: 12px;
+}
+.ku-authorization .ku-authorization-notice {
+  font-size: 11px;
+  margin-top: 20px;
+}
+.ku-authorization-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}
+.ku-authorization-actions .ant-btn {
+  height: auto;
+  min-height: 40px;
+  white-space: normal;
+  max-width: 100%;
+}
+.ku-data-placeholder {
+  display: inline-block;
+  width: var(--ku-data-width, 72%);
+  max-width: 100%;
+  min-width: 24px;
+  height: 1em;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: var(--ku-line);
+  animation: ku-data-pulse 1.4s ease-in-out infinite;
+}
+.ku-data-placeholder--block {
+  display: block;
+  height: 2.5em;
+}
+@keyframes ku-data-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ku-data-placeholder {
+    animation: none;
+  }
+}
+
+.ku-data-skeleton-lines {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ku-authorization,
+.ku-authorization-repositories,
+.ku-authorization-actions {
+  min-width: 0;
+}
+.ku-authorization .ant-select {
+  min-width: 0;
+  max-width: 100%;
+}
+.ku-authorization-actions .ant-btn {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.ku-authorization-actions .ant-btn > span {
+  white-space: normal;
+}

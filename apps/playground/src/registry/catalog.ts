@@ -1,4 +1,5 @@
-import type { ComponentType } from "react";
+import { createElement, type ComponentType } from "react";
+import { connectionLoadingEntries } from "./connection-loading";
 import { nativeEntries } from "./native";
 import { compositionEntries } from "./compositions";
 import manifest from "./reui-manifest.json";
@@ -83,6 +84,15 @@ export const reuiEntries: CatalogEntry[] = manifest.categories.map(
             description: example.description,
             previewHeight: example.previewHeight,
             load: async () => {
+              if (category.id === "skeleton") {
+                const { default: Demo } = await import(
+                  "../site/collections/skeleton-patterns"
+                );
+                return {
+                  default: () =>
+                    createElement(Demo, { pattern: example.order }),
+                };
+              }
               const loader =
                 previews[
                   `../reui/runtime/examples/${category.id}/${example.id}.jsx`
@@ -94,6 +104,8 @@ export const reuiEntries: CatalogEntry[] = manifest.categories.map(
               return { default: await loader() };
             },
             loadCode: async () => {
+              if (category.id === "skeleton")
+                return `${(await import("../site/collections/skeleton-patterns.tsx?raw")).default}\n\n<SkeletonPatterns pattern={${example.order}} />`;
               const loader =
                 codes[`../reui/code/examples/${category.id}/${example.id}.tsx`];
               if (!loader)
@@ -117,6 +129,7 @@ export const reuiEntries: CatalogEntry[] = manifest.categories.map(
 export const entries: CatalogEntry[] = [
   ...reuiEntries,
   ...nativeEntries,
+  ...connectionLoadingEntries,
   ...compositionEntries,
 ];
 export function getEntries(kind: CollectionKind) {

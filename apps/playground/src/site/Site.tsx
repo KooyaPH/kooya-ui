@@ -1,5 +1,4 @@
 import { readLibraryAppearance, storeLibraryAppearance } from "./appearance";
-import { readSelection, store, selectionKey } from "../poc/model";
 import { SearchOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { KooyaProvider } from "@kooyaph/ui";
@@ -236,7 +235,7 @@ export default function Site() {
           >
             Collection
           </a>
-          <a href="#/stress">Content checks</a>
+          <a href="#/workspace/cms">Workspaces</a>
           <a
             href="#/docs"
             aria-current={route.page === "docs" ? "page" : undefined}
@@ -336,6 +335,9 @@ export default function Site() {
           </a>
           <a href="#/docs" onClick={closeNavigation}>
             Documentation
+          </a>
+          <a href="#/workspace/cms" onClick={closeNavigation}>
+            Workspaces
           </a>
         </nav>
         <CollectionNav route={route} onNavigate={closeNavigation} />

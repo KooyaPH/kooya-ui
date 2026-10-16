@@ -1,11 +1,6 @@
+import { BusyBoundary } from "@kooyaph/ui/molecules";
 import { useState, type ReactNode } from "react";
-import {
-  Alert,
-  Button,
-  Empty,
-  Segmented,
-  Skeleton,
-} from "@kooyaph/ui/components";
+import { Alert, Button, Empty, Segmented } from "@kooyaph/ui/components";
 import "./collections.css";
 export function DemoFrame({
   title,
@@ -36,12 +31,7 @@ export function DemoFrame({
           options={["Ready", "Loading", "Empty", "Error"]}
         />
       </header>
-      {state === "Loading" ? (
-        <>
-          <div aria-hidden="true"><Skeleton active paragraph={{ rows: 5 }} /></div>
-          <span className="sr-only" role="status">Loading {title}</span>
-        </>
-      ) : state === "Empty" ? (
+      {state === "Empty" ? (
         <Empty description="No items yet">
           <Button onClick={() => setState("Ready")}>Load example</Button>
         </Empty>
@@ -53,7 +43,9 @@ export function DemoFrame({
           action={<Button onClick={() => setState("Ready")}>Retry</Button>}
         />
       ) : (
-        children
+        <BusyBoundary busy={state === "Loading"} label={`Loading ${title}`}>
+          {children}
+        </BusyBoundary>
       )}
     </section>
   );

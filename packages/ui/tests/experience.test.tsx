@@ -22,31 +22,32 @@ it("replaces raw legacy failure prose with public recovery and an honest missing
     "HTTP status unavailable",
   );
 });
-it("cold templates expose one busy boundary containing structural placeholders", () => {
+it("cold templates keep their static structure while their data values load", () => {
   render(
     <UI.KooyaProvider>
-      <UI.TemplateFrame title="Records" state={{ status: "loading" }} />
+      <UI.TemplateFrame title="Records" state={{ status: "loading" }}><h2>Record details</h2><UI.DataValue>Private value</UI.DataValue></UI.TemplateFrame>
     </UI.KooyaProvider>,
   );
   expect(screen.getByRole("status")).toHaveTextContent("Loading");
   expect(
-    document.querySelector('[aria-busy="true"] [data-skeleton="page"]'),
+    document.querySelector('[aria-busy="true"] [data-skeleton="value"]'),
   ).not.toBeNull();
 });
-it("cold tables do not show a spinner over an empty data table", () => {
+it("cold tables retain headers and replace only data cells", () => {
   render(
     <UI.KooyaProvider>
       <UI.DataTable
         label="Records"
         rows={[]}
         rowKey={(r: { id: string }) => r.id}
-        columns={[]}
+        columns={[{key:"id",title:"Record ID",render:(r)=>r.id}]}
         loading
       />
     </UI.KooyaProvider>,
   );
-  expect(document.querySelector('[data-skeleton="table"]')).not.toBeNull();
-  expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  expect(document.querySelector('[data-skeleton="value"]')).not.toBeNull();
+  expect(screen.getByRole("table")).toBeInTheDocument();
+  expect(screen.getByRole("columnheader", {name:"Record ID"})).toBeVisible();
 });
 it("manual vertical tabs move focus without selecting until Enter", async () => {
   const changed = vi.fn();

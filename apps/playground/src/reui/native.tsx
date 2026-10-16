@@ -1,3 +1,4 @@
+import { DataValue } from "@kooyaph/ui/molecules";
 import React, {useState} from 'react';
 import * as A from '@kooyaph/ui/components';
 function Feedback({kind}:{kind:'message'|'notification'|'modal'}){const app=A.App.useApp();return <A.Button onClick={()=>kind==='modal'?app.modal.confirm({title:'Apply sample changes?',content:'This example changes only local demonstration state.',onOk:()=>app.message.success('Changes applied')}):kind==='notification'?app.notification.success({title:'Sample saved',description:'Your local demonstration is ready.'}):app.message.success('Sample action completed')}>Try {kind}</A.Button>}
@@ -45,7 +46,7 @@ export const nativeDemos:Record<string,()=>React.ReactNode>={
  Radio:()=> <A.Radio.Group options={['Monthly','Yearly']} defaultValue="Monthly"/>, Rate:()=> <A.Rate defaultValue={4}/>,
  Result:()=> <A.Result status="success" title="Project created" subTitle="Your sample is ready." extra={<A.Button type="primary">Open project</A.Button>}/>,
  Segmented:()=> <A.Segmented options={['List','Board','Timeline']} defaultValue="List"/>, Select:()=> <A.Select mode="multiple" aria-label="Team roles" options={['Design','Engineering','Product'].map(value=>({value,label:value}))} style={{minWidth:260}}/>,
- Skeleton:()=> <A.Skeleton active avatar paragraph={{rows:3}}/>, Slider:()=> <A.Slider range defaultValue={[20,60]}/>,
+ Skeleton:()=> <A.Card title="Project details"><p>Project name</p><DataValue loading /><p>Summary</p><DataValue loading block /></A.Card>, Slider:()=> <A.Slider range defaultValue={[20,60]}/>,
  Space:()=> <A.Space wrap><A.Button>Cancel</A.Button><A.Button type="primary">Save</A.Button></A.Space>, Spin:()=> <A.Spin description="Loading sample"><div style={{height:120}}>Loading content</div></A.Spin>,
  Splitter:()=> <A.Splitter style={{height:220,border:'1px solid #d5d0c2'}}><A.Splitter.Panel defaultSize="40%" min="20%"><div style={{padding:16}}>Resize sidebar</div></A.Splitter.Panel><A.Splitter.Panel><div style={{padding:16}}>Main content</div></A.Splitter.Panel></A.Splitter>,
  Statistic:()=> <A.Statistic title="Active projects" value={128}/>, Steps:()=> <A.Steps current={1} items={[{title:'Details'},{title:'Review'},{title:'Done'}]}/>, Switch:()=> <A.Switch checkedChildren="On" unCheckedChildren="Off" defaultChecked/>,

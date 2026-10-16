@@ -1,5 +1,10 @@
-import type { ReactNode } from "react";
-import { Button, Skeleton } from "../atoms/index";
+import {
+  createContext,
+  useContext,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+import { Button } from "../atoms/index";
 
 export type SkeletonLayout =
   | "page"
@@ -9,7 +14,41 @@ export type SkeletonLayout =
   | "list"
   | "form"
   | "inbox";
-/** Decorative structure only. Put inside BusyBoundary for one announcement. */
+/** Loading is scoped to data. Navigation, headings, labels and containers remain mounted. */
+export const DataLoadingContext = createContext(false);
+export function useDataLoading() {
+  return useContext(DataLoadingContext);
+}
+export function DataValue({
+  children,
+  loading,
+  width = "72%",
+  block = false,
+}: {
+  children?: ReactNode;
+  loading?: boolean;
+  width?: string | number;
+  block?: boolean;
+}) {
+  const inherited = useDataLoading();
+  return (loading ?? inherited) ? (
+    <span
+      aria-hidden="true"
+      data-skeleton="value"
+      className={
+        "ku-data-placeholder" + (block ? " ku-data-placeholder--block" : "")
+      }
+      style={
+        {
+          "--ku-data-width": typeof width === "number" ? `${width}px` : width,
+        } as CSSProperties
+      }
+    />
+  ) : (
+    <>{children}</>
+  );
+}
+/** Low-level data placeholders; never use this to replace a known page or table shell. */
 export function ContentSkeleton({
   layout = "page",
   rows = 4,
@@ -22,22 +61,11 @@ export function ContentSkeleton({
     <div
       aria-hidden="true"
       data-skeleton={layout}
-      className={`ku-skeleton ku-skeleton--${layout}`}
+      className="ku-data-skeleton-lines"
     >
-      {Array.from(
-        { length: layout === "metric" || layout === "card" ? 1 : count },
-        (_, i) => (
-          <div key={i} className="ku-skeleton-item">
-            <Skeleton
-              active
-              title
-              paragraph={{
-                rows: layout === "metric" ? 1 : layout === "form" ? 1 : 2,
-              }}
-            />
-          </div>
-        ),
-      )}
+      {Array.from({ length: layout === "metric" ? 1 : count }, (_, i) => (
+        <DataValue key={i} loading width={i % 2 ? "62%" : "88%"} />
+      ))}
     </div>
   );
 }
@@ -45,14 +73,13 @@ export function BusyBoundary({
   busy,
   label = "Loading content",
   children,
-  skeleton = "page",
   keepContent = false,
 }: {
   busy: boolean;
   label?: string;
   children?: ReactNode;
-  skeleton?: SkeletonLayout;
-  keepContent?: boolean;
+  /** @deprecated Place DataValue inside the existing structure. */ skeleton?: SkeletonLayout;
+  /** Retain cached data while a background refresh runs. */ keepContent?: boolean;
 }) {
   return (
     <>
@@ -60,15 +87,12 @@ export function BusyBoundary({
         {busy ? label : ""}
       </span>
       <div className="ku-busy-boundary" aria-busy={busy || undefined}>
-        {busy && !keepContent ? (
-          <ContentSkeleton layout={skeleton} />
-        ) : (
-          children
-        )}
+        <DataLoadingContext.Provider value={busy && !keepContent}>
+          {children}
+        </DataLoadingContext.Provider>
         {busy && keepContent && (
           <div className="ku-refresh-indicator">
-            <span>{label}</span>
-            <ContentSkeleton layout="metric" />
+            <span>{label}…</span>
           </div>
         )}
       </div>

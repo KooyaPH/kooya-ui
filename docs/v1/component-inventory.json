@@ -7844,6 +7844,77 @@
       ]
     },
     {
+      "id": "application-authorization",
+      "kind": "groups",
+      "title": "Application connection & authorization",
+      "disposition": "retained-and-themed",
+      "variants": [
+        {
+          "id": "kooya-authorization-review",
+          "title": "Review",
+          "route": "#/preview/kooya-authorization-review"
+        },
+        {
+          "id": "kooya-authorization-repositories",
+          "title": "Select repositories",
+          "route": "#/preview/kooya-authorization-repositories"
+        },
+        {
+          "id": "kooya-authorization-authorizing",
+          "title": "Authorizing",
+          "route": "#/preview/kooya-authorization-authorizing"
+        },
+        {
+          "id": "kooya-authorization-approved",
+          "title": "Approved",
+          "route": "#/preview/kooya-authorization-approved"
+        },
+        {
+          "id": "kooya-authorization-denied",
+          "title": "Denied",
+          "route": "#/preview/kooya-authorization-denied"
+        },
+        {
+          "id": "kooya-authorization-error",
+          "title": "Error",
+          "route": "#/preview/kooya-authorization-error"
+        },
+        {
+          "id": "kooya-authorization-long-text",
+          "title": "Long application and account names",
+          "route": "#/preview/kooya-authorization-long-text"
+        }
+      ]
+    },
+    {
+      "id": "data-loading",
+      "kind": "groups",
+      "title": "Data loading & skeletons",
+      "disposition": "retained-and-themed",
+      "variants": [
+        {
+          "id": "kooya-data-loading-table",
+          "title": "Table values",
+          "route": "#/preview/kooya-data-loading-table"
+        },
+        {
+          "id": "kooya-data-loading-metrics",
+          "title": "Metrics values",
+          "route": "#/preview/kooya-data-loading-metrics"
+        },
+        {
+          "id": "kooya-data-loading-detail",
+          "title": "Detail values",
+          "route": "#/preview/kooya-data-loading-detail"
+        },
+        {
+          "id": "kooya-data-loading-action",
+          "title": "Action progress",
+          "route": "#/preview/kooya-data-loading-action"
+        }
+      ]
+    },
+    {
       "id": "actions",
       "kind": "groups",
       "title": "Action and button groups",
@@ -9986,5 +10057,5 @@
       ]
     }
   ],
-  "variants": 1552
+  "variants": 1563
 }

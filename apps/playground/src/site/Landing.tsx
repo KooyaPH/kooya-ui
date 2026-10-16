@@ -1,21 +1,33 @@
 import { useState } from "react";
-import {
-  Button,
-  Checkbox,
-  Input,
-  Progress,
-  Segmented,
-  Select,
-  Slider,
-  Switch,
-  Tag,
-} from "@kooyaph/ui/components";
+import { Button, Segmented, Tag } from "@kooyaph/ui/components";
+import { DataTable } from "@kooyaph/ui/organisms";
+import { ApplicationAuthorization } from "@kooyaph/ui";
 import { collections, countVariants, getEntries } from "../registry/catalog";
-import { type Appearance } from "./model";
-import { CategoryCard } from "./CatalogPages";
+import type { Appearance } from "./model";
+import "./marketing.css";
 export const installSnippet =
   "pnpm add @kooyaph/ui@https://github.com/KooyaPH/kooya-ui/releases/download/v1.0.0/kooyaph-ui-1.0.0.tgz antd@6.6.5";
-export const usageSnippet = `import '@fontsource-variable/dm-sans';\nimport '@kooyaph/ui/styles.css';\nimport { KooyaProvider } from '@kooyaph/ui';\nimport { Button, Input, Space } from '@kooyaph/ui/components';\n\nexport default function App() {\n  return (\n    <KooyaProvider mode="light" density="comfortable">\n      <Space>\n        <Input aria-label="Project name" placeholder="Project name" />\n        <Button type="primary">Create project</Button>\n      </Space>\n    </KooyaProvider>\n  );\n}`;
+export const usageSnippet = `import '@fontsource-variable/dm-sans';\nimport '@kooyaph/ui/styles.css';\nimport { KooyaProvider } from '@kooyaph/ui';\nimport { Button, Input, Space } from '@kooyaph/ui/components';\n\nexport default function App() {\n  return (\n    <KooyaProvider mode="light" density="compact">\n      <Space>\n        <Input aria-label="Project name" placeholder="Project name" />\n        <Button type="primary">Create project</Button>\n      </Space>\n    </KooyaProvider>\n  );\n}`;
+const records = [
+  {
+    id: "01",
+    title: "A good place to begin",
+    type: "Guide",
+    status: "Published",
+  },
+  {
+    id: "02",
+    title: "The way we work together",
+    type: "Company",
+    status: "In review",
+  },
+  {
+    id: "03",
+    title: "Small details. Better days.",
+    type: "Article",
+    status: "Draft",
+  },
+];
 export function Landing({
   appearance,
   onAppearance,
@@ -23,218 +35,479 @@ export function Landing({
   appearance: Appearance;
   onAppearance: (value: Appearance) => void;
 }) {
-  const [name, setName] = useState("A little more human");
-  const [saved, setSaved] = useState(false);
-  const [progress, setProgress] = useState(64);
-  const featured = [
-    ...getEntries("blocks").slice(0, 2),
-    ...getEntries("templates").slice(0, 2),
-  ];
+  const [scene, setScene] = useState("Editorial");
+  const [loading, setLoading] = useState(false);
+  const [palette, setPalette] = useState<string>(appearance.palette ?? "olive");
+  const workspaceRecords =
+    scene === "Editorial"
+      ? records
+      : [
+          {
+            id: "admin",
+            title: "Workspace administrators",
+            type: "Role",
+            status: "Full access",
+          },
+          {
+            id: "editors",
+            title: "Content reviewers",
+            type: "Role",
+            status: "Review & publish",
+          },
+          {
+            id: "guests",
+            title: "Guest collaborators",
+            type: "Role",
+            status: "Read only",
+          },
+        ];
   return (
-    <div className="landing">
-      <section className="landing-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">KOOYA UI · BUILT ON ANT DESIGN</p>
-          <h1>
-            GOOD TOOLS.
-            <br />
-            <span>GREAT FEEL.</span>
-          </h1>
-          <p className="hero-description">
-            Thoughtful components. A distinct point of view. Everything you need
-            to build interfaces that feel like Kooya.
-          </p>
-          <div className="hero-actions">
-            <Button type="primary" size="large" href="#/components">
-              Explore components <span aria-hidden="true">↗</span>
-            </Button>
-            <Button size="large" href="#/templates">
-              Browse templates
-            </Button>
-          </div>
-          <p className="hero-footnote">
-            React · TypeScript · Ant Design · Open source
-          </p>
+    <div className="kooya-marketing">
+      <section className="mk-hero">
+        <div className="mk-announcement">
+          <span className="mk-dot" /> KOOYA UI / VERSION 1{" "}
+          <span>Made for the way you work.</span>
         </div>
-        <div className="hero-demo">
-          <div className="demo-topline">
-            <span>MAKE IT YOURS</span>
-            <Tag>Live playground</Tag>
+        <div className="mk-hero-grid">
+          <div className="mk-hero-copy">
+            <p className="mk-kicker">A LITTLE CHARACTER. A SOLID FOUNDATION.</p>
+            <h1>
+              Serious tools.
+              <br />
+              <em>Human by design.</em>
+            </h1>
+            <p className="mk-lead">
+              Meet the interface system behind Kooya. Clear workspaces,
+              considered components, and the small details that make everyday
+              work feel better.
+            </p>
+            <div className="mk-actions">
+              <Button type="primary" size="large" href="#/components">
+                Explore the collection <span aria-hidden="true">↗</span>
+              </Button>
+              <Button size="large" href="#/workspace/cms">
+                Try the workspace
+              </Button>
+            </div>
+            <div className="mk-built">
+              <span>React + TypeScript</span>
+              <span>Built on Ant Design</span>
+              <span>Ours to make yours.</span>
+            </div>
           </div>
-          <h2>
-            A small idea.
-            <br />A good place to start.
-          </h2>
-          <label htmlFor="hero-project">Project name</label>
-          <Input
-            id="hero-project"
-            size="large"
-            value={name}
-            onChange={(event) => {
-              setName(event.target.value);
-              setSaved(false);
-            }}
-          />
-          <div className="demo-control-row">
-            <label htmlFor="hero-notifications">
-              Keep the team in the loop
-            </label>
-            <Switch
-              id="hero-notifications"
-              aria-label="Team notifications"
-              defaultChecked
-            />
+          <div className="mk-specimen">
+            <div className="mk-specimen-cap">
+              <span>THE KOOYA FEEL, IN PRACTICE</span>
+              <span>01 — 03</span>
+            </div>
+            <div className="mk-note">
+              <span className="mk-star" aria-hidden="true">
+                ✳
+              </span>
+              <span>
+                Room for focus.
+                <br />
+                <strong>A little room for personality.</strong>
+              </span>
+            </div>
+            <div className="mk-mini-app">
+              <div className="mk-mini-bar">
+                <img src="/brand/kooya-wordmark.png" alt="Kooya" />
+                <span>Editorial / Content library</span>
+                <span className="mk-mini-avatar">JD</span>
+              </div>
+              <div className="mk-mini-body">
+                <div className="mk-mini-rail">
+                  <span className="is-current">Content</span>
+                  <span>Projects</span>
+                  <span>People</span>
+                  <span>Settings</span>
+                </div>
+                <div className="mk-mini-content">
+                  <div className="mk-mini-title">
+                    <h2>Good work starts here.</h2>
+                    <Tag>Kooya Olive</Tag>
+                  </div>
+                  <p>A clear view of what’s ready, and what’s next.</p>
+                  <div className="mk-mini-metrics">
+                    <div>
+                      <small>Published</small>
+                      <strong>
+                        24<span>↗ 8 this week</span>
+                      </strong>
+                    </div>
+                    <div>
+                      <small>In review</small>
+                      <strong>
+                        06<span>Ready for a fresh eye</span>
+                      </strong>
+                    </div>
+                  </div>
+                  {records.map((row) => (
+                    <div className="mk-mini-row" key={row.id}>
+                      <span>{row.id}</span>
+                      <strong>{row.title}</strong>
+                      <small>{row.status}</small>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mk-specimen-foot">
+              <span>Quiet structure. Distinct character.</span>
+              <span
+                className="mk-swatch-strip"
+                role="img"
+                aria-label="Olive, sage and signature Kooya green"
+              >
+                <i />
+                <i />
+                <i />
+                <i />
+              </span>
+            </div>
           </div>
-          <div className="demo-control-row">
-            <span>Working rhythm</span>
-            <Select
-              aria-label="Working rhythm"
-              defaultValue="steady"
-              options={[
-                { label: "Steady", value: "steady" },
-                { label: "Focused", value: "focused" },
-                { label: "Exploring", value: "exploring" },
-              ]}
-            />
-          </div>
-          <div className="demo-progress">
-            <span>Room to grow</span>
-            <Slider
-              ariaLabelForHandle="Room to grow"
-              tooltip={{ placement: "bottom" }}
-              value={progress}
-              onChange={setProgress}
-            />
-            <Progress percent={progress} showInfo={false} />
-          </div>
-          <Button
-            type="primary"
-            size="large"
-            block
-            disabled={!name.trim()}
-            onClick={() => setSaved(true)}
-          >
-            {saved ? "Project created ✓" : "Create a local project"}
-          </Button>
-          <p className="demo-status" role="status">
-            {saved
-              ? `“${name}” is ready in this demo.`
-              : "Try the controls. Make yourself at home."}
-          </p>
         </div>
       </section>
-      <section className="collection-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">FROM THE SMALL PARTS TO THE WHOLE PICTURE</p>
-            <h2>Your next interface starts here.</h2>
-          </div>
-          <a href="#/docs">Get started ↗</a>
+      <section className="mk-proof" aria-label="Collection at a glance">
+        <div>
+          <strong>{countVariants().toLocaleString()}</strong>
+          <span>working examples</span>
         </div>
-        <div className="collection-entrances">
-          {collections.map((item, index) => (
-            <a key={item.id} href={`#/${item.id}`}>
-              <span className="collection-number">0{index + 1}</span>
-              <h3>
-                {item.title} <span aria-hidden="true">↗</span>
-              </h3>
-              <p>{item.description}</p>
-              <span className="collection-count">
-                {getEntries(item.id).length} categories ·{" "}
-                {countVariants(item.id)} examples
+        <div>
+          <strong>{getEntries("components").length}</strong>
+          <span>component categories</span>
+        </div>
+        <div>
+          <strong>12 + yours</strong>
+          <span>palettes, with a custom accent</span>
+        </div>
+        <div>
+          <strong>One Kooya.</strong>
+          <span>From the smallest control to the whole workspace.</span>
+        </div>
+      </section>
+      <section className="mk-section mk-workspaces">
+        <div className="mk-section-heading">
+          <div>
+            <p className="mk-kicker">STRUCTURE WITH A POINT OF VIEW</p>
+            <h2>
+              Less friction.
+              <br />
+              More good work.
+            </h2>
+          </div>
+          <p>
+            Editorial gives content room to breathe. Governance keeps decisions
+            clear. Two expressions of one considered system.
+          </p>
+        </div>
+        <div className="mk-workspace-grid">
+          <div className="mk-workspace-copy">
+            <Segmented
+              aria-label="Workspace preview"
+              value={scene}
+              options={["Editorial", "Governance"]}
+              onChange={setScene}
+            />
+            <h3>
+              {scene === "Editorial"
+                ? "A place for things to take shape."
+                : "Clarity for the people in charge."}
+            </h3>
+            <p>
+              {scene === "Editorial"
+                ? "Content, projects and everyday work. A steady navigation rail, useful context, and a clear path to the next action."
+                : "People, permissions and settings. Deliberate hierarchy, readable policies, and decisions that feel well considered."}
+            </p>
+            <a
+              className="mk-text-link"
+              href={
+                scene === "Editorial"
+                  ? "#/workspace/cms"
+                  : "#/workspace/settings"
+              }
+            >
+              Open {scene.toLowerCase()} workspace ↗
+            </a>
+          </div>
+          <div className="mk-workspace-live">
+            <div className="mk-live-heading">
+              <span>
+                {scene === "Editorial" ? "Content library" : "Access overview"}
               </span>
+              <Tag>Live components</Tag>
+            </div>
+            <DataTable
+              label={scene + " preview"}
+              minWidth={420}
+              rows={workspaceRecords}
+              rowKey={(r) => r.id}
+              columns={[
+                {
+                  key: "title",
+                  title: scene === "Editorial" ? "Title" : "Policy",
+                  render: (r) => r.title,
+                },
+                {
+                  key: "status",
+                  title: "Status",
+                  render: (r) => <Tag>{r.status}</Tag>,
+                },
+              ]}
+            />
+            <div className="mk-live-caption">
+              Compact by default. Every detail has a job.
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="mk-section mk-collection">
+        <div className="mk-section-heading">
+          <div>
+            <p className="mk-kicker">
+              FROM THE SMALL PARTS TO THE WHOLE PICTURE
+            </p>
+            <h2>
+              Your next interface,
+              <br />
+              already taking shape.
+            </h2>
+          </div>
+          <a className="mk-text-link" href="#/components">
+            Browse the collection ↗
+          </a>
+        </div>
+        <div className="mk-collection-grid">
+          {collections.map((item, index) => (
+            <a href={`#/${item.id}`} key={item.id}>
+              <span className="mk-index">
+                0{index + 1} <span aria-hidden="true">↗</span>
+              </span>
+              <div
+                className={`mk-collection-art mk-art-${index}`}
+                aria-hidden="true"
+              >
+                {index === 0 ? (
+                  <>
+                    <i>Button</i>
+                    <i>✓</i>
+                    <i>Draft</i>
+                  </>
+                ) : index === 1 ? (
+                  <>
+                    <b>Project name</b>
+                    <i>A good idea</i>
+                    <i>Continue ↗</i>
+                  </>
+                ) : index === 2 ? (
+                  <>
+                    <b>Ready to connect?</b>
+                    <i>Review permissions</i>
+                    <i>Authorize</i>
+                  </>
+                ) : index === 3 ? (
+                  <>
+                    <b>Overview</b>
+                    <div className="mk-art-bars">
+                      <i />
+                      <i />
+                      <i />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <b>Kooya workspace</b>
+                    <div className="mk-art-layout">
+                      <i />
+                      <i />
+                    </div>
+                  </>
+                )}
+              </div>
+              <h3>{item.title}</h3>
+              <p>
+                {item.id === "components"
+                  ? "The essentials, with every detail considered."
+                  : item.id === "groups"
+                    ? "Controls that belong together."
+                    : item.id === "blocks"
+                      ? "Useful patterns for real work."
+                      : item.id === "sections"
+                        ? "A complete thought, ready to compose."
+                        : "A confident starting point."}
+              </p>
+              <small>{countVariants(item.id)} examples</small>
             </a>
           ))}
         </div>
       </section>
-      {featured.length > 0 && (
-        <section className="featured-section">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">PUT THE PIECES TOGETHER</p>
-              <h2>A head start, with room to make it yours.</h2>
+      <section className="mk-section mk-details">
+        <div className="mk-section-heading">
+          <div>
+            <p className="mk-kicker">GOOD UI SHOWS UP IN THE DETAILS</p>
+            <h2>
+              Considered beyond
+              <br />
+              the first impression.
+            </h2>
+          </div>
+          <p>
+            Clear consent. Stable loading. Useful feedback. The moments between
+            screens deserve the same care.
+          </p>
+        </div>
+        <div className="mk-detail-grid">
+          <article>
+            <div className="mk-detail-label">01 / CONNECT WITH CONFIDENCE</div>
+            <ApplicationAuthorization
+              application={{
+                name: "Kooya Projects",
+                publisher: "Kooya",
+                description: "Keep your projects and repositories in step.",
+                verified: true,
+              }}
+              account="Jamie at Acme Studio"
+              permissions={[
+                {
+                  id: "read",
+                  title: "Read selected repositories",
+                  description: "View repository names and project activity.",
+                  access: "Read only",
+                  required: true,
+                },
+              ]}
+              state="review"
+              onAuthorize={() => {
+                location.hash = "/groups/application-authorization";
+              }}
+              onCancel={() => {
+                location.hash = "/groups/application-authorization";
+              }}
+            />
+            <a
+              className="mk-text-link"
+              href="#/groups/application-authorization"
+            >
+              Explore authorization patterns ↗
+            </a>
+          </article>
+          <article>
+            <div className="mk-detail-label">
+              02 / KEEP THE STRUCTURE. LOAD THE DATA.
             </div>
-            <a href="#/blocks">All blocks ↗</a>
-          </div>
-          <div className="featured-grid">
-            {featured.map((entry) => (
-              <CategoryCard
-                key={`${entry.kind}-${entry.id}`}
-                entry={entry}
-                appearance={appearance}
+            <div className="mk-loading-demo">
+              <div className="mk-live-heading">
+                <h3>Project activity</h3>
+                <Button
+                  aria-pressed={loading}
+                  onClick={() => setLoading(!loading)}
+                >
+                  {loading ? "Show data" : "Preview loading"}
+                </Button>
+              </div>
+              <p>Headers stay put. Only the values wait.</p>
+              <DataTable
+                label="Loading preview"
+                loading={loading}
+                rows={loading ? [] : records}
+                rowKey={(r) => r.id}
+                minWidth={360}
+                columns={[
+                  { key: "title", title: "Project", render: (r) => r.title },
+                  { key: "status", title: "Status", render: (r) => r.status },
+                ]}
               />
-            ))}
-          </div>
-        </section>
-      )}
-      <section className="theme-section">
+            </div>
+            <a className="mk-text-link" href="#/groups/data-loading">
+              Explore loading patterns ↗
+            </a>
+          </article>
+        </div>
+      </section>
+      <section className="mk-section mk-personality">
+        <div className="mk-personality-mark" aria-hidden="true">
+          <img src="/brand/kooya-wordmark.png" alt="" />
+        </div>
         <div>
-          <p className="eyebrow">SAME KOOYA. DIFFERENT LIGHT.</p>
+          <p className="mk-kicker">STILL KOOYA. ALWAYS YOURS.</p>
           <h2>
-            Compact by default.
+            A familiar feel.
             <br />
-            Flexible by design.
+            Your own expression.
           </h2>
           <p>
-            Paper and ink for a clear day. Charcoal for a quieter evening. The
-            same controls, with your preferred rhythm.
+            Olive for a grounded start. A signature spark of Kooya green. Light
+            or dark, compact or comfortable: the system adapts without losing
+            its character.
           </p>
-          <div className="theme-switches">
+          <div
+            className="mk-palette-options"
+            role="group"
+            aria-label="Preview palette"
+          >
+            {[
+              { id: "olive", name: "Kooya Olive", color: "#45583D" },
+              { id: "navy", name: "Navy", color: "#334E74" },
+              { id: "plum", name: "Plum", color: "#76556D" },
+              { id: "teal", name: "Teal", color: "#2D6A64" },
+            ].map((p) => (
+              <button
+                key={p.id}
+                aria-label={p.name}
+                aria-pressed={palette === p.id}
+                style={{ background: p.color }}
+                onClick={() => {
+                  setPalette(p.id);
+                  onAppearance({
+                    ...appearance,
+                    palette: p.id as Appearance["palette"],
+                  });
+                }}
+              >
+                <span className="ku-visually-hidden">{p.name}</span>
+                {palette === p.id && "✓"}
+              </button>
+            ))}
+          </div>
+          <div className="mk-actions">
             <Segmented
-              aria-label="Landing color mode"
+              aria-label="Marketing color mode"
               value={appearance.mode}
               options={[
                 { label: "Light", value: "light" },
                 { label: "Dark", value: "dark" },
               ]}
-              onChange={(value) =>
+              onChange={(v) =>
                 onAppearance({
                   ...appearance,
-                  mode: value as Appearance["mode"],
-                  preferredMode: value as Appearance["mode"],
+                  mode: v as Appearance["mode"],
+                  preferredMode: v as Appearance["mode"],
                 })
               }
             />
-            <Segmented
-              aria-label="Landing density"
-              value={appearance.density}
-              options={[
-                { label: "Comfortable", value: "comfortable" },
-                { label: "Compact", value: "compact" },
-              ]}
-              onChange={(value) =>
-                onAppearance({
-                  ...appearance,
-                  density: value as Appearance["density"],
-                })
-              }
-            />
+            <a className="mk-text-link" href="#/workspace/settings">
+              Make it yours ↗
+            </a>
           </div>
         </div>
-        <div className="theme-sample">
-          <Tag color="success">A shared foundation</Tag>
-          <h3>
-            Less adjustment.
-            <br />
-            More making.
-          </h3>
-          <Checkbox defaultChecked>Clear, useful defaults</Checkbox>
-          <Checkbox defaultChecked>Familiar Ant Design APIs</Checkbox>
-          <Checkbox defaultChecked>One consistent theme</Checkbox>
-        </div>
       </section>
-      <section className="installation-section">
-        <div>
-          <p className="eyebrow">GET INTO YOUR FLOW</p>
-          <h2>Start with one component.</h2>
-          <p>Install the package, add the provider, and build from there.</p>
-          <Button size="large" href="#/docs">
-            Read the documentation ↗
+      <section className="mk-section mk-start">
+        <p className="mk-kicker">LET’S MAKE SOMETHING GOOD.</p>
+        <h2>
+          Start small.
+          <br />
+          <em>Build something Kooya.</em>
+        </h2>
+        <div className="mk-actions">
+          <Button type="primary" size="large" href="#/docs">
+            Get started ↗
+          </Button>
+          <Button size="large" href="#/components">
+            Find your first component
           </Button>
         </div>
-        <pre>
-          <code>{installSnippet}</code>
-        </pre>
+        <p>React. TypeScript. Familiar APIs. A foundation to make your own.</p>
       </section>
     </div>
   );
@@ -286,7 +559,7 @@ export function Docs() {
       <h2>Appearance and density</h2>
       <p>
         Set <code>mode="light"</code> or <code>mode="dark"</code>, and{" "}
-        <code>density="comfortable"</code> or <code>density="compact"</code> on
+        <code>density="compact"</code> or <code>density="compact"</code> on
         KooyaProvider. Respect system reduced motion by leaving its automatic
         behavior enabled.
       </p>

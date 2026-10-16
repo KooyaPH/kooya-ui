@@ -11,7 +11,6 @@ import {
   Progress,
   Result,
   Segmented,
-  Skeleton,
   Space,
   Tabs,
   Tag,
@@ -401,7 +400,7 @@ export function TemplateDemo({
     "cart",
     "checkout",
   ].includes(family);
-  const content = <Suspense fallback={<Skeleton active />}>{body}</Suspense>;
+  const content = <Suspense fallback={<p role="status">Opening example…</p>}>{body}</Suspense>;
   return (
     <DemoFrame
       title={`${family.replace(/-/g, " ")} template`}

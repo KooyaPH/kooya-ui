@@ -1,3 +1,4 @@
+import { DataValue } from "@kooyaph/ui/molecules";
 import { useState } from "react";
 import {
   Alert,
@@ -13,7 +14,6 @@ import {
   Progress,
   Radio,
   Select,
-  Skeleton,
   Space,
   Switch,
   Table,
@@ -1231,7 +1231,16 @@ export function Components() {
           />
         </Panel>
         <Panel title="Loading & empty states">
-          <Skeleton active paragraph={{ rows: 2 }} />
+          <div aria-busy="true">
+            <span role="status" className="ku-visually-hidden">
+              Loading project details
+            </span>
+            <h3>Project details</h3>
+            <p>Name</p>
+            <DataValue loading />
+            <p>Summary</p>
+            <DataValue loading block />
+          </div>
           <Divider />
           <Empty
             image={Empty.PRESENTED_IMAGE_SIMPLE}
