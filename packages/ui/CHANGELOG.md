@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Remove duplicate table scroll wrappers and support a single bounded body with maxBodyHeight. Adaptive phone cards no longer retain desktop scrolling.
+- Remove duplicate table scroll wrappers and support a single bounded body with maxBodyHeight. Adaptive phone cards do not inherit bounded desktop body heights.
 
 ## 1.2.2
 
