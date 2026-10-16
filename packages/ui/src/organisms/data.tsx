@@ -20,6 +20,7 @@ import {
   useState,
   type ComponentPropsWithoutRef,
   type ReactNode,
+  type CSSProperties,
 } from "react";
 
 const TableLabel = createContext<string>("");
@@ -54,7 +55,7 @@ export interface DataTableProps<Row extends object> {
   columns: readonly Column<Row>[];
   rowKey: (row: Row) => string;
   minWidth?: number;
-  /** Optional body limit. The Ant body owns both axes; wrappers must not scroll. */
+  /** Optional body limit. The Ant content owns both axes; wrappers must not scroll. */
   maxBodyHeight?: number | string;
   empty?: string;
   loading?: boolean;
@@ -128,7 +129,24 @@ export function DataTable<Row extends object>({
           ref={scrollRegionRef}
           className={
             "ku-table-scroll " +
-            (cards ? "ku-table-cards" : priorityRows ? "ku-table-priority" : "")
+            (cards
+              ? "ku-table-cards"
+              : priorityRows
+                ? "ku-table-priority"
+                : "") +
+            (!cards && maxBodyHeight !== undefined
+              ? " ku-table-scroll--bounded"
+              : "")
+          }
+          style={
+            !cards && maxBodyHeight !== undefined
+              ? ({
+                  "--ku-table-max-body-height":
+                    typeof maxBodyHeight === "number"
+                      ? `${maxBodyHeight}px`
+                      : maxBodyHeight,
+                } as CSSProperties)
+              : undefined
           }
           data-device={mode}
           role="region"
@@ -226,7 +244,7 @@ export function DataTable<Row extends object>({
             }
             onChange={cold ? undefined : onChange}
             onRow={cold ? undefined : onRow}
-            scroll={{ x: minWidth, y: cards ? undefined : maxBodyHeight }}
+            scroll={{ x: minWidth }}
             components={tableComponents}
           />
         </div>

@@ -3396,3 +3396,16 @@ a.ku-nav-tile {
     padding-block: 10px;
   }
 }
+
+/* One native table and one content scrollport, including bounded data views. */
+.ku-root .ku-table-scroll--bounded .ant-table-content {
+  max-height: calc(
+    var(--ku-table-max-body-height) + var(--ku-table-header-height, 40px)
+  );
+  overflow: auto !important;
+}
+.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
