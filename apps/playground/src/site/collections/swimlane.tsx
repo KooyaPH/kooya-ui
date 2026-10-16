@@ -15,7 +15,12 @@ export default function SwimlaneDemo({
   variant?: string;
 }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [stage, setStage] = useState("Review");
+  const [stages, setStages] = useState<Record<string, string>>({
+    Governance: "Review",
+    Editorial: "Review",
+  });
+  const move = (lane: string, next: string) =>
+    setStages((current) => ({ ...current, [lane]: next }));
   const columns = ["Planned", "Review", "Approved"];
   const loading = variant === "loading";
   const empty = variant === "empty";
@@ -50,35 +55,40 @@ export default function SwimlaneDemo({
                   key={column}
                   title={column}
                   count={
-                    loading ? undefined : !empty && stage === column ? 1 : 0
+                    loading
+                      ? undefined
+                      : !empty && stages[lane] === column
+                        ? 1
+                        : 0
                   }
                 >
                   {loading ? (
-                    <SwimlaneCard
-                      title={<DataValue loading />}
-                    >
+                    <SwimlaneCard title={<DataValue loading />}>
                       <DataValue loading />
                     </SwimlaneCard>
-                  ) : !empty && stage === column ? (
+                  ) : !empty && stages[lane] === column ? (
                     <SwimlaneCard
                       title={title}
                       actions={
                         !readonly && (
                           <Select
                             aria-label={`Move ${lane} issue`}
-                            value={stage}
+                            value={stages[lane]}
                             options={columns.map((value) => ({
                               value,
                               label: value,
                             }))}
-                            onChange={setStage}
+                            onChange={(next) => move(lane, next)}
                           />
                         )
                       }
                     >
-                      <p>Policy review · KOOYA-124</p>
+                      <p>
+                        Policy review ·{" "}
+                        {lane === "Governance" ? "KOOYA-124" : "KOOYA-125"}
+                      </p>
                       {!readonly && (
-                        <Button onClick={() => setStage("Approved")}>
+                        <Button onClick={() => move(lane, "Approved")}>
                           Approve review
                         </Button>
                       )}
