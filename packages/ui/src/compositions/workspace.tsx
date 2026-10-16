@@ -30,12 +30,7 @@ export function WorkspaceShell({
         Skip to main content
       </a>
       <header className="ku-workspace-header">{header}</header>
-      <aside
-        className="ku-workspace-navigation"
-        aria-label="Workspace navigation"
-      >
-        {navigation}
-      </aside>
+      <div className="ku-workspace-navigation">{navigation}</div>
       {context && (
         <aside className="ku-workspace-context" aria-label="Section navigation">
           {context}

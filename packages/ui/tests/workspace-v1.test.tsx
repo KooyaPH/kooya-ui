@@ -8,6 +8,7 @@ import {
   normalizeAppearance,
   defaultAppearance,
 } from "../src/foundations/palettes";
+import * as UI from "../src/legacy";
 import { WorkspaceShell } from "../src/compositions/workspace";
 import { AppearancePicker } from "../src/compositions/appearance";
 import { Select } from "antd";
@@ -155,4 +156,26 @@ it("gives avatar initials readable neutral foreground and background roles", () 
       4.5,
     );
   }
+});
+
+it("renders utility chrome without repeating the route identity or nesting a header", () => {
+  const { container } = render(
+    <KooyaProvider>
+      <UI.WorkspaceHeader
+        presentation="utility"
+        name="Kooya"
+        area="Work"
+        title="Boards"
+        collapsed={false}
+        onNavigation={() => {}}
+        onSearch={() => {}}
+      />
+    </KooyaProvider>,
+  );
+  expect(
+    screen.getByRole("toolbar", { name: "Workspace toolbar" }).tagName,
+  ).toBe("DIV");
+  expect(screen.getByRole("button", { name: "Jump to a space" })).toBeTruthy();
+  expect(container.textContent).not.toContain("Boards");
+  expect(container.querySelector("header")).toBeNull();
 });

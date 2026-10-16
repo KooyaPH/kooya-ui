@@ -38,7 +38,7 @@ repository, workflow files, or command history.
 
 ## Public v1 archive
 
-KooyaHQ consumes the immutable public GitHub Release asset `kooyaph-ui-1.2.1.tgz`, with its SHA-256 checksum and pnpm SHA-512 lock integrity. Qualify the exact source commit, pack `packages/ui`, inspect its file list, then create tag/release v1.2.1 on that commit and upload the archive and checksum. Existing tags and assets are never overwritten. GitHub Packages access is independent and is not required for this installation path.
+KooyaHQ consumes the immutable public GitHub Release asset `kooyaph-ui-1.2.2.tgz`, with its SHA-256 checksum and pnpm SHA-512 lock integrity. Qualify the exact source commit, pack `packages/ui`, inspect its file list, then create tag/release v1.2.2 on that commit and upload the archive and checksum. Existing tags and assets are never overwritten. GitHub Packages access is independent and is not required for this installation path.
 
 ## 1.2 public surfaces and swimlanes
 
@@ -47,3 +47,7 @@ Version 1.2.0 adds reusable public Editorial and authentication surfaces, naviga
 ## 1.2.1 simplification patch
 
 Single-card authentication, embedded authorization, expandable supporting prose, resilient long labels and stable data-only loading. All existing components, groups, blocks, sections, templates and immutable prior releases remain available. See [composition and loading rules](v1/simplification.md).
+
+## 1.2.2 workspace correction
+
+`WorkspaceHeader` accepts optional `presentation="utility"` to render a toolbar without repeated page identity or nested header landmarks. The default presentation remains compatible. Navigation geometry remains owned by `WorkspaceShell`; applications supply one sidebar, route headings and permission-filtered links. Long heading actions wrap within their container.

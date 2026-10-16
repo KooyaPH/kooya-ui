@@ -6,6 +6,7 @@ import {
   AppearancePicker,
   defaultAppearance,
 } from "@kooyaph/ui";
+import { WorkspaceHeader } from "@kooyaph/ui/legacy";
 import { Button, Card, Input, Select, Table, Tag } from "antd";
 const meta: Meta = { title: "V1/Editorial and Governance" };
 export default meta;
@@ -31,19 +32,20 @@ export const Workspace: StoryObj = {
       >
         <WorkspaceShell
           header={
-            <div style={{ padding: 16 }}>Kooya · Editorial workspace</div>
+            <WorkspaceHeader
+              presentation="utility"
+              name="Kooya"
+              area="Editorial"
+              title="Content library"
+              collapsed={false}
+              onNavigation={() => {}}
+              onSearch={() => {}}
+            />
           }
           navigation={
             <nav>
               <a href="#records">Records</a>
             </nav>
-          }
-          context={
-            <p>
-              Company pages
-              <br />
-              Guides and resources
-            </p>
           }
           inspector={
             <AppearancePicker value={appearance} onChange={setAppearance} />

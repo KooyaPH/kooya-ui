@@ -1,5 +1,11 @@
 # @kooyaph/ui changelog
 
+## 1.2.2
+
+### Patch Changes
+
+- Add a quiet utility presentation for workspace headers, avoid nested navigation landmarks, and keep long page actions within their containers.
+
 ## 1.2.1
 
 ### Patch Changes

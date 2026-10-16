@@ -65,7 +65,7 @@
   --ku-ink: #13120f;
   --ku-muted: #66614f;
   --ku-line: #d8cfba;
-  --ku-control-border: var(--ku-muted);
+  --ku-control-border: color-mix(in srgb, var(--ku-ink) 48%, var(--ku-surface));
   --ku-focus: #314300;
   --ku-accent: #d7f20f;
   --ku-accent-ink: #13120f;
@@ -3308,4 +3308,89 @@ a.ku-nav-tile {
 }
 .ku-root .ku-auth-layout .ant-btn:not(.ant-btn-icon-only) {
   min-block-size: 44px;
+}
+
+/* Utility chrome leaves route identity and actions to the page heading. */
+.ku-header.ku-header--utility {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: 56px;
+  gap: 12px;
+  padding: 6px 16px;
+}
+.ku-header--utility .ku-header-block {
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.ku-header--utility .ku-header-context {
+  flex: 0 0 auto;
+}
+.ku-header--utility .ku-header-search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-inline-start: auto;
+  width: min(320px, 50vw);
+  padding: 8px 12px;
+  border: 1px solid var(--ku-line);
+  border-radius: 6px;
+}
+.ku-header--utility .ku-header-search small {
+  display: none;
+}
+.ku-header--utility .ku-header-search > span {
+  display: inline;
+}
+.ku-page-heading > div:first-child {
+  min-width: 0;
+}
+.ku-page-actions {
+  min-width: 0;
+  max-width: 100%;
+  flex-shrink: 1;
+}
+@media (max-width: 767px) {
+  .ku-header.ku-header--utility {
+    padding-inline: 12px;
+  }
+  .ku-header--utility .ku-header-search {
+    min-height: 44px;
+  }
+  .ku-page-actions {
+    width: 100%;
+  }
+}
+
+/* Compact owned controls use one rhythm; primary actions retain a 44px target. */
+.ku-root[data-density="compact"] .ku-input {
+  min-height: 36px;
+  padding-block: 6px;
+}
+.ku-root[data-density="compact"]
+  :is(.ku-button--secondary, .ku-button--ghost, .ku-button--danger) {
+  min-height: 36px;
+  padding: 7px 12px;
+}
+.ku-root .ku-button-content {
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.ku-root .ku-button-content svg {
+  flex-shrink: 0;
+}
+@media (max-width: 767px), (pointer: coarse) {
+  .ku-root[data-density="compact"] :is(.ku-button, .ku-input, .ku-select) {
+    min-height: 44px;
+  }
+  .ku-root[data-density="compact"] .ku-input {
+    padding-block: 10px;
+  }
 }
