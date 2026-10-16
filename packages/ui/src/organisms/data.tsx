@@ -226,7 +226,7 @@ export function DataTable<Row extends object>({
             }
             onChange={cold ? undefined : onChange}
             onRow={cold ? undefined : onRow}
-            scroll={cards ? undefined : { x: minWidth, y: maxBodyHeight }}
+            scroll={{ x: minWidth, y: cards ? undefined : maxBodyHeight }}
             components={tableComponents}
           />
         </div>
