@@ -23,7 +23,7 @@
     "@fontsource-variable/dm-sans": "^5.2.8",
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource/syncopate": "5.2.5",
-    "@headless-tree/core": "1.6.3",
+    "@headless-tree/core": "1.7.0",
     "@headless-tree/react": "1.6.3",
     "@hookform/resolvers": "5.2.2",
     "@kooyaph/ui": "workspace:*",
