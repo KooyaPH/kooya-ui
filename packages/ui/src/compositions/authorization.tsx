@@ -14,6 +14,9 @@ export interface ApplicationPermission {
   required?: boolean;
 }
 export interface ApplicationAuthorizationProps {
+  /** Embedded reviews use the surrounding AuthLayout heading. */
+  presentation?: "standalone" | "embedded";
+  labelledBy?: string;
   application: {
     name: string;
     publisher: string;
@@ -40,6 +43,8 @@ export interface ApplicationAuthorizationProps {
 /** Presentational consent review. The owning application validates identity, scopes and OAuth state. */
 export function ApplicationAuthorization({
   application,
+  presentation = "standalone",
+  labelledBy,
   account,
   permissions,
   state = "review",
@@ -60,25 +65,32 @@ export function ApplicationAuthorization({
   const done = state === "approved" || state === "denied";
   return (
     <section
-      className="ku-authorization"
-      aria-labelledby={titleId}
+      className={`ku-authorization ku-authorization--${presentation}`}
+      aria-labelledby={
+        presentation === "embedded" ? (labelledBy ?? titleId) : titleId
+      }
       aria-busy={busy || undefined}
     >
-      <div className="ku-authorization-identity">
-        <span className="ku-authorization-icon" aria-hidden="true">
-          {application.icon ?? application.name.slice(0, 1)}
-        </span>
-        <span aria-hidden="true">↔</span>
-        <span className="ku-authorization-account">{account.slice(0, 1)}</span>
-      </div>
-      <p className="ku-authorization-eyebrow">APPLICATION CONNECTION</p>
-      <h2 id={titleId}>
-        {state === "approved"
-          ? `${application.name} is connected`
-          : state === "denied"
-            ? "Connection cancelled"
-            : `Authorize ${application.name}`}
-      </h2>
+      {presentation === "standalone" && (
+        <div className="ku-authorization-identity">
+          <span className="ku-authorization-icon" aria-hidden="true">
+            {application.icon ?? application.name.slice(0, 1)}
+          </span>
+          <span aria-hidden="true">↔</span>
+          <span className="ku-authorization-account">
+            {account.slice(0, 1)}
+          </span>
+        </div>
+      )}
+      {(presentation === "standalone" || !labelledBy || done) && (
+        <h2 id={titleId}>
+          {state === "approved"
+            ? `${application.name} is connected`
+            : state === "denied"
+              ? "Connection cancelled"
+              : `Authorize ${application.name}`}
+        </h2>
+      )}
       <p className="ku-authorization-publisher">
         By {application.publisher}{" "}
         {application.verified && <Tag>Verified publisher</Tag>}
@@ -96,7 +108,7 @@ export function ApplicationAuthorization({
               <li key={p.id}>
                 <div>
                   <strong>{p.title}</strong>
-                  <p>{p.description}</p>
+                  {p.description && <p>{p.description}</p>}
                   <small>
                     {p.access}
                     {p.required ? " · Required" : " · Optional"}
@@ -184,6 +196,13 @@ export function ApplicationAuthorization({
             </Button>
             <Button
               type="primary"
+              aria-label={
+                busy
+                  ? "Connecting…"
+                  : state === "error"
+                    ? "Try again"
+                    : `Authorize ${application.name}`
+              }
               loading={busy}
               disabled={
                 authorizationDisabled ||
@@ -199,7 +218,7 @@ export function ApplicationAuthorization({
                 ? "Connecting…"
                 : state === "error"
                   ? "Try again"
-                  : `Authorize ${application.name}`}
+                  : "Authorize"}
             </Button>
           </>
         )}

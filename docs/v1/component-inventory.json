@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "entries": [
     {
       "id": "accordion",
@@ -7844,6 +7844,49 @@
       ]
     },
     {
+      "id": "focused-authentication",
+      "kind": "groups",
+      "title": "Focused authentication",
+      "disposition": "retained-and-themed",
+      "variants": [
+        {
+          "id": "kooya-focused-auth-sign-in",
+          "title": "sign-in",
+          "route": "#/preview/kooya-focused-auth-sign-in"
+        },
+        {
+          "id": "kooya-focused-auth-code",
+          "title": "code",
+          "route": "#/preview/kooya-focused-auth-code"
+        },
+        {
+          "id": "kooya-focused-auth-consent",
+          "title": "consent",
+          "route": "#/preview/kooya-focused-auth-consent"
+        },
+        {
+          "id": "kooya-focused-auth-error",
+          "title": "error",
+          "route": "#/preview/kooya-focused-auth-error"
+        },
+        {
+          "id": "kooya-focused-auth-loading",
+          "title": "loading",
+          "route": "#/preview/kooya-focused-auth-loading"
+        },
+        {
+          "id": "kooya-focused-auth-long-text",
+          "title": "long-text",
+          "route": "#/preview/kooya-focused-auth-long-text"
+        },
+        {
+          "id": "kooya-focused-auth-description",
+          "title": "description",
+          "route": "#/preview/kooya-focused-auth-description"
+        }
+      ]
+    },
+    {
       "id": "swimlane-board",
       "kind": "groups",
       "title": "Swimlane boards",
@@ -10090,5 +10133,5 @@
       ]
     }
   ],
-  "variants": 1568
+  "variants": 1575
 }

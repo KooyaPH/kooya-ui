@@ -1,5 +1,9 @@
+import { DataValue } from "../molecules/experience";
 import {
   useId,
+  useEffect,
+  useRef,
+  useState,
   type HTMLAttributes,
   type ReactNode,
   type CSSProperties,
@@ -20,18 +24,49 @@ export function SwimlaneBoard({
   ...props
 }: SwimlaneBoardProps) {
   const hintId = useId();
+  const board = useRef<HTMLDivElement>(null);
+  const [overflowing, setOverflowing] = useState(false);
+  const defaultHint = "Scroll horizontally to browse status columns.";
+  const showHint = !!hint && (hint !== defaultHint || overflowing);
+  useEffect(() => {
+    const rails = [
+      ...(board.current?.querySelectorAll<HTMLElement>(".ku-swimlane-rail") ??
+        []),
+    ];
+    const measure = () =>
+      setOverflowing(
+        rails.some((rail) => rail.scrollWidth > rail.clientWidth + 1),
+      );
+    measure();
+    const observer =
+      typeof ResizeObserver === "undefined"
+        ? undefined
+        : new ResizeObserver(measure);
+    rails.forEach((rail) => observer?.observe(rail));
+    window.addEventListener("resize", measure);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [children]);
   return (
     <div
       {...props}
+      ref={board}
       className={`ku-swimlane-board ${className}`}
       role="group"
       aria-label={label}
       aria-busy={busy}
     >
-      <p id={hintId} className="ku-swimlane-board__hint">
-        {hint}
-      </p>
-      <div className="ku-swimlane-board__lanes" aria-describedby={hintId}>
+      {showHint && (
+        <p id={hintId} className="ku-swimlane-board__hint">
+          {hint}
+        </p>
+      )}
+      <div
+        className="ku-swimlane-board__lanes"
+        aria-describedby={showHint ? hintId : undefined}
+      >
         {children}
       </div>
     </div>
@@ -71,12 +106,20 @@ export function Swimlane({
             >
               <span aria-hidden="true">{collapsed ? "▸" : "▾"}</span>
               <span>{label}</span>
-              {count !== undefined && <small>{count}</small>}
+              {count !== undefined && (
+                <small>
+                  <DataValue width={24}>{count}</DataValue>
+                </small>
+              )}
             </button>
           ) : (
             <h2>
               {label}
-              {count !== undefined && <small>{count}</small>}
+              {count !== undefined && (
+                <small>
+                  <DataValue width={24}>{count}</DataValue>
+                </small>
+              )}
             </h2>
           )}
         </div>
@@ -124,7 +167,11 @@ export function SwimlaneColumn({
         (title !== undefined && (
           <header>
             <h3>{title}</h3>
-            {count !== undefined && <small>{count}</small>}
+            {count !== undefined && (
+              <small>
+                <DataValue width={24}>{count}</DataValue>
+              </small>
+            )}
             {actions}
           </header>
         ))}

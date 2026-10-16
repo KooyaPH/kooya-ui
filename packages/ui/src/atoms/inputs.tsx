@@ -1,3 +1,4 @@
+import { useDataLoading } from "../molecules/experience";
 import { forwardRef } from "react";
 import {
   Input as AntInput,
@@ -14,15 +15,43 @@ export const Input = forwardRef<InputRef, InputProps>(function Input(
   { className = "", ...props },
   ref,
 ) {
-  return <AntInput {...props} ref={ref} className={"ku-input " + className} />;
+  const loading = useDataLoading() && props.type !== "hidden";
+  return (
+    <AntInput
+      {...props}
+      {...(loading
+        ? {
+            value: "",
+            disabled: true,
+            placeholder: "",
+            "data-skeleton": "value",
+          }
+        : {})}
+      ref={ref}
+      className={
+        "ku-input " + className + (loading ? " ku-control-loading" : "")
+      }
+    />
+  );
 });
 export const TextArea = forwardRef<TextAreaRef, TextAreaProps>(
   function TextArea({ className = "", ...props }, ref) {
+    const loading = useDataLoading();
     return (
       <AntInput.TextArea
         {...props}
+        {...(loading
+          ? {
+              value: "",
+              disabled: true,
+              placeholder: "",
+              "data-skeleton": "value",
+            }
+          : {})}
         ref={ref}
-        className={"ku-textarea " + className}
+        className={
+          "ku-textarea " + className + (loading ? " ku-control-loading" : "")
+        }
       />
     );
   },
@@ -31,5 +60,14 @@ export function Select<Value = string>({
   className = "",
   ...props
 }: SelectProps<Value>) {
-  return <AntSelect<Value> {...props} className={"ku-select " + className} />;
+  const loading = useDataLoading();
+  return (
+    <AntSelect<Value>
+      {...props}
+      {...(loading ? { value: undefined, disabled: true } : {})}
+      className={
+        "ku-select " + className + (loading ? " ku-control-loading" : "")
+      }
+    />
+  );
 }

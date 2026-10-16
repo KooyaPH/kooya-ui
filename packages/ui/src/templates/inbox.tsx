@@ -1,3 +1,4 @@
+import { DataValue } from "../molecules/experience";
 import { useDeviceMode } from "../foundations/device";
 import {
   useId,
@@ -104,18 +105,34 @@ export function InboxTemplate({
               {threads.map((t) => (
                 <Button
                   key={t.id}
+                  disabled={props.state?.status === "loading"}
                   aria-pressed={t.id === selectedThreadId}
                   onClick={() => {
                     onSelectThread(t.id);
                     changePane("thread");
                   }}
                 >
-                  {t.title}
-                  {t.unread ? ` (${t.unread} unread)` : ""}
-                  {t.preview && <small>{t.preview}</small>}
+                  <DataValue>
+                    {t.title}
+                    {t.unread ? ` (${t.unread} unread)` : ""}
+                  </DataValue>
+                  {t.preview && (
+                    <small>
+                      <DataValue>{t.preview}</DataValue>
+                    </small>
+                  )}
                 </Button>
               ))}
-              {!threads.length && <p>No conversations.</p>}
+              {!threads.length &&
+                (props.state?.status === "loading" ? (
+                  [0, 1, 2].map((index) => (
+                    <div key={index}>
+                      <DataValue loading />
+                    </div>
+                  ))
+                ) : (
+                  <p>No conversations.</p>
+                ))}
             </nav>
           </Card>
         </div>
@@ -151,9 +168,17 @@ export function InboxTemplate({
                 <article key={m.id}>
                   <Avatar name={m.author} />
                   <div>
-                    <strong>{m.author}</strong>
-                    {m.timestamp && <time>{m.timestamp}</time>}
-                    <p>{m.body}</p>
+                    <strong>
+                      <DataValue>{m.author}</DataValue>
+                    </strong>
+                    {m.timestamp && (
+                      <time>
+                        <DataValue>{m.timestamp}</DataValue>
+                      </time>
+                    )}
+                    <p>
+                      <DataValue block>{m.body}</DataValue>
+                    </p>
                     {m.attachment}
                   </div>
                 </article>
@@ -173,13 +198,19 @@ export function InboxTemplate({
                 id={draftId}
                 value={draft}
                 onChange={(e) => onDraftChange(e.target.value)}
-                disabled={!selectedThreadId}
+                disabled={
+                  !selectedThreadId || props.state?.status === "loading"
+                }
                 rows={3}
               />
               <Button
                 type="submit"
                 variant="primary"
-                disabled={!draft.trim() || !selectedThreadId}
+                disabled={
+                  !draft.trim() ||
+                  !selectedThreadId ||
+                  props.state?.status === "loading"
+                }
                 loading={sending}
               >
                 Send message

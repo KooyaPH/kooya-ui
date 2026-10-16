@@ -1,3 +1,4 @@
+import { ExpandableText } from "./text";
 import { Card as AntCard } from "antd";
 import type { HTMLAttributes, ReactNode } from "react";
 export function Card({
@@ -21,7 +22,7 @@ export function Card({
           <div className="ku-card-heading">
             <div>
               <h2>{title}</h2>
-              {description && <p>{description}</p>}
+              {description && <ExpandableText text={description} />}
             </div>
             {actions}
           </div>

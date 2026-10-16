@@ -1,3 +1,4 @@
+import { DataValue } from "../molecules/experience";
 import type { ReactNode } from "react";
 import { Avatar } from "../atoms/index";
 import { Card } from "../molecules/index";
@@ -29,14 +30,22 @@ export function ProfileTemplate({
         <Card>
           <div className="ku-template-profile">
             {avatar ?? <Avatar name={name} />}
-            <h2>{name}</h2>
-            {subtitle && <p>{subtitle}</p>}
+            <h2>
+              <DataValue>{name}</DataValue>
+            </h2>
+            {subtitle && (
+              <p>
+                <DataValue>{subtitle}</DataValue>
+              </p>
+            )}
           </div>
           <dl className="ku-template-details">
             {fields.map((f) => (
               <div key={f.id}>
                 <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
+                <dd>
+                  <DataValue>{f.value}</DataValue>
+                </dd>
               </div>
             ))}
           </dl>
@@ -74,11 +83,12 @@ export function BusinessPageTemplate({
           {brand}
           {navigation}
         </header>
-        <Card className="ku-template-hero">{hero}</Card>
+        <section className="ku-template-hero">{hero}</section>
         {sections.map((s) => (
-          <Card key={s.id} title={s.title}>
+          <section key={s.id} className="ku-template-business-section">
+            <h2>{s.title}</h2>
             {s.content}
-          </Card>
+          </section>
         ))}
         {props.children}
         {footer && <footer>{footer}</footer>}

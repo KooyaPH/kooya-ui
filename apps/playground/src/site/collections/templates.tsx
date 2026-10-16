@@ -16,7 +16,7 @@ import {
   Tag,
   Typography,
 } from "@kooyaph/ui/components";
-import { MetricGroup, PageFrame } from "@kooyaph/ui/compositions";
+import { AuthLayout, MetricGroup, PageFrame } from "@kooyaph/ui/compositions";
 import { DemoFrame } from "./shared";
 import { CatalogPage } from "../CatalogPages";
 import { useKooyaOptions } from "@kooyaph/ui";
@@ -400,14 +400,30 @@ export function TemplateDemo({
     "cart",
     "checkout",
   ].includes(family);
-  const content = <Suspense fallback={<p role="status">Opening example…</p>}>{body}</Suspense>;
+  const content = (
+    <Suspense fallback={<p role="status">Opening example…</p>}>{body}</Suspense>
+  );
   return (
     <DemoFrame
       title={`${family.replace(/-/g, " ")} template`}
       description="A complete local page composition. All actions use fictional in-memory data."
       alternate={alternate}
     >
-      {marketing ? (
+      {family === "authentication" ? (
+        <AuthLayout
+          brand={
+            <>
+              <span className="ku-demo-brand-mark" aria-hidden="true">
+                K
+              </span>
+              <span>KooyaHQ</span>
+            </>
+          }
+          title={alternate ? "Create an account" : "Sign in"}
+        >
+          {content}
+        </AuthLayout>
+      ) : marketing ? (
         <PageFrame
           title={titles[family] ?? family}
           description={

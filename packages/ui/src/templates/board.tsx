@@ -1,5 +1,6 @@
+import { DataValue } from "../molecules/experience";
 import type { ReactNode } from "react";
-import { Card, SelectField } from "../molecules/index";
+import { Card, SelectField, ExpandableText } from "../molecules/index";
 import { Button, Chip } from "../atoms/index";
 import { TemplateFrame, type TemplateProps } from "./shared";
 export interface BoardColumn {
@@ -39,12 +40,22 @@ export function BoardTemplate({
                 <div className="ku-template-stack">
                   {members.map((item) => (
                     <article className="ku-template-board-item" key={item.id}>
-                      <h3>{item.title}</h3>
-                      {item.description && <p>{item.description}</p>}
+                      <h3>
+                        <DataValue>{item.title}</DataValue>
+                      </h3>
+                      {item.description && (
+                        <DataValue block>
+                          <ExpandableText text={item.description} />
+                        </DataValue>
+                      )}
                       {item.content}
                       {onOpen && (
-                        <Button onClick={() => onOpen(item.id)}>
-                          Open {item.title}
+                        <Button
+                          aria-label={`Open ${item.title}`}
+                          disabled={props.state?.status === "loading"}
+                          onClick={() => onOpen(item.id)}
+                        >
+                          Open
                         </Button>
                       )}
                       <SelectField
@@ -58,7 +69,19 @@ export function BoardTemplate({
                       />
                     </article>
                   ))}
-                  {!members.length && <p>{empty}</p>}
+                  {!members.length &&
+                    (props.state?.status === "loading" ? (
+                      [0, 1, 2].map((index) => (
+                        <article className="ku-template-board-item" key={index}>
+                          <DataValue loading />
+                          <p>
+                            <DataValue loading block />
+                          </p>
+                        </article>
+                      ))
+                    ) : (
+                      <p>{empty}</p>
+                    ))}
                 </div>
               </Card>
             </section>

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { KooyaProvider } from "@kooyaph/ui";
 import AuthorizationDemo from "../../playground/src/site/collections/authorization";
 import LoadingPatterns from "../../playground/src/site/collections/loading";
+import FocusedAuthDemo from "../../playground/src/site/collections/focused-auth";
 const meta: Meta = {
   title: "V1/Connections and loading",
   decorators: [
@@ -43,4 +44,12 @@ export const DetailValues: StoryObj = {
 };
 export const ActionProgress: StoryObj = {
   render: () => <LoadingPatterns variant="action" />,
+};
+
+export const FocusedSignIn: StoryObj = { render: () => <FocusedAuthDemo /> };
+export const FocusedConsent: StoryObj = {
+  render: () => <FocusedAuthDemo variant="consent" />,
+};
+export const SupportingDetails: StoryObj = {
+  render: () => <FocusedAuthDemo variant="description" />,
 };

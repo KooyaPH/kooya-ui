@@ -32,6 +32,9 @@ it("consent only calls the controlled authorization action after a deliberate cl
       <ApplicationAuthorization {...base} onAuthorize={approve} />
     </KooyaProvider>,
   );
+  expect(
+    screen.getByRole("heading", { name: "Authorize Kooya Projects" }),
+  ).toBeVisible();
   expect(approve).not.toHaveBeenCalled();
   await userEvent.click(
     screen.getByRole("button", { name: "Authorize Kooya Projects" }),
