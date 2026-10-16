@@ -84,7 +84,7 @@ export default function WorkspaceV1() {
       <header className="v1-review-header">
         <a href="#/overview">
           <strong>Kooya UI</strong>
-          <span>v1.2.2 · Editorial & Governance</span>
+          <span>v1.2.3 · Editorial & Governance</span>
         </a>
         <nav aria-label="Library navigation">
           <a href="#/components">Components</a>
