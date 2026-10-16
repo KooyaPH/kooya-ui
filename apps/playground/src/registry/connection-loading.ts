@@ -2,6 +2,36 @@ import { createElement } from "react";
 import type { CatalogEntry } from "./types";
 export const connectionLoadingEntries: CatalogEntry[] = [
   {
+    id: "swimlane-board",
+    kind: "groups",
+    category: "data",
+    title: "Swimlane boards",
+    description:
+      "Editorial and governance work grouped into collapsible lanes and status columns. Controlled card actions remain application owned.",
+    tags: ["board", "kanban", "swimlane", "governance", "editorial"],
+    exportName:
+      "SwimlaneBoard, Swimlane, SwimlaneRail, SwimlaneColumn, SwimlaneCard",
+    importPath: "@kooyaph/ui",
+    dependencies: ["@kooyaph/ui"],
+    variants: ["grouped", "read-only", "loading", "empty", "long-text"].map(
+      (variant) => ({
+        id: `kooya-swimlane-${variant}`,
+        title: variant,
+        description:
+          "Keyboard-operable lane toggles and explicit move controls; horizontal status rail on phones.",
+        previewHeight: 760,
+        load: async () => {
+          const { default: Demo } = await import(
+            "../site/collections/swimlane"
+          );
+          return { default: () => createElement(Demo, { variant }) };
+        },
+        loadCode: async () =>
+          (await import("../site/collections/swimlane.tsx?raw")).default,
+      }),
+    ),
+  },
+  {
     id: "application-authorization",
     kind: "groups",
     category: "authorization",

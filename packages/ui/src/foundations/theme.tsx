@@ -570,7 +570,8 @@ export function KooyaProvider({
         data-reduced-motion={motion}
         style={{ ...variables, ...style }}
       >
-        {typeof document !== "undefined" &&
+        {motionReady &&
+          typeof document !== "undefined" &&
           createPortal(
             <div
               ref={overlayRoot}

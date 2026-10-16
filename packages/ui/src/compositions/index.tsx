@@ -169,3 +169,6 @@ export function PageFrame({
 export * from "./workspace";
 export * from "./appearance";
 export * from "./authorization";
+
+export * from "./public";
+export * from "./swimlane";

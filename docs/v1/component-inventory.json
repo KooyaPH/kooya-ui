@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "entries": [
     {
       "id": "accordion",
@@ -7844,6 +7844,39 @@
       ]
     },
     {
+      "id": "swimlane-board",
+      "kind": "groups",
+      "title": "Swimlane boards",
+      "disposition": "retained-and-themed",
+      "variants": [
+        {
+          "id": "kooya-swimlane-grouped",
+          "title": "grouped",
+          "route": "#/preview/kooya-swimlane-grouped"
+        },
+        {
+          "id": "kooya-swimlane-read-only",
+          "title": "read-only",
+          "route": "#/preview/kooya-swimlane-read-only"
+        },
+        {
+          "id": "kooya-swimlane-loading",
+          "title": "loading",
+          "route": "#/preview/kooya-swimlane-loading"
+        },
+        {
+          "id": "kooya-swimlane-empty",
+          "title": "empty",
+          "route": "#/preview/kooya-swimlane-empty"
+        },
+        {
+          "id": "kooya-swimlane-long-text",
+          "title": "long-text",
+          "route": "#/preview/kooya-swimlane-long-text"
+        }
+      ]
+    },
+    {
       "id": "application-authorization",
       "kind": "groups",
       "title": "Application connection & authorization",
@@ -10057,5 +10090,5 @@
       ]
     }
   ],
-  "variants": 1563
+  "variants": 1568
 }
