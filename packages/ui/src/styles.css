@@ -541,9 +541,11 @@
   opacity: 0.05;
   pointer-events: none;
 }
+/* Ant owns table scrolling. A second overflow wrapper creates stacked bars. */
 .ku-table-scroll {
-  overflow-x: auto;
+  min-width: 0;
   max-width: 100%;
+  overflow: visible;
 }
 .ku-table {
   width: 100%;
