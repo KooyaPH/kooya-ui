@@ -20,5 +20,10 @@ DOM version in the consuming application.
 6. Review the actual interface at desktop, tablet, and phone widths, including
    keyboard focus, overlays, loading, empty, error, and reduced-motion states.
 
-Theme names remain supported. New releases may add independently importable
-theme subpaths and named components; consumers can adopt those paths gradually.
+## Ant-first candidate migration
+
+The rebuilt root and `/components` expose actual Ant Design values, props, refs and compound APIs. Import KooyaProvider from `@kooyaph/ui` and controls from `@kooyaph/ui/components`. Use Ant props such as Button `type`, `variant`, `color`, Input `onChange(event)`, and Form `items`/fields rather than old Kooya wrapper contracts. Default appearance is Kooya Signature; light/dark and comfortable/compact are the catalog controls.
+
+Prior wrapper contracts are explicitly isolated under `@kooyaph/ui/legacy`; existing atomic subpaths remain available for migration. Legacy theme presets are compatibility exports and are not catalog design choices. `/compositions` provides reusable Ant-backed action, field, metric, status and page groups. The comprehensive REUI recipes and composed page source are available from the catalog's runnable source download.
+
+This is a breaking API candidate with a major Changeset. No package has been published and no consuming application is migrated by this work.

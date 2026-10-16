@@ -31,7 +31,7 @@ import {
   Switch,
   TextField,
   type Composition,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import type { Account, ContentPage } from "./data";
 const options = (items: string[]) =>
   items.map((value) => ({ value, label: value }));

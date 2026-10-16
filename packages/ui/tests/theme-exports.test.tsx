@@ -6,7 +6,13 @@ import { KooyaProvider } from "../src/foundations/theme";
 import packageManifest from "../package.json";
 import { mosaicTheme, themes } from "../src/foundations/themes";
 
-const themeNames = ["mosaic", "signature", "canvas", "client"] as const;
+const themeNames = [
+  "olive",
+  "mosaic",
+  "signature",
+  "canvas",
+  "client",
+] as const;
 
 describe("individual theme package imports", () => {
   it.each(themeNames)("publishes the %s theme as its own import", (name) => {

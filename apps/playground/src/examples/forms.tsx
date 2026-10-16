@@ -9,7 +9,7 @@ import {
   Button,
   Chip,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function FormExample({ state }: { state?: TemplateState }) {
   const [name, setName] = useState("");
   const [country, setCountry] = useState("sg");

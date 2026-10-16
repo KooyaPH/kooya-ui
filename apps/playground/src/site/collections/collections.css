@@ -1,0 +1,513 @@
+.composition-demo {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  font-family: inherit;
+  color: inherit;
+  display: grid;
+  gap: 24px;
+}
+.composition-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.composition-heading h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  letter-spacing: -0.8px;
+}
+.composition-heading p:not(.composition-eyebrow) {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.75;
+  max-width: 680px;
+  margin: 0;
+}
+.composition-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  opacity: 0.65;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.composition-demo h3 {
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+.composition-stack {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.composition-data-workbench,
+.composition-data-workbench .composition-stack {
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+.composition-data-workbench > *,
+.composition-data-workbench .ant-table-wrapper,
+.composition-data-workbench .ant-collapse,
+.composition-data-workbench .ant-collapse-content-box {
+  min-width: 0;
+  max-width: 100%;
+}
+.composition-data-workbench .workbench-record-name {
+  max-width: 100%;
+  min-height: var(--ku-control-height, 44px);
+  height: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: start;
+}
+.composition-data-workbench [role="status"],
+.workbench-record-title,
+.workbench-record-note,
+.workbench-record-drawer .ant-drawer-body {
+  overflow-wrap: anywhere;
+}
+.workbench-record-note {
+  white-space: pre-wrap;
+}
+.workbench-record-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.workbench-record-full-title {
+  margin: 0 0 16px;
+  font-size: inherit;
+  overflow-wrap: anywhere;
+}
+@media (pointer: coarse) {
+  .composition-data-workbench .ant-btn-primary,
+  .workbench-record-modal .ant-btn-primary,
+  .workbench-record-drawer .ant-drawer-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+.composition-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.composition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 20px;
+}
+.composition-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(240px, 1fr);
+  gap: 24px;
+}
+.composition-panel {
+  border: 1px solid var(--site-line, #d3d0c4);
+  border-radius: 12px;
+  padding: 24px;
+  background: var(--site-surface, #faf8f1);
+  min-width: 0;
+}
+.composition-alternate > .composition-grid {
+  grid-template-columns: 1fr;
+}
+.composition-muted {
+  font-size: 12px;
+  opacity: 0.7;
+}
+.composition-feedback {
+  font-size: 13px;
+  min-height: 20px;
+  margin: 0;
+}
+.composition-form {
+  max-width: 580px;
+  width: 100%;
+}
+.composition-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.composition-toolbar .ant-input-search {
+  max-width: 300px;
+}
+.composition-toolbar .ant-select {
+  min-width: 150px;
+}
+.composition-scroll {
+  min-width: 0;
+  max-width: 100%;
+  overflow: auto;
+}
+.composition-table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.composition-metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+}
+.composition-product-art {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--site-paper, #f2eee3);
+  font-size: 54px;
+  border-radius: 8px;
+  color: var(--site-ink, #13120f);
+}
+.composition-product-art span {
+  font-family: Syncopate, sans-serif;
+  font-weight: 700;
+}
+.composition-product .ant-card-body {
+  display: grid;
+  gap: 14px;
+}
+.composition-product h3,
+.composition-product p {
+  margin: 0;
+}
+.composition-price {
+  font-size: 22px;
+  font-weight: 700;
+}
+.composition-cart-row {
+  display: grid;
+  grid-template-columns: 1fr 85px auto auto;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--site-line, #d3d0c4);
+  padding: 16px 0;
+}
+.composition-cart-row h4 {
+  margin: 0;
+}
+.composition-total {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: right;
+}
+.composition-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+  overflow: auto;
+}
+.composition-lane {
+  border-radius: 10px;
+  padding: 16px;
+  background: var(--site-paper, #f2eee3);
+  border: 1px solid var(--site-line, #d3d0c4);
+  min-height: 300px;
+}
+.composition-task {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--site-line, #d3d0c4);
+  background: var(--site-surface, #faf8f1);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.composition-task p {
+  margin: 0;
+  font-size: 13px;
+}
+.composition-schedule-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  padding: 16px 0;
+  align-items: center;
+  border-bottom: 1px solid var(--site-line, #d3d0c4);
+}
+.composition-gantt {
+  display: grid;
+  grid-template-columns: 170px minmax(420px, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+.composition-gantt-track {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent calc(100% / 14 - 1px),
+    var(--site-line, #d3d0c4) calc(100% / 14)
+  );
+  height: 40px;
+  border-bottom: 1px solid var(--site-line, #d3d0c4);
+}
+.composition-gantt-bar {
+  background: #314300;
+  color: #f2eee3;
+  align-self: center;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.composition-marketing-hero {
+  padding: 48px 32px;
+  border: 1px solid var(--site-line, #d3d0c4);
+  border-radius: 12px;
+  background: var(--site-paper, #f2eee3);
+  display: grid;
+  gap: 24px;
+}
+.composition-marketing-hero h2 {
+  font-family: Syncopate, sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.2;
+  letter-spacing: -0.06em;
+  max-width: 850px;
+  margin: 0;
+}
+.composition-marketing-hero p {
+  max-width: 600px;
+  line-height: 1.8;
+}
+.composition-marketing-hero.alternate {
+  text-align: center;
+  justify-items: center;
+}
+.composition-logo-row {
+  display: flex;
+  gap: 32px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 24px 0;
+}
+.composition-section-card {
+  display: grid;
+  gap: 12px;
+}
+.composition-section-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+.composition-section-card h3 {
+  margin: 0;
+}
+.composition-template-shell {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  border: 1px solid var(--site-line, #d3d0c4);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.composition-template-nav {
+  background: var(--site-paper, #f2eee3);
+  padding: 20px 12px;
+  border-right: 1px solid var(--site-line, #d3d0c4);
+}
+.composition-template-nav .ant-menu {
+  background: transparent !important;
+  border-inline-end: 0 !important;
+}
+.composition-template-main {
+  min-width: 0;
+  padding: 24px;
+  background: var(--site-surface, #faf8f1);
+}
+.composition-template-brand {
+  font-size: 18px;
+  font-weight: 800;
+  padding: 0 12px 24px;
+}
+.composition-template-shell.alternate {
+  grid-template-columns: 1fr;
+}
+.composition-template-shell.alternate .composition-template-nav {
+  border-right: 0;
+  border-bottom: 1px solid var(--site-line, #d3d0c4);
+}
+.composition-template-shell.alternate .composition-template-brand {
+  padding-bottom: 12px;
+}
+.composition-inbox {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+}
+.composition-chat-log {
+  display: grid;
+  gap: 12px;
+  max-height: 350px;
+  overflow: auto;
+  padding: 16px;
+  background: var(--site-paper, #f2eee3);
+  border-radius: 10px;
+}
+.composition-chat-bubble {
+  padding: 12px 16px;
+  background: var(--site-surface, #faf8f1);
+  border: 1px solid var(--site-line, #d3d0c4);
+  border-radius: 10px;
+  max-width: 90%;
+  font-size: 13px;
+}
+.composition-chat-bubble.self {
+  justify-self: end;
+  background: #d7f20f;
+  color: #13120f;
+}
+.composition-file-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--site-line, #d3d0c4);
+}
+.composition-demo .ant-form-item {
+  margin-bottom: 20px;
+}
+.composition-demo .ant-card-head-title {
+  white-space: normal;
+}
+.composition-demo .ant-select {
+  min-width: 120px;
+}
+.composition-demo .ant-table-wrapper {
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .composition-split,
+  .composition-inbox {
+    grid-template-columns: 1fr;
+  }
+  .composition-template-shell {
+    grid-template-columns: 1fr;
+  }
+  .composition-template-nav {
+    border-right: 0;
+    border-bottom: 1px solid var(--site-line, #d3d0c4);
+  }
+  .composition-template-main {
+    padding: 16px;
+  }
+  .composition-marketing-hero {
+    padding: 28px 20px;
+  }
+  .composition-panel {
+    padding: 20px;
+  }
+  .composition-cart-row {
+    grid-template-columns: 1fr 75px;
+    gap: 8px;
+  }
+  .composition-heading .ant-segmented {
+    max-width: 100%;
+    font-size: 11px;
+  }
+  .composition-schedule-row {
+    grid-template-columns: 62px 1fr;
+  }
+  .composition-schedule-row > .ant-btn {
+    grid-column: 2;
+  }
+  .composition-toolbar .ant-input-search {
+    max-width: none;
+  }
+  .composition-board {
+    grid-template-columns: repeat(3, 240px);
+  }
+}
+.composition-cart-row .ant-input-number {
+  width: 100%;
+  min-width: 0;
+}
+
+.composition-product-row .ant-card-body {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.65fr) minmax(0, 1fr);
+  column-gap: 24px;
+}
+.composition-product-row .composition-product-art {
+  grid-row: 1 / span 5;
+  height: 100%;
+}
+@media (max-width: 600px) {
+  .composition-product-row .ant-card-body {
+    display: block;
+  }
+}
+
+.workbench-record-drawer .workbench-record-details:focus-visible {
+  outline: 2px solid var(--ku-focus);
+  outline-offset: 2px;
+}
+
+.composition-data-workbench .ant-pagination {
+  flex-wrap: wrap;
+}
+@media (max-width: 575px) {
+  .composition-data-workbench .ant-pagination .ant-pagination-options {
+    display: inline-flex;
+    margin-inline-start: 0;
+  }
+  .composition-data-workbench .ant-pagination-options-size-changer {
+    min-height: 44px;
+  }
+  .composition-data-workbench .ant-pagination :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next, .ant-pagination-jump-prev, .ant-pagination-jump-next) {
+    min-width: 44px;
+    height: 44px;
+    line-height: 42px;
+  }
+  .workbench-page-size-popup .ant-select-item-option {
+    min-height: 44px;
+  }
+}
+.composition-data-workbench .ant-input-clear-icon {
+  min-inline-size: 24px;
+  min-block-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.composition-data-workbench .ant-input-affix-wrapper:has(.ant-input-clear-icon) {
+  /* A 24px clear target replaces the native 22px line box. Preserve the
+     comfortable/compact field heights by reclaiming 1px of padding per side. */
+  padding-block: calc(var(--ant-input-padding-block) - 1px);
+}
+.composition-data-workbench .ant-input-search > .ant-input-search-btn {
+  height: auto;
+  align-self: stretch;
+}
+
+/* Keep the native expansion stroke visible after fractional virtual-row translation. */
+.composition-data-workbench .ant-table-row-expand-icon::before {
+  height: 2px;
+  top: calc(50% - 1px);
+}
+
+.composition-data-workbench .workbench-name-width-slider {
+  margin-block-end: calc(var(--ku-control-height, 44px) + 4px);
+}
+
+@media (max-width: 480px) {
+  .composition-newsletter-form.ant-form-inline { display: flex; flex-direction: column; gap: 12px; }
+  .composition-newsletter-form .ant-form-item { min-width: 0; width: 100%; margin-inline-end: 0; }
+  .composition-newsletter-form .ant-form-item-row { flex-direction: column; align-items: stretch; }
+  .composition-newsletter-form .ant-form-item-label { text-align: start; }
+}

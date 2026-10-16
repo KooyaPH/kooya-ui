@@ -12,7 +12,7 @@ import {
   type HTMLAttributes,
 } from "react";
 import { Modal, Drawer as AntDrawer } from "antd";
-import { useKooyaRoot } from "../foundations/index";
+import { useKooyaRoot, useKooyaOverlayRoot } from "../foundations/index";
 export interface DialogProps {
   title?: ReactNode;
   dismissible?: boolean;
@@ -55,6 +55,7 @@ export function Dialog({
   const [internal, setInternal] = useState(false);
   const visible = open ?? internal;
   const root = useKooyaRoot();
+  const overlayRoot = useKooyaOverlayRoot();
   const previous = useRef<HTMLElement | null>(null);
   const descriptionId = useId();
   const titleId = useId();
@@ -182,7 +183,7 @@ export function Dialog({
     title: title != null ? <span id={titleId}>{title}</span> : undefined,
     open: visible,
     footer: footer ?? null,
-    getContainer: () => root?.current ?? document.body,
+    getContainer: () => overlayRoot?.current ?? document.body,
     keyboard: dismissible,
     mask: { closable: dismissible },
     closable:

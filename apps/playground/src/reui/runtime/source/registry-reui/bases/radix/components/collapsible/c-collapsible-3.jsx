@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "../../../../../../../adapters/navigation.tsx";
+import { Card, CardContent } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "h-40 w-full max-w-xs", children: _jsx(Card, { className: "py-3", children: _jsx(CardContent, { className: "px-3", children: _jsxs(Collapsible, { children: [_jsxs(CollapsibleTrigger, { className: "flex w-full cursor-pointer items-center justify-between text-sm", children: [_jsx("span", { children: "How do I reset my password?" }), _jsx(IconPlaceholder, { lucide: "ChevronDownIcon", tabler: "IconChevronDown", hugeicons: "ArrowDown01Icon", phosphor: "CaretDownIcon", remixicon: "RiArrowDownSLine", "aria-hidden": "true", className: "text-muted-foreground size-4 shrink-0 transition-transform in-data-[state=open]:rotate-180" })] }), _jsx(CollapsibleContent, { className: "data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down", children: _jsx("div", { className: "text-muted-foreground pt-3 text-sm", children: "You can reset your password by clicking the \"Forgot Password\" link on the login page. We'll send you an email with instructions to create a new password." }) })] }) }) }) }));
+}

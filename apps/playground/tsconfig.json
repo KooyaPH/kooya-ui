@@ -1,1 +1,9 @@
-{ "extends": "../../tsconfig.json", "include": ["src"] }
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/reui/code"
+  ]
+}

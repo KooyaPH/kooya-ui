@@ -11,7 +11,7 @@ import {
   type CSSProperties,
 } from "react";
 import { Popover } from "antd";
-import { useKooyaRoot } from "../foundations/index";
+import { useKooyaOverlayRoot } from "../foundations/index";
 
 export interface PopupProps {
   label: string;
@@ -43,7 +43,7 @@ export function Popup({
 }: PopupProps) {
   const [internal, setInternal] = useState(defaultOpen);
   const visible = open ?? internal;
-  const root = useKooyaRoot();
+  const root = useKooyaOverlayRoot();
   const anchor = useRef<HTMLSpanElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const previous = useRef(false);
@@ -90,11 +90,7 @@ export function Popup({
         arrow={false}
         destroyOnHidden
         styles={{ root: { pointerEvents: "auto" } }}
-        getPopupContainer={(node) =>
-          node.closest<HTMLElement>('[role="dialog"]') ??
-          root?.current ??
-          document.body
-        }
+        getPopupContainer={() => root?.current ?? document.body}
         afterOpenChange={(next) => {
           if (
             next &&

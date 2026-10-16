@@ -1,0 +1,34 @@
+diff --git a/es/hooks/useAccessibility.js b/es/hooks/useAccessibility.js
+index e2e79237306c5dfd59b1cf8f438cf6c140a8d446..dd0d11e9485ada12e401397443d052b54dad2909 100644
+--- a/es/hooks/useAccessibility.js
++++ b/es/hooks/useAccessibility.js
+@@ -266,6 +266,12 @@ export function useAccessibility(mode, activeKey, isRtl, id, containerRef, getKe
+         const keyPath = getKeyPath(focusMenuKey, true);
+         const parentKey = keyPath[keyPath.length - 2];
+         const parentMenuElement = key2element.get(parentKey);
++        // A submenu owns this Escape. Root popup handlers must see only
++        // the subsequent Escape from the returned parent item.
++        if (which === ESC && parentMenuElement) {
++          e.preventDefault();
++          e.stopPropagation();
++        }
+ 
+         // Focus menu item
+         triggerAccessibilityOpen(parentKey, false);
+diff --git a/lib/hooks/useAccessibility.js b/lib/hooks/useAccessibility.js
+index 3d149cb1dd34bf4559af86c645a1467127ae8991..b740db7584b7f68fd465a59e71d39b39c54e78be 100644
+--- a/lib/hooks/useAccessibility.js
++++ b/lib/hooks/useAccessibility.js
+@@ -277,6 +277,12 @@ function useAccessibility(mode, activeKey, isRtl, id, containerRef, getKeys, get
+         const keyPath = getKeyPath(focusMenuKey, true);
+         const parentKey = keyPath[keyPath.length - 2];
+         const parentMenuElement = key2element.get(parentKey);
++        // A submenu owns this Escape. Root popup handlers must see only
++        // the subsequent Escape from the returned parent item.
++        if (which === ESC && parentMenuElement) {
++          e.preventDefault();
++          e.stopPropagation();
++        }
+ 
+         // Focus menu item
+         triggerAccessibilityOpen(parentKey, false);

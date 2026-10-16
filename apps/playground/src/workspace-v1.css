@@ -1,0 +1,128 @@
+.v1-review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--ku-line);
+  background: var(--ku-surface);
+}
+.v1-review-header > a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--ku-ink);
+  text-decoration: none;
+}
+.v1-review-header > a span {
+  color: var(--ku-muted);
+  font-size: 12px;
+}
+.v1-review-header nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.v1-review-header nav > a {
+  color: var(--ku-ink);
+  text-decoration: none;
+  font-size: 13px;
+}
+.v1-review-header a:hover {
+  color: var(--ku-accent);
+}
+.ku-v1-review .poc-workspace {
+  min-height: calc(100dvh - 64px);
+}
+.ku-v1-review
+  :is(
+    .poc-context-heading,
+    .poc-sidebar-label,
+    .poc-app-nav nav button,
+    .poc-context-item,
+    .poc-workspace-note,
+    .poc-header-context
+  ) {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.ku-v1-review .recipe-editorial .poc-work-area,
+.ku-v1-review .recipe-governance .poc-work-area {
+  padding: 24px;
+}
+.ku-v1-review .poc-context-item {
+  min-height: 36px;
+}
+.v1-description {
+  margin-bottom: 24px;
+  color: var(--ku-muted);
+}
+@media (max-width: 767px) {
+  .v1-review-header {
+    padding: 12px 16px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .v1-review-header nav {
+    gap: 16px;
+  }
+  .v1-review-header > a span {
+    max-width: 200px;
+  }
+}
+.ku-v1-review
+  :is(
+    .poc-nav-caption,
+    .poc-inspector-label,
+    .poc-context-heading,
+    .poc-workspace-note,
+    .poc-page-footer,
+    .poc-footnote
+  ) {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.v1-stress {
+  display: grid;
+  gap: 24px;
+  overflow-wrap: anywhere;
+}
+.v1-stress :is(label, input, textarea) {
+  display: block;
+  margin-block: 8px;
+}
+.v1-stress h1 {
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .v1-stress {
+    padding: 16px !important;
+  }
+}
+.v1-stress > * {
+  min-width: 0;
+  max-width: 100%;
+}
+.v1-stress .ant-space {
+  max-width: 100%;
+}
+.v1-stress .ant-space-item {
+  min-width: 0;
+  max-width: 100%;
+}
+.v1-stress :is(.ant-select, .ant-picker) {
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .v1-stress section[aria-label="Clipped container"] {
+    height: 460px !important;
+  }
+}
+
+.ku-v1-review .poc-app-nav nav button[aria-current="page"],
+.ku-v1-review .poc-context-item.active,
+.ku-v1-review .poc-context-item:hover {
+  color: var(--ku-highlight-ink);
+}

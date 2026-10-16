@@ -1,0 +1,105 @@
+diff --git a/es/Dom/focus.js b/es/Dom/focus.js
+index 4969cabc17c476c25d20365028d40c577ffebfe1..e87bb81f244403ddf1e20254ab76279d7cd7a8fb 100644
+--- a/es/Dom/focus.js
++++ b/es/Dom/focus.js
+@@ -54,6 +54,9 @@ export function triggerFocus(element, option) {
+     cursor
+   } = option || {};
+   if (cursor && (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement)) {
++    // Some valid input types (email, number, date, etc.) cannot select text.
++    // Keep the requested focus without calling a native unsupported API.
++    if (element.selectionStart === null || element.selectionEnd === null) return;
+     const len = element.value.length;
+     switch (cursor) {
+       case 'start':
+@@ -128,14 +131,25 @@ function onWindowKeyDown(e) {
+       activeElement
+     } = document;
+     const lastElement = getLastElement();
++    if (!lastElement || (!lastElement.contains(activeElement) && isIgnoredElement(activeElement))) return;
+     const focusableList = getFocusNodeList(lastElement);
++    if (!focusableList.length) {
++      e.preventDefault();
++      lastFocusElement = lastElement;
++      lastElement.focus({ preventScroll: true });
++      return;
++    }
+     const last = focusableList[focusableList.length - 1];
+     if (e.shiftKey && activeElement === focusableList[0]) {
+       // Tab backward on first focusable element
+       lastFocusElement = last;
++      e.preventDefault();
++      last?.focus({ preventScroll: true });
+     } else if (!e.shiftKey && activeElement === last) {
+       // Tab forward on last focusable element
+       lastFocusElement = focusableList[0];
++      e.preventDefault();
++      focusableList[0]?.focus({ preventScroll: true });
+     }
+   }
+ }
+diff --git a/es/hooks/useDelayState.js b/es/hooks/useDelayState.js
+index 219d9545c4630f3061e00cf3f764abfedf6a2f74..af6cbbbe2627ecabef4dd360b3c7edacfca2faf5 100644
+--- a/es/hooks/useDelayState.js
++++ b/es/hooks/useDelayState.js
+@@ -32,5 +32,7 @@ export default function useDelayState(defaultValue) {
+       delayRef.current = [true, raf(() => setValue(nextValue), delayConfig.frame)];
+     }
+   });
++  // Cancel pending native work before its owning component disappears.
++  React.useEffect(() => cancelPending, [cancelPending]);
+   return [value, setDelayValue];
+ }
+\ No newline at end of file
+diff --git a/lib/Dom/focus.js b/lib/Dom/focus.js
+index 840664019cf88c791d01963b921451ee7bffa5d6..53496d83b0fe7da6019d0d612f2e8a275c5102fd 100644
+--- a/lib/Dom/focus.js
++++ b/lib/Dom/focus.js
+@@ -64,6 +64,9 @@ function triggerFocus(element, option) {
+     cursor
+   } = option || {};
+   if (cursor && (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement)) {
++    // Some valid input types (email, number, date, etc.) cannot select text.
++    // Keep the requested focus without calling a native unsupported API.
++    if (element.selectionStart === null || element.selectionEnd === null) return;
+     const len = element.value.length;
+     switch (cursor) {
+       case 'start':
+@@ -138,14 +141,25 @@ function onWindowKeyDown(e) {
+       activeElement
+     } = document;
+     const lastElement = getLastElement();
++    if (!lastElement || (!lastElement.contains(activeElement) && isIgnoredElement(activeElement))) return;
+     const focusableList = getFocusNodeList(lastElement);
++    if (!focusableList.length) {
++      e.preventDefault();
++      lastFocusElement = lastElement;
++      lastElement.focus({ preventScroll: true });
++      return;
++    }
+     const last = focusableList[focusableList.length - 1];
+     if (e.shiftKey && activeElement === focusableList[0]) {
+       // Tab backward on first focusable element
+       lastFocusElement = last;
++      e.preventDefault();
++      last?.focus({ preventScroll: true });
+     } else if (!e.shiftKey && activeElement === last) {
+       // Tab forward on last focusable element
+       lastFocusElement = focusableList[0];
++      e.preventDefault();
++      focusableList[0]?.focus({ preventScroll: true });
+     }
+   }
+ }
+diff --git a/lib/hooks/useDelayState.js b/lib/hooks/useDelayState.js
+index e59989e3820a7cdf8f8197c1308e29fe09bdd3d6..d7ad07898c160d2c59a4f3630213eaa6076b5a75 100644
+--- a/lib/hooks/useDelayState.js
++++ b/lib/hooks/useDelayState.js
+@@ -41,5 +41,7 @@ function useDelayState(defaultValue) {
+       delayRef.current = [true, (0, _raf.default)(() => setValue(nextValue), delayConfig.frame)];
+     }
+   });
++  // Cancel pending native work before its owning component disappears.
++  React.useEffect(() => cancelPending, [cancelPending]);
+   return [value, setDelayValue];
+ }

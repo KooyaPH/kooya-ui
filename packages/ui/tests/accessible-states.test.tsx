@@ -2,7 +2,7 @@ import { createRef } from "react";
 import { expect, it } from "vitest";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 import { ComponentDocs } from "../../../apps/playground/src/ComponentDocs";
 
 it("maps action and navigation state foregrounds to readable semantic roles", () => {

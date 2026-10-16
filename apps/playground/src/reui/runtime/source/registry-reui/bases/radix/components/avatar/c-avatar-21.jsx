@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Frame, FramePanel } from "../../reui/frame.jsx";
+import { Avatar, AvatarFallback, AvatarGroup, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsx(Frame, { children: _jsxs(FramePanel, { className: "flex items-center gap-2 p-2!", children: [_jsxs(AvatarGroup, { children: [_jsxs(Avatar, { className: "size-7", children: [_jsx(AvatarImage, { src: "/reui-assets/images/0a10b9bc070f3bdf606f.jpg", alt: "@shadcn" }), _jsx(AvatarFallback, { children: "CH" })] }), _jsxs(Avatar, { className: "size-7", children: [_jsx(AvatarImage, { src: "/reui-assets/images/96b8bd25ab6ed38fc54f.png", alt: "@maxleiter" }), _jsx(AvatarFallback, { children: "CH" })] }), _jsxs(Avatar, { className: "size-7", children: [_jsx(AvatarImage, { src: "/reui-assets/images/eb59b55e1933bc432a9c.png", alt: "@evilrabbit" }), _jsx(AvatarFallback, { children: "CH" })] }), _jsxs(Avatar, { className: "size-7", children: [_jsx(AvatarImage, { src: "/reui-assets/images/f51fb1d8b3e4cbbd471d.png", alt: "@leerob" }), _jsx(AvatarFallback, { children: "CH" })] })] }), _jsxs("p", { className: "text-muted-foreground me-1.5 text-xs", children: ["Joined by ", _jsx("span", { className: "text-foreground font-semibold", children: "500+" }), " ", "developers."] })] }) }));
+}

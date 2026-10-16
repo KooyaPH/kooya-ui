@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle, } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "mx-auto flex w-full max-w-md flex-col gap-2", children: [_jsxs(Item, { variant: "outline", children: [_jsx(ItemMedia, { variant: "icon", children: _jsx(IconPlaceholder, { lucide: "MailIcon", tabler: "IconMail", hugeicons: "MailIcon", phosphor: "EnvelopeIcon", remixicon: "RiMailLine" }) }), _jsxs(ItemContent, { children: [_jsx(ItemTitle, { children: "Email Notifications" }), _jsx(ItemDescription, { children: "Receive updates via email" })] }), _jsx(ItemActions, { children: _jsx(Button, { variant: "outline", size: "sm", children: "Configure" }) })] }), _jsxs(Item, { variant: "outline", children: [_jsx(ItemMedia, { variant: "icon", children: _jsx(IconPlaceholder, { lucide: "BellIcon", tabler: "IconBell", hugeicons: "NotificationIcon", phosphor: "BellIcon", remixicon: "RiNotificationLine" }) }), _jsxs(ItemContent, { children: [_jsx(ItemTitle, { children: "Push Notifications" }), _jsx(ItemDescription, { children: "Get notified on your device" })] }), _jsx(ItemActions, { children: _jsx(Button, { size: "sm", children: "Enable" }) })] })] }));
+}

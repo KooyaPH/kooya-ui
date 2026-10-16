@@ -32,7 +32,7 @@ import {
   Dialog,
   Drawer,
   useKooyaFeedback,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function AtomicCatalog() {
   const [tab, setTab] = useState("atoms");
   const [checked, setChecked] = useState(false);

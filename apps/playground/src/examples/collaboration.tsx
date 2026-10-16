@@ -9,7 +9,7 @@ import {
   type ChatMessage,
   type FeedPost,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function BoardExample({
   state,
   empty,

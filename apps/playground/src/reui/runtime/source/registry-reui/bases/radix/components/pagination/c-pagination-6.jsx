@@ -1,0 +1,9 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Card, CardContent } from "../../../../../../../adapters/layout.tsx";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, } from "../../../../../../../adapters/data.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx(Card, { className: "p-2", children: _jsx(CardContent, { className: "p-0", children: _jsx(Pagination, { children: _jsxs(PaginationContent, { children: [_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", size: "icon", "aria-label": "Go to previous page", className: "hover:bg-muted h-8 w-8 rounded-full", children: _jsx(IconPlaceholder, { lucide: "ChevronLeftIcon", tabler: "IconChevronLeft", hugeicons: "ArrowLeft01Icon", phosphor: "CaretLeftIcon", remixicon: "RiArrowLeftSLine", className: "size-4" }) }) }), [1, 2, 3].map((page) => (_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", isActive: page === 1, className: page === 1
+                                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                                    : "hover:bg-muted", children: page }) }, page))), _jsx(PaginationItem, { children: _jsx(PaginationEllipsis, {}) }), [10, 11, 12].map((page) => (_jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", children: page }) }, page))), _jsx(PaginationItem, { children: _jsx(PaginationLink, { href: "#", size: "icon", "aria-label": "Go to next page", className: "hover:bg-muted h-8 w-8 rounded-full", children: _jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", className: "size-4" }) }) })] }) }) }) }));
+}

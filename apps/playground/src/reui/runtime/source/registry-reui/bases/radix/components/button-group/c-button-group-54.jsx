@@ -1,0 +1,16 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { ButtonGroup } from "../../../../../../../adapters/controls.tsx";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger, } from "../../../../../../../adapters/menus.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+const services = ["Resend API", "Stripe API", "GitHub API"];
+const environments = ["Production", "Staging", "Development"];
+const versions = ["v2", "v1", "beta"];
+export default function Pattern() {
+    const [service, setService] = useState(services[0]);
+    const [environment, setEnvironment] = useState(environments[0]);
+    const [version, setVersion] = useState(versions[0]);
+    return (_jsxs(ButtonGroup, { children: [_jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsxs(Button, { variant: "outline", size: "sm", className: "h-7 gap-1.5 text-xs font-normal", "aria-label": "Select API service", children: [_jsx(IconPlaceholder, { lucide: "Code2Icon", tabler: "IconCode", hugeicons: "Code01Icon", phosphor: "CodeIcon", remixicon: "RiCodeLine", className: "size-3.5 opacity-60", "aria-hidden": "true" }), service, _jsx(IconPlaceholder, { lucide: "ChevronDownIcon", tabler: "IconChevronDown", hugeicons: "ArrowDown01Icon", phosphor: "CaretDownIcon", remixicon: "RiArrowDownSLine", className: "size-3 opacity-60", "aria-hidden": "true" })] }) }), _jsx(DropdownMenuContent, { align: "start", className: "w-40", children: _jsx(DropdownMenuGroup, { children: services.map((item) => (_jsx(DropdownMenuItem, { onClick: () => setService(item), children: item }, item))) }) })] }), _jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsxs(Button, { variant: "outline", size: "sm", className: "text-muted-foreground h-7 gap-1 text-xs font-normal", "aria-label": "Select environment", children: [environment, _jsx(IconPlaceholder, { lucide: "ChevronDownIcon", tabler: "IconChevronDown", hugeicons: "ArrowDown01Icon", phosphor: "CaretDownIcon", remixicon: "RiArrowDownSLine", className: "size-3 opacity-60", "aria-hidden": "true" })] }) }), _jsx(DropdownMenuContent, { align: "start", className: "w-36", children: _jsx(DropdownMenuGroup, { children: environments.map((item) => (_jsx(DropdownMenuItem, { onClick: () => setEnvironment(item), children: item }, item))) }) })] }), _jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsxs(Button, { variant: "outline", size: "sm", className: "text-muted-foreground h-7 gap-1 font-mono text-xs", "aria-label": "Select API version", children: [version, _jsx(IconPlaceholder, { lucide: "ChevronDownIcon", tabler: "IconChevronDown", hugeicons: "ArrowDown01Icon", phosphor: "CaretDownIcon", remixicon: "RiArrowDownSLine", className: "size-3 opacity-60", "aria-hidden": "true" })] }) }), _jsx(DropdownMenuContent, { align: "start", className: "w-24", children: _jsx(DropdownMenuGroup, { children: versions.map((item) => (_jsx(DropdownMenuItem, { onClick: () => setVersion(item), children: _jsx("span", { className: "font-mono", children: item }) }, item))) }) })] })] }));
+}

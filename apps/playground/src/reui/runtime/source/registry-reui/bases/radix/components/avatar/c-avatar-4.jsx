@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Avatar, AvatarFallback, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "flex items-center gap-2", children: [_jsxs(Avatar, { className: "rounded-md after:rounded-md", children: [_jsx(AvatarImage, { src: "/reui-assets/images/046af0b7d159f9f4fd2b.jpg", alt: "Emma Wilson", className: "rounded-md" }), _jsx(AvatarFallback, { children: "EW" })] }), _jsxs(Avatar, { className: "rounded-lg after:rounded-lg", children: [_jsx(AvatarImage, { src: "/reui-assets/images/046af0b7d159f9f4fd2b.jpg", alt: "Emma Wilson", className: "rounded-lg" }), _jsx(AvatarFallback, { children: "EW" })] }), _jsxs(Avatar, { className: "rounded-lg after:rounded-xl", children: [_jsx(AvatarImage, { src: "/reui-assets/images/046af0b7d159f9f4fd2b.jpg", alt: "Emma Wilson", className: "rounded-xl" }), _jsx(AvatarFallback, { children: "EW" })] }), _jsxs(Avatar, { children: [_jsx(AvatarImage, { src: "/reui-assets/images/046af0b7d159f9f4fd2b.jpg", alt: "Emma Wilson" }), _jsx(AvatarFallback, { children: "EW" })] })] }));
+}

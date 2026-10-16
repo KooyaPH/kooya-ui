@@ -1,0 +1,17 @@
+// Adapted recipe. Keep supporting modules from the Kooya recipes bundle.
+import { Card, CardContent, CardHeader } from "../../../adapters/layout.tsx"
+import { Skeleton } from "../../../adapters/controls.tsx"
+
+export default function Pattern() {
+  return (
+    <Card className="w-full max-w-xs">
+      <CardHeader className="gap-2">
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton className="h-4 w-1/2" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="aspect-video w-full rounded-md" />
+      </CardContent>
+    </Card>
+  )
+}

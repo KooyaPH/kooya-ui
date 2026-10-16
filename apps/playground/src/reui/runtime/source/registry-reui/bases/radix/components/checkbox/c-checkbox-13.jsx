@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Checkbox } from "../../../../../../../adapters/controls.tsx";
+import { Field, FieldGroup, FieldLabel, FieldTitle, } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsxs(FieldGroup, { className: "w-full max-w-xs flex-row gap-4", children: [_jsx(FieldLabel, { className: "relative p-0", children: _jsxs(Field, { orientation: "horizontal", children: [_jsx(Checkbox, { defaultChecked: true, className: "absolute -top-2 -right-2 size-5 rounded-full border-none shadow-none" }), _jsx(FieldTitle, { className: "justify-center", children: "Billings" })] }) }), _jsx(FieldLabel, { className: "relative p-0", children: _jsxs(Field, { orientation: "horizontal", className: "justify-center", children: [_jsx(Checkbox, { className: "absolute -top-2 -right-2 size-5 rounded-full border-none shadow-none" }), _jsx(FieldTitle, { className: "justify-center", children: "Payments" })] }) }), _jsx(FieldLabel, { className: "relative p-0", children: _jsxs(Field, { orientation: "horizontal", className: "justify-center", children: [_jsx(Checkbox, { className: "absolute -top-2 -right-2 size-5 rounded-full border-none shadow-none" }), _jsx(FieldTitle, { className: "justify-center", children: "Invoices" })] }) })] }));
+}

@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { KooyaProvider } from "@kooyaph/ui";
+import { KooyaProvider } from "@kooyaph/ui/legacy";
 import { UsagePage } from "../../../apps/playground/src/ProductPages";
 
 const renderUsage = () =>

@@ -9,7 +9,7 @@ import {
   TextField,
   FilterChip,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import { initialAccounts, type Account } from "../data";
 export function CollectionExample({
   state,

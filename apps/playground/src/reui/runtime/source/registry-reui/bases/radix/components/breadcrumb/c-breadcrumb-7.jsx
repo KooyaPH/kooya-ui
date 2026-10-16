@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Avatar, AvatarFallback, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, } from "../../../../../../../adapters/utility.tsx";
+export default function Pattern() {
+    return (_jsx(Breadcrumb, { children: _jsxs(BreadcrumbList, { children: [_jsx(BreadcrumbItem, { children: _jsxs(BreadcrumbLink, { href: "#", className: "flex items-center gap-2", children: [_jsxs(Avatar, { className: "size-5 rounded-sm", children: [_jsx(AvatarImage, { src: "/reui-assets/images/f02f62535eba25f67477.png" }), _jsx(AvatarFallback, { children: "VC" })] }), "Vercel"] }) }), _jsx(BreadcrumbSeparator, {}), _jsx(BreadcrumbItem, { children: _jsxs(BreadcrumbLink, { href: "#", className: "flex items-center gap-2", children: [_jsxs(Avatar, { className: "size-5", children: [_jsx(AvatarImage, { src: "/reui-assets/images/0a10b9bc070f3bdf606f.jpg" }), _jsx(AvatarFallback, { children: "CN" })] }), "@shadcn"] }) }), _jsx(BreadcrumbSeparator, {}), _jsx(BreadcrumbItem, { children: _jsx(BreadcrumbPage, { children: "Projects" }) })] }) }));
+}

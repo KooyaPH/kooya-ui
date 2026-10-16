@@ -18,21 +18,32 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "corepack pnpm --filter @kooyaph/ui build && corepack pnpm exec changeset publish",
-    "validate": "corepack pnpm build && corepack pnpm typecheck && corepack pnpm test && corepack pnpm build:storybook"
+    "validate": "corepack pnpm build && corepack pnpm typecheck && corepack pnpm test && corepack pnpm build:storybook",
+    "audit:inventory": "node scripts/ui-audit-inventory.mjs",
+    "audit:unit": "node --test scripts/__tests__/reui-intake.test.mjs scripts/__tests__/reui-code-graph.test.mjs scripts/__tests__/reui-overrides.test.mjs scripts/__tests__/ui-audit*.test.mjs",
+    "audit:dev": "pnpm --filter @kooyaph/ui-playground exec vite --host 127.0.0.1 --port 5300 --strictPort",
+    "audit:browser": "playwright test --config qa/ui/playwright.config.ts",
+    "audit:capabilities": "node scripts/ui-audit-capabilities.mjs",
+    "audit:source": "node scripts/reui-bundle.mjs && node --test scripts/__tests__/reui-bundle-coverage.test.mjs",
+    "audit:chrome-targets": "node scripts/ui-audit-chrome-targets.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
     "@changesets/cli": "2.29.7",
+    "@playwright/test": "1.64.0",
     "@storybook/addon-a11y": "10.0.0",
     "@storybook/addon-docs": "10.0.0",
     "@storybook/react-vite": "10.0.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
+    "@types/node": "22.18.13",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
     "@vitejs/plugin-react": "4.7.0",
     "antd": "6.6.5",
     "jsdom": "26.1.0",
+    "pngjs": "7.0.0",
     "prettier": "3.6.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -40,5 +51,20 @@
     "typescript": "5.6.3",
     "vite": "6.4.2",
     "vitest": "3.2.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "@excalidraw/excalidraw>@radix-ui/react-tabs": "1.1.13"
+    },
+    "patchedDependencies": {
+      "@rc-component/util@1.13.0": "patches/@rc-component__util@1.13.0.patch",
+      "@rc-component/table@1.11.1": "patches/@rc-component__table@1.11.1.patch",
+      "antd@6.6.5": "patches/antd@6.6.5.patch",
+      "@rc-component/image@1.10.0": "patches/@rc-component__image@1.10.0.patch",
+      "@rc-component/picker@1.12.2": "patches/@rc-component__picker@1.12.2.patch",
+      "@rc-component/dropdown@1.0.3": "patches/@rc-component__dropdown@1.0.3.patch",
+      "@rc-component/menu@1.5.0": "patches/@rc-component__menu@1.5.0.patch",
+      "@rc-component/trigger@3.10.1": "patches/@rc-component__trigger@3.10.1.patch"
+    }
   }
 }

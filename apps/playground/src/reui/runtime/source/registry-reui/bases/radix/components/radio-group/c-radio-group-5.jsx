@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Field, FieldLabel } from "../../../../../../../adapters/layout.tsx";
+import { RadioGroup, RadioGroupItem, } from "../../../../../../../adapters/controls.tsx";
+export default function Pattern() {
+    return (_jsxs(RadioGroup, { defaultValue: "blue", className: "w-fit", children: [_jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "blue", id: "color-blue", className: "border-blue-500 data-checked:border-blue-500 [&_[data-slot=radio-group-indicator]]:text-blue-500" }), _jsx(FieldLabel, { htmlFor: "color-blue", children: "Blue" })] }), _jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "green", id: "color-green", className: "border-green-500 data-checked:border-green-500 [&_[data-slot=radio-group-indicator]]:text-green-500" }), _jsx(FieldLabel, { htmlFor: "color-green", children: "Green" })] }), _jsxs(Field, { orientation: "horizontal", children: [_jsx(RadioGroupItem, { value: "yellow", id: "color-yellow", className: "border-yellow-500 data-checked:border-yellow-500 [&_[data-slot=radio-group-indicator]]:text-yellow-500" }), _jsx(FieldLabel, { htmlFor: "color-yellow", children: "Yellow" })] })] }));
+}

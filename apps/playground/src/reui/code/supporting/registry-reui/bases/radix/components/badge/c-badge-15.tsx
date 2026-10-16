@@ -1,0 +1,5 @@
+import { Badge } from "../../../../../../../adapters/structured.tsx"
+
+export default function Pattern() {
+  return <Badge variant="success-light">Badge</Badge>
+}

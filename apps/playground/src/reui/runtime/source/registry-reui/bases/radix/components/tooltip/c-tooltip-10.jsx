@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Badge } from "../../../../../../../adapters/structured.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, } from "../../../../../../../adapters/overlays.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsx(TooltipProvider, { children: _jsxs(Tooltip, { children: [_jsx(TooltipTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", size: "icon", "aria-label": "Pro feature", children: _jsx(IconPlaceholder, { lucide: "LockIcon", tabler: "IconLock", hugeicons: "SquareLock01Icon", phosphor: "LockSimpleIcon", remixicon: "RiLockLine" }) }) }), _jsx(TooltipContent, { className: "max-w-64 p-3", children: _jsxs("div", { className: "flex flex-col gap-1.5", children: [_jsxs("div", { className: "flex items-center gap-2", children: [_jsx("span", { className: "text-sm font-semibold", children: "Advanced Analytics" }), _jsx(Badge, { variant: "success", size: "sm", children: "Pro" })] }), _jsx("p", { className: "text-xs opacity-80", children: "Unlock detailed insights, custom reports, and real-time dashboards." }), _jsxs(Button, { size: "sm", className: "border-border/40 border", children: ["Upgrade to Pro", _jsx(IconPlaceholder, { lucide: "ArrowRightIcon", tabler: "IconArrowRight", hugeicons: "ArrowRight01Icon", phosphor: "ArrowRightIcon", remixicon: "RiArrowRightSLine" })] })] }) })] }) }) }));
+}

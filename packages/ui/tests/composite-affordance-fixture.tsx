@@ -14,7 +14,7 @@ import {
   KooyaProvider,
   type ChoiceSelectRef,
   type ThemeName,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import "@kooyaph/ui/styles.css";
 
 const options = [

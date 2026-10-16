@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Separator } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsxs("div", { className: "flex items-center gap-4 text-sm", children: [_jsxs("div", { className: "flex flex-col gap-1", children: [_jsx("span", { className: "font-medium", children: "Settings" }), _jsx("span", { className: "text-muted-foreground text-xs", children: "Manage preferences" })] }), _jsx(Separator, { orientation: "vertical", className: "h-8 [&]:self-auto!" }), _jsxs("div", { className: "flex flex-col gap-1", children: [_jsx("span", { className: "font-medium", children: "Account" }), _jsx("span", { className: "text-muted-foreground text-xs", children: "Profile & security" })] }), _jsx(Separator, { orientation: "vertical", className: "h-8 [&]:self-auto!" }), _jsxs("div", { className: "flex flex-col gap-1", children: [_jsx("span", { className: "font-medium", children: "Help" }), _jsx("span", { className: "text-muted-foreground text-xs", children: "Support & docs" })] })] }) }));
+}

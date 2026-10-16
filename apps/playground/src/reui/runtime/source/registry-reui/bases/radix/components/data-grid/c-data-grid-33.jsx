@@ -1,0 +1,252 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useMemo, useState } from "react";
+import { Badge } from "../../../../../../../adapters/structured.tsx";
+import { DataGrid, DataGridContainer, dataGridFeatures, } from "../../reui/data-grid/data-grid.jsx";
+import { DataGridColumnHeader } from "../../reui/data-grid/data-grid-column-header.jsx";
+import { DataGridPagination } from "../../reui/data-grid/data-grid-pagination.jsx";
+import { DataGridScrollArea } from "../../reui/data-grid/data-grid-scroll-area.jsx";
+import { DataGridTable, DataGridTableRowSelect, DataGridTableRowSelectAll, } from "../../reui/data-grid/data-grid-table.jsx";
+import { useTable } from "@tanstack/react-table";
+import { Avatar, AvatarFallback, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+import { Card, CardAction, CardFooter, CardHeader, CardTitle, } from "../../../../../../../adapters/layout.tsx";
+import { ToggleGroup, ToggleGroupItem, } from "../../../../../../../adapters/selection.tsx";
+const orders = [
+    {
+        id: "1",
+        reference: "ORD-4417",
+        customer: "Alex Johnson",
+        avatar: "/reui-assets/images/e93553df2422635515ee.jpg",
+        initials: "AJ",
+        city: "Berlin",
+        status: "shipped",
+        total: 249.9,
+    },
+    {
+        id: "2",
+        reference: "ORD-4418",
+        customer: "Sarah Chen",
+        avatar: "/reui-assets/images/dfed3098ae0011e5a5a3.jpg",
+        initials: "SC",
+        city: "Osaka",
+        status: "processing",
+        total: 89.0,
+    },
+    {
+        id: "3",
+        reference: "ORD-4421",
+        customer: "Michael Rodriguez",
+        avatar: "/reui-assets/images/4349381d8a8476edbc4c.jpg",
+        initials: "MR",
+        city: "Madrid",
+        status: "shipped",
+        total: 1290.5,
+    },
+    {
+        id: "4",
+        reference: "ORD-4425",
+        customer: "Emma Wilson",
+        avatar: "/reui-assets/images/046af0b7d159f9f4fd2b.jpg",
+        initials: "EW",
+        city: "Hamburg",
+        status: "processing",
+        total: 45.25,
+    },
+    {
+        id: "5",
+        reference: "ORD-4430",
+        customer: "David Kim",
+        avatar: "/reui-assets/images/973d47055c51440af7dc.jpg",
+        initials: "DK",
+        city: "Seoul",
+        status: "shipped",
+        total: 615.0,
+    },
+    {
+        id: "6",
+        reference: "ORD-4433",
+        customer: "Maria Garcia",
+        avatar: "/reui-assets/images/067c566cd567259bb9aa.jpg",
+        initials: "MG",
+        city: "Lisbon",
+        status: "processing",
+        total: 132.75,
+    },
+    {
+        id: "7",
+        reference: "ORD-4440",
+        customer: "James Brown",
+        avatar: "/reui-assets/images/c75592a667f30cfd44b0.jpg",
+        initials: "JB",
+        city: "Toronto",
+        status: "shipped",
+        total: 78.4,
+    },
+];
+/**
+ * One entry per locale: the grid's own copy through `i18n`, plus the column
+ * titles and cell text the consumer owns. The grid never translates content,
+ * only its built-in chrome, so a real app pairs the two exactly like this.
+ */
+const localeContent = {
+    en: {
+        label: "EN",
+        columns: {
+            reference: "Order",
+            customer: "Customer",
+            city: "City",
+            status: "Status",
+            total: "Total",
+        },
+        status: { shipped: "Shipped", processing: "Processing" },
+        currency: "USD",
+        i18n: {},
+    },
+    de: {
+        label: "DE",
+        columns: {
+            reference: "Bestellung",
+            customer: "Kunde",
+            city: "Stadt",
+            status: "Status",
+            total: "Summe",
+        },
+        status: { shipped: "Versandt", processing: "In Bearbeitung" },
+        currency: "EUR",
+        i18n: {
+            labels: {
+                sortAscending: "Aufsteigend",
+                sortDescending: "Absteigend",
+                pinColumnStart: "Links anheften",
+                pinColumnEnd: "Rechts anheften",
+                moveColumnStart: "Nach links verschieben",
+                moveColumnEnd: "Nach rechts verschieben",
+                columnsMenu: "Spalten",
+                toggleColumns: "Spalten ein- und ausblenden",
+                selectAll: "Alle auswählen",
+                selectRow: "Zeile auswählen",
+                rowsPerPage: "Zeilen pro Seite",
+                paginationInfo: ({ from, to, count }) => `${from}-${to} von ${count}`,
+                previousPage: "Vorherige Seite",
+                nextPage: "Nächste Seite",
+                goToPage: (page) => `Seite ${page}`,
+                empty: "Keine Daten vorhanden",
+            },
+        },
+    },
+    ja: {
+        label: "日本語",
+        columns: {
+            reference: "注文",
+            customer: "顧客",
+            city: "都市",
+            status: "状態",
+            total: "合計",
+        },
+        status: { shipped: "発送済み", processing: "処理中" },
+        currency: "JPY",
+        i18n: {
+            labels: {
+                sortAscending: "昇順",
+                sortDescending: "降順",
+                pinColumnStart: "左に固定",
+                pinColumnEnd: "右に固定",
+                moveColumnStart: "左へ移動",
+                moveColumnEnd: "右へ移動",
+                columnsMenu: "列",
+                toggleColumns: "列の表示切り替え",
+                selectAll: "すべて選択",
+                selectRow: "行を選択",
+                rowsPerPage: "1ページの行数",
+                /* Japanese counts the total first, the reason these labels are
+                   functions rather than templates with fixed placeholders. */
+                paginationInfo: ({ from, to, count }) => `${count}件中 ${from}-${to}件`,
+                previousPage: "前のページ",
+                nextPage: "次のページ",
+                goToPage: (page) => `${page}ページ目`,
+                empty: "データがありません",
+            },
+        },
+    },
+};
+const localeTags = {
+    en: "en-US",
+    de: "de-DE",
+    ja: "ja-JP",
+};
+export default function Pattern() {
+    const [locale, setLocale] = useState("en");
+    const [sorting, setSorting] = useState([]);
+    const [rowSelection, setRowSelection] = useState({});
+    const [pagination, setPagination] = useState({
+        pageIndex: 0,
+        pageSize: 5,
+    });
+    const content = localeContent[locale];
+    const columns = useMemo(() => {
+        const money = new Intl.NumberFormat(localeTags[locale], {
+            style: "currency",
+            currency: content.currency,
+            maximumFractionDigits: content.currency === "JPY" ? 0 : 2,
+        });
+        return [
+            {
+                id: "select",
+                header: () => _jsx(DataGridTableRowSelectAll, {}),
+                cell: ({ row }) => _jsx(DataGridTableRowSelect, { row: row }),
+                size: 44,
+                enableSorting: false,
+                enableHiding: false,
+                enableResizing: false,
+            },
+            {
+                accessorKey: "reference",
+                header: ({ column }) => (_jsx(DataGridColumnHeader, { title: content.columns.reference, column: column })),
+                cell: ({ row }) => (_jsx("span", { className: "font-mono text-xs", children: row.original.reference })),
+                size: 110,
+            },
+            {
+                accessorKey: "customer",
+                header: ({ column }) => (_jsx(DataGridColumnHeader, { title: content.columns.customer, column: column })),
+                cell: ({ row }) => (_jsxs("div", { className: "flex items-center gap-2", children: [_jsxs(Avatar, { className: "size-6", children: [_jsx(AvatarImage, { src: row.original.avatar, alt: row.original.customer }), _jsx(AvatarFallback, { className: "text-[10px]", children: row.original.initials })] }), _jsx("span", { className: "text-foreground truncate font-medium", children: row.original.customer })] })),
+                size: 200,
+            },
+            {
+                accessorKey: "city",
+                header: ({ column }) => (_jsx(DataGridColumnHeader, { title: content.columns.city, column: column })),
+                cell: ({ row }) => (_jsx("span", { className: "truncate", children: row.original.city })),
+                size: 120,
+            },
+            {
+                accessorKey: "status",
+                header: ({ column }) => (_jsx(DataGridColumnHeader, { title: content.columns.status, column: column })),
+                cell: ({ row }) => (_jsx(Badge, { variant: row.original.status === "shipped"
+                        ? "success-light"
+                        : "warning-light", children: content.status[row.original.status] })),
+                size: 140,
+            },
+            {
+                accessorKey: "total",
+                header: ({ column }) => (_jsx(DataGridColumnHeader, { title: content.columns.total, column: column })),
+                cell: ({ row }) => (_jsx("span", { className: "block text-end tabular-nums", children: money.format(row.original.total) })),
+                size: 130,
+                meta: { headerClassName: "text-end [&>div]:justify-end" },
+            },
+        ];
+    }, [content, locale]);
+    const table = useTable({
+        features: dataGridFeatures,
+        columns,
+        data: orders,
+        getRowId: (row) => row.id,
+        state: { sorting, pagination, rowSelection },
+        onSortingChange: setSorting,
+        onPaginationChange: setPagination,
+        onRowSelectionChange: setRowSelection,
+        enableRowSelection: true,
+    });
+    return (_jsx(DataGrid, { table: table, recordCount: orders.length, 
+        /* The whole point of the example: one prop swaps every built-in
+           string, and the untouched keys keep their English defaults. */
+        i18n: content.i18n, tableLayout: { columnsPinnable: true, columnsMovable: true }, children: _jsxs(Card, { className: "w-full gap-3 py-3.5", children: [_jsxs(CardHeader, { className: "items-center px-3.5", children: [_jsx(CardTitle, { children: "Orders" }), _jsx(CardAction, { children: _jsx(ToggleGroup, { variant: "outline", size: "sm", type: "single", value: locale, onValueChange: (next) => next && setLocale(next), "aria-label": "Grid language", children: Object.keys(localeContent).map((value) => (_jsx(ToggleGroupItem, { value: value, children: localeContent[value].label }, value))) }) })] }), _jsx(DataGridContainer, { className: "border-y", children: _jsx(DataGridScrollArea, { children: _jsx(DataGridTable, {}) }) }), _jsx(CardFooter, { className: "border-none bg-transparent! px-3.5 py-0", children: _jsx(DataGridPagination, {}) })] }) }));
+}

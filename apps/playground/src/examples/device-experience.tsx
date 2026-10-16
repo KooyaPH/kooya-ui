@@ -11,7 +11,7 @@ import {
   SettingsTemplate,
   TextField,
   useDeviceMode,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const records = [
   {
     id: "a",

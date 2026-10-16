@@ -9,14 +9,14 @@ import {
   LayoutTemplate,
   PanelsTopLeft,
 } from "lucide-react";
-import { Button, Dialog, IconButton, TextField } from "@kooyaph/ui";
+import { Button, Dialog, IconButton, TextField } from "@kooyaph/ui/legacy";
 import {
   ComponentDocs,
   componentEntries,
   componentGroups,
 } from "./ComponentDocs";
 import { TemplateCatalog } from "./TemplateCatalog";
-import type { Composition } from "@kooyaph/ui";
+import type { Composition } from "@kooyaph/ui/legacy";
 import type { Route } from "./data";
 
 export function useLibraryRoute() {

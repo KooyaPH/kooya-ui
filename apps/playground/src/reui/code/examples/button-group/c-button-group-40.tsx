@@ -1,0 +1,23 @@
+// Adapted recipe. Keep supporting modules from the Kooya recipes bundle.
+import { cn } from "cn"
+import { Button } from "../../../adapters/controls.tsx"
+import { ButtonGroup } from "../../../adapters/controls.tsx"
+
+export default function Pattern() {
+  return (
+    <ButtonGroup orientation="vertical">
+      <Button variant="outline" className={cn("bg-muted justify-start")}>
+        Dashboard
+      </Button>
+      <Button variant="outline" className="justify-start">
+        Analytics
+      </Button>
+      <Button variant="outline" className="justify-start">
+        Settings
+      </Button>
+      <Button variant="outline" className="justify-start">
+        Help
+      </Button>
+    </ButtonGroup>
+  )
+}

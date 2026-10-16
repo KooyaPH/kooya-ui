@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger, } from "../../../../../../../adapters/menus.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsx(Button, { variant: "outline", className: "w-fit", children: "Shortcuts" }) }), _jsxs(DropdownMenuContent, { align: "start", className: "w-40", children: [_jsxs(DropdownMenuGroup, { children: [_jsx(DropdownMenuLabel, { children: "My Account" }), _jsxs(DropdownMenuItem, { children: ["Profile", _jsx(DropdownMenuShortcut, { children: "\u21E7\u2318P" })] }), _jsxs(DropdownMenuItem, { children: ["Billing", _jsx(DropdownMenuShortcut, { children: "\u2318B" })] }), _jsxs(DropdownMenuItem, { children: ["Settings", _jsx(DropdownMenuShortcut, { children: "\u2318S" })] })] }), _jsx(DropdownMenuSeparator, {}), _jsxs(DropdownMenuItem, { children: ["Log out", _jsx(DropdownMenuShortcut, { children: "\u21E7\u2318Q" })] })] })] }) }));
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import * as UI from "../src";
+import * as UI from "../src/legacy";
 
 it("separates required control border tokens from decorative lines", () => {
   for (const name of ["mosaic", "signature", "canvas", "client"] as const)

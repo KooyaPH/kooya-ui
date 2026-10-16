@@ -12,7 +12,7 @@ import {
   KooyaProvider,
   type ChoiceSelectRef,
   type InputRef,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import {
   ChoiceSelect as MoleculeChoice,
   type ChoiceSelectRef as MoleculeRef,

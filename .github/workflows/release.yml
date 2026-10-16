@@ -19,7 +19,7 @@ concurrency:
 jobs:
   qualify:
     if: github.repository == 'KooyaPH/kooya-ui'
-    runs-on: [self-hosted, Linux, X64, mid-runner]
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
       CI: "true"
@@ -40,7 +40,7 @@ jobs:
   publish:
     if: github.repository == 'KooyaPH/kooya-ui'
     needs: qualify
-    runs-on: [self-hosted, Linux, X64, mid-runner]
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: read

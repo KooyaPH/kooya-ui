@@ -9,7 +9,7 @@ import {
   Chip,
   FilterChip,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function ContentExample({ state }: { state?: TemplateState }) {
   const [mode, setMode] = useState<"edit" | "preview">("edit");
   const [title, setTitle] = useState("A quieter launch");

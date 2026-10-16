@@ -30,7 +30,7 @@ import {
   TextField,
   themes,
   type ThemeName,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import { templates, type Account, type Route } from "./data";
 
 interface Props {

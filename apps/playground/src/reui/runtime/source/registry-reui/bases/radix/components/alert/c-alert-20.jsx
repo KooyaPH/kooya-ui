@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Alert, AlertAction, AlertDescription, AlertTitle, } from "../../reui/alert.jsx";
+import { Frame, FramePanel } from "../../reui/frame.jsx";
+import { Avatar, AvatarFallback, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "mx-auto mb-auto w-full max-w-lg", children: _jsx(Frame, { children: _jsx(FramePanel, { className: "overflow-hidden p-0!", children: _jsxs(Alert, { variant: "invert", className: "grid-cols-[32px_1fr] gap-x-3 border-0 shadow-none", children: [_jsxs(Avatar, { className: "border-border/10 size-8 border", children: [_jsx(AvatarImage, { src: "/reui-assets/images/dfed3098ae0011e5a5a3.jpg", alt: "Sarah Chen" }), _jsx(AvatarFallback, { children: "SC" })] }), _jsxs(AlertTitle, { className: "flex items-center gap-2", children: [_jsx("span", { className: "truncate", children: "Sarah Chen" }), _jsx("span", { className: "text-invert-foreground/60 truncate font-normal", children: "mentioned you in a comment" })] }), _jsxs(AlertAction, { children: [_jsx(Button, { variant: "outline", size: "xs", className: "bg-background/10 border-border/10", children: "Dismiss" }), _jsx(Button, { size: "xs", className: "border-blue-800 bg-blue-500 text-white hover:border-blue-900 hover:bg-blue-600", children: "View" })] }), _jsx(AlertDescription, { className: "text-invert-foreground/70 line-clamp-1", children: "\"Great work on the user profile layout! I've added some suggestions for the avatar spacing.\"" })] }) }) }) }));
+}

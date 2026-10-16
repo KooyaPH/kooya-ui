@@ -1,0 +1,694 @@
+diff --git a/es/_util/hooks/useForceUpdate.d.ts b/es/_util/hooks/useForceUpdate.d.ts
+index 8d47ba7405399c62561d58188167c0fe911ab0a0..423f9ea256cb6bb224aa8edbf4adb06cfc39fb6f 100644
+--- a/es/_util/hooks/useForceUpdate.d.ts
++++ b/es/_util/hooks/useForceUpdate.d.ts
+@@ -1,2 +1,2 @@
+ import React from 'react';
+-export declare const useForceUpdate: () => [number, React.ActionDispatch<[]>];
++export declare const useForceUpdate: () => [number, React.DispatchWithoutAction];
+diff --git a/es/alert/ErrorBoundary.d.ts b/es/alert/ErrorBoundary.d.ts
+index 669d07fc4b9db54679d2d24f6435360fd9f43c26..72fb98b04b38ba7e10ae93f95d823ff2416628f4 100644
+--- a/es/alert/ErrorBoundary.d.ts
++++ b/es/alert/ErrorBoundary.d.ts
+@@ -16,6 +16,6 @@ export interface ErrorBoundaryStates {
+ declare class ErrorBoundary extends React.PureComponent<ErrorBoundaryProps, ErrorBoundaryStates> {
+     state: ErrorBoundaryStates;
+     componentDidCatch(error: Error, info: React.ErrorInfo): void;
+-    render(): string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined;
++    render(): React.ReactNode;
+ }
+ export default ErrorBoundary;
+diff --git a/es/button/style/token.js b/es/button/style/token.js
+index 983010bb10fbad469b37f87af6d2901eade15f3e..f701e8eef25c48cd67bf057a28fc6f4b8820bfa5 100644
+--- a/es/button/style/token.js
++++ b/es/button/style/token.js
+@@ -1,9 +1,29 @@
+ import { unit } from '@ant-design/cssinjs';
++import { FastColor } from '@ant-design/fast-color';
+ import { AggregationColor } from '../../color-picker/color';
+ import { isBright } from '../../color-picker/components/ColorPresets';
+ import { PresetColors } from '../../theme/interface';
+ import { getLineHeight, mergeToken } from '../../theme/internal';
+ import getAlphaColor from '../../theme/util/getAlphaColor';
++// Contrast defaults are prepared from this native provider's raw palette.
++// CSS variables and transparent surfaces remain caller-qualified.
++const readablePresetSolidColor = (foreground, background) => {
++  if (typeof foreground !== 'string' || typeof background !== 'string' ||
++      /(?:var|env|calc|color|lab|lch|oklab|oklch)\(|currentcolor|inherit|initial|unset|revert/i.test(`${foreground} ${background}`)) {
++    return foreground;
++  }
++  if (background.trim().toLowerCase() === 'transparent') return foreground;
++  const bg = new FastColor(background);
++  if (bg.a !== 1) return foreground;
++  const bgLuminance = bg.getLuminance();
++  const ratio = value => {
++    const color = value === 'transparent' ? new FastColor({ r: 0, g: 0, b: 0, a: 0 }) : new FastColor(value);
++    const luminance = color.onBackground(bg).getLuminance();
++    return (Math.max(luminance, bgLuminance) + 0.05) / (Math.min(luminance, bgLuminance) + 0.05);
++  };
++  if (ratio(foreground) >= 4.5) return foreground;
++  return ratio('#ffffff') >= ratio('#000000') ? '#ffffff' : '#000000';
++};
+ export const prepareToken = token => {
+   const {
+     paddingInline,
+@@ -30,10 +50,26 @@ export const prepareComponentToken = token => {
+     ...prev,
+     [`${colorKey}ShadowColor`]: `0 ${unit(token.controlOutlineWidth)} 0 ${getAlphaColor(token[`${colorKey}1`], token.colorBgContainer)}`
+   }), {});
++  const presetSolidColorTokens = PresetColors.reduce((previous, colorKey) => {
++    const foreground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}6`]);
++    const hoverForeground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}Hover`]);
++    const activeForeground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}Active`]);
++    return {
++      ...previous,
++      [`${colorKey}SolidTextColor`]: foreground,
++      [`${colorKey}SolidTextHoverColor`]: hoverForeground,
++      [`${colorKey}SolidTextActiveColor`]: activeForeground,
++      // A foreground/background pair must not tween through unreadable colors.
++      [`${colorKey}SolidTransitionProperty`]: foreground !== hoverForeground || foreground !== activeForeground
++        ? 'border-color, box-shadow, opacity'
++        : 'all'
++    };
++  }, {});
+   const defaultBgDisabled = token.colorBgContainerDisabled;
+   const dashedBgDisabled = token.colorBgContainerDisabled;
+   return {
+     ...shadowColorTokens,
++    ...presetSolidColorTokens,
+     fontWeight: 400,
+     iconGap: token.marginXS,
+     defaultShadow: `0 ${token.controlOutlineWidth}px 0 ${token.controlTmpOutline}`,
+diff --git a/es/button/style/variant.js b/es/button/style/variant.js
+index d510aceedd034d2fc50464822efbb1cdab16bf6a..68a65838b908d91432950b5380ea34a65a999b42 100644
+--- a/es/button/style/variant.js
++++ b/es/button/style/variant.js
+@@ -232,7 +232,13 @@ const genVariantStyle = token => {
+           [varName('color-light')]: lightColor,
+           [varName('color-light-hover')]: lightHoverColor,
+           [varName('color-light-active')]: lightActiveColor,
+-          [varName('shadow')]: shadowColor
++          [varName('shadow')]: shadowColor,
++          [`&${componentCls}-variant-solid`]: {
++            [varName('text-color')]: token[`${colorKey}SolidTextColor`],
++            [varName('text-color-hover')]: token[`${colorKey}SolidTextHoverColor`],
++            [varName('text-color-active')]: token[`${colorKey}SolidTextActiveColor`],
++            transitionProperty: token[`${colorKey}SolidTransitionProperty`]
++          }
+         }
+       };
+     }),
+diff --git a/es/divider/index.js b/es/divider/index.js
+index ca657b6038b8f9df6c1e83ccb285a0e899f7eaf8..702f2052915d1491c6465303bbf373235f69b5a8 100644
+--- a/es/divider/index.js
++++ b/es/divider/index.js
+@@ -116,6 +116,7 @@ const Divider = /*#__PURE__*/React.forwardRef((props, ref) => {
+       ...(children ? {} : mergedStyles.rail),
+       ...style
+     },
++    "aria-orientation": mergedVertical ? "vertical" : "horizontal",
+     ...restProps,
+     role: "separator"
+   }, children && !mergedVertical && (/*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+diff --git a/es/divider/style/index.js b/es/divider/style/index.js
+index 5f47c00f6180c7d8fc95bcd70d88c1b2cd336c0a..7e426f8b28fd3068568994e2f2479fbf98b2afcc 100644
+--- a/es/divider/style/index.js
++++ b/es/divider/style/index.js
+@@ -96,6 +96,11 @@ const genSharedDividerStyle = token => {
+       },
+       [`${componentCls}-inner-text`]: {
+         display: 'inline-block',
++        whiteSpace: 'normal',
++        overflowWrap: 'anywhere',
++        minWidth: 0,
++        flexShrink: 0,
++        maxWidth: 'calc(100% - 2em)',
+         paddingBlock: 0,
+         paddingInline: textPaddingInline
+       },
+diff --git a/es/dropdown/dropdown.js b/es/dropdown/dropdown.js
+index 011e7d54fed0c2c9fea92662843df34cc3e377ea..696f6ee14c17893b789f1a687c6b72a9eb46b3e1 100644
+--- a/es/dropdown/dropdown.js
++++ b/es/dropdown/dropdown.js
+@@ -117,18 +117,25 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+   const [hashId, cssVarCls] = useStyle(prefixCls, rootCls);
+   const [, token] = useToken();
+   const child = React.Children.only(isPrimitive(children) ? /*#__PURE__*/React.createElement("span", null, children) : children);
+-  const composedRef = useComposeRef(ref, getNodeRef(child));
++  const triggerNodeRef = React.useRef(null);
++  const ownedMenuRef = React.useRef(null);
++  const composedRef = useComposeRef(ref, getNodeRef(child), triggerNodeRef);
++  const [mergedOpen, setOpen] = useControlledState(false, open);
++  const nativeMenuTrigger = !!menu?.items && !mergedPopupRender;
+   const popupTrigger = cloneElement(child, {
+     className: clsx(`${prefixCls}-trigger`, {
+       [`${prefixCls}-rtl`]: direction === 'rtl'
+     }, child.props.className),
+     disabled: child.props.disabled ?? disabled,
++    ...(nativeMenuTrigger ? {
++      'aria-haspopup': Object.prototype.hasOwnProperty.call(child.props, 'aria-haspopup') ? child.props['aria-haspopup'] : 'menu',
++      'aria-expanded': Object.prototype.hasOwnProperty.call(child.props, 'aria-expanded') ? child.props['aria-expanded'] : mergedOpen
++    } : {}),
+     ref: composedRef
+   });
+   const triggerActions = disabled ? [] : trigger;
+   const alignPoint = !!triggerActions?.includes('contextMenu');
+   // =========================== Open ============================
+-  const [mergedOpen, setOpen] = useControlledState(false, open);
+   const onInnerOpenChange = useEvent(nextOpen => {
+     onOpenChange?.(nextOpen, {
+       source: 'trigger'
+@@ -150,6 +157,11 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+     if (menu?.selectable && menu?.multiple) {
+       return;
+     }
++    const list = ownedMenuRef.current?.menu?.list;
++    const activeElement = list?.getRootNode?.()?.activeElement ?? list?.ownerDocument?.activeElement;
++    // Restore only focus still owned by this menu. A caller may already have
++    // moved focus to a dialog or another action in its selection callback.
++    if (list?.contains(activeElement)) triggerNodeRef.current?.focus?.();
+     onOpenChange?.(false, {
+       source: 'menu'
+     });
+@@ -164,6 +176,7 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+     if (menu?.items) {
+       overlayNode = /*#__PURE__*/React.createElement(Menu, {
+         ...menu,
++        ref: ownedMenuRef,
+         classNames: {
+           ...menuClassNames,
+           subMenu: {
+@@ -190,6 +203,7 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+       prefixCls: `${prefixCls}-menu`,
+       rootClassName: clsx(cssVarCls, rootCls),
+       expandIcon: /*#__PURE__*/React.createElement("span", {
++        "aria-hidden": true,
+         className: `${prefixCls}-menu-submenu-arrow`
+       }, direction === 'rtl' ? (/*#__PURE__*/React.createElement(LeftOutlined, {
+         className: `${prefixCls}-menu-submenu-arrow-icon`
+diff --git a/es/form/interface.d.ts b/es/form/interface.d.ts
+index a1aeab297be92eabddf6d464aee8d4ba2f827d24..3ce4f3a0dc8ddf260ba31d15bc097affce6da775 100644
+--- a/es/form/interface.d.ts
++++ b/es/form/interface.d.ts
+@@ -1,4 +1,4 @@
+-import type { Options } from 'scroll-into-view-if-needed';
++import type { Options } from 'scroll-into-view-if-needed' with { 'resolution-mode': 'import' };
+ export type { InternalNamePath, NamePath, Store, StoreValue, } from '@rc-component/form';
+ export type ScrollFocusOptions = Options & {
+     focus?: boolean;
+diff --git a/es/input/Input.js b/es/input/Input.js
+index 27aadd17cf17bf91ccdf1082eba8fcd37f48c68f..d515da7fc77c8fd21742d458a33f1a59bb547f05 100644
+--- a/es/input/Input.js
++++ b/es/input/Input.js
+@@ -131,6 +131,7 @@ const Input = /*#__PURE__*/forwardRef((props, ref) => {
+     ref: composeRef(ref, inputRef),
+     prefixCls: prefixCls,
+     autoComplete: contextAutoComplete,
++    "aria-invalid": mergedStatus === 'error' ? true : undefined,
+     ...rest,
+     disabled: mergedDisabled,
+     onBlur: handleBlur,
+diff --git a/es/table/hooks/useFilter/FilterDropdown.js b/es/table/hooks/useFilter/FilterDropdown.js
+index 6a75c3c065f0fdf5777739d04511945d9005df4d..3eae86237ea384b6f731aa62a822723e3c65e399 100644
+--- a/es/table/hooks/useFilter/FilterDropdown.js
++++ b/es/table/hooks/useFilter/FilterDropdown.js
+@@ -52,10 +52,12 @@ const renderFilterItems = options => {
+     filterMultiple,
+     searchValue,
+     normalizedSearchValue,
+-    filterSearch
++    filterSearch,
++    labelPrefix
+   } = options;
+   return filters.map((filter, index) => {
+     const key = String(filter.value);
++    const labelId = `${labelPrefix}-${index}`;
+     if (filter.children) {
+       return {
+         key: key || index,
+@@ -68,7 +70,8 @@ const renderFilterItems = options => {
+           filterMultiple,
+           searchValue,
+           normalizedSearchValue,
+-          filterSearch
++          filterSearch,
++          labelPrefix: labelId
+         })
+       };
+     }
+@@ -76,8 +79,9 @@ const renderFilterItems = options => {
+     const item = {
+       key: filter.value !== undefined ? key : index,
+       label: (/*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Component, {
+-        checked: filteredKeys.includes(key)
+-      }), /*#__PURE__*/React.createElement("span", null, filter.text)))
++        checked: filteredKeys.includes(key),
++        "aria-labelledby": labelId
++      }), /*#__PURE__*/React.createElement("span", { id: labelId }, filter.text)))
+     };
+     if (normalizedSearchValue) {
+       if (isFunction(filterSearch)) {
+@@ -92,6 +96,8 @@ function wrapStringListType(keys) {
+   return keys || [];
+ }
+ const FilterDropdown = props => {
++  // Associate native filter inputs with their existing visible ReactNode labels.
++  const filterLabelPrefix = React.useId();
+   const {
+     tablePrefixCls,
+     prefixCls,
+@@ -363,6 +369,7 @@ const FilterDropdown = props => {
+         })));
+       }
+       const items = renderFilterItems({
++        labelPrefix: filterLabelPrefix,
+         filters: column.filters || [],
+         filterSearch,
+         prefixCls,
+@@ -431,7 +438,17 @@ const FilterDropdown = props => {
+     }
+     return /*#__PURE__*/React.createElement("span", {
+       role: "button",
+-      tabIndex: -1,
++      tabIndex: inMeasureRow ? -1 : 0,
++      "aria-label": `${typeof column.title === 'string' || typeof column.title === 'number' ? `${column.title} ` : ''}${typeof locale.filterTitle === 'string' ? locale.filterTitle : 'Filter menu'}`,
++      "aria-expanded": inMeasureRow ? undefined : mergedVisible,
++      "aria-haspopup": !inMeasureRow && !column.filterDropdown && !filterDropdownProps.dropdownRender && filterMode !== 'tree' ? 'menu' : undefined,
++      onKeyDown: e => {
++        if (!inMeasureRow && (e.key === 'Enter' || e.key === ' ')) {
++          e.preventDefault();
++          e.stopPropagation();
++          e.currentTarget.click();
++        }
++      },
+       className: clsx(`${prefixCls}-trigger`, {
+         active: filtered
+       }),
+diff --git a/es/tooltip/style/index.js b/es/tooltip/style/index.js
+index 9f8511a8396a296cd96408b5da12b72451d8956d..24b7879513c0b289a57272eca8dc664f9afc764d 100644
+--- a/es/tooltip/style/index.js
++++ b/es/tooltip/style/index.js
+@@ -1,3 +1,5 @@
++import { FastColor } from '@ant-design/fast-color';
++import { PresetColors } from '../../theme/interface';
+ import { unit } from '@ant-design/cssinjs';
+ import { resetComponent } from '../../style';
+ import { initFadeMotion, initZoomMotion } from '../../style/motion';
+@@ -5,6 +7,23 @@ import getArrowStyle, { getArrowOffsetToken, MAX_VERTICAL_CONTENT_RADIUS } from
+ import { getArrowToken } from '../../style/roundedArrow';
+ import { genPresetColor, genStyleHooks, mergeToken } from '../../theme/internal';
+ import { genCssVar } from '../../theme/util/genStyleUtils';
++const readablePresetTooltipColor = (foreground, background) => {
++  if (typeof foreground !== 'string' || typeof background !== 'string' ||
++      /(?:var|env|calc|color|lab|lch|oklab|oklch)\(|currentcolor|inherit|initial|unset|revert/i.test(`${foreground} ${background}`)) {
++    return foreground;
++  }
++  if (background.trim().toLowerCase() === 'transparent') return foreground;
++  const bg = new FastColor(background);
++  if (bg.a !== 1) return foreground;
++  const bgLuminance = bg.getLuminance();
++  const ratio = value => {
++    const color = value === 'transparent' ? new FastColor({ r: 0, g: 0, b: 0, a: 0 }) : new FastColor(value);
++    const luminance = color.onBackground(bg).getLuminance();
++    return (Math.max(luminance, bgLuminance) + 0.05) / (Math.min(luminance, bgLuminance) + 0.05);
++  };
++  if (ratio(foreground) >= 4.5) return foreground;
++  return ratio('#ffffff') >= ratio('#000000') ? '#ffffff' : '#000000';
++};
+ const FALL_BACK_ORIGIN = '50%';
+ const genTooltipStyle = token => {
+   const {
+@@ -53,7 +72,7 @@ const genTooltipStyle = token => {
+       zIndex: zIndexPopup,
+       display: 'block',
+       width: 'max-content',
+-      maxWidth: tooltipMaxWidth,
++      maxWidth: `min(${unit(tooltipMaxWidth)}, calc(100vw - 8px))`,
+       visibility: 'visible',
+       filter: dropShadowPopover,
+       ...sharedTransformOrigin,
+@@ -88,6 +107,7 @@ const genTooltipStyle = token => {
+       }) => ({
+         [`&${componentCls}-${colorKey}`]: {
+           [`${componentCls}-container`]: {
++            color: varRef('overlay-color', token[`${colorKey}PresetTextColor`]),
+             backgroundColor: darkColor
+           },
+           [`${componentCls}-arrow`]: {
+@@ -132,6 +152,10 @@ const genTooltipStyle = token => {
+ };
+ // ============================== Export ==============================
+ export const prepareComponentToken = token => ({
++  ...Object.fromEntries(PresetColors.map(colorKey => [
++    `${colorKey}PresetTextColor`,
++    readablePresetTooltipColor(token.colorTextLightSolid, token[`${colorKey}6`])
++  ])),
+   zIndexPopup: token.zIndexPopupBase + 70,
+   maxWidth: 250,
+   ...getArrowOffsetToken({
+diff --git a/lib/_util/hooks/useForceUpdate.d.ts b/lib/_util/hooks/useForceUpdate.d.ts
+index 8d47ba7405399c62561d58188167c0fe911ab0a0..423f9ea256cb6bb224aa8edbf4adb06cfc39fb6f 100644
+--- a/lib/_util/hooks/useForceUpdate.d.ts
++++ b/lib/_util/hooks/useForceUpdate.d.ts
+@@ -1,2 +1,2 @@
+ import React from 'react';
+-export declare const useForceUpdate: () => [number, React.ActionDispatch<[]>];
++export declare const useForceUpdate: () => [number, React.DispatchWithoutAction];
+diff --git a/lib/alert/ErrorBoundary.d.ts b/lib/alert/ErrorBoundary.d.ts
+index 669d07fc4b9db54679d2d24f6435360fd9f43c26..72fb98b04b38ba7e10ae93f95d823ff2416628f4 100644
+--- a/lib/alert/ErrorBoundary.d.ts
++++ b/lib/alert/ErrorBoundary.d.ts
+@@ -16,6 +16,6 @@ export interface ErrorBoundaryStates {
+ declare class ErrorBoundary extends React.PureComponent<ErrorBoundaryProps, ErrorBoundaryStates> {
+     state: ErrorBoundaryStates;
+     componentDidCatch(error: Error, info: React.ErrorInfo): void;
+-    render(): string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | React.JSX.Element | null | undefined;
++    render(): React.ReactNode;
+ }
+ export default ErrorBoundary;
+diff --git a/lib/button/style/token.js b/lib/button/style/token.js
+index 4c9fa0cac3884ee8669cae76f672d5eee42d3b42..a0b177620db943138c8ffd4513c272b0eb0a65d5 100644
+--- a/lib/button/style/token.js
++++ b/lib/button/style/token.js
+@@ -6,11 +6,31 @@ Object.defineProperty(exports, "__esModule", {
+ });
+ exports.prepareToken = exports.prepareComponentToken = void 0;
+ var _cssinjs = require("@ant-design/cssinjs");
++var _fastColor = require("@ant-design/fast-color");
+ var _color = require("../../color-picker/color");
+ var _ColorPresets = require("../../color-picker/components/ColorPresets");
+ var _interface = require("../../theme/interface");
+ var _internal = require("../../theme/internal");
+ var _getAlphaColor = _interopRequireDefault(require("../../theme/util/getAlphaColor"));
++// Contrast defaults are prepared from this native provider's raw palette.
++// CSS variables and transparent surfaces remain caller-qualified.
++const readablePresetSolidColor = (foreground, background) => {
++  if (typeof foreground !== 'string' || typeof background !== 'string' ||
++      /(?:var|env|calc|color|lab|lch|oklab|oklch)\(|currentcolor|inherit|initial|unset|revert/i.test(`${foreground} ${background}`)) {
++    return foreground;
++  }
++  if (background.trim().toLowerCase() === 'transparent') return foreground;
++  const bg = new _fastColor.FastColor(background);
++  if (bg.a !== 1) return foreground;
++  const bgLuminance = bg.getLuminance();
++  const ratio = value => {
++    const color = value === 'transparent' ? new _fastColor.FastColor({ r: 0, g: 0, b: 0, a: 0 }) : new _fastColor.FastColor(value);
++    const luminance = color.onBackground(bg).getLuminance();
++    return (Math.max(luminance, bgLuminance) + 0.05) / (Math.min(luminance, bgLuminance) + 0.05);
++  };
++  if (ratio(foreground) >= 4.5) return foreground;
++  return ratio('#ffffff') >= ratio('#000000') ? '#ffffff' : '#000000';
++};
+ const prepareToken = token => {
+   const {
+     paddingInline,
+@@ -38,10 +58,26 @@ const prepareComponentToken = token => {
+     ...prev,
+     [`${colorKey}ShadowColor`]: `0 ${(0, _cssinjs.unit)(token.controlOutlineWidth)} 0 ${(0, _getAlphaColor.default)(token[`${colorKey}1`], token.colorBgContainer)}`
+   }), {});
++  const presetSolidColorTokens = _interface.PresetColors.reduce((previous, colorKey) => {
++    const foreground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}6`]);
++    const hoverForeground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}Hover`]);
++    const activeForeground = readablePresetSolidColor(token.colorTextLightSolid, token[`${colorKey}Active`]);
++    return {
++      ...previous,
++      [`${colorKey}SolidTextColor`]: foreground,
++      [`${colorKey}SolidTextHoverColor`]: hoverForeground,
++      [`${colorKey}SolidTextActiveColor`]: activeForeground,
++      // A foreground/background pair must not tween through unreadable colors.
++      [`${colorKey}SolidTransitionProperty`]: foreground !== hoverForeground || foreground !== activeForeground
++        ? 'border-color, box-shadow, opacity'
++        : 'all'
++    };
++  }, {});
+   const defaultBgDisabled = token.colorBgContainerDisabled;
+   const dashedBgDisabled = token.colorBgContainerDisabled;
+   return {
+     ...shadowColorTokens,
++    ...presetSolidColorTokens,
+     fontWeight: 400,
+     iconGap: token.marginXS,
+     defaultShadow: `0 ${token.controlOutlineWidth}px 0 ${token.controlTmpOutline}`,
+diff --git a/lib/button/style/variant.js b/lib/button/style/variant.js
+index 933813dd12fd91f51dfb3a0a3140cfae6cf99aff..b9b0209c9d3a9ccedaf6424f24867e5361faa1e9 100644
+--- a/lib/button/style/variant.js
++++ b/lib/button/style/variant.js
+@@ -238,7 +238,13 @@ const genVariantStyle = token => {
+           [varName('color-light')]: lightColor,
+           [varName('color-light-hover')]: lightHoverColor,
+           [varName('color-light-active')]: lightActiveColor,
+-          [varName('shadow')]: shadowColor
++          [varName('shadow')]: shadowColor,
++          [`&${componentCls}-variant-solid`]: {
++            [varName('text-color')]: token[`${colorKey}SolidTextColor`],
++            [varName('text-color-hover')]: token[`${colorKey}SolidTextHoverColor`],
++            [varName('text-color-active')]: token[`${colorKey}SolidTextActiveColor`],
++            transitionProperty: token[`${colorKey}SolidTransitionProperty`]
++          }
+         }
+       };
+     }),
+diff --git a/lib/divider/index.js b/lib/divider/index.js
+index 28beab51ecad53b9a469adea0940b493e14c7c14..d68ddd37152d9ade1af66f8028526f9feb1bbb00 100644
+--- a/lib/divider/index.js
++++ b/lib/divider/index.js
+@@ -123,6 +123,7 @@ const Divider = /*#__PURE__*/React.forwardRef((props, ref) => {
+       ...(children ? {} : mergedStyles.rail),
+       ...style
+     },
++    "aria-orientation": mergedVertical ? "vertical" : "horizontal",
+     ...restProps,
+     role: "separator"
+   }, children && !mergedVertical && (/*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+diff --git a/lib/divider/style/index.js b/lib/divider/style/index.js
+index 75b7b7007fe3bd628d8faff69c2f0fd34bde1e40..ce93fead869e32a20087bcfc08be05a7c4cc7d6c 100644
+--- a/lib/divider/style/index.js
++++ b/lib/divider/style/index.js
+@@ -102,6 +102,11 @@ const genSharedDividerStyle = token => {
+       },
+       [`${componentCls}-inner-text`]: {
+         display: 'inline-block',
++        whiteSpace: 'normal',
++        overflowWrap: 'anywhere',
++        minWidth: 0,
++        flexShrink: 0,
++        maxWidth: 'calc(100% - 2em)',
+         paddingBlock: 0,
+         paddingInline: textPaddingInline
+       },
+diff --git a/lib/dropdown/dropdown.js b/lib/dropdown/dropdown.js
+index 8b87f0ddfcb270b39f0248ceddfdfb62e846f01f..ccd009c62e201b8ec9bfa212c84b632cad109afa 100644
+--- a/lib/dropdown/dropdown.js
++++ b/lib/dropdown/dropdown.js
+@@ -124,18 +124,25 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+   const [hashId, cssVarCls] = (0, _style.default)(prefixCls, rootCls);
+   const [, token] = (0, _internal.useToken)();
+   const child = React.Children.only((0, _is.isPrimitive)(children) ? /*#__PURE__*/React.createElement("span", null, children) : children);
+-  const composedRef = (0, _util.useComposeRef)(ref, (0, _util.getNodeRef)(child));
++  const triggerNodeRef = React.useRef(null);
++  const ownedMenuRef = React.useRef(null);
++  const composedRef = (0, _util.useComposeRef)(ref, (0, _util.getNodeRef)(child), triggerNodeRef);
++  const [mergedOpen, setOpen] = (0, _util.useControlledState)(false, open);
++  const nativeMenuTrigger = !!menu?.items && !mergedPopupRender;
+   const popupTrigger = (0, _reactNode.cloneElement)(child, {
+     className: (0, _clsx.clsx)(`${prefixCls}-trigger`, {
+       [`${prefixCls}-rtl`]: direction === 'rtl'
+     }, child.props.className),
+     disabled: child.props.disabled ?? disabled,
++    ...(nativeMenuTrigger ? {
++      'aria-haspopup': Object.prototype.hasOwnProperty.call(child.props, 'aria-haspopup') ? child.props['aria-haspopup'] : 'menu',
++      'aria-expanded': Object.prototype.hasOwnProperty.call(child.props, 'aria-expanded') ? child.props['aria-expanded'] : mergedOpen
++    } : {}),
+     ref: composedRef
+   });
+   const triggerActions = disabled ? [] : trigger;
+   const alignPoint = !!triggerActions?.includes('contextMenu');
+   // =========================== Open ============================
+-  const [mergedOpen, setOpen] = (0, _util.useControlledState)(false, open);
+   const onInnerOpenChange = (0, _util.useEvent)(nextOpen => {
+     onOpenChange?.(nextOpen, {
+       source: 'trigger'
+@@ -157,6 +164,11 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+     if (menu?.selectable && menu?.multiple) {
+       return;
+     }
++    const list = ownedMenuRef.current?.menu?.list;
++    const activeElement = list?.getRootNode?.()?.activeElement ?? list?.ownerDocument?.activeElement;
++    // Restore only focus still owned by this menu. A caller may already have
++    // moved focus to a dialog or another action in its selection callback.
++    if (list?.contains(activeElement)) triggerNodeRef.current?.focus?.();
+     onOpenChange?.(false, {
+       source: 'menu'
+     });
+@@ -171,6 +183,7 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+     if (menu?.items) {
+       overlayNode = /*#__PURE__*/React.createElement(_menu.default, {
+         ...menu,
++        ref: ownedMenuRef,
+         classNames: {
+           ...menuClassNames,
+           subMenu: {
+@@ -197,6 +210,7 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+       prefixCls: `${prefixCls}-menu`,
+       rootClassName: (0, _clsx.clsx)(cssVarCls, rootCls),
+       expandIcon: /*#__PURE__*/React.createElement("span", {
++        "aria-hidden": true,
+         className: `${prefixCls}-menu-submenu-arrow`
+       }, direction === 'rtl' ? (/*#__PURE__*/React.createElement(_LeftOutlined.default, {
+         className: `${prefixCls}-menu-submenu-arrow-icon`
+diff --git a/lib/form/interface.d.ts b/lib/form/interface.d.ts
+index a1aeab297be92eabddf6d464aee8d4ba2f827d24..3ce4f3a0dc8ddf260ba31d15bc097affce6da775 100644
+--- a/lib/form/interface.d.ts
++++ b/lib/form/interface.d.ts
+@@ -1,4 +1,4 @@
+-import type { Options } from 'scroll-into-view-if-needed';
++import type { Options } from 'scroll-into-view-if-needed' with { 'resolution-mode': 'import' };
+ export type { InternalNamePath, NamePath, Store, StoreValue, } from '@rc-component/form';
+ export type ScrollFocusOptions = Options & {
+     focus?: boolean;
+diff --git a/lib/input/Input.js b/lib/input/Input.js
+index 3d5e5c010c5aa81ce0688e86529ae9c58dcb9ca5..83f366e90ce11b6e8b050cdf8846de40e2ac015b 100644
+--- a/lib/input/Input.js
++++ b/lib/input/Input.js
+@@ -143,6 +143,7 @@ const Input = /*#__PURE__*/(0, _react.forwardRef)((props, ref) => {
+     ref: (0, _util.composeRef)(ref, inputRef),
+     prefixCls: prefixCls,
+     autoComplete: contextAutoComplete,
++    "aria-invalid": mergedStatus === 'error' ? true : undefined,
+     ...rest,
+     disabled: mergedDisabled,
+     onBlur: handleBlur,
+diff --git a/lib/table/hooks/useFilter/FilterDropdown.js b/lib/table/hooks/useFilter/FilterDropdown.js
+index d60671c32b46bdd9fa1886478737508f75140990..6a210102d09063af99c1ee5cd5a41857f86f368b 100644
+--- a/lib/table/hooks/useFilter/FilterDropdown.js
++++ b/lib/table/hooks/useFilter/FilterDropdown.js
+@@ -60,10 +60,12 @@ const renderFilterItems = options => {
+     filterMultiple,
+     searchValue,
+     normalizedSearchValue,
+-    filterSearch
++    filterSearch,
++    labelPrefix
+   } = options;
+   return filters.map((filter, index) => {
+     const key = String(filter.value);
++    const labelId = `${labelPrefix}-${index}`;
+     if (filter.children) {
+       return {
+         key: key || index,
+@@ -76,7 +78,8 @@ const renderFilterItems = options => {
+           filterMultiple,
+           searchValue,
+           normalizedSearchValue,
+-          filterSearch
++          filterSearch,
++          labelPrefix: labelId
+         })
+       };
+     }
+@@ -84,8 +87,9 @@ const renderFilterItems = options => {
+     const item = {
+       key: filter.value !== undefined ? key : index,
+       label: (/*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Component, {
+-        checked: filteredKeys.includes(key)
+-      }), /*#__PURE__*/React.createElement("span", null, filter.text)))
++        checked: filteredKeys.includes(key),
++        "aria-labelledby": labelId
++      }), /*#__PURE__*/React.createElement("span", { id: labelId }, filter.text)))
+     };
+     if (normalizedSearchValue) {
+       if ((0, _is.isFunction)(filterSearch)) {
+@@ -100,6 +104,8 @@ function wrapStringListType(keys) {
+   return keys || [];
+ }
+ const FilterDropdown = props => {
++  // Associate native filter inputs with their existing visible ReactNode labels.
++  const filterLabelPrefix = React.useId();
+   const {
+     tablePrefixCls,
+     prefixCls,
+@@ -371,6 +377,7 @@ const FilterDropdown = props => {
+         })));
+       }
+       const items = renderFilterItems({
++        labelPrefix: filterLabelPrefix,
+         filters: column.filters || [],
+         filterSearch,
+         prefixCls,
+@@ -439,7 +446,17 @@ const FilterDropdown = props => {
+     }
+     return /*#__PURE__*/React.createElement("span", {
+       role: "button",
+-      tabIndex: -1,
++      tabIndex: inMeasureRow ? -1 : 0,
++      "aria-label": `${typeof column.title === 'string' || typeof column.title === 'number' ? `${column.title} ` : ''}${typeof locale.filterTitle === 'string' ? locale.filterTitle : 'Filter menu'}`,
++      "aria-expanded": inMeasureRow ? undefined : mergedVisible,
++      "aria-haspopup": !inMeasureRow && !column.filterDropdown && !filterDropdownProps.dropdownRender && filterMode !== 'tree' ? 'menu' : undefined,
++      onKeyDown: e => {
++        if (!inMeasureRow && (e.key === 'Enter' || e.key === ' ')) {
++          e.preventDefault();
++          e.stopPropagation();
++          e.currentTarget.click();
++        }
++      },
+       className: (0, _clsx.clsx)(`${prefixCls}-trigger`, {
+         active: filtered
+       }),
+diff --git a/lib/tooltip/style/index.js b/lib/tooltip/style/index.js
+index cc65c3d1458de991107a41bfd854fa3cae8dded0..5ee0a88a875ce30715cbfb7d4aa3b777cd442e74 100644
+--- a/lib/tooltip/style/index.js
++++ b/lib/tooltip/style/index.js
+@@ -12,6 +12,25 @@ var _placementArrow = _interopRequireWildcard(require("../../style/placementArro
+ var _roundedArrow = require("../../style/roundedArrow");
+ var _internal = require("../../theme/internal");
+ var _genStyleUtils = require("../../theme/util/genStyleUtils");
++var _fastColor = require("@ant-design/fast-color");
++var _interface = require("../../theme/interface");
++const readablePresetTooltipColor = (foreground, background) => {
++  if (typeof foreground !== 'string' || typeof background !== 'string' ||
++      /(?:var|env|calc|color|lab|lch|oklab|oklch)\(|currentcolor|inherit|initial|unset|revert/i.test(`${foreground} ${background}`)) {
++    return foreground;
++  }
++  if (background.trim().toLowerCase() === 'transparent') return foreground;
++  const bg = new _fastColor.FastColor(background);
++  if (bg.a !== 1) return foreground;
++  const bgLuminance = bg.getLuminance();
++  const ratio = value => {
++    const color = value === 'transparent' ? new _fastColor.FastColor({ r: 0, g: 0, b: 0, a: 0 }) : new _fastColor.FastColor(value);
++    const luminance = color.onBackground(bg).getLuminance();
++    return (Math.max(luminance, bgLuminance) + 0.05) / (Math.min(luminance, bgLuminance) + 0.05);
++  };
++  if (ratio(foreground) >= 4.5) return foreground;
++  return ratio('#ffffff') >= ratio('#000000') ? '#ffffff' : '#000000';
++};
+ const FALL_BACK_ORIGIN = '50%';
+ const genTooltipStyle = token => {
+   const {
+@@ -60,7 +79,7 @@ const genTooltipStyle = token => {
+       zIndex: zIndexPopup,
+       display: 'block',
+       width: 'max-content',
+-      maxWidth: tooltipMaxWidth,
++      maxWidth: `min(${(0, _cssinjs.unit)(tooltipMaxWidth)}, calc(100vw - 8px))`,
+       visibility: 'visible',
+       filter: dropShadowPopover,
+       ...sharedTransformOrigin,
+@@ -95,6 +114,7 @@ const genTooltipStyle = token => {
+       }) => ({
+         [`&${componentCls}-${colorKey}`]: {
+           [`${componentCls}-container`]: {
++            color: varRef('overlay-color', token[`${colorKey}PresetTextColor`]),
+             backgroundColor: darkColor
+           },
+           [`${componentCls}-arrow`]: {
+@@ -139,6 +159,10 @@ const genTooltipStyle = token => {
+ };
+ // ============================== Export ==============================
+ const prepareComponentToken = token => ({
++  ...Object.fromEntries(_interface.PresetColors.map(colorKey => [
++    `${colorKey}PresetTextColor`,
++    readablePresetTooltipColor(token.colorTextLightSolid, token[`${colorKey}6`])
++  ])),
+   zIndexPopup: token.zIndexPopupBase + 70,
+   maxWidth: 250,
+   ...(0, _placementArrow.getArrowOffsetToken)({

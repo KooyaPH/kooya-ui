@@ -8,7 +8,7 @@ import {
   Dialog,
   Button,
   TextField,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 const meta = {
   title: "Molecules/Popup composition",
   component: Menu,

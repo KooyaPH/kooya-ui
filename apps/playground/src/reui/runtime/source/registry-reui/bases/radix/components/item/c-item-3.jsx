@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Avatar, AvatarFallback, AvatarImage, } from "../../../../../../../adapters/layout.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle, } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "mx-auto flex w-full max-w-md flex-col gap-2", children: [_jsxs(Item, { variant: "outline", size: "xs", children: [_jsx(ItemMedia, { children: _jsxs(Avatar, { children: [_jsx(AvatarImage, { src: "/reui-assets/images/e93553df2422635515ee.jpg", alt: "Alex Johnson" }), _jsx(AvatarFallback, { children: "AJ" })] }) }), _jsxs(ItemContent, { children: [_jsx(ItemTitle, { children: "Alex Johnson" }), _jsx(ItemDescription, { children: "Senior Software Engineer" })] }), _jsx(ItemActions, { children: _jsx(Button, { variant: "outline", size: "sm", children: "Follow" }) })] }), _jsxs(Item, { variant: "outline", size: "xs", children: [_jsx(ItemMedia, { children: _jsxs(Avatar, { children: [_jsx(AvatarImage, { src: "/reui-assets/images/c6e9e0d487c842b94fea.jpg", alt: "Sarah Chen" }), _jsx(AvatarFallback, { children: "SC" })] }) }), _jsxs(ItemContent, { children: [_jsx(ItemTitle, { children: "Sarah Chen" }), _jsx(ItemDescription, { children: "Product Designer" })] }), _jsx(ItemActions, { children: _jsx(Button, { size: "sm", children: "Following" }) })] })] }));
+}

@@ -1,0 +1,22 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from "react";
+import { useCopyToClipboard } from "../../hooks/use-copy-to-clipboard.jsx";
+import { Frame, FrameHeader, FramePanel, FrameTitle, } from "../../reui/frame.jsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "../../../../../../../adapters/navigation.tsx";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../../../../../../../adapters/menus.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+const initialKeys = [
+    { id: "1", name: "Production", key: "AUDO230454*242SDIFPPL" },
+    { id: "2", name: "Development", key: "DUILO30454*242SDIFUIP" },
+    { id: "3", name: "Staging", key: "IPPODAS230454*242SDI" },
+];
+export default function Pattern() {
+    const [keys, setKeys] = useState(initialKeys);
+    return (_jsx("div", { className: "h-54 w-full max-w-xs", children: _jsx(Frame, { stacked: true, dense: true, spacing: "sm", children: _jsxs(Collapsible, { defaultOpen: true, children: [_jsx(CollapsibleTrigger, { className: "flex w-full", children: _jsxs(FrameHeader, { className: "flex grow flex-row items-center justify-between gap-1.5 py-1!", children: [_jsx(IconPlaceholder, { lucide: "ChevronRightIcon", tabler: "IconChevronRight", hugeicons: "ArrowRight01Icon", phosphor: "CaretRightIcon", remixicon: "RiArrowRightSLine", "aria-hidden": "true", className: "text-muted-foreground size-4 transition-transform in-data-[state=open]:rotate-90" }), _jsx(FrameTitle, { className: "text-sm font-medium", children: "API Keys" }), _jsx(Button, { variant: "ghost", size: "icon-sm", className: "hover:border-border ml-auto", children: _jsx(IconPlaceholder, { lucide: "PlusIcon", tabler: "IconPlus", hugeicons: "PlusSignIcon", phosphor: "PlusIcon", remixicon: "RiAddLine", "aria-hidden": "true" }) })] }) }), _jsx(CollapsibleContent, { children: _jsx(FramePanel, { children: _jsx("div", { className: "flex flex-col gap-2.5", children: keys.map((item) => (_jsx(ApiKeyItem, { item: item, onDelete: (id) => setKeys((k) => k.filter((i) => i.id !== id)) }, item.id))) }) }) })] }) }) }));
+}
+function ApiKeyItem({ item, onDelete, }) {
+    const { isCopied, copyToClipboard } = useCopyToClipboard();
+    return (_jsxs("div", { className: "flex items-center justify-between gap-3.5", children: [_jsxs("div", { className: "flex items-center gap-3", children: [_jsxs("div", { className: "flex items-center gap-1.5", children: [_jsx("div", { className: "bg-muted border-border/60 flex size-5.5 shrink-0 items-center justify-center rounded-sm border-2", children: _jsx(IconPlaceholder, { lucide: "LockIcon", tabler: "IconLock", hugeicons: "SquareLock01Icon", phosphor: "LockSimpleIcon", remixicon: "RiLockLine", "aria-hidden": "true", className: "size-3.25 text-emerald-600" }) }), _jsx("div", { className: "w-10 truncate text-xs", children: item.name })] }), _jsx("div", { className: "bg-muted w-40 truncate rounded-md px-2 py-1 text-xs", children: item.key })] }), _jsx("div", { className: "flex shrink-0 items-center", children: _jsxs(DropdownMenu, { children: [_jsx(DropdownMenuTrigger, { asChild: true, children: _jsx(Button, { variant: "ghost", size: "icon-xs", children: _jsx(IconPlaceholder, { lucide: "MoreHorizontalIcon", tabler: "IconDots", hugeicons: "MoreHorizontalCircle01Icon", phosphor: "DotsThreeIcon", remixicon: "RiMoreLine", "aria-hidden": "true" }) }) }), _jsxs(DropdownMenuContent, { align: "start", className: "min-w-32", children: [_jsxs(DropdownMenuItem, { onClick: () => copyToClipboard(item.key), children: [isCopied ? (_jsx(IconPlaceholder, { lucide: "CheckIcon", tabler: "IconCheck", hugeicons: "Tick02Icon", phosphor: "CheckIcon", remixicon: "RiCheckLine", "aria-hidden": "true", className: "text-green-500" })) : (_jsx(IconPlaceholder, { lucide: "CopyIcon", tabler: "IconCopy", hugeicons: "CopyIcon", phosphor: "CopyIcon", remixicon: "RiFileCopyLine", "aria-hidden": "true" })), _jsx("span", { children: isCopied ? "Copied" : "Copy key" })] }), _jsxs(DropdownMenuItem, { variant: "destructive", onClick: () => onDelete(item.id), children: [_jsx(IconPlaceholder, { lucide: "TrashIcon", tabler: "IconTrash", hugeicons: "DeleteIcon", phosphor: "TrashIcon", remixicon: "RiDeleteBinLine", "aria-hidden": "true" }), _jsx("span", { children: "Delete" })] })] })] }) })] }));
+}

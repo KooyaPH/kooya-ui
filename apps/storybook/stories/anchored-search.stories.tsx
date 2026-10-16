@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ChoiceSelect, Popup, type ChoiceSelectRef } from "@kooyaph/ui";
+import { Button, ChoiceSelect, Popup, type ChoiceSelectRef } from "@kooyaph/ui/legacy";
 const meta: Meta = { title: "Molecules/Anchored search" };
 export default meta;
 export const InitialSearchFocus: StoryObj = {

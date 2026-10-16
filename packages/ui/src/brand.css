@@ -1,0 +1,58 @@
+/* Ant-first brand foundations. Opt in through @kooyaph/ui/styles.css. */
+:where(.ku-root) {
+  --ku-font-display: "Syncopate", "DM Sans", system-ui, sans-serif;
+  --ku-control-height: 44px;
+  --ku-color-paper: #f2eee3;
+  --ku-color-ink: #13120f;
+  --ku-color-lime: #d7f20f;
+  --ku-color-green: #314300;
+  --ku-color-yellow: #f4b701;
+  --ku-color-blue: #1d46d9;
+  --ku-color-red: #ef3e2f;
+}
+:where(.ku-root)[data-density="compact"] {
+  --ku-control-height: 36px;
+}
+:where(.ku-root) .ant-btn {
+  max-inline-size: 100%;
+}
+:where(.ku-root) .ant-btn-primary:not(.ant-btn-icon-only) {
+  min-block-size: var(--ku-control-height);
+  block-size: auto;
+  white-space: normal;
+}
+:where(.ku-root) .ant-btn-primary.ant-btn-lg {
+  min-block-size: 52px;
+}
+:where(.ku-root) .ant-btn > span {
+  overflow-wrap: anywhere;
+}
+/* Status/selection colors are mapped through public Ant component tokens. */
+:where(.ku-root, .ku-drawer-scope)
+  :where(
+    .ant-btn,
+    .ant-input,
+    .ant-select,
+    .ant-checkbox-input,
+    .ant-radio-input,
+    .ant-switch,
+    .ant-slider-handle
+  ):focus-visible {
+  outline: 3px solid var(--ku-focus);
+  outline-offset: 3px;
+}
+@media (pointer: coarse) {
+  :where(.ku-root) .ant-btn {
+    min-block-size: 44px;
+  }
+  :where(.ku-root) .ant-btn-icon-only {
+    min-inline-size: 44px;
+  }
+}
+:where(.ku-root)[data-reduced-motion="true"] *,
+:where(.ku-root)[data-reduced-motion="true"] *::before,
+:where(.ku-root)[data-reduced-motion="true"] *::after {
+  animation: none !important;
+  transition-duration: 0s !important;
+  scroll-behavior: auto !important;
+}

@@ -24,7 +24,7 @@ import {
   type ThemeName,
   type MenuItem,
   type ChoiceOption,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import "@kooyaph/ui/styles.css";
 
 const zones = [

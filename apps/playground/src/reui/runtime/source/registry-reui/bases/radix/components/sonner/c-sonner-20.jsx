@@ -1,0 +1,11 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { toast } from "../../../../../../../adapters/feedback.tsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Separator } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    const showToast = () => {
+        toast.custom(() => (_jsxs("div", { className: "bg-popover text-popover-foreground border-border rounded-md flex w-[356px] flex-col gap-3 border p-4 shadow-lg", children: [_jsxs("div", { className: "flex items-center gap-3", children: [_jsx("div", { className: "rounded-lg flex size-10 shrink-0 items-center justify-center bg-linear-to-br from-violet-500 to-purple-600 text-white shadow-sm", children: _jsx(IconPlaceholder, { lucide: "LinkIcon", tabler: "IconLink", hugeicons: "Link01Icon", phosphor: "LinkIcon", remixicon: "RiLinkM", className: "size-5", "aria-hidden": "true" }) }), _jsxs("div", { className: "flex flex-1 flex-col gap-0.5", children: [_jsx("p", { className: "text-sm font-semibold", children: "Integration Connected" }), _jsx("p", { className: "text-muted-foreground text-xs", children: "workspace.slack.com" })] }), _jsxs("span", { className: "flex items-center gap-1 text-xs text-green-600", children: [_jsx("span", { className: "size-1.5 rounded-full bg-green-500" }), "Active"] })] }), _jsx(Separator, {}), _jsxs("div", { className: "text-muted-foreground flex items-center justify-between text-xs", children: [_jsx("span", { children: "Syncing 3 channels" }), _jsx("span", { children: "Last sync: just now" })] }), _jsxs("div", { className: "flex gap-2", children: [_jsxs(Button, { size: "xs", variant: "outline", className: "flex-1", onClick: () => toast.dismiss(), children: [_jsx(IconPlaceholder, { lucide: "SettingsIcon", tabler: "IconSettings", hugeicons: "SettingsIcon", phosphor: "GearIcon", remixicon: "RiSettings3Line", className: "size-3", "aria-hidden": "true" }), "Configure"] }), _jsx(Button, { size: "xs", className: "flex-1", onClick: () => toast.dismiss(), children: "Open Dashboard" })] })] })));
+    };
+    return (_jsx("div", { className: "flex items-center justify-center", children: _jsx(Button, { onClick: showToast, variant: "outline", className: "w-fit", children: "Integration Toast" }) }));
+}

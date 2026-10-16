@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { IconStack } from "../../reui/icon-stack.jsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, } from "../../../../../../../adapters/layout.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "flex items-center justify-center p-4", children: _jsxs(Empty, { className: "max-w-md py-10", children: [_jsxs(EmptyHeader, { children: [_jsx(EmptyMedia, { children: _jsx(IconStack, { "aria-hidden": "true", className: "text-primary h-24 w-22", children: _jsx(IconPlaceholder, { lucide: "InboxIcon", tabler: "IconInbox", hugeicons: "InboxIcon", phosphor: "TrayIcon", remixicon: "RiInboxLine", className: "text-primary size-5" }) }) }), _jsx(EmptyTitle, { children: "Workspace is ready" }), _jsx(EmptyDescription, { children: "Invite teammates or connect a data source to start filling this view." })] }), _jsxs(EmptyContent, { className: "flex-row justify-center gap-2", children: [_jsxs(Button, { size: "sm", children: [_jsx(IconPlaceholder, { lucide: "UserPlusIcon", tabler: "IconUserPlus", hugeicons: "UserAdd01Icon", phosphor: "UserPlusIcon", remixicon: "RiUserAddLine", "data-icon": "inline-start" }), "Invite team"] }), _jsxs(Button, { variant: "outline", size: "sm", children: [_jsx(IconPlaceholder, { lucide: "DatabaseIcon", tabler: "IconDatabase", hugeicons: "DatabaseIcon", phosphor: "DatabaseIcon", remixicon: "RiDatabase2Line", "data-icon": "inline-start" }), "Connect source"] })] })] }) }));
+}

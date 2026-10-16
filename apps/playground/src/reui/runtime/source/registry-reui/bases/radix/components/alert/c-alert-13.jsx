@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Alert, AlertAction, AlertDescription, AlertTitle, } from "../../reui/alert.jsx";
+import { Frame, FramePanel } from "../../reui/frame.jsx";
+import { Button } from "../../../../../../../adapters/controls.tsx";
+import { IconPlaceholder } from "../../../../../../../adapters/icons.tsx";
+export default function Pattern() {
+    return (_jsx("div", { className: "mx-auto mb-auto w-full max-w-lg", children: _jsxs(Frame, { stacked: true, children: [_jsx(FramePanel, { className: "p-0!", children: _jsxs(Alert, { variant: "success", className: "rounded-none border-0 shadow-none", children: [_jsx(IconPlaceholder, { lucide: "CircleCheckIcon", tabler: "IconCircleCheck", hugeicons: "CheckmarkCircle01Icon", phosphor: "CheckCircleIcon", remixicon: "RiCheckboxCircleLine" }), _jsx(AlertTitle, { children: "Deployment Successful" }), _jsx(AlertDescription, { children: "Your application has been successfully deployed to the production environment." })] }) }), _jsx(FramePanel, { className: "p-0!", children: _jsxs(Alert, { variant: "warning", className: "rounded-none border-0 shadow-none", children: [_jsx(IconPlaceholder, { lucide: "AlertTriangleIcon", tabler: "IconAlertTriangle", hugeicons: "Alert02Icon", phosphor: "WarningIcon", remixicon: "RiAlertLine", className: "text-yellow-500" }), _jsx(AlertTitle, { children: "Resource Limit Reached" }), _jsx(AlertAction, { children: _jsx(Button, { size: "xs", children: "Verify" }) }), _jsx(AlertDescription, { children: "Your current plan has reached its resource limits. Consider upgrading to a higher tier." })] }) })] }) }));
+}

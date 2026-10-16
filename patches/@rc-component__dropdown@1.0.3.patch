@@ -1,0 +1,353 @@
+diff --git a/es/Dropdown.js b/es/Dropdown.js
+index 9c27b32b30b7691733abe1d94cb39fa64354062c..f9ff543fe4554f59bdd335b52c92f119c9b6eda0 100644
+--- a/es/Dropdown.js
++++ b/es/Dropdown.js
+@@ -1,6 +1,6 @@
+ function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+ import Trigger from '@rc-component/trigger';
+-import { composeRef, getNodeRef, supportRef } from '@rc-component/util';
++import { composeRef, getNodeRef, supportRef, raf } from '@rc-component/util';
+ import { clsx } from 'clsx';
+ import React from 'react';
+ import useAccessibility from "./hooks/useAccessibility";
+@@ -35,18 +35,41 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+   const triggerRef = React.useRef(null);
+   const overlayRef = React.useRef(null);
+   const childRef = React.useRef(null);
++  const keyboardFocusRef = React.useRef(false);
++  const spaceKeyRef = React.useRef(false);
+   React.useImperativeHandle(ref, () => triggerRef.current);
+   const handleVisibleChange = newVisible => {
++    // Portal Escape may close before the window accessibility listener runs.
++    // Restore only focus still owned by this overlay; preserve outside focus.
++    const overlayHandle = overlayRef.current;
++    const overlayNode = overlayHandle?.nodeType === 1 ? overlayHandle : overlayHandle?.nativeElement ?? overlayHandle?.list ?? overlayHandle?.menu?.list;
++    const activeElement = overlayNode?.getRootNode?.()?.activeElement ?? overlayNode?.ownerDocument?.activeElement;
++    if (!newVisible && mergedVisible && overlayNode?.nodeType === 1 && overlayNode.contains(activeElement)) {
++      childRef.current?.focus?.();
++    }
++    if (!newVisible) keyboardFocusRef.current = false;
+     setTriggerVisible(newVisible);
+     onVisibleChange?.(newVisible);
+   };
+-  useAccessibility({
++  const focusMenu = useAccessibility({
+     visible: mergedVisible,
+     triggerRef: childRef,
+     onVisibleChange: handleVisibleChange,
+     autoFocus,
+     overlayRef
+   });
++  React.useEffect(() => {
++    if (!mergedVisible || !keyboardFocusRef.current) return;
++    keyboardFocusRef.current = false;
++    const id = raf(() => {
++      const handle = overlayRef.current;
++      const node = handle?.nodeType === 1 ? handle : handle?.nativeElement ?? handle?.list ?? handle?.menu?.list;
++      const active = node?.getRootNode?.()?.activeElement ?? node?.ownerDocument?.activeElement;
++      // Default keyboard focus is only for a real menu, with caller focus retained.
++      if (autoFocus !== false && node?.getAttribute?.('role') === 'menu' && active === childRef.current) focusMenu();
++    }, 3);
++    return () => raf.cancel(id);
++  }, [mergedVisible]);
+   const onClick = e => {
+     const {
+       onOverlayClick
+@@ -91,6 +114,57 @@ const Dropdown = /*#__PURE__*/React.forwardRef((props, ref) => {
+   const childClassName = clsx(elementChild.props?.className, mergedVisible && getOpenClassName());
+   const triggerChildProps = {
+     className: childClassName,
++    onKeyDown: event => {
++      keyboardFocusRef.current = false;
++      elementChild.props?.onKeyDown?.(event);
++      if (event.defaultPrevented || disabled || (!trigger.includes('hover') && !trigger.includes('click')) || event.target !== event.currentTarget || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
++      const node = event.currentTarget;
++      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(node.tagName) || node.isContentEditable) return;
++      const button = node.tagName === 'BUTTON' || node.getAttribute?.('role') === 'button';
++      if (button && event.key === ' ') {
++        spaceKeyRef.current = true;
++        return;
++      }
++      if ((button && event.key === 'Enter') || event.key === 'ArrowDown') {
++        keyboardFocusRef.current = true;
++        if (trigger.includes('hover') && !trigger.includes('click')) {
++          if (event.key === 'ArrowDown') event.preventDefault();
++          handleVisibleChange(true);
++        }
++      }
++    },
++    onKeyUp: event => {
++      elementChild.props?.onKeyUp?.(event);
++      if (event.key !== ' ') return;
++      const armed = spaceKeyRef.current;
++      spaceKeyRef.current = false;
++      if (!armed || event.defaultPrevented || disabled || (!trigger.includes('hover') && !trigger.includes('click')) || event.target !== event.currentTarget || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
++      keyboardFocusRef.current = true;
++      if (trigger.includes('hover') && !trigger.includes('click')) handleVisibleChange(true);
++    },
++    onClick: event => {
++      if (event.detail > 0) keyboardFocusRef.current = false;
++      elementChild.props?.onClick?.(event);
++    },
++    onContextMenu: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onContextMenu?.(event);
++    },
++    onPointerDown: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onPointerDown?.(event);
++    },
++    onMouseEnter: event => {
++      keyboardFocusRef.current = false;
++      elementChild.props?.onMouseEnter?.(event);
++    },
++    onBlur: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onBlur?.(event);
++    },
+     ref: composeRef(childRef, getNodeRef(elementChild))
+   };
+   const childrenNode = supportRef(elementChild) ? ( /*#__PURE__*/React.cloneElement(elementChild, triggerChildProps)) : /*#__PURE__*/React.createElement("span", {
+diff --git a/es/hooks/useAccessibility.d.ts b/es/hooks/useAccessibility.d.ts
+index 4c9a0e72ce1c7d92de475bd5955f4214ed95736c..dd135bd639db8f9b9dc55981516128d05ff60601 100644
+--- a/es/hooks/useAccessibility.d.ts
++++ b/es/hooks/useAccessibility.d.ts
+@@ -6,5 +6,5 @@ interface UseAccessibilityProps {
+     autoFocus?: boolean;
+     overlayRef?: React.RefObject<any>;
+ }
+-export default function useAccessibility({ visible, triggerRef, onVisibleChange, autoFocus, overlayRef, }: UseAccessibilityProps): void;
++export default function useAccessibility({ visible, triggerRef, onVisibleChange, autoFocus, overlayRef, }: UseAccessibilityProps): () => boolean;
+ export {};
+diff --git a/es/hooks/useAccessibility.js b/es/hooks/useAccessibility.js
+index 0f73027223949eecc1573fd65e3fc9b21a2dcca3..7f03646482baf4ff1ea554de897704ee261d05b1 100644
+--- a/es/hooks/useAccessibility.js
++++ b/es/hooks/useAccessibility.js
+@@ -1,4 +1,4 @@
+-import { KeyCode, raf } from '@rc-component/util';
++import { getFocusNodeList, KeyCode, raf } from '@rc-component/util';
+ import * as React from 'react';
+ const {
+   ESC,
+@@ -19,8 +19,25 @@ export default function useAccessibility({
+     }
+   };
+   const focusMenu = () => {
+-    if (overlayRef.current?.focus) {
+-      overlayRef.current.focus();
++    const overlay = overlayRef.current;
++    if (overlay?.focus) {
++      overlay.focus();
++      // A DOM wrapper can expose focus() without being focusable itself.
++      // Preserve successful native/imperative handles; only delegate when
++      // actual DOM focus has not entered the overlay, including shadow roots.
++      if (overlay.nodeType === 1) {
++        const activeElement = () => overlay.getRootNode()?.activeElement ?? overlay.ownerDocument?.activeElement;
++        if (!overlay.contains(activeElement())) {
++          for (const target of getFocusNodeList(overlay)) {
++            if (target === overlay) continue;
++            target.focus?.();
++            if (overlay.contains(activeElement())) break;
++          }
++        }
++        if (!overlay.contains(activeElement())) {
++          return false;
++        }
++      }
+       focusMenuRef.current = true;
+       return true;
+     }
+@@ -49,11 +66,13 @@ export default function useAccessibility({
+   React.useEffect(() => {
+     if (visible) {
+       window.addEventListener('keydown', handleKeyDown);
++      let focusFrame;
+       if (autoFocus) {
+         // FIXME: hack with raf
+-        raf(focusMenu, 3);
++        focusFrame = raf(focusMenu, 3);
+       }
+       return () => {
++        raf.cancel(focusFrame);
+         window.removeEventListener('keydown', handleKeyDown);
+         focusMenuRef.current = false;
+       };
+@@ -62,4 +81,5 @@ export default function useAccessibility({
+       focusMenuRef.current = false;
+     };
+   }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
++  return focusMenu;
+ }
+\ No newline at end of file
+diff --git a/lib/Dropdown.js b/lib/Dropdown.js
+index 1de9f3750ca6f38d1be3d075396e81a5ab1c5788..203b3b028b3fd68dce793420fad711325c5b7dc5 100644
+--- a/lib/Dropdown.js
++++ b/lib/Dropdown.js
+@@ -42,18 +42,41 @@ const Dropdown = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
+   const triggerRef = _react.default.useRef(null);
+   const overlayRef = _react.default.useRef(null);
+   const childRef = _react.default.useRef(null);
++  const keyboardFocusRef = _react.default.useRef(false);
++  const spaceKeyRef = _react.default.useRef(false);
+   _react.default.useImperativeHandle(ref, () => triggerRef.current);
+   const handleVisibleChange = newVisible => {
++    // Portal Escape may close before the window accessibility listener runs.
++    // Restore only focus still owned by this overlay; preserve outside focus.
++    const overlayHandle = overlayRef.current;
++    const overlayNode = overlayHandle?.nodeType === 1 ? overlayHandle : overlayHandle?.nativeElement ?? overlayHandle?.list ?? overlayHandle?.menu?.list;
++    const activeElement = overlayNode?.getRootNode?.()?.activeElement ?? overlayNode?.ownerDocument?.activeElement;
++    if (!newVisible && mergedVisible && overlayNode?.nodeType === 1 && overlayNode.contains(activeElement)) {
++      childRef.current?.focus?.();
++    }
++    if (!newVisible) keyboardFocusRef.current = false;
+     setTriggerVisible(newVisible);
+     onVisibleChange?.(newVisible);
+   };
+-  (0, _useAccessibility.default)({
++  const focusMenu = (0, _useAccessibility.default)({
+     visible: mergedVisible,
+     triggerRef: childRef,
+     onVisibleChange: handleVisibleChange,
+     autoFocus,
+     overlayRef
+   });
++  _react.default.useEffect(() => {
++    if (!mergedVisible || !keyboardFocusRef.current) return;
++    keyboardFocusRef.current = false;
++    const id = _util.raf(() => {
++      const handle = overlayRef.current;
++      const node = handle?.nodeType === 1 ? handle : handle?.nativeElement ?? handle?.list ?? handle?.menu?.list;
++      const active = node?.getRootNode?.()?.activeElement ?? node?.ownerDocument?.activeElement;
++      // Default keyboard focus is only for a real menu, with caller focus retained.
++      if (autoFocus !== false && node?.getAttribute?.('role') === 'menu' && active === childRef.current) focusMenu();
++    }, 3);
++    return () => _util.raf.cancel(id);
++  }, [mergedVisible]);
+   const onClick = e => {
+     const {
+       onOverlayClick
+@@ -98,6 +121,57 @@ const Dropdown = /*#__PURE__*/_react.default.forwardRef((props, ref) => {
+   const childClassName = (0, _clsx.clsx)(elementChild.props?.className, mergedVisible && getOpenClassName());
+   const triggerChildProps = {
+     className: childClassName,
++    onKeyDown: event => {
++      keyboardFocusRef.current = false;
++      elementChild.props?.onKeyDown?.(event);
++      if (event.defaultPrevented || disabled || (!trigger.includes('hover') && !trigger.includes('click')) || event.target !== event.currentTarget || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
++      const node = event.currentTarget;
++      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(node.tagName) || node.isContentEditable) return;
++      const button = node.tagName === 'BUTTON' || node.getAttribute?.('role') === 'button';
++      if (button && event.key === ' ') {
++        spaceKeyRef.current = true;
++        return;
++      }
++      if ((button && event.key === 'Enter') || event.key === 'ArrowDown') {
++        keyboardFocusRef.current = true;
++        if (trigger.includes('hover') && !trigger.includes('click')) {
++          if (event.key === 'ArrowDown') event.preventDefault();
++          handleVisibleChange(true);
++        }
++      }
++    },
++    onKeyUp: event => {
++      elementChild.props?.onKeyUp?.(event);
++      if (event.key !== ' ') return;
++      const armed = spaceKeyRef.current;
++      spaceKeyRef.current = false;
++      if (!armed || event.defaultPrevented || disabled || (!trigger.includes('hover') && !trigger.includes('click')) || event.target !== event.currentTarget || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
++      keyboardFocusRef.current = true;
++      if (trigger.includes('hover') && !trigger.includes('click')) handleVisibleChange(true);
++    },
++    onClick: event => {
++      if (event.detail > 0) keyboardFocusRef.current = false;
++      elementChild.props?.onClick?.(event);
++    },
++    onContextMenu: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onContextMenu?.(event);
++    },
++    onPointerDown: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onPointerDown?.(event);
++    },
++    onMouseEnter: event => {
++      keyboardFocusRef.current = false;
++      elementChild.props?.onMouseEnter?.(event);
++    },
++    onBlur: event => {
++      keyboardFocusRef.current = false;
++      spaceKeyRef.current = false;
++      elementChild.props?.onBlur?.(event);
++    },
+     ref: (0, _util.composeRef)(childRef, (0, _util.getNodeRef)(elementChild))
+   };
+   const childrenNode = (0, _util.supportRef)(elementChild) ? ( /*#__PURE__*/_react.default.cloneElement(elementChild, triggerChildProps)) : /*#__PURE__*/_react.default.createElement("span", {
+diff --git a/lib/hooks/useAccessibility.d.ts b/lib/hooks/useAccessibility.d.ts
+index 4c9a0e72ce1c7d92de475bd5955f4214ed95736c..dd135bd639db8f9b9dc55981516128d05ff60601 100644
+--- a/lib/hooks/useAccessibility.d.ts
++++ b/lib/hooks/useAccessibility.d.ts
+@@ -6,5 +6,5 @@ interface UseAccessibilityProps {
+     autoFocus?: boolean;
+     overlayRef?: React.RefObject<any>;
+ }
+-export default function useAccessibility({ visible, triggerRef, onVisibleChange, autoFocus, overlayRef, }: UseAccessibilityProps): void;
++export default function useAccessibility({ visible, triggerRef, onVisibleChange, autoFocus, overlayRef, }: UseAccessibilityProps): () => boolean;
+ export {};
+diff --git a/lib/hooks/useAccessibility.js b/lib/hooks/useAccessibility.js
+index 6740f4316bf3ecdd0b694501d886510daad8de38..355eb2417ab742fa5019c156b015a2ba3732a0ea 100644
+--- a/lib/hooks/useAccessibility.js
++++ b/lib/hooks/useAccessibility.js
+@@ -27,8 +27,25 @@ function useAccessibility({
+     }
+   };
+   const focusMenu = () => {
+-    if (overlayRef.current?.focus) {
+-      overlayRef.current.focus();
++    const overlay = overlayRef.current;
++    if (overlay?.focus) {
++      overlay.focus();
++      // A DOM wrapper can expose focus() without being focusable itself.
++      // Preserve successful native/imperative handles; only delegate when
++      // actual DOM focus has not entered the overlay, including shadow roots.
++      if (overlay.nodeType === 1) {
++        const activeElement = () => overlay.getRootNode()?.activeElement ?? overlay.ownerDocument?.activeElement;
++        if (!overlay.contains(activeElement())) {
++          for (const target of (0, _util.getFocusNodeList)(overlay)) {
++            if (target === overlay) continue;
++            target.focus?.();
++            if (overlay.contains(activeElement())) break;
++          }
++        }
++        if (!overlay.contains(activeElement())) {
++          return false;
++        }
++      }
+       focusMenuRef.current = true;
+       return true;
+     }
+@@ -57,11 +74,13 @@ function useAccessibility({
+   React.useEffect(() => {
+     if (visible) {
+       window.addEventListener('keydown', handleKeyDown);
++      let focusFrame;
+       if (autoFocus) {
+         // FIXME: hack with raf
+-        (0, _util.raf)(focusMenu, 3);
++        focusFrame = (0, _util.raf)(focusMenu, 3);
+       }
+       return () => {
++        _util.raf.cancel(focusFrame);
+         window.removeEventListener('keydown', handleKeyDown);
+         focusMenuRef.current = false;
+       };
+@@ -70,4 +89,5 @@ function useAccessibility({
+       focusMenuRef.current = false;
+     };
+   }, [visible]); // eslint-disable-line react-hooks/exhaustive-deps
++  return focusMenu;
+ }

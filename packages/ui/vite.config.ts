@@ -6,13 +6,17 @@ export default defineConfig({
     lib: {
       entry: {
         index: "src/index.ts",
+        legacy: "src/legacy.ts",
         antd: "src/antd.tsx",
         foundations: "src/foundations/index.ts",
+        components: "src/components/index.ts",
+        compositions: "src/compositions/index.tsx",
         atoms: "src/atoms/index.ts",
         molecules: "src/molecules/index.ts",
         organisms: "src/organisms/index.ts",
         templates: "src/templates/index.ts",
         themes: "src/foundations/themes.ts",
+        "themes/olive": "src/foundations/themes/olive.ts",
         "themes/mosaic": "src/foundations/themes/mosaic.ts",
         "themes/signature": "src/foundations/themes/signature.ts",
         "themes/canvas": "src/foundations/themes/canvas.ts",

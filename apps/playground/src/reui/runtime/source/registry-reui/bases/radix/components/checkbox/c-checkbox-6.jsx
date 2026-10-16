@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Checkbox } from "../../../../../../../adapters/controls.tsx";
+import { Field, FieldLabel } from "../../../../../../../adapters/layout.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "flex flex-col gap-4", children: [_jsxs(Field, { orientation: "horizontal", className: "w-auto", children: [_jsx(Checkbox, { id: "color-1", defaultChecked: true, className: "data-checked:border-blue-500 data-checked:bg-blue-500 dark:data-checked:border-blue-500 dark:data-checked:bg-blue-500" }), _jsx(FieldLabel, { htmlFor: "color-1", children: "Blue checkbox" })] }), _jsxs(Field, { orientation: "horizontal", className: "w-auto", children: [_jsx(Checkbox, { id: "color-2", defaultChecked: true, className: "data-checked:border-green-500 data-checked:bg-green-500 dark:data-checked:border-green-500 dark:data-checked:bg-green-500" }), _jsx(FieldLabel, { htmlFor: "color-2", children: "Green checkbox" })] }), _jsxs(Field, { orientation: "horizontal", className: "w-auto", children: [_jsx(Checkbox, { id: "color-3", defaultChecked: true, className: "data-checked:border-yellow-500 data-checked:bg-yellow-500 dark:data-checked:border-yellow-500 dark:data-checked:bg-yellow-500" }), _jsx(FieldLabel, { htmlFor: "color-3", children: "Yellow checkbox" })] })] }));
+}

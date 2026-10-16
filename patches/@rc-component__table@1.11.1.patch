@@ -1,0 +1,86 @@
+diff --git a/es/Body/MeasureRow.js b/es/Body/MeasureRow.js
+index 3edf347fd8405ce4b6bfa7890751fd96945f504e..80eeea1f2808863945bb873ebe19bf65a5c663ee 100644
+--- a/es/Body/MeasureRow.js
++++ b/es/Body/MeasureRow.js
+@@ -20,7 +20,12 @@ const MeasureRow = ({
+     style: {
+       height: 0
+     },
+-    ref: ref
++    ref: node => {
++      ref.current = node;
++      // Measurement clones must contribute layout but never join keyboard or
++      // assistive interaction. DOM assignment works in both React18 and19.
++      node?.setAttribute("inert", "");
++    }
+   }, /*#__PURE__*/React.createElement(ResizeObserver.Collection, {
+     onBatchResize: infoList => {
+       if (isVisible(ref.current)) {
+diff --git a/es/Table.d.ts b/es/Table.d.ts
+index 64f836a5338fad47e00f10f541f8573fe0994b86..2b838f1330c0a8bf6da2f989d7efa9487393bc0d 100644
+--- a/es/Table.d.ts
++++ b/es/Table.d.ts
+@@ -34,6 +34,7 @@ export declare const DEFAULT_PREFIX = "rc-table";
+ export type SemanticName = 'section' | 'title' | 'footer' | 'content';
+ export type ComponentsSemantic = 'wrapper' | 'cell' | 'row';
+ export interface TableProps<RecordType = any> extends Omit<LegacyExpandableProps<RecordType>, 'showExpandColumn'> {
++    role?: React.AriaRole;
+     prefixCls?: string;
+     className?: string;
+     style?: React.CSSProperties;
+diff --git a/es/Table.js b/es/Table.js
+index cdb5af85acfbe072fb36c3ead715c01b27832e0c..540ed30be8e360ba0b53d1591f2711e14bddd6d9 100644
+--- a/es/Table.js
++++ b/es/Table.js
+@@ -594,7 +594,7 @@ const Table = (tableProps, ref) => {
+     style: tableStyle,
+     id: id,
+     ref: fullTableRef
+-  }, dataProps), title && /*#__PURE__*/React.createElement(Panel, {
++  }, dataProps, tailor && typeof customizeScrollBody === 'function' ? ariaProps : {}), title && /*#__PURE__*/React.createElement(Panel, {
+     className: clsx(`${prefixCls}-title`, classNames?.title),
+     style: styles?.title
+   }, title(mergedData)), /*#__PURE__*/React.createElement("div", {
+diff --git a/lib/Body/MeasureRow.js b/lib/Body/MeasureRow.js
+index 19baf8016e2d2b1f7ca14cc328cba4cee0526382..749961d8dcd40cc1e184a270b29c2dde35186947 100644
+--- a/lib/Body/MeasureRow.js
++++ b/lib/Body/MeasureRow.js
+@@ -29,7 +29,12 @@ const MeasureRow = ({
+     style: {
+       height: 0
+     },
+-    ref: ref
++    ref: node => {
++      ref.current = node;
++      // Measurement clones must contribute layout but never join keyboard or
++      // assistive interaction. DOM assignment works in both React18 and19.
++      node?.setAttribute("inert", "");
++    }
+   }, /*#__PURE__*/React.createElement(_resizeObserver.default.Collection, {
+     onBatchResize: infoList => {
+       if ((0, _util.isVisible)(ref.current)) {
+diff --git a/lib/Table.d.ts b/lib/Table.d.ts
+index 64f836a5338fad47e00f10f541f8573fe0994b86..2b838f1330c0a8bf6da2f989d7efa9487393bc0d 100644
+--- a/lib/Table.d.ts
++++ b/lib/Table.d.ts
+@@ -34,6 +34,7 @@ export declare const DEFAULT_PREFIX = "rc-table";
+ export type SemanticName = 'section' | 'title' | 'footer' | 'content';
+ export type ComponentsSemantic = 'wrapper' | 'cell' | 'row';
+ export interface TableProps<RecordType = any> extends Omit<LegacyExpandableProps<RecordType>, 'showExpandColumn'> {
++    role?: React.AriaRole;
+     prefixCls?: string;
+     className?: string;
+     style?: React.CSSProperties;
+diff --git a/lib/Table.js b/lib/Table.js
+index e16246c3fa4ee0305b9a1cf04bc25116616b5f0d..e98dd462c52f8a7b49cc7998df6c6c23df81403b 100644
+--- a/lib/Table.js
++++ b/lib/Table.js
+@@ -601,7 +601,7 @@ const Table = (tableProps, ref) => {
+     style: tableStyle,
+     id: id,
+     ref: fullTableRef
+-  }, dataProps), title && /*#__PURE__*/React.createElement(_Panel.default, {
++  }, dataProps, tailor && typeof customizeScrollBody === 'function' ? ariaProps : {}), title && /*#__PURE__*/React.createElement(_Panel.default, {
+     className: (0, _clsx.clsx)(`${prefixCls}-title`, classNames?.title),
+     style: styles?.title
+   }, title(mergedData)), /*#__PURE__*/React.createElement("div", {

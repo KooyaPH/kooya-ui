@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Spinner } from "../../../../../../../adapters/controls.tsx";
+export default function Pattern() {
+    return (_jsxs("div", { className: "mx-auto flex w-full max-w-xs flex-col gap-3", children: [_jsxs("div", { className: "flex items-center gap-2", children: [_jsx(Spinner, { className: "size-3.5" }), _jsx("span", { className: "text-muted-foreground text-sm", children: "Checking availability..." })] }), _jsxs("div", { className: "flex items-center gap-2", children: [_jsx(Spinner, { className: "text-success size-3.5" }), _jsxs("span", { className: "text-sm", children: [_jsx("span", { className: "text-success font-medium", children: "Connected" }), _jsx("span", { className: "text-muted-foreground", children: " \u2014 syncing data" })] })] }), _jsxs("div", { className: "flex items-center gap-2", children: [_jsx(Spinner, { className: "text-warning size-3.5" }), _jsxs("span", { className: "text-sm", children: [_jsx("span", { className: "text-warning font-medium", children: "Reconnecting" }), _jsx("span", { className: "text-muted-foreground", children: " \u2014 attempt 3 of 5" })] })] })] }));
+}

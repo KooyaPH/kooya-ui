@@ -6,3 +6,6 @@ output/
 .env*
 !.env.example
 storybook-static/
+
+# Generated source download; rebuild with scripts/reui-bundle.mjs.
+/apps/playground/public/downloads/

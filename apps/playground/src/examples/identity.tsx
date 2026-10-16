@@ -8,7 +8,7 @@ import {
   Chip,
   Dialog,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 export function ProfileExample({ state }: { state?: TemplateState }) {
   const [editing, setEditing] = useState(false);
   const [bio, setBio] = useState("Helping thoughtful teams launch good ideas.");

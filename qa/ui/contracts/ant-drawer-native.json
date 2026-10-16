@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "item": "ant-drawer-native",
+  "baselineRevision": "c1283ad",
+  "source": "apps/playground/src/reui/native.tsx",
+  "dependencies": [
+    "@kooyaph/ui/components.Drawer",
+    "@kooyaph/ui/components.Form",
+    "KooyaProvider",
+    "PreviewRoute"
+  ],
+  "states": [
+    "closed",
+    "open",
+    "close-button",
+    "mask-dismiss",
+    "escape-dismiss",
+    "initial-focus",
+    "focus-trap",
+    "focus-return",
+    "reduced-motion",
+    "resize-open"
+  ],
+  "widths": [320, 360, 390, 768, 1024, 1280, 1440, 1920],
+  "modes": ["light", "dark"],
+  "densities": ["comfortable", "compact"],
+  "motions": ["no-preference", "reduce"],
+  "engines": ["chromium", "firefox", "webkit"],
+  "fixtures": [
+    "catalog",
+    "default",
+    "long",
+    "empty",
+    "error",
+    "loading",
+    "nested"
+  ],
+  "invariants": [
+    "Drawer dialog has accessible Project settings name and aria-modal=true",
+    "Project name textbox is associated with visible label",
+    "Drawer remains inside viewport; body can scroll; footer remains reachable",
+    "Keyboard focus enters drawer, remains trapped, and returns to original trigger after dismissal",
+    "Close button, Escape and a real mask pointer click close the drawer",
+    "Long titles and labels wrap without clipping",
+    "Invalid form stays open with associated error; successful submission closes and announces save",
+    "Loading disables editable field and save; empty content is announced",
+    "Reduced motion disables nonessential drawer movement",
+    "Resizing while open preserves input value and dialog integrity",
+    "Nested date-picker portal remains focusable and keyboard operable; Escape dismisses the popup before the drawer"
+  ],
+  "manualAcceptance": [
+    "Full-resolution screenshots at phone, tablet and desktop",
+    "Real Safari on macOS",
+    "Screen reader dialog and field announcements"
+  ],
+  "baselineFailures": [
+    "Project name label has no for; textbox accessible name absent",
+    "Settled Tab focus escapes the modal to document body in Chromium and WebKit; Firefox passes"
+  ],
+  "acceptance": "pending-independent-review",
+  "baselineClarifications": [
+    "Native focus return passes after waiting for dialog to become hidden",
+    "Early animation screenshot clipping is not a settled geometry defect"
+  ],
+  "verifiedEngines": {
+    "playwright": "1.64.0",
+    "axeCorePlaywright": "4.13.0",
+    "chromium": "156.0.8078.4",
+    "firefox": "157.0",
+    "webkit": "27.2"
+  },
+  "dependencyRepair": {
+    "package": "@rc-component/util",
+    "version": "1.13.0",
+    "scope": "Native focus-lock Tab boundaries; shared dependency patch owned by root",
+    "proof": "Nine focused regression tests passed across Chromium Firefox WebKit after baseline failure",
+    "consumerLimitation": "Packed library consumers do not automatically inherit the workspace pnpm patch; external consumer proof remains required"
+  }
+}

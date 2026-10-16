@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { localAsset } from "../../../../../../../adapters/assets.ts";
+import { Card } from "../../../../../../../adapters/layout.tsx";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "../../../../../../../adapters/navigation.tsx";
+export default function Pattern() {
+    return (_jsxs(Carousel, { className: "w-full max-w-md", children: [_jsx(CarouselContent, { children: Array.from({ length: 5 }).map((_, index) => (_jsx(CarouselItem, { children: _jsx("div", { className: "p-1", children: _jsxs(Card, { className: "group/card relative aspect-video overflow-hidden border-0 p-0", children: [_jsx("img", { src: localAsset(`https://picsum.photos/1000/800?grayscale&random=${index + 10}`), alt: `Slide ${index + 1}`, width: 1000, height: 800, className: "absolute inset-0 size-full scale-100 object-cover transition-transform duration-500 ease-in-out group-hover/card:scale-105" }), _jsx("div", { className: "absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/80 to-transparent" }), _jsxs("div", { className: "relative flex h-full flex-col justify-end p-6", children: [_jsxs("h3", { className: "text-xl font-bold text-white", children: ["Slide ", index + 1] }), _jsxs("p", { className: "text-sm text-white/90", children: ["Beautiful landscape description for slide ", index + 1, "."] })] })] }) }) }, index))) }), _jsx(CarouselPrevious, {}), _jsx(CarouselNext, {})] }));
+}

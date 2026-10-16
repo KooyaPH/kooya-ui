@@ -7,7 +7,7 @@ import {
   SelectField,
   TextField,
   type TemplateState,
-} from "@kooyaph/ui";
+} from "@kooyaph/ui/legacy";
 import { DashboardExample, AnalyticsExample } from "./examples/dashboard";
 import {
   CollectionExample,
