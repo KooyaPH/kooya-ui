@@ -1,4 +1,3 @@
-import { useDeviceMode } from "../foundations/device";
 import { useId, useState } from "react";
 import { ErrorState, type SafeFailure } from "../molecules/experience";
 import type { FormEventHandler, ReactNode } from "react";
@@ -53,7 +52,7 @@ export function FormTemplate({
               type="submit"
               variant="primary"
               loading={submitting}
-              disabled={submitDisabled}
+              disabled={submitDisabled || props.state?.status === "loading"}
             >
               {submitLabel}
             </Button>
@@ -106,7 +105,9 @@ export function WizardTemplate({
           </Button>
           <Button
             variant="primary"
-            disabled={!canContinue || !steps.length}
+            disabled={
+              !canContinue || !steps.length || props.state?.status === "loading"
+            }
             loading={busy}
             onClick={() =>
               index === steps.length - 1
@@ -139,8 +140,7 @@ export function SettingsTemplate({
   ...props
 }: SettingsTemplateProps) {
   const sectionId = useId();
-  const mode = useDeviceMode();
-  const [previewOpen, setPreviewOpen] = useState(mode === "desktop");
+  const [previewOpen, setPreviewOpen] = useState(false);
   return (
     <TemplateFrame {...props}>
       <details className="ku-section-index" open>

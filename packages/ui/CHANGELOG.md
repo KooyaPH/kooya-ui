@@ -1,5 +1,11 @@
 # @kooyaph/ui changelog
 
+## 1.2.1
+
+### Patch Changes
+
+- Simplify authentication and supporting information with focused AuthLayout and embedded consent, expandable descriptions, reusable RecordFields, resilient long labels and value-only loading across owned templates and controls. Preserve existing Ant APIs, themes and product-owned authentication behavior.
+
 ## 1.1.0
 
 ### Minor Changes

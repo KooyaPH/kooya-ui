@@ -83,10 +83,18 @@ export function BusyBoundary({
 }) {
   return (
     <>
-      <span role="status" className="ku-visually-hidden">
+      <span
+        role="status"
+        aria-label={busy ? label : undefined}
+        className="ku-visually-hidden"
+      >
         {busy ? label : ""}
       </span>
-      <div className="ku-busy-boundary" aria-busy={busy || undefined}>
+      <div
+        className="ku-busy-boundary"
+        aria-label={busy ? label : undefined}
+        aria-busy={busy || undefined}
+      >
         <DataLoadingContext.Provider value={busy && !keepContent}>
           {children}
         </DataLoadingContext.Provider>

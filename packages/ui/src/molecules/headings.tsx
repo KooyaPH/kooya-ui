@@ -1,3 +1,4 @@
+import { ExpandableText } from "./text";
 import type { ReactNode } from "react";
 import { DataValue, useDataLoading } from "./experience";
 export function PageHeading({
@@ -16,7 +17,7 @@ export function PageHeading({
       <div>
         {eyebrow && <p className="ku-eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
-        {description && <p>{description}</p>}
+        {description && <ExpandableText text={description} />}
       </div>
       {actions && <div className="ku-page-actions">{actions}</div>}
     </div>

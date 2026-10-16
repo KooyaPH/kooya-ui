@@ -1,4 +1,4 @@
-import { useDeviceMode } from "../foundations/device";
+import { DataValue } from "../molecules/experience";
 import { useState, type ReactNode } from "react";
 import { Card, MetricCard } from "../molecules/index";
 import {
@@ -22,8 +22,7 @@ export function DashboardTemplate({
   contextLabel = "More context",
   ...props
 }: DashboardTemplateProps) {
-  const device = useDeviceMode();
-  const [contextOpen, setContextOpen] = useState(device !== "mobile");
+  const [contextOpen, setContextOpen] = useState(false);
   return (
     <TemplateFrame {...props}>
       {priority}
@@ -112,10 +111,14 @@ export function AnalyticsTemplate({
             {points.map((p) => (
               <li key={p.id}>
                 <span>{p.label}</span>
-                <meter aria-label={p.label} min={0} max={max} value={p.value}>
-                  {p.value}
-                </meter>
-                <strong>{p.value.toLocaleString()}</strong>
+                <DataValue block width="100%">
+                  <meter aria-label={p.label} min={0} max={max} value={p.value}>
+                    {p.value}
+                  </meter>
+                </DataValue>
+                <strong>
+                  <DataValue>{p.value.toLocaleString()}</DataValue>
+                </strong>
               </li>
             ))}
           </ul>

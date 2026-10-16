@@ -1,3 +1,4 @@
+import { DataValue, useDataLoading } from "../molecules/experience";
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import {
   Button as AntButton,
@@ -142,11 +143,13 @@ export function FilterChip({
 export function Avatar({ name }: { name: string }) {
   return (
     <AntAvatar className="ku-avatar" aria-hidden>
-      {name
-        .split(" ")
-        .map((p) => p[0])
-        .slice(0, 2)
-        .join("")}
+      <DataValue width={24}>
+        {name
+          .split(" ")
+          .map((p) => p[0])
+          .slice(0, 2)
+          .join("")}
+      </DataValue>
     </AntAvatar>
   );
 }
@@ -154,10 +157,16 @@ export function Checkbox({
   label,
   ...props
 }: Omit<CheckboxProps, "children"> & { label: ReactNode }) {
+  const dataLoading = useDataLoading();
   return (
     <AntCheckbox
       {...props}
-      className={"ku-checkbox " + (props.className ?? "")}
+      {...(dataLoading ? { checked: false, disabled: true } : {})}
+      className={
+        "ku-checkbox " +
+        (props.className ?? "") +
+        (dataLoading ? " ku-control-loading" : "")
+      }
     >
       {label}
     </AntCheckbox>

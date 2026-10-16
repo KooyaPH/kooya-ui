@@ -1,3 +1,4 @@
+import { useDataLoading } from "./experience";
 import {
   useId,
   useRef,
@@ -31,6 +32,7 @@ export function TextField({
   error?: string;
   icon?: ReactNode;
 }) {
+  const dataLoading = useDataLoading();
   const auto = useId(),
     inputId = id ?? auto,
     detailId = inputId + "-detail";
@@ -40,6 +42,14 @@ export function TextField({
       <label htmlFor={inputId}>{label}</label>
       <Input
         {...input}
+        {...(dataLoading
+          ? {
+              value: "",
+              disabled: true,
+              placeholder: "",
+              "data-skeleton": "value",
+            }
+          : {})}
         id={inputId}
         prefix={
           icon && (
@@ -55,7 +65,7 @@ export function TextField({
             .filter(Boolean)
             .join(" ") || undefined
         }
-        className="ku-input"
+        className={`ku-input${dataLoading ? " ku-control-loading" : ""}`}
       />
       {(error || hint) && (
         <small
@@ -104,6 +114,7 @@ export function SelectField({
   onFocus,
   ...props
 }: SelectFieldProps & { onValueChange?: (value: string) => void }) {
+  const dataLoading = useDataLoading();
   const auto = useId(),
     inputId = id ?? auto;
   const [internal, setInternal] = useState(
@@ -146,17 +157,17 @@ export function SelectField({
       <Select<string, SelectFieldOption>
         ref={control}
         id={inputId}
-        className="ku-select"
+        className={`ku-select${dataLoading ? " ku-control-loading" : ""}`}
         virtual={false}
         aria-label={props["aria-label"] ?? label}
         aria-required={required}
         aria-describedby={props["aria-describedby"]}
         aria-invalid={props["aria-invalid"]}
-        disabled={disabled}
+        disabled={disabled || dataLoading}
         autoFocus={autoFocus}
         tabIndex={props.tabIndex}
         title={props.title}
-        value={selected}
+        value={dataLoading ? undefined : selected}
         options={[...options]}
         showSearch={
           searchable
@@ -193,7 +204,7 @@ export function SelectField({
         id={inputId + "-form-value"}
         name={name}
         required={required}
-        disabled={disabled}
+        disabled={disabled || dataLoading}
         value={selected}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -235,6 +246,7 @@ export function Switch({
   disabled?: boolean;
 }) {
   const id = useId();
+  const dataLoading = useDataLoading();
   return (
     <div className="ku-switch-row">
       <label htmlFor={id}>
@@ -244,8 +256,8 @@ export function Switch({
       <AntSwitch
         id={id}
         aria-label={label}
-        checked={checked}
-        disabled={disabled}
+        checked={dataLoading ? false : checked}
+        disabled={disabled || dataLoading}
         onChange={onCheckedChange}
       />
     </div>
@@ -257,10 +269,16 @@ export function NumberField({
   ...props
 }: InputNumberProps & { label: string }) {
   const auto = useId();
+  const dataLoading = useDataLoading();
   return (
     <div className="ku-field">
       <label htmlFor={id ?? auto}>{label}</label>
-      <InputNumber {...props} id={id ?? auto} />
+      <InputNumber
+        {...props}
+        {...(dataLoading ? { value: null, disabled: true } : {})}
+        className={dataLoading ? "ku-control-loading" : props.className}
+        id={id ?? auto}
+      />
     </div>
   );
 }
@@ -270,10 +288,16 @@ export function DateField({
   ...props
 }: DatePickerProps & { label: string }) {
   const auto = useId();
+  const dataLoading = useDataLoading();
   return (
     <div className="ku-field">
       <label htmlFor={id ?? auto}>{label}</label>
-      <DatePicker {...props} id={id ?? auto} />
+      <DatePicker
+        {...props}
+        {...(dataLoading ? { value: null, disabled: true } : {})}
+        className={dataLoading ? "ku-control-loading" : props.className}
+        id={id ?? auto}
+      />
     </div>
   );
 }

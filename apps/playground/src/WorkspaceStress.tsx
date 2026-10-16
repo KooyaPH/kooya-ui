@@ -43,7 +43,7 @@ function ClipFixture({
       style={{
         overflow: "hidden",
         transform: "translateZ(0)",
-        height: 220,
+        minHeight: 220,
         border: "1px solid var(--ku-line)",
         borderRadius: 8,
         padding: 16,

@@ -2,6 +2,41 @@ import { createElement } from "react";
 import type { CatalogEntry } from "./types";
 export const connectionLoadingEntries: CatalogEntry[] = [
   {
+    id: "focused-authentication",
+    kind: "groups",
+    category: "authorization",
+    title: "Focused authentication",
+    description:
+      "One brand, one task and one clear decision. Supporting details expand within the card.",
+    tags: ["auth", "login", "consent", "simple", "long-text"],
+    exportName: "AuthLayout, ExpandableText",
+    importPath: "@kooyaph/ui",
+    dependencies: ["@kooyaph/ui"],
+    variants: [
+      "sign-in",
+      "code",
+      "consent",
+      "error",
+      "loading",
+      "long-text",
+      "description",
+    ].map((variant) => ({
+      id: `kooya-focused-auth-${variant}`,
+      title: variant,
+      description:
+        "Fictional local example. Authentication remains application owned.",
+      previewHeight: 760,
+      load: async () => {
+        const { default: Demo } = await import(
+          "../site/collections/focused-auth"
+        );
+        return { default: () => createElement(Demo, { variant }) };
+      },
+      loadCode: async () =>
+        (await import("../site/collections/focused-auth.tsx?raw")).default,
+    })),
+  },
+  {
     id: "swimlane-board",
     kind: "groups",
     category: "data",

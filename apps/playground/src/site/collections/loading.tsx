@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RecordFields } from "@kooyaph/ui";
 import { DataTable } from "@kooyaph/ui/organisms";
 import { BusyBoundary, DataValue, MetricCard } from "@kooyaph/ui/molecules";
 import { Button, Card, Input, Segmented, Tag } from "@kooyaph/ui/components";
@@ -59,28 +60,14 @@ export default function LoadingPatterns({
       ) : variant === "detail" ? (
         <Card title="Application details">
           <BusyBoundary busy={loading || refreshing} keepContent={refreshing}>
-            <dl
-              style={{
-                display: "grid",
-                gridTemplateColumns: "100px 1fr",
-                gap: 20,
-              }}
-            >
-              <dt>Name</dt>
-              <dd>
-                <DataValue>Kooya Projects</DataValue>
-              </dd>
-              <dt>Publisher</dt>
-              <dd>
-                <DataValue>Kooya</DataValue>
-              </dd>
-              <dt>Description</dt>
-              <dd>
-                <DataValue block>
-                  Keep project work and repository activity in sync.
-                </DataValue>
-              </dd>
-            </dl>
+            <RecordFields
+              label="Project details"
+              fields={[
+                { id: "name", label: "Project", value: "Editorial launch" },
+                { id: "owner", label: "Owner", value: "Jamie Rivera" },
+                { id: "status", label: "Status", value: "In review" },
+              ]}
+            />
             <Button disabled={loading}>Edit application</Button>
           </BusyBoundary>
         </Card>

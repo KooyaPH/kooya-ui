@@ -1,3 +1,4 @@
+import { DataValue } from "../molecules/experience";
 import type { ReactNode } from "react";
 import { DataTable, type DataTableProps } from "../organisms/index";
 import { Card } from "../molecules/index";
@@ -56,7 +57,9 @@ export function RecordDetailTemplate({
             {fields.map((f) => (
               <div key={f.id}>
                 <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
+                <dd>
+                  <DataValue>{f.value}</DataValue>
+                </dd>
               </div>
             ))}
           </dl>
@@ -98,15 +101,39 @@ export function AuditTemplate({
         <ol className="ku-template-timeline" aria-label="Audit history">
           {entries.map((e) => (
             <li key={e.id}>
-              <strong>{e.actor}</strong>
-              {e.role && <span> · {e.role}</span>}
-              <p>{e.action}</p>
-              <time>{e.timestamp}</time>
+              <strong>
+                <DataValue>{e.actor}</DataValue>
+              </strong>
+              {e.role && (
+                <span>
+                  <DataValue> · {e.role}</DataValue>
+                </span>
+              )}
+              <p>
+                <DataValue block>{e.action}</DataValue>
+              </p>
+              <time>
+                <DataValue>{e.timestamp}</DataValue>
+              </time>
               {e.details}
             </li>
           ))}
         </ol>
-        {!entries.length && <p>{empty}</p>}
+        {!entries.length &&
+          (props.state?.status === "loading" ? (
+            <ul aria-label="Loading audit entries">
+              {[0, 1, 2].map((index) => (
+                <li key={index}>
+                  <DataValue loading />
+                  <p>
+                    <DataValue loading />
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>{empty}</p>
+          ))}
       </Card>
       {props.children}
     </TemplateFrame>

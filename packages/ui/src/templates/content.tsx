@@ -1,3 +1,4 @@
+import { DataValue } from "../molecules/experience";
 import type { ReactNode } from "react";
 import { Button, Avatar } from "../atoms/index";
 import { Card, Tabs } from "../molecules/index";
@@ -36,28 +37,48 @@ export function FeedTemplate({
               <div className="ku-template-toolbar">
                 <Avatar name={p.author} />
                 <strong>
-                  {p.author}
-                  {p.role && <small> · {p.role}</small>}
+                  <DataValue>
+                    {p.author}
+                    {p.role && <small> · {p.role}</small>}
+                  </DataValue>
                 </strong>
-                {p.timestamp && <time>{p.timestamp}</time>}
+                {p.timestamp && (
+                  <time>
+                    <DataValue>{p.timestamp}</DataValue>
+                  </time>
+                )}
               </div>
-              <p className="ku-template-prose">{p.body}</p>
+              <p className="ku-template-prose">
+                <DataValue block>{p.body}</DataValue>
+              </p>
               {p.media}
               <Button
                 aria-pressed={p.reacted ?? false}
+                disabled={props.state?.status === "loading"}
                 onClick={() => onReact(p.id)}
               >
-                {p.reacted ? "Liked" : "Like"} · {p.reactionCount}
+                {p.reacted ? "Liked" : "Like"} ·{" "}
+                <DataValue>{p.reactionCount}</DataValue>
               </Button>
               {p.comments}
             </article>
           </Card>
         ))}
-        {!posts.length && (
-          <Card>
-            <p>{empty}</p>
-          </Card>
-        )}
+        {!posts.length &&
+          (props.state?.status === "loading" ? (
+            [0, 1, 2].map((index) => (
+              <Card key={index}>
+                <DataValue loading />
+                <p>
+                  <DataValue loading block />
+                </p>
+              </Card>
+            ))
+          ) : (
+            <Card>
+              <p>{empty}</p>
+            </Card>
+          ))}
       </div>
       {props.children}
     </TemplateFrame>
@@ -135,24 +156,44 @@ export function MediaGalleryTemplate({
         {items.map((i) => (
           <Card key={i.id}>
             <div className="ku-template-thumbnail">
-              {i.thumbnail ??
-                (i.src ? (
-                  <img loading="lazy" src={i.src} alt={i.alt ?? i.title} />
-                ) : (
-                  <span>{i.kind}</span>
-                ))}
+              <DataValue block>
+                {i.thumbnail ??
+                  (i.src ? (
+                    <img loading="lazy" src={i.src} alt={i.alt ?? i.title} />
+                  ) : (
+                    <span>{i.kind}</span>
+                  ))}
+              </DataValue>
             </div>
-            <h3>{i.title}</h3>
-            <p>{i.description ?? i.kind}</p>
-            <Button onClick={() => onSelect(i.id)}>View {i.title}</Button>
+            <h3>
+              <DataValue>{i.title}</DataValue>
+            </h3>
+            <p>
+              <DataValue>{i.description ?? i.kind}</DataValue>
+            </p>
+            <Button
+              aria-label={`View ${i.title}`}
+              disabled={props.state?.status === "loading"}
+              onClick={() => onSelect(i.id)}
+            >
+              View
+            </Button>
           </Card>
         ))}
       </div>
-      {!items.length && (
-        <Card>
-          <p>{empty}</p>
-        </Card>
-      )}
+      {!items.length &&
+        (props.state?.status === "loading" ? (
+          <Card>
+            <DataValue loading block />
+            <p>
+              <DataValue loading />
+            </p>
+          </Card>
+        ) : (
+          <Card>
+            <p>{empty}</p>
+          </Card>
+        ))}
       {props.children}
     </TemplateFrame>
   );

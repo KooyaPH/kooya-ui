@@ -1,4 +1,4 @@
-import { BusyBoundary } from "@kooyaph/ui/molecules";
+import { BusyBoundary, ExpandableText } from "@kooyaph/ui/molecules";
 import { useState, type ReactNode } from "react";
 import { Alert, Button, Empty, Segmented } from "@kooyaph/ui/components";
 import "./collections.css";
@@ -20,9 +20,8 @@ export function DemoFrame({
     >
       <header className="composition-heading">
         <div>
-          <p className="composition-eyebrow">KOOYA · LOCAL EXAMPLE</p>
           <h2>{title}</h2>
-          {description && <p>{description}</p>}
+          {description && <ExpandableText text={description} />}
         </div>
         <Segmented
           aria-label="Example state"

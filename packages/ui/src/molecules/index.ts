@@ -5,3 +5,5 @@ export * from "./navigation";
 export * from "./popup";
 export * from "./choices";
 export * from "./experience";
+
+export * from "./text";

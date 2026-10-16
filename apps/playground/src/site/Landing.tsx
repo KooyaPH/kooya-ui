@@ -6,7 +6,7 @@ import { collections, countVariants, getEntries } from "../registry/catalog";
 import type { Appearance } from "./model";
 import "./marketing.css";
 export const installSnippet =
-  "pnpm add @kooyaph/ui@https://github.com/KooyaPH/kooya-ui/releases/download/v1.1.0/kooyaph-ui-1.1.0.tgz antd@6.6.5";
+  "pnpm add @kooyaph/ui@https://github.com/KooyaPH/kooya-ui/releases/download/v1.2.1/kooyaph-ui-1.2.1.tgz antd@6.6.5";
 export const usageSnippet = `import '@fontsource-variable/dm-sans';\nimport '@kooyaph/ui/styles.css';\nimport { KooyaProvider } from '@kooyaph/ui';\nimport { Button, Input, Space } from '@kooyaph/ui/components';\n\nexport default function App() {\n  return (\n    <KooyaProvider mode="light" density="compact">\n      <Space>\n        <Input aria-label="Project name" placeholder="Project name" />\n        <Button type="primary">Create project</Button>\n      </Space>\n    </KooyaProvider>\n  );\n}`;
 const records = [
   {
@@ -77,9 +77,8 @@ export function Landing({
               <em>Human by design.</em>
             </h1>
             <p className="mk-lead">
-              Meet the interface system behind Kooya. Clear workspaces,
-              considered components, and the small details that make everyday
-              work feel better.
+              The interface system behind Kooya. Clear workspaces, crafted
+              components, and a little character for everyday work.
             </p>
             <div className="mk-actions">
               <Button type="primary" size="large" href="#/components">

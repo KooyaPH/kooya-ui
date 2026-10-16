@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Flex, Statistic, Tag } from "antd";
+import { ExpandableText } from "../molecules/text";
 import { DataValue, useDataLoading } from "../molecules/experience";
 export interface ActionBarProps {
   children: ReactNode;
@@ -150,9 +151,12 @@ export function PageFrame({
           <h1 style={{ fontSize: 28, lineHeight: 1.2, margin: "0 0 8px" }}>
             {title}
           </h1>
-          {description && (
-            <p style={{ margin: 0, opacity: 0.75 }}>{description}</p>
-          )}
+          {description &&
+            (typeof description === "string" ? (
+              <ExpandableText text={description} />
+            ) : (
+              <div>{description}</div>
+            ))}
         </div>
         {actions}
       </Flex>

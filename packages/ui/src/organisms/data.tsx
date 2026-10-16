@@ -1,6 +1,7 @@
 import {
   BusyBoundary,
   DataValue,
+  DataLoadingContext,
   useDataLoading,
 } from "../molecules/experience";
 import { useDeviceMode } from "../foundations/device";
@@ -147,7 +148,9 @@ export function DataTable<Row extends object>({
               }}
             >
               <summary>Filters</summary>
-              {filters}
+              <DataLoadingContext.Provider value={false}>
+                {filters}
+              </DataLoadingContext.Provider>
             </details>
           )}
           <Table<Row>

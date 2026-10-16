@@ -2956,3 +2956,356 @@ a.ku-nav-tile {
   padding: 24px;
   overflow-wrap: anywhere;
 }
+
+/* 1.2.1: supporting content is quiet; essential content remains readable. */
+.ku-root :where(h1, h2, h3, h4, p, dt, dd, label),
+.ku-overlay-host :where(h1, h2, h3, p, label) {
+  overflow-wrap: anywhere;
+}
+.ku-root
+  :where(
+    .ku-card-heading,
+    .ku-page-heading,
+    .ku-template-toolbar,
+    .ku-page-actions
+  ) {
+  min-inline-size: 0;
+  flex-wrap: wrap;
+}
+.ku-root :where(.ku-card-heading, .ku-page-heading) > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ku-root
+  :where(
+    .ku-card,
+    .ku-template,
+    .ku-template-split,
+    .ku-template-stack,
+    .ku-template-business-section,
+    .ku-template-board-item
+  ) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ku-root :where(.ku-page-actions, .ku-card-heading) .ant-btn {
+  max-inline-size: 100%;
+  height: auto;
+  min-block-size: 32px;
+  white-space: normal;
+}
+.ku-root :where(.ku-page-actions, .ku-card-heading) .ant-btn > span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ku-root .ku-card .ku-card {
+  box-shadow: none;
+}
+.ku-template-business-section {
+  padding-block: 20px;
+  border-block-start: 1px solid var(--ku-line);
+}
+.ku-template-business-section > h2 {
+  margin: 0 0 12px;
+}
+.ku-expandable-text {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  color: var(--ku-muted);
+}
+.ku-expandable-text > p {
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.ku-expandable-text > p:not(.is-expanded) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--ku-text-lines, 3);
+  overflow: hidden;
+}
+.ku-text-disclosure {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 0;
+  min-block-size: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--ku-accent);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ku-text-disclosure:hover {
+  color: var(--ku-ink);
+}
+.ku-text-disclosure:focus-visible {
+  outline: 2px solid var(--ku-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.ku-auth-layout {
+  position: relative;
+  box-sizing: border-box;
+  inline-size: min(100%, 440px);
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: 32px;
+  border: 1px solid var(--ku-line);
+  border-radius: 12px;
+  background: var(--ku-surface);
+  color: var(--ku-ink);
+  overflow-wrap: anywhere;
+}
+.ku-auth-layout--wide {
+  inline-size: min(100%, 560px);
+}
+.ku-auth-layout__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block-end: 24px;
+  min-inline-size: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+.ku-auth-layout__brand > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ku-auth-layout__brand img {
+  object-fit: contain;
+}
+.ku-auth-layout__heading {
+  margin-block-end: 24px;
+}
+.ku-auth-layout__heading h1 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.ku-auth-layout__description {
+  margin-block-start: 8px;
+  color: var(--ku-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.ku-auth-layout__content {
+  min-inline-size: 0;
+  display: grid;
+  gap: 16px;
+}
+.ku-auth-layout__footer {
+  margin-block-start: 24px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--ku-line);
+  color: var(--ku-muted);
+  font-size: 12px;
+}
+.ku-auth-layout__utilities {
+  display: flex;
+  justify-content: end;
+  margin-block-end: 16px;
+}
+.ku-auth-layout :where(input, select, textarea, button, .ant-btn) {
+  max-inline-size: 100%;
+}
+.ku-auth-layout :where(button, .ant-btn) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  height: auto;
+  min-block-size: 44px;
+}
+.ku-auth-layout :where(button, .ant-btn) > span {
+  white-space: normal;
+}
+.ku-authorization--embedded {
+  max-inline-size: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.ku-authorization--embedded > .ku-authorization-publisher {
+  margin-block-start: 0;
+}
+.ku-authorization--embedded .ku-authorization-account-line {
+  padding-block: 12px;
+}
+.ku-authorization--embedded .ku-authorization-permissions li {
+  padding-block: 12px;
+}
+.ku-authorization--embedded .ku-authorization-actions {
+  margin-block-start: 20px;
+}
+.ku-overlay-host
+  :where(
+    .ant-select-dropdown,
+    .ant-dropdown,
+    .ant-picker-dropdown,
+    .ant-popover,
+    .ant-tooltip
+  ) {
+  max-inline-size: calc(100vw - 24px);
+}
+.ku-overlay-host
+  :where(.ant-select-item-option-content, .ant-dropdown-menu-title-content) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ku-overlay-host :where(.ant-modal-title, .ant-drawer-title) {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.ku-overlay-host :where(.ant-modal-footer, .ant-drawer-footer) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: end;
+}
+.ku-overlay-host :where(.ant-modal-footer, .ant-drawer-footer) .ant-btn {
+  margin-inline-start: 0;
+  max-inline-size: 100%;
+  height: auto;
+  min-block-size: 36px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .ku-auth-layout {
+    padding: 24px;
+  }
+  .ku-auth-layout__heading h1 {
+    font-size: 22px;
+  }
+  .ku-text-disclosure {
+    min-block-size: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .ku-auth-layout {
+    padding: 20px;
+  }
+}
+
+.ku-demo-brand-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 8px;
+  background: var(--ku-accent);
+  color: var(--ku-accent-ink);
+  font-weight: 700;
+}
+
+.ku-root input.ku-control-loading,
+.ku-root textarea.ku-control-loading {
+  background-image: linear-gradient(var(--ku-line), var(--ku-line));
+  background-size: 64% 1em;
+  background-position: 12px 50%;
+  background-repeat: no-repeat;
+  color: transparent;
+}
+.ku-root
+  .ku-control-loading
+  :is(.ant-select-selection-item, .ant-select-placeholder) {
+  color: transparent;
+  background: var(--ku-line);
+  border-radius: 3px;
+}
+.ku-root .ku-control-loading .ant-checkbox-inner {
+  background: var(--ku-line);
+}
+
+/* Native Ant controls keep their APIs while long labels receive real space. */
+.ku-root .ant-card-head-title {
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+.ku-root .ant-card-head-wrapper,
+.ku-root .ant-card-extra {
+  min-inline-size: 0;
+}
+.ku-root .ant-card-head-wrapper {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ku-root .ant-card-extra {
+  max-inline-size: 100%;
+  margin-inline-start: auto;
+}
+.ku-root .ant-btn:not(.ant-btn-icon-only) {
+  max-inline-size: 100%;
+  height: auto;
+  min-block-size: var(--ku-control-height, 36px);
+  white-space: normal;
+}
+.ku-root .ant-btn:not(.ant-btn-icon-only) > span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ku-root .ant-tag {
+  max-inline-size: 100%;
+  height: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ku-root .ant-form-item-label > label {
+  height: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ku-root
+  :where(
+    .ant-alert-title,
+    .ant-alert-description,
+    .ant-descriptions-item-content,
+    .ant-descriptions-item-label
+  ) {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.ku-root .ant-tabs-tab-btn {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.ku-record-fields {
+  min-inline-size: 0;
+}
+.ku-record-fields dl {
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+.ku-record-fields dl > div {
+  min-inline-size: 0;
+}
+.ku-record-fields dt {
+  color: var(--ku-muted);
+  font-size: 12px;
+  margin-block-end: 8px;
+  overflow-wrap: anywhere;
+}
+.ku-record-fields dd {
+  margin: 0;
+  min-block-size: 1.5em;
+  overflow-wrap: anywhere;
+}
+
+.ku-authorization-permissions strong {
+  display: block;
+}
+.ku-authorization-permissions small {
+  display: block;
+  margin-block-start: 4px;
+}
+.ku-root .ku-auth-layout .ant-btn:not(.ant-btn-icon-only) {
+  min-block-size: 44px;
+}
