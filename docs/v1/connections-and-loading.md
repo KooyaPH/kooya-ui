@@ -1,6 +1,6 @@
 # Connections and data loading
 
-The new APIs are available in this review branch; the immutable v1.0.0 release remains the installed baseline until the queued minor changeset is released.
+The new APIs ship in v1.1.0. The immutable v1.0.0 release remains available for rollback.
 
 ## Application authorization
 

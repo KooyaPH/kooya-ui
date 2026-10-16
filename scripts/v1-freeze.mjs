@@ -1,3 +1,7 @@
+import { readFileSync } from "node:fs";
+const packageVersion = JSON.parse(
+  readFileSync(new URL("../packages/ui/package.json", import.meta.url), "utf8"),
+).version;
 import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -53,7 +57,7 @@ async function walk(dir) {
 await walk(path.join(snapshot, "dist"));
 const provenance = {
   name: "Kooya UI v1 Editorial and Governance",
-  version: "1.0.0",
+  version: packageVersion,
   built_at: new Date(buildTime).toISOString(),
   frozen_at: new Date().toISOString(),
   source_base_sha: execFileSync("git", ["rev-parse", "HEAD"], {

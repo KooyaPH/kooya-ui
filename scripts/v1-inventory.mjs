@@ -1,3 +1,7 @@
+import { readFileSync } from "node:fs";
+const packageVersion = JSON.parse(
+  readFileSync(new URL("../packages/ui/package.json", import.meta.url), "utf8"),
+).version;
 import { createServer } from "vite";
 import { mkdir, writeFile } from "node:fs/promises";
 const server = await createServer({
@@ -23,7 +27,7 @@ try {
     "docs/v1/component-inventory.json",
     JSON.stringify(
       {
-        version: "1.0.0",
+        version: packageVersion,
         entries: inventory,
         variants: inventory.reduce((n, e) => n + e.variants.length, 0),
       },
@@ -34,7 +38,7 @@ try {
   await mkdir("apps/playground/public/v1", { recursive: true });
   await writeFile(
     "apps/playground/public/v1/component-inventory.json",
-    JSON.stringify({ version: "1.0.0", entries: inventory }),
+    JSON.stringify({ version: packageVersion, entries: inventory }),
   );
   console.log(
     JSON.stringify({
