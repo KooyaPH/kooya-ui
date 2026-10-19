@@ -3768,6 +3768,6 @@ a.ku-nav-tile {
 
 /* Keep sticky column bodies below every header, including the corner intersection. */
 .ku-root .ku-table-scroll { isolation: isolate; }
-.ku-root .ku-table-scroll .ant-table-tbody > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right) { z-index: 2; }
+.ku-root .ku-table-scroll .ant-table-tbody > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 2; }
 .ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th { z-index: 4; background: var(--ku-surface); }
-.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right) { z-index: 6; }
+.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 6; }
