@@ -1,5 +1,11 @@
 # @kooyaph/ui changelog
 
+## 1.3.0
+
+### Minor Changes
+
+- Add a formal split authentication layout, reusable method chooser and OTP controls, and a read-only workspace preview. Existing panel presentation remains compatible.
+
 ## 1.2.3
 
 ### Patch Changes

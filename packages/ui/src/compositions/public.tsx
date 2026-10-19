@@ -1,3 +1,4 @@
+import { authDocumentStyles } from "./auth-document";
 import { useId, type HTMLAttributes, type ReactNode } from "react";
 import { DataValue, useDataLoading } from "../molecules/experience";
 import { ExpandableText } from "../molecules/text";
@@ -90,7 +91,9 @@ export function EditorialCard({
 }
 
 /** Minimal server-rendered protocol pages can share the public visual foundation without hydration. */
-export const publicDocumentStyles = `:root{color-scheme:light dark;font-family:"Source Sans 3",system-ui,sans-serif;color:#20271f;background:#f5f5f1}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box}.ku-auth-panel{box-sizing:border-box;width:min(100%,440px);padding:32px;border:1px solid #d9ddd4;border-radius:12px;background:#fff;overflow-wrap:anywhere}.ku-auth-panel h1{font-size:24px;line-height:1.2}.ku-auth-panel p{color:#5c6657;line-height:1.6}.ku-auth-panel :is(button,a){max-width:100%;min-height:44px;box-sizing:border-box;overflow-wrap:anywhere}.ku-auth-panel a{display:inline-flex;align-items:center;color:inherit}.ku-auth-panel button{font:inherit;background:#45583d;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}.ku-auth-panel button:focus-visible{outline:2px solid #45583d;outline-offset:3px}@media(prefers-color-scheme:dark){:root{color:#e9ece5;background:#171b16}.ku-auth-panel{background:#21271e;border-color:#485140}.ku-auth-panel p{color:#b7c0ae}.ku-auth-panel button{background:#bdcfa9;color:#1d2816}}`;
+export const publicDocumentStyles =
+  `:root{color-scheme:light dark;font-family:"Source Sans 3",system-ui,sans-serif;color:#20271f;background:#f5f5f1}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box}.ku-auth-panel{box-sizing:border-box;width:min(100%,440px);padding:32px;border:1px solid #d9ddd4;border-radius:12px;background:#fff;overflow-wrap:anywhere}.ku-auth-panel h1{font-size:24px;line-height:1.2}.ku-auth-panel p{color:#5c6657;line-height:1.6}.ku-auth-panel :is(button,a){max-width:100%;min-height:44px;box-sizing:border-box;overflow-wrap:anywhere}.ku-auth-panel a{display:inline-flex;align-items:center;color:inherit}.ku-auth-panel button{font:inherit;background:#45583d;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}.ku-auth-panel button:focus-visible{outline:2px solid #45583d;outline-offset:3px}@media(prefers-color-scheme:dark){:root{color:#e9ece5;background:#171b16}.ku-auth-panel{background:#21271e;border-color:#485140}.ku-auth-panel p{color:#b7c0ae}.ku-auth-panel button{background:#bdcfa9;color:#1d2816}}` +
+  authDocumentStyles;
 
 export interface AuthLayoutProps
   extends Omit<HTMLAttributes<HTMLElement>, "title"> {
@@ -101,6 +104,9 @@ export interface AuthLayoutProps
   footer?: ReactNode;
   headingId?: string;
   wide?: boolean;
+  presentation?: "panel" | "split";
+  introduction?: ReactNode;
+  visual?: ReactNode;
 }
 /** One task, one heading. Forms and authentication state remain application-owned. */
 export function AuthLayout({
@@ -111,22 +117,19 @@ export function AuthLayout({
   footer,
   headingId,
   wide = false,
+  presentation = "panel",
+  introduction,
+  visual,
   children,
   className = "",
   ...props
 }: AuthLayoutProps) {
   const generatedId = useId();
   const titleId = headingId ?? generatedId;
-  return (
-    <section
-      {...props}
-      className={`ku-auth-layout ${wide ? "ku-auth-layout--wide" : ""} ${className}`}
-      aria-labelledby={titleId}
-    >
-      {utilities && (
-        <div className="ku-auth-layout__utilities">{utilities}</div>
-      )}
-      <div className="ku-auth-layout__brand">{brand}</div>
+  const split = presentation === "split";
+  const identity = <div className="ku-auth-layout__brand">{brand}</div>;
+  const task = (
+    <>
       <header className="ku-auth-layout__heading">
         <h1 id={titleId}>{title}</h1>
         {description && (
@@ -135,7 +138,40 @@ export function AuthLayout({
       </header>
       <div className="ku-auth-layout__content">{children}</div>
       {footer && <footer className="ku-auth-layout__footer">{footer}</footer>}
+    </>
+  );
+  const layout = (
+    <section
+      {...props}
+      className={`ku-auth-layout ${wide ? "ku-auth-layout--wide" : ""} ${split ? "ku-auth-layout--split" : ""} ${className}`}
+      aria-labelledby={titleId}
+    >
+      {utilities && (
+        <div className="ku-auth-layout__utilities">{utilities}</div>
+      )}
+      {split ? (
+        <>
+          <aside className="ku-auth-layout__introduction">
+            {identity}
+            <div className="ku-auth-layout__story">{introduction}</div>
+            {visual && <div className="ku-auth-layout__visual">{visual}</div>}
+          </aside>
+          <div className="ku-auth-layout__task">{task}</div>
+        </>
+      ) : (
+        <>
+          {identity}
+          {task}
+        </>
+      )}
     </section>
+  );
+  return split ? (
+    <div className={`ku-auth-frame ${wide ? "ku-auth-frame--wide" : ""}`}>
+      {layout}
+    </div>
+  ) : (
+    layout
   );
 }
 

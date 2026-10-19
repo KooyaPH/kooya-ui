@@ -463,3 +463,7 @@ document-head rendering remain app-owned and need their own qualification.
 ### Table scroll ownership
 
 `DataTable` delegates horizontal scrolling to its Ant content/body. Use optional `maxBodyHeight` (CSS length or pixels) for a bounded body with one owner for both axes. Keep surrounding cards and layout wrappers free of scrolling; ordinary lists grow with the document unless an application explicitly bounds a local list region. Adaptive phone cards do not retain a table scroll container.
+
+## Authentication refresh (1.3.0)
+
+`AuthLayout` supports an opt-in split presentation. `AuthMethodChoice`, `OtpCodeInput` and `AuthWorkspacePreview` are public composition exports. See [Authentication](authentication-refresh.md) for properties, responsive behavior and ownership boundaries.
