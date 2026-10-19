@@ -3729,51 +3729,226 @@ a.ku-nav-tile {
   --ku-section-gap: 16px;
   --ku-item-gap: 8px;
 }
-.ku-root[data-density="compact"] .ku-card-heading { padding: 12px 12px 8px; }
-.ku-root[data-density="compact"] .ku-card-body:not(.ku-card-body--flush) { padding: 8px 12px 12px; }
-.ku-root[data-density="compact"] .ku-page-heading { gap: 12px; margin-block: 0 16px; }
-.ku-root[data-density="compact"] .ku-icon-button { width: 36px; height: 36px; }
+.ku-root[data-density="compact"] .ku-card-heading {
+  padding: 12px 12px 8px;
+}
+.ku-root[data-density="compact"] .ku-card-body:not(.ku-card-body--flush) {
+  padding: 8px 12px 12px;
+}
+.ku-root[data-density="compact"] .ku-page-heading {
+  gap: 12px;
+  margin-block: 0 16px;
+}
+.ku-root[data-density="compact"] .ku-icon-button {
+  width: 36px;
+  height: 36px;
+}
 @media (pointer: coarse), (max-width: 767px) {
-  .ku-root[data-density="compact"] .ku-icon-button { width: 44px; height: 44px; }
+  .ku-root[data-density="compact"] .ku-icon-button {
+    width: 44px;
+    height: 44px;
+  }
 }
 
-.ku-root .ku-card-actions { display: inline-flex; align-items: center; gap: 4px; }
-.ku-root .ku-card-actions .ku-icon-button { width: 32px; height: 32px; min-width: 32px; padding: 0; border: 0; box-shadow: none; background: transparent; }
-.ku-root .ku-card-actions .ku-icon-button svg { width: 16px; height: 16px; }
-.ku-root .ku-icon-button--quiet { background: transparent; border-color: transparent; box-shadow: none; }
-.ku-root .ku-icon-button--inverse { color: #fff; background: transparent; border-color: transparent; }
+.ku-root .ku-card-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ku-root .ku-card-actions .ku-icon-button {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.ku-root .ku-card-actions .ku-icon-button svg {
+  width: 16px;
+  height: 16px;
+}
+.ku-root .ku-icon-button--quiet {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.ku-root .ku-icon-button--inverse {
+  color: #fff;
+  background: transparent;
+  border-color: transparent;
+}
 .ku-root .ku-card-actions .ku-icon-button:hover:not(:disabled),
-.ku-root .ku-card-actions .ku-icon-button:focus-visible { background: var(--ku-subtle); }
+.ku-root .ku-card-actions .ku-icon-button:focus-visible {
+  background: var(--ku-subtle);
+}
 @media (pointer: coarse), (max-width: 767px) {
-  .ku-root .ku-card-actions .ku-icon-button { width: 44px; height: 44px; min-width: 44px; }
+  .ku-root .ku-card-actions .ku-icon-button {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
 }
 
-.ku-root .ku-collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--ku-collection-min, 220px)), 1fr)); gap: var(--ku-collection-gap, 16px); padding: 0; margin: 0; list-style: none; background: transparent; border: 0; }
-.ku-root .ku-collection-grid > li { min-width: 0; padding: 0; border: 0; background: transparent; }
+.ku-root .ku-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--ku-collection-min, 220px)), 1fr)
+  );
+  gap: var(--ku-collection-gap, 16px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: transparent;
+  border: 0;
+}
+.ku-root .ku-collection-grid > li {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
 
-.ku-space-search-trigger { display: inline-flex; align-items: center; justify-content: flex-start; gap: 8px; justify-self: end; min-width: 32px; max-width: 240px; height: 32px; padding: 0 8px; border: 0; border-radius: var(--ku-radius-sm); background: transparent; color: var(--ku-muted); font: inherit; cursor: pointer; }
-.ku-space-search-trigger:hover { background: var(--ku-subtle); color: var(--ku-ink); }
-.ku-space-search-trigger:focus-visible { outline: 2px solid var(--ku-accent); outline-offset: 2px; }
-.ku-space-search-trigger svg { flex-shrink: 0; }
-.ku-space-search-trigger kbd { font-size: 11px; margin-left: 8px; }
-@media (max-width: 640px) { .ku-space-search-trigger span, .ku-space-search-trigger kbd { display: none; } }
-@media (pointer: coarse) { .ku-space-search-trigger { min-width: 44px; min-height: 44px; } }
+.ku-space-search-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  justify-self: end;
+  min-width: 32px;
+  max-width: 240px;
+  height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--ku-radius-sm);
+  background: transparent;
+  color: var(--ku-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.ku-space-search-trigger:hover {
+  background: var(--ku-subtle);
+  color: var(--ku-ink);
+}
+.ku-space-search-trigger:focus-visible {
+  outline: 2px solid var(--ku-accent);
+  outline-offset: 2px;
+}
+.ku-space-search-trigger svg {
+  flex-shrink: 0;
+}
+.ku-space-search-trigger kbd {
+  font-size: 11px;
+  margin-left: 8px;
+}
+@media (max-width: 640px) {
+  .ku-space-search-trigger span,
+  .ku-space-search-trigger kbd {
+    display: none;
+  }
+}
+@media (pointer: coarse) {
+  .ku-space-search-trigger {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
 
 /* Pagination owns its geometry independently from action buttons. */
-.ku-root .ku-pagination { display: flex; align-items: center; gap: 4px; margin: 0; }
-.ku-root .ku-pagination :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next) { min-width: 32px; height: 32px; margin: 0; border: 0; border-radius: 6px; background: transparent; line-height: 32px; }
-.ku-root .ku-pagination .ant-pagination-item-active { background: var(--ku-subtle); border: 0; font-weight: 600; }
-.ku-root .ku-pagination .ant-pagination-item a { padding: 0 8px; }
-@media (pointer: coarse) { .ku-root .ku-pagination :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next) { min-width: 44px; height: 44px; line-height: 44px; } }
+.ku-root .ku-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+}
+.ku-root
+  .ku-pagination
+  :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next) {
+  min-width: 32px;
+  height: 32px;
+  margin: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  line-height: 32px;
+}
+.ku-root .ku-pagination .ant-pagination-item-active {
+  background: var(--ku-subtle);
+  border: 0;
+  font-weight: 600;
+}
+.ku-root .ku-pagination .ant-pagination-item a {
+  padding: 0 8px;
+}
+@media (pointer: coarse) {
+  .ku-root
+    .ku-pagination
+    :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next) {
+    min-width: 44px;
+    height: 44px;
+    line-height: 44px;
+  }
+}
 
 /* Keep sticky column bodies below every header, including the corner intersection. */
-.ku-root .ku-table-scroll { isolation: isolate; }
-.ku-root .ku-table-scroll .ant-table-tbody > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 2; }
-.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th { z-index: 4; background: var(--ku-surface); }
-.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 6; }
+.ku-root .ku-table-scroll {
+  isolation: isolate;
+}
+.ku-root
+  .ku-table-scroll
+  .ant-table-tbody
+  > tr
+  > :is(
+    .ant-table-cell-fix-left,
+    .ant-table-cell-fix-right,
+    .ant-table-cell-fix-start,
+    .ant-table-cell-fix-end
+  ) {
+  z-index: 2;
+}
+.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th {
+  z-index: 4;
+  background: var(--ku-surface);
+}
+.ku-root
+  .ku-table-scroll--bounded
+  .ant-table-thead
+  > tr
+  > :is(
+    .ant-table-cell-fix-left,
+    .ant-table-cell-fix-right,
+    .ant-table-cell-fix-start,
+    .ant-table-cell-fix-end
+  ) {
+  z-index: 6;
+}
 
-.ku-root .ku-table-scroll, .ku-root .ku-table-scroll .ant-table-wrapper, .ku-root .ku-table-scroll .ant-table-container { min-width: 0; max-width: 100%; }
-.ku-root .ku-table-scroll { overflow: visible; }
-.ku-root .ku-table-scroll .ant-table-content { overflow-x: auto !important; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--ku-muted) 40%, transparent) transparent; overscroll-behavior: contain; }
-.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar { width: 5px; height: 5px; }
-.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ku-muted) 40%, transparent); border-radius: 3px; }
+.ku-root .ku-table-scroll,
+.ku-root .ku-table-scroll .ant-table-wrapper,
+.ku-root .ku-table-scroll .ant-table-container {
+  min-width: 0;
+  max-width: 100%;
+}
+.ku-root .ku-table-scroll {
+  overflow: visible;
+}
+.ku-root .ku-table-scroll .ant-table-content {
+  overflow-x: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--ku-muted) 40%, transparent)
+    transparent;
+  overscroll-behavior: contain;
+}
+.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--ku-muted) 40%, transparent);
+  border-radius: 3px;
+}
+
+.ku-header--utility .ku-space-search-trigger {
+  margin-inline-start: auto;
+}

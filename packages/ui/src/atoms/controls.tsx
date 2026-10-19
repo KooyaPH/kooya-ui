@@ -1,6 +1,10 @@
 import { DataValue, useDataLoading } from "../molecules/experience";
-import { forwardRef, type ButtonHTMLAttributes,
-  type HTMLAttributes, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ButtonHTMLAttributes,
+  type HTMLAttributes,
+  type ReactNode,
+} from "react";
 import {
   Button as AntButton,
   Avatar as AntAvatar,
@@ -86,7 +90,15 @@ export const IconButton = forwardRef<
     variant?: "quiet" | "inverse";
   }
 >(function IconButton(
-  { label, children, className = "", type = "button", variant = "quiet", color: _color, ...props },
+  {
+    label,
+    children,
+    className = "",
+    type = "button",
+    variant = "quiet",
+    color: _color,
+    ...props
+  },
   ref,
 ) {
   return (
@@ -197,6 +209,14 @@ export function Tooltip(props: TooltipProps) {
 }
 
 /** Contextual card chrome: semantics are retained without generic text-button skin. */
-export function CardActions({ children, className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props} className={`ku-card-actions ${className}`}>{children}</div>;
+export function CardActions({
+  children,
+  className = "",
+  ...props
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div {...props} className={`ku-card-actions ${className}`}>
+      {children}
+    </div>
+  );
 }

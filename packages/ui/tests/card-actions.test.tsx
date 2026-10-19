@@ -8,15 +8,41 @@ describe("card-local actions", () => {
   it("retains a keyboard-addressable pressed action without a text button wrapper", () => {
     function Example() {
       const [pinned, setPinned] = useState(false);
-      return <CardActions><IconButton label={pinned ? "Unpin" : "Pin"} aria-pressed={pinned} onClick={() => setPinned(!pinned)}>P</IconButton></CardActions>;
+      return (
+        <CardActions>
+          <IconButton
+            label={pinned ? "Unpin" : "Pin"}
+            aria-pressed={pinned}
+            onClick={() => setPinned(!pinned)}
+          >
+            P
+          </IconButton>
+        </CardActions>
+      );
     }
-    render(<KooyaProvider><Example /></KooyaProvider>);
+    render(
+      <KooyaProvider>
+        <Example />
+      </KooyaProvider>,
+    );
     fireEvent.click(screen.getByRole("button", { name: "Pin" }));
-    expect(screen.getByRole("button", { name: "Unpin" }).getAttribute("aria-pressed")).toBe("true");
+    expect(
+      screen
+        .getByRole("button", { name: "Unpin" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
   });
   it("prevents disabled action execution", () => {
     const act = vi.fn();
-    render(<KooyaProvider><CardActions><IconButton label="Delete" disabled onClick={act}>D</IconButton></CardActions></KooyaProvider>);
+    render(
+      <KooyaProvider>
+        <CardActions>
+          <IconButton label="Delete" disabled onClick={act}>
+            D
+          </IconButton>
+        </CardActions>
+      </KooyaProvider>,
+    );
     fireEvent.click(screen.getByRole("button", { name: "Delete" }));
     expect(act).not.toHaveBeenCalled();
   });
