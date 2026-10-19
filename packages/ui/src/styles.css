@@ -3722,3 +3722,17 @@ a.ku-nav-tile {
   font-size: var(--ku-type-section);
   line-height: 1.4;
 }
+
+/* Compact composition: one inset per surface; visual size differs from touch target. */
+.ku-root[data-density="compact"] {
+  --ku-card-padding: 12px;
+  --ku-section-gap: 16px;
+  --ku-item-gap: 8px;
+}
+.ku-root[data-density="compact"] .ku-card-heading { padding: 12px 12px 8px; }
+.ku-root[data-density="compact"] .ku-card-body:not(.ku-card-body--flush) { padding: 8px 12px 12px; }
+.ku-root[data-density="compact"] .ku-page-heading { gap: 12px; margin-block: 0 16px; }
+.ku-root[data-density="compact"] .ku-icon-button { width: 36px; height: 36px; }
+@media (pointer: coarse), (max-width: 767px) {
+  .ku-root[data-density="compact"] .ku-icon-button { width: 44px; height: 44px; }
+}

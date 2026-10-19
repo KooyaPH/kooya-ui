@@ -58,3 +58,5 @@ Escape/outside dismissal, and removed triggers.
 Console and Headquarters share the package and product adapters. User appearance
 is stored on the authenticated account; organization brand data stays separately
 owned. The server record and its version govern cross-device persistence.
+
+Compact surface content uses a single 12px inset, 8px item gaps and 16px section separation. Flush surfaces own no inset. Primary/coarse targets remain 44px.
