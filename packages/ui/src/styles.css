@@ -3765,3 +3765,9 @@ a.ku-nav-tile {
 .ku-root .ku-pagination .ant-pagination-item-active { background: var(--ku-subtle); border: 0; font-weight: 600; }
 .ku-root .ku-pagination .ant-pagination-item a { padding: 0 8px; }
 @media (pointer: coarse) { .ku-root .ku-pagination :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next) { min-width: 44px; height: 44px; line-height: 44px; } }
+
+/* Keep sticky column bodies below every header, including the corner intersection. */
+.ku-root .ku-table-scroll { isolation: isolate; }
+.ku-root .ku-table-scroll .ant-table-tbody > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right) { z-index: 2; }
+.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th { z-index: 4; background: var(--ku-surface); }
+.ku-root .ku-table-scroll--bounded .ant-table-thead > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right) { z-index: 6; }
