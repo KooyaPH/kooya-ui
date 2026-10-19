@@ -3771,3 +3771,9 @@ a.ku-nav-tile {
 .ku-root .ku-table-scroll .ant-table-tbody > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 2; }
 .ku-root .ku-table-scroll--bounded .ant-table-thead > tr > th { z-index: 4; background: var(--ku-surface); }
 .ku-root .ku-table-scroll--bounded .ant-table-thead > tr > :is(.ant-table-cell-fix-left, .ant-table-cell-fix-right, .ant-table-cell-fix-start, .ant-table-cell-fix-end) { z-index: 6; }
+
+.ku-root .ku-table-scroll, .ku-root .ku-table-scroll .ant-table-wrapper, .ku-root .ku-table-scroll .ant-table-container { min-width: 0; max-width: 100%; }
+.ku-root .ku-table-scroll { overflow: visible; }
+.ku-root .ku-table-scroll .ant-table-content { overflow-x: auto !important; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--ku-muted) 40%, transparent) transparent; overscroll-behavior: contain; }
+.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar { width: 5px; height: 5px; }
+.ku-root .ku-table-scroll .ant-table-content::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ku-muted) 40%, transparent); border-radius: 3px; }
