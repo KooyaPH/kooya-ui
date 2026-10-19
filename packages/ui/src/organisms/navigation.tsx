@@ -325,6 +325,7 @@ export function WorkspaceHeader({
   title,
   collapsed,
   navigationLabel,
+  hideNavigationTrigger = false,
   onNavigation,
   onSearch,
   focus = false,
@@ -340,6 +341,8 @@ export function WorkspaceHeader({
   title: string;
   collapsed: boolean;
   navigationLabel?: string;
+  /** The host may place the navigation trigger beside its brand identity. */
+  hideNavigationTrigger?: boolean;
   onNavigation: () => void;
   onSearch: () => void;
   focus?: boolean;
@@ -382,7 +385,7 @@ export function WorkspaceHeader({
       aria-label="Workspace toolbar"
     >
       <div className="ku-header-context ku-header-block">
-        <IconButton
+        {!hideNavigationTrigger && <IconButton
           label={
             navigationLabel ??
             (collapsed ? "Expand navigation" : "Collapse navigation")
@@ -401,7 +404,7 @@ export function WorkspaceHeader({
             <rect x="3" y="4" width="18" height="16" rx="3" />
             <path d="M9 4v16m7-12-4 4 4 4" />
           </svg>
-        </IconButton>
+        </IconButton>}
         {presentation !== "utility" && (
           <div>
             <span>

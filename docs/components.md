@@ -475,3 +475,5 @@ document-head rendering remain app-owned and need their own qualification.
 ### CollectionGrid
 
 Semantic surface-free `ul` layout with `minItemWidth` (220), `gap` (16), normal list attributes and children. Each item owns its own Card or media. Business records/pagination remain in products.
+
+WorkspaceHeader accepts `hideNavigationTrigger` when the host places its own accessible navigation control beside the brand. The host owns focus return and expanded state.
