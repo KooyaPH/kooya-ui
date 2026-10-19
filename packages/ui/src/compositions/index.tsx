@@ -176,3 +176,5 @@ export * from "./authorization";
 
 export * from "./public";
 export * from "./swimlane";
+
+export * from "./authentication";
