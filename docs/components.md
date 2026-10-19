@@ -467,3 +467,15 @@ document-head rendering remain app-owned and need their own qualification.
 ## Authentication refresh (1.3.0)
 
 `AuthLayout` supports an opt-in split presentation. `AuthMethodChoice`, `OtpCodeInput` and `AuthWorkspacePreview` are public composition exports. See [Authentication](authentication-refresh.md) for properties, responsive behavior and ownership boundaries.
+
+### CardActions
+
+`CardActions` groups quiet `IconButton` controls without a persistent background. IconButton supports `variant="quiet" | "inverse"`; accessible labels, refs, disabled and pressed state remain native button props. Cards own permission/state handlers.
+
+### CollectionGrid
+
+Semantic surface-free `ul` layout with `minItemWidth` (220), `gap` (16), normal list attributes and children. Each item owns its own Card or media. Business records/pagination remain in products.
+
+WorkspaceHeader accepts `hideNavigationTrigger` when the host places its own accessible navigation control beside the brand. The host owns focus return and expanded state.
+
+`SpaceSearchTrigger` is a compact, quiet workspace search launcher with an optional shortcut hint and an accessible name. It calls the host's search callback; the host owns search results and keyboard shortcuts.

@@ -51,3 +51,7 @@ Single-card authentication, embedded authorization, expandable supporting prose,
 ## 1.2.2 workspace correction
 
 `WorkspaceHeader` accepts optional `presentation="utility"` to render a toolbar without repeated page identity or nested header landmarks. The default presentation remains compatible. Navigation geometry remains owned by `WorkspaceShell`; applications supply one sidebar, route headings and permission-filtered links. Long heading actions wrap within their container.
+
+## 1.4.0 — Compact workspace controls
+
+Backward-compatible collection grids, contextual card actions, and an independent space search launcher. Hosts can place navigation beside their brand identity. Compact typography, spacing and pagination, measured table headers and corrected fixed-column stacking support the KooyaHQ issue rollout. Prior immutable archives remain available.

@@ -106,6 +106,43 @@ export function DataTable<Row extends object>({
     observer.observe(region, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, [label]);
+  useEffect(() => {
+    const region = scrollRegionRef.current;
+    if (
+      !region ||
+      maxBodyHeight === undefined ||
+      typeof ResizeObserver === "undefined"
+    )
+      return;
+    let header: HTMLElement | null = null;
+    const resize = new ResizeObserver(() => {
+      if (header)
+        region.style.setProperty(
+          "--ku-table-header-height",
+          `${header.getBoundingClientRect().height}px`,
+        );
+    });
+    const observeHeader = () => {
+      const next = region.querySelector<HTMLElement>(".ant-table-thead");
+      if (next === header) return;
+      resize.disconnect();
+      header = next;
+      if (header) {
+        resize.observe(header);
+        region.style.setProperty(
+          "--ku-table-header-height",
+          `${header.getBoundingClientRect().height}px`,
+        );
+      }
+    };
+    const mutation = new MutationObserver(observeHeader);
+    mutation.observe(region, { childList: true, subtree: true });
+    observeHeader();
+    return () => {
+      resize.disconnect();
+      mutation.disconnect();
+    };
+  }, [maxBodyHeight]);
   const cards = mode === "mobile" && presentation !== "comparison";
   const priorityRows =
     mode === "tablet" &&

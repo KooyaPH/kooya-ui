@@ -6,7 +6,7 @@ Default: Kooya Olive, Light, Compact. Appearance is independent of page composit
 ## Foundations
 
 - DM Sans interface typography; use a locally served product font when adopting.
-- 14px body text, 12px secondary text, clear sentence-case headings.
+- Compact text roles: 13px body/navigation, 12px supporting, 11px metadata, 20px page title, 16px section title and 24px metrics. Comfortable body stays 14px. Preserve user text scaling.
 - 4px spacing rhythm; 6px controls, 8px panels, 10px overlays.
 - 36px compact desktop controls, 44px touch targets; text-bearing rows grow.
 - Twelve restrained palettes and custom six-digit hex accents. Generated primary,
@@ -58,3 +58,5 @@ Escape/outside dismissal, and removed triggers.
 Console and Headquarters share the package and product adapters. User appearance
 is stored on the authenticated account; organization brand data stays separately
 owned. The server record and its version govern cross-device persistence.
+
+Compact surface content uses a single 12px inset, 8px item gaps and 16px section separation. Flush surfaces own no inset. Primary/coarse targets remain 44px.
