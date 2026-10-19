@@ -3736,3 +3736,14 @@ a.ku-nav-tile {
 @media (pointer: coarse), (max-width: 767px) {
   .ku-root[data-density="compact"] .ku-icon-button { width: 44px; height: 44px; }
 }
+
+.ku-root .ku-card-actions { display: inline-flex; align-items: center; gap: 4px; }
+.ku-root .ku-card-actions .ku-icon-button { width: 32px; height: 32px; min-width: 32px; padding: 0; border: 0; box-shadow: none; background: transparent; }
+.ku-root .ku-card-actions .ku-icon-button svg { width: 16px; height: 16px; }
+.ku-root .ku-icon-button--quiet { background: transparent; border-color: transparent; box-shadow: none; }
+.ku-root .ku-icon-button--inverse { color: #fff; background: transparent; border-color: transparent; }
+.ku-root .ku-card-actions .ku-icon-button:hover:not(:disabled),
+.ku-root .ku-card-actions .ku-icon-button:focus-visible { background: var(--ku-subtle); }
+@media (pointer: coarse), (max-width: 767px) {
+  .ku-root .ku-card-actions .ku-icon-button { width: 44px; height: 44px; min-width: 44px; }
+}

@@ -467,3 +467,7 @@ document-head rendering remain app-owned and need their own qualification.
 ## Authentication refresh (1.3.0)
 
 `AuthLayout` supports an opt-in split presentation. `AuthMethodChoice`, `OtpCodeInput` and `AuthWorkspacePreview` are public composition exports. See [Authentication](authentication-refresh.md) for properties, responsive behavior and ownership boundaries.
+
+### CardActions
+
+`CardActions` groups quiet `IconButton` controls without a persistent background. IconButton supports `variant="quiet" | "inverse"`; accessible labels, refs, disabled and pressed state remain native button props. Cards own permission/state handlers.

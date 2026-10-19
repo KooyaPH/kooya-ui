@@ -1,5 +1,6 @@
 import { DataValue, useDataLoading } from "../molecules/experience";
-import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes,
+  type HTMLAttributes, type ReactNode } from "react";
 import {
   Button as AntButton,
   Avatar as AntAvatar,
@@ -82,9 +83,10 @@ export const IconButton = forwardRef<
   HTMLButtonElement,
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, "aria-label"> & {
     label: string;
+    variant?: "quiet" | "inverse";
   }
 >(function IconButton(
-  { label, children, className = "", type = "button", color: _color, ...props },
+  { label, children, className = "", type = "button", variant = "quiet", color: _color, ...props },
   ref,
 ) {
   return (
@@ -95,7 +97,7 @@ export const IconButton = forwardRef<
       aria-label={label}
       title={label}
       type="text"
-      className={"ku-icon-button " + className}
+      className={`ku-icon-button ku-icon-button--${variant} ${className}`}
     >
       <span role="img" aria-hidden="true">
         {children}
@@ -192,4 +194,9 @@ export function Progress(props: ProgressProps) {
 }
 export function Tooltip(props: TooltipProps) {
   return <AntTooltip {...props} />;
+}
+
+/** Contextual card chrome: semantics are retained without generic text-button skin. */
+export function CardActions({ children, className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
+  return <div {...props} className={`ku-card-actions ${className}`}>{children}</div>;
 }
