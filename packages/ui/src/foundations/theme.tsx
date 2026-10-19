@@ -253,7 +253,7 @@ export function antTheme(
       ...(variables["--ku-radius-overlay"] !== undefined
         ? { borderRadiusLG: radiusToken(variables["--ku-radius-overlay"], 16) }
         : {}),
-      fontSize: 14,
+      fontSize: options.density === "compact" ? 13 : 14,
       controlHeight: options.density === "compact" ? 36 : 44,
       fontFamily:
         options.fontFamily ??

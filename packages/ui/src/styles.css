@@ -3702,3 +3702,23 @@ a.ku-nav-tile {
   overflow-wrap: anywhere;
   min-inline-size: 0;
 }
+
+/* Compact workspace typography is role-based, never a page zoom transform. */
+.ku-root[data-density="compact"] {
+  --ku-type-body: 13px;
+  --ku-type-secondary: 12px;
+  --ku-type-metadata: 11px;
+  --ku-type-title: 20px;
+  --ku-type-section: 16px;
+  --ku-type-metric: 24px;
+  font-size: var(--ku-type-body);
+}
+.ku-root[data-density="compact"] .ku-page-heading h1 {
+  font-size: var(--ku-type-title);
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+.ku-root[data-density="compact"] .ku-card-heading h2 {
+  font-size: var(--ku-type-section);
+  line-height: 1.4;
+}
