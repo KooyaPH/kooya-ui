@@ -3750,3 +3750,11 @@ a.ku-nav-tile {
 
 .ku-root .ku-collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--ku-collection-min, 220px)), 1fr)); gap: var(--ku-collection-gap, 16px); padding: 0; margin: 0; list-style: none; background: transparent; border: 0; }
 .ku-root .ku-collection-grid > li { min-width: 0; padding: 0; border: 0; background: transparent; }
+
+.ku-space-search-trigger { display: inline-flex; align-items: center; justify-content: flex-start; gap: 8px; justify-self: end; min-width: 32px; max-width: 240px; height: 32px; padding: 0 8px; border: 0; border-radius: var(--ku-radius-sm); background: transparent; color: var(--ku-muted); font: inherit; cursor: pointer; }
+.ku-space-search-trigger:hover { background: var(--ku-subtle); color: var(--ku-ink); }
+.ku-space-search-trigger:focus-visible { outline: 2px solid var(--ku-accent); outline-offset: 2px; }
+.ku-space-search-trigger svg { flex-shrink: 0; }
+.ku-space-search-trigger kbd { font-size: 11px; margin-left: 8px; }
+@media (max-width: 640px) { .ku-space-search-trigger span, .ku-space-search-trigger kbd { display: none; } }
+@media (pointer: coarse) { .ku-space-search-trigger { min-width: 44px; min-height: 44px; } }

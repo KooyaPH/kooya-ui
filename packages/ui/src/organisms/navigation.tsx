@@ -415,32 +415,7 @@ export function WorkspaceHeader({
           </div>
         )}
       </div>
-      <button
-        type="button"
-        className="ku-header-search ku-header-block"
-        aria-label={
-          searchShortcut
-            ? `Jump to a space (${searchShortcut})`
-            : "Jump to a space"
-        }
-        onClick={onSearch}
-      >
-        <svg
-          width="20"
-          height="20"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        >
-          <circle cx="10" cy="10" r="6" />
-          <path d="m15 15 5 5" />
-        </svg>
-        <span>
-          Jump to a space <small>Everything, a little closer.</small>
-        </span>{" "}
-        {searchShortcut && <kbd>{searchShortcut}</kbd>}
-      </button>
+      <SpaceSearchTrigger onClick={onSearch} shortcut={searchShortcut} />
       {onFocus && (
         <button
           type="button"
@@ -482,4 +457,13 @@ export function WorkspaceHeader({
       )}
     </Container>
   );
+}
+
+/** Workspace search launcher, independent from field and generic button styling. */
+export function SpaceSearchTrigger({ onClick, shortcut }: { onClick: () => void; shortcut?: string }) {
+  return <button type="button" className="ku-space-search-trigger" onClick={onClick}
+    aria-label={shortcut ? `Jump to a space (${shortcut})` : "Jump to a space"}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg>
+    <span>Jump to a space</span>{shortcut && <kbd>{shortcut}</kbd>}
+  </button>;
 }
