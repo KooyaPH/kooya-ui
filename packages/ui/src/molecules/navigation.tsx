@@ -330,7 +330,7 @@ export function Tabs({
   );
 }
 export function Pagination(props: PaginationProps) {
-  return <AntPagination {...props} />;
+  return <AntPagination {...props} className={`ku-pagination ${props.className ?? ""}`} />;
 }
 export function Breadcrumb(props: BreadcrumbProps) {
   return <AntBreadcrumb {...props} />;
