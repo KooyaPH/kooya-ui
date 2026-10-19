@@ -471,3 +471,7 @@ document-head rendering remain app-owned and need their own qualification.
 ### CardActions
 
 `CardActions` groups quiet `IconButton` controls without a persistent background. IconButton supports `variant="quiet" | "inverse"`; accessible labels, refs, disabled and pressed state remain native button props. Cards own permission/state handlers.
+
+### CollectionGrid
+
+Semantic surface-free `ul` layout with `minItemWidth` (220), `gap` (16), normal list attributes and children. Each item owns its own Card or media. Business records/pagination remain in products.

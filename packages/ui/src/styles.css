@@ -3747,3 +3747,6 @@ a.ku-nav-tile {
 @media (pointer: coarse), (max-width: 767px) {
   .ku-root .ku-card-actions .ku-icon-button { width: 44px; height: 44px; min-width: 44px; }
 }
+
+.ku-root .ku-collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--ku-collection-min, 220px)), 1fr)); gap: var(--ku-collection-gap, 16px); padding: 0; margin: 0; list-style: none; background: transparent; border: 0; }
+.ku-root .ku-collection-grid > li { min-width: 0; padding: 0; border: 0; background: transparent; }
